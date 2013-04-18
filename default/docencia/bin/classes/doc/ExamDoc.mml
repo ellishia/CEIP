@@ -1,0 +1,57 @@
+import doc.exams.ExamForm
+package doc {
+
+	["ml2_wla"]
+	definition ExamDoc is document {
+		label = "Examen";		
+		template = template ExamDoc;
+		
+		
+
+		mapping {
+			index = ref ExamDocs.Indice;
+		}
+		schema {
+			Name String;
+			CentroAcademico String;
+			AnyoAcademico String;
+			DocumentType String;
+			Date Date;
+			Group String;
+			Subject String;
+			Instructions String;
+			many Questions {
+				Number String;
+				Question String;
+			}
+		}
+		//			onCalculate(doc.ExamDoc scope) { Name = Date.toString() + Subject;
+		//			}
+		["iasfadfa"]
+		definition Exportador is exporter {
+			label = "Exportador de Documento";
+			target = ref ExamDoc;
+
+			onExportItem(doc.examdoc.Schema i) {
+				var ficha = this.getScope() as doc.exams.ExamForm;
+				i.date = new Date();
+//				i.group = ficha.group.getLabel();
+//				i.trimestre = ficha.trimester.getLabel();
+//				i.dateMeeting = ficha.date;
+//				i.room = ficha.room.getLabel();
+//				i.documentType = "Convocatoria de Sesión de Evaluación";
+//				i.city = "Las Palmas de G.C.";
+//				i.firmante = "La dirección";
+//				for(item : ficha.teachersField.allFields) {
+//					var teacher = item.getNode() as Teacher;
+//					var docente = new direc.evaluationdoc.^schema.Docente();
+//					docente.docente = teacher.getName() + " " + teacher.surname;
+//					docente.subject = teacher.specialty;
+//					i.docente.^add(docente);
+//				}
+			}
+
+		}
+
+	}
+}

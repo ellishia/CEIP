@@ -1,0 +1,220 @@
+package solicitud {
+
+//------------------------ Pendiente de leer el BOC
+	["mug0jug"]
+	definition ApplicationInfo is form {
+		is-component;
+		label = "Información de la Solicitud";
+
+		["mxpsb0a"]
+		field-boolean Matriculable {
+			label = "Matriculable";
+		}
+
+		["mmxps8a"]
+		field-serial Identifier {
+			label = "Código de Solicitud";
+			serial IdName {
+				format = "Solicitud-%4S/%2Y";
+			}
+		}
+
+		["mnthwcq"]
+		field-date Date {
+			label = "Fecha de presentación";
+		}
+
+		["m_6vacw"]
+		field-text StudentName {
+			label = "Nombre de Alumno";
+		}
+
+		["mujyvta"]
+		field-text StudentSurname {
+			label = "Apellidos de Alumno";
+		}
+
+		["msoxwvq"]
+		field-text Cial {
+			label = "CIAL";
+		}
+
+		["mtq27ow"]
+		field-date Birthdate {
+			precision = DAYS;
+			label = "Fecha de nacimiento";
+		}
+
+		["mro3zeg"]
+		field-text Nationality {
+			label = "Nacionalidad";
+		}
+
+		["m_joqwq"]
+		field-select Gender {
+			label = "Sexo";
+			use {
+				source = ref solicitud.shared.Genders;
+			}
+		}
+
+		["mkprqza"]
+		field-section Address {
+			label = "Dirección";
+
+			["mcn4joq"]
+			field-text Designation {
+				label = "Tipo de vía";
+			}
+
+			["mouscxq"]
+			field-text Street_name {
+				label = "Nombre de vía";
+			}
+
+			["mug8k2q"]
+			field-number Number {
+				label = "Número";
+			}
+
+			["mmgptcw"]
+			field-text Appartament {
+				label = "Piso, letra";
+			}
+
+			["m1lxdka"]
+			field-text Neigbourhood {
+				label = "Localidad/Barrio";
+			}
+
+			["m_sfxfa"]
+			field-text City {
+				label = "Municipio";
+			}
+
+			["mnzounw"]
+			field-number Zip_code {
+				label = "Código Postal";
+			}
+			view {
+				mode = EXPANDED;
+				show {
+					field = ref Designation;
+					field = ref Street_name;
+					field = ref Number;
+					field = ref Appartament;
+					field = ref Zip_code;
+					field = ref Neigbourhood;
+					field = ref City;
+				}
+			}
+		}
+
+		["mnrz7cg"]
+		field-section AppliedCenters {
+			label = "Centro Solicitado";
+			is-multiple;
+
+			["mlw356q"]
+			field-serial Preference {
+				label = "Preferencia";
+				serial SerialName {
+					format = "%2S";
+				}
+			}
+
+			["mlxn9eg"]
+			field-text CenterName {
+				label = "Centro";
+			}
+		}
+
+		["mmtuwag"]
+		field-select Level {
+			label = "Curso";
+			use {
+				source = ref solicitud.shared.Levels;
+			}
+		}
+
+		["m2ypi9w"]
+		field-select AcademicYear {
+			label = "Año Académico";
+			use {
+				source = ref solicitud.shared.AcademicYears;
+			}
+		}
+
+		["maaymtw"]
+		field-text Siblings {
+			label = "Hermanos/as en el centro";
+		}
+
+		["mkmd1ow"]
+		field-text ParentsInCenter {
+			label = "Padres trabajando en el centro";
+		}
+
+		["mqtnfka"]
+		field-file Documents {
+			is-multiple;
+			label = "Adjuntos";
+		}
+		mapping {
+			index = ref solicitud.Applications.Indice;
+		}
+
+		["metkf3a"]
+		operation Preinscripcion {
+			label = "Publicar Preinscripción";
+			execute() {
+				var preinscripcion = solicitud::procesos::PublicarPlaza:: createNew();
+				var contenedor = this.owner as Application;
+				preinscripcion.setTarget(contenedor);
+				preinscripcion.save();
+				preinscripcion.resume();
+				ClientService:: redirectUserTo(MonetLink:: forTask(preinscripcion.id));
+			}
+		}
+
+		["m4ud4za"]
+		view View {
+			label = "Preinscripción";
+			show {
+				field = ref Identifier;
+				field = ref Date;
+				field = ref AcademicYear;
+				field = ref StudentName;
+				field = ref StudentSurname;
+				field = ref Cial;
+				field = ref Birthdate;
+				field = ref Nationality;
+				field = ref Gender;
+				field = ref Level;
+			}
+		}
+
+		["m43nayw"]
+		view HomeAdd {
+			label = "Domicilio";
+			show {
+				field = ref Address;
+			}
+		}
+
+		["mrja83w"]
+		view Criteria {
+			label = "Datos de baremación";
+			show {
+				field = ref Siblings;
+				field = ref ParentsInCenter;
+				field = ref Documents;
+				field = ref AppliedCenters;
+			}
+		}
+
+		constructor() { date = new Date();
+		}
+
+	}
+}

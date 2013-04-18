@@ -1,0 +1,52 @@
+package doc {
+
+	["mqczzuw"]
+	definition ExamDocs is collection {
+		label = "Documentos de Examen";
+		index = ref Indice;
+		add {
+			node = ref ExamDoc;
+		}
+
+		["imiwn3qa"]
+		definition Indice is index {
+			label = "Indice";
+			reference {
+
+				["imlb9i_q"]
+				attribute Name {
+					label = "Nombre";
+					type = STRING;
+				}
+			}
+
+			["i"]
+			view Normal {
+				show {
+					title = ref Name;
+				}
+			}
+
+		}
+
+		["dafa"]
+		view {
+			label = "Todos";
+			show {
+				index {
+					sort-by = ref Indice.Name;
+					with-view = ref Indice.Normal;
+				}
+			}
+			analyze {
+				dimension {
+					attribute = ref Indice.Name;
+				}
+				sorting {
+					attribute = ref Indice.Name;
+				}
+			}
+		}
+
+	}
+}

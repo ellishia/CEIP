@@ -1,0 +1,8 @@
+package solicitud.shared {
+
+	["mb7maug"]
+	definition Buslines is glossary {
+		label = "Rutas";
+		ontology = "ParadasDeServicios";
+	}
+}

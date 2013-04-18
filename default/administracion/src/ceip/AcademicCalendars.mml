@@ -1,0 +1,140 @@
+package ceip {
+
+	["m2imvha"]
+	definition AcademicCalendars is collection {
+		label = "Calendarios Académicos";
+		is-singleton;
+		add {
+			node = ref AcademicCalendar;
+		}
+
+		index = ref Index;
+
+		["mrfh_hq"]
+		view {
+			label = "Calendarios Académicos";
+			show {
+				index {
+					sort-by = ref Index.academicYear;
+					with-view = ref Index.Normal;
+				}
+			}
+			analyze {
+				dimension {
+					attribute = ref Index.academicYear;
+				}
+				sorting {
+					attribute = ref Index.academicYear;
+				}
+			}
+		}
+
+		//------------------------------
+		["mkeegma"]
+		definition AcademicCalendar is form {
+			label = "Calendario Académico";
+
+			properties {
+				calculate() {
+					var lab = "Calendario Académico ";
+					var academicYear = getNode().getAcademicYear();
+					if(academicYear != null) {
+						this.getNode().setLabel(academicYear.toString());
+					}
+					this.getNode().setLabel(lab + this.getNode().getLabel());
+				}
+			}
+			mapping {
+				index = ref Index;
+			}
+
+			["m7hqppa"]
+			field-select AcademicYear {
+				label = "Año Académico";
+				use {
+					source = ref ceip.shared.AcademicYears;
+				}
+			}
+
+			["mkozuwg"]
+			field-section Event {
+				label = "Periodo";
+				is-multiple;
+
+				["m4qu3ya"]
+				field-text Name {
+					label = "Nombre";
+				}
+
+				["maaulsw"]
+				field-text Description {
+					label = "Descripcion";
+				}
+
+				["mynxnug"]
+				field-text Tasks {
+					label = "Tareas";
+				}
+
+				["m9qjoha"]
+				field-date InitialDate {
+					label = "Fecha de Inicio";
+					precision = DAYS;
+				}
+
+				["mod0nlq"]
+				field-date FinalDate {
+					label = "Fecha Final";
+					precision = DAYS;
+				}
+				view {
+					mode = COMPACT;
+					summary {
+						field = ref Name;
+						field = ref InitialDate;
+						field = ref FinalDate;
+					}
+					show {
+						field = ref Name;
+						field = ref Description;
+						field = ref InitialDate;
+						field = ref FinalDate;
+						field = ref Tasks;
+					}
+				}
+			}
+
+			["m9yuwuq"]
+			view {
+				show {
+					field = ref AcademicYear;
+					field = ref Event;
+				}
+			}
+
+		}
+
+		["mee6lya"]
+
+		definition Index is index {
+			label = "item";
+			reference {
+
+				["mbqd4gw"]
+				attribute academicYear {
+					label = "Año Académico";
+					type = TERM;
+				}
+			}
+
+			["mutz6zg"]
+			view Normal {
+				show {
+					line = ref academicYear;
+				}
+			}
+
+		}
+
+	}
+}

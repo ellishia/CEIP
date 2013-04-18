@@ -1,0 +1,28 @@
+package direc {
+
+	["mkgjxbw"]
+	definition ScheduleYear is form {
+		label = "Año Escolar";
+		is-component;
+
+		["mqjvrfq"]
+		field-select AcademicYear {
+			label = "Año Académico";
+			use {
+				source = ref direc.shared.AcademicYears;
+			}
+		}
+		mapping {
+			index = ref Schedules.Indice;
+		}
+
+		["mg4huna"]
+		view View {
+			label = "Ficha";
+			show {
+				field = ref AcademicYear;
+			}
+		}
+
+	}
+}

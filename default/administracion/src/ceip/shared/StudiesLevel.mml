@@ -1,0 +1,31 @@
+package ceip.shared {
+
+	["mb_ne7w"]
+	definition StudiesLevel is thesaurus {
+		label = "Studies level";
+		ontology = "EstudiosDeAdministrcion";
+
+		terms {
+			term {
+				label = "Sin estudios";
+				key = "001";
+			}
+			term {
+				label = "Primarios";
+				key = "002";
+			}
+			term {
+				label = "Secundarios";
+				key = "003";
+			}
+			term {
+				label = "Diplomado Universitario";
+				key = "004";
+			}
+			term {
+				label = "Licenciado";
+				key = "005";
+			}
+		}
+	}
+}

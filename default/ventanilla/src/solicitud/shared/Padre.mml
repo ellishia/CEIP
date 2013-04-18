@@ -1,0 +1,14 @@
+package solicitud.shared {
+
+	["m_dji1q"]
+	definition Padre is role {
+		label = "Padre";
+		
+		
+		enable-services {
+			ontology = "SolicitudPlaza";
+			
+		}
+		
+	}
+}

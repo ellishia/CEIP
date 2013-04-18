@@ -1,0 +1,33 @@
+package grades {
+
+	["mzwpt3g"]
+	definition Evaluation is desktop {
+		label = "Evaluación";
+		is-singleton;
+		for {
+			role = ref grades.shared.Tutors;
+		}
+		["mxb3xiq"]
+		view {
+			is-default;
+			show {
+				link = ref ContinuosEvaluation;
+			}
+		}
+
+		["mdoioxa"]
+		view {
+			show {
+				link = ref TrimestralEvaluations;
+			}
+		}
+
+		["mtdi0va"]
+		view {
+			show {
+				link = ref grades.analytics.Estadistics;
+			}
+		}
+
+	}
+}

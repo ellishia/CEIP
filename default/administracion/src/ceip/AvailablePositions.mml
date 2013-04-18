@@ -1,0 +1,74 @@
+package ceip {
+
+	["mljgmza"]
+	definition AvailablePositions is collection {
+		label = "Available Positions";
+		is-component;
+
+		index = ref Indice;
+
+		add {
+			node = ref Position;
+		}
+
+		["mv_rrrw"]
+		view {
+			is-default;
+			label = "Todos";
+			show {
+				index {
+					sort-by = ref Indice.Anyo;
+					with-view = ref Indice.Item;
+				}
+			}
+			analyze {
+				dimension {
+					attribute = ref AvailablePositions.Indice.Anyo;
+				}
+				sorting {
+					attribute = ref AvailablePositions.Indice.Anyo;
+				}
+			}
+		}
+
+		["mf9ania"]
+		view Vista {
+			show {
+				index {
+					sort-by = ref Indice.Anyo;
+					with-view = ref Indice.Item;
+				}
+			}
+			analyze {
+				dimension {
+					attribute = ref AvailablePositions.Indice.Anyo;
+				}
+				sorting {
+					attribute = ref AvailablePositions.Indice.Anyo;
+				}
+			}
+		}
+
+		["imljgmza"]
+		definition Indice is index {
+			label = "Plazas disponibles";
+			reference {
+
+				["imljgmza"]
+				attribute Anyo {
+					label = "Año Académico";
+					type = STRING;
+				}
+			}
+
+			["impewela"]
+			view Item {
+				show {
+					line = ref Anyo;
+				}
+			}
+
+		}
+
+	}
+}

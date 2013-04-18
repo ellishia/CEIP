@@ -1,0 +1,10 @@
+package grades.shared {
+
+	["mavimog"]
+	definition Teachers is glossary {
+		label = "Docentes";
+
+		ontology = "DocentesDeCoordinacion";
+	}
+}
+

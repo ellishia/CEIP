@@ -1,0 +1,48 @@
+import solicitud.admiteddoc.Importador
+package solicitud.procesos {
+
+	["m5vlwaq"]
+	definition Admitidos is service {
+		label = "Listado de Admitidos/as";
+		ontology = "ListadoDeAdmitidos";
+
+		customer {
+			request Alumnado {
+				code = "Admitidos";
+				import(CustomerRequest msg) {
+					//var listado = msg.getDocument("Admitidos",  AdmitedDoc);
+					//listado.save();
+					Importador::doImportOf("Listado de Admitidos/as", msg).atGlobalScope;
+					getTask().doUnlock(Lock:: Initial_Parada);
+				}
+			}
+
+			onRequest(CustomerRequest msg) {
+				getTask().addLog("Llega el Listado", "Alumnos/as admitidos/as");
+			}
+		}
+
+		["mgl6u2a"]
+		place Initial {
+			is-initial;
+
+			["mf2ypwg"]
+			door WaitingDoor {
+
+				["mfxkz1w"]
+				exit Parada {
+					history = "Se ha recibido el listado";
+					goto = ref Final;
+				}
+				label = "Procesar Listado de Admitidos/as";
+			}
+		}
+
+		["mohkwzw"]
+		place Final {
+			is-final;
+		}
+
+	}
+}
+  

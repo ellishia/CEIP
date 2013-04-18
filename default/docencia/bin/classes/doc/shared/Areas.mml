@@ -1,0 +1,19 @@
+package doc.shared {
+
+	["myyhbha"]
+	definition Areas is thesaurus {
+		label = "Materias";
+		ontology = "MateriasDeDocencia";
+		is-self-generated;
+
+		self-generated {
+			index = ref doc.SubjectLevels.Indice;
+			mapping {
+				//parent = ref doc.SubjectLevels.Indice.AsignaturaCompleta;
+				label = ref doc.SubjectLevels.Indice.AsignaturaCompleta;
+				key = ref doc.SubjectLevels.Indice.Identifier;
+			}
+		}
+
+	}
+}

@@ -1,0 +1,13 @@
+package ceip.shared {
+
+	["mfehsta"]
+	definition Administrador is role {
+		label = "Administrador";
+
+		enable-services {
+			ontology = "1b095c4e-021d-4d36-998e-6d493757d4c9";
+			ontology = "ListadoDeAdmitidos";
+		}
+
+	}
+}

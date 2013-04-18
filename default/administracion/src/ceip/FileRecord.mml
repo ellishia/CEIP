@@ -1,0 +1,21 @@
+package ceip {
+
+	["mxpuvda"]
+	definition FileRecord is document {
+		label = "FileRecord";
+		template = template FileRecord;
+		is-readonly;
+		schema {
+			many entry {
+				Subject String;
+				Ciclo Number;
+				NotaCiclo Number;
+			}
+			FurtherInfo String;
+			SpecificNeeds String;
+			Diversity String;
+			Observations String;
+		}
+	}
+}
+  

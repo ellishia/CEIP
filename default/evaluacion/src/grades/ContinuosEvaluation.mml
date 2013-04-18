@@ -1,0 +1,70 @@
+package grades {
+
+	["mtmtz3w"]
+	definition ContinuosEvaluation is catalog {
+		label = "Evaluación Continua";
+		index = ref Index;
+
+		["imfeyeig"]
+		definition Index is index {
+			label = "Indice";
+			reference {
+
+				["imkcv5_a"]
+				attribute Subject {
+					label = "Asignatura";
+					type = TERM;
+				}
+
+				["msmlfaw"]
+				attribute Group {
+					label = "Grupo";
+					type = TERM;
+				}
+
+				["m_gi5gg"]
+				attribute Teacher {
+					label = "Docente";
+					type = TERM;
+				}
+
+				["mgypnuw"]
+				attribute Date {
+					label = "Fecha";
+					type = DATE;
+				}
+			}
+
+			["i"]
+			view Normal {
+				show {
+					line = ref Subject;
+					line = ref Group;
+					line = ref Teacher;
+					line = ref Date;
+				}
+			}
+
+		}
+
+		["fasf"]
+		view {
+			label = "Todos";
+			show {
+				index {
+					sort-by = ref Index.Subject;
+					with-view = ref Index.Normal;
+				}
+			}
+			analyze {
+				dimension {
+					attribute = ref Index.Subject;
+				}
+				sorting {
+					attribute = ref Index.Subject;
+				}
+			}
+		}
+
+	}
+}

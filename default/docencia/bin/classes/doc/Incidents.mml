@@ -1,0 +1,115 @@
+package doc {
+
+	["mjn7npq"]
+	definition Incidents is collection {
+		label = "Incidencias";
+		is-singleton;
+		index = ref Indice;
+		add {
+			node = ref Incident;
+		}
+
+		["mibbeww"]
+		definition Indice is index {
+			label = "Indice";
+			reference {
+
+				["imqtitkw"]
+				attribute Place {
+					label = "Lugar";
+					type = STRING;
+				}
+
+				["m21abnw"]
+				attribute Student {
+					label = "Alumno/a";
+					type = LINK;
+				}
+
+				["m4arhsa"]
+				attribute Date {
+					label = "Fecha";
+					type = DATE;
+				}
+			}
+
+			["i"]
+			view Normal {
+				show {
+					title = ref Student;
+					line = ref Date;
+					line = ref Place;
+				}
+			}
+
+		}
+
+		["mstcbrq"]
+		view {
+			label = "Todos";
+			show {
+				index {
+					sort-by = ref Indice.Student;
+					with-view = ref Indice.Normal;
+				}
+			}
+			analyze {
+				dimension {
+					attribute = ref Indice.Student;
+				}
+				sorting {
+					attribute = ref Indice.Student;
+					attribute = ref Indice.Date;
+				}
+			}
+		}
+
+		["m5jz_vw"]
+		definition Incident is form {
+			label = "Incidencia";
+
+			["mhsef2w"]
+			field-text Place {
+				label = "Lugar";
+			}
+
+			["meunf2a"]
+			field-date Date {
+				label = "Fecha";
+			}
+
+			["mrzfemw"]
+			field-link Student {
+				label = "Alumno/a";
+				is-multiple;
+				source {
+					index = ref Alumnado.Indice;
+				}
+			}
+
+			["m2lk5kg"]
+			field-text Description {
+				label = "Descripción";
+			}
+
+			["mjuljea"]
+			field-text Rating {
+				label = "Valoración";
+			}
+
+			["mq2zo5g"]
+			view {
+				label = "Ficha";
+				show {
+					field = ref Date;
+					field = ref Student;
+					field = ref Place;
+					field = ref Description;
+					field = ref Rating;
+				}
+			}
+
+		}
+
+	}
+}

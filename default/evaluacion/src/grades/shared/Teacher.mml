@@ -1,0 +1,7 @@
+package  grades.shared{
+
+	["mlagllw"]
+	definition Teacher is role {
+		label = "Teacher";
+	}
+}

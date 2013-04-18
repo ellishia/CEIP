@@ -1,0 +1,91 @@
+import ceip.Applications
+
+package ceip.procesos {
+
+	["mbtuuja"]
+	definition StudentNewlyAdmited is activity {
+		label = "Transferir listado de nuevos admitidos/as";
+		target = ref ceip.AdmitedDoc;
+		role = ref ceip.shared.Administrador;
+		shortcut shIncidencia;
+
+		onInitialize() {
+			setTarget(ceip::admiteddoc::Exportador:: doExportOf(Applications:: instance).toNewDocument);
+		}
+
+		["mzqjoiw"]
+		place Iniciado {
+			is-initial;
+
+			["mgblztw"]
+			line {
+
+				["mjlin2w"]
+				stop Generar {
+					history = "Se generará el listado de admitidos";
+					goto = ref Generado;
+					label = "Se generará el listado de admitidos";
+				}
+
+				["mjpe8pw"]
+				stop Salir {
+					history = "Salir";
+					goto = ref Finalizado;
+					label = "Salir";
+				}
+				label = "Decidir si generar o no";
+			}
+		}
+
+		["mqbx2ia"]
+		place Generado {
+
+			["mmnkhjw"]
+			delegation {
+				history = "Generado el listado";
+				label = "Generando Listado";
+				goto = ref Enviando;
+				// lo hago aqui
+				provider = ref ProviderName;
+			}
+		}
+
+		["mujxbea"]
+		place Enviando {
+
+			["m8i22bg"]
+			send-request {
+				label = "Enviando Documento";
+				history = "Documento enviado";
+				request = ref ProviderName.Admitidos;
+				provider = ref ProviderName;
+				goto = ref Finalizado;
+			}
+		}
+
+		["mzbebbg"]
+		place Finalizado {
+			is-final;
+		}
+
+		["m_jaavq"]
+		provider ProviderName {
+			role = ref ceip.shared.Administrador;
+			external {
+				request Admitidos {
+					code = "Admitidos";
+					constructor(ProviderRequest msg) {
+						try {
+							msg.attachSchema("Listado de Admitidos/as", getTask().getTarget());
+						}
+						catch(java.lang.Exception ex) {
+							getTask().addLog("excepcion", ex.getMessage());
+						}
+					}
+				}
+			}
+		}
+
+	}
+}
+	

@@ -1,0 +1,121 @@
+package serv {
+
+	["miyjksa"]
+	definition DailyRecords is collection {
+		label = "Registro Diario";
+		index = ref Indice;
+		add {
+			node = ref DailyRecord;
+		}
+
+		["imbeh6vw"]
+		definition Indice is index {
+			label = "Indice";
+			reference {
+
+				["imkufqig"]
+				attribute Date {
+					label = "Fecha";
+					type = DATE;
+				}
+
+				["m9bkhmq"]
+				attribute Busline {
+					label = "Ruta";
+					type = LINK;
+				}
+			}
+
+			["i"]
+			view Normal {
+				show {
+					title = ref Date;
+				}
+			}
+
+		}
+
+		["ms3tapg"]
+		definition DailyRecord is form {
+			label = "Registro Diario";
+
+			["mjlmexa"]
+			field-date Date {
+				label = "Fecha de Registro";
+			}
+
+			["m_tgbmq"]
+			field-link BusLine {
+				label = "Ruta";
+				source {
+					index = ref serv.Buslines.Indice;
+				}
+			}
+
+			["mhjnkgg"]
+			field-text Manager {
+				label = "Encargado";
+			}
+
+			["m0r0dbw"]
+			field-section Absences {
+				label = "Control de Asistencias";
+				is-multiple;
+
+				["mjky9iq"]
+				field-link User {
+					label = "Usuario";
+					source {
+						index = ref serv.UsersTransport.Indice;
+					}
+				}
+
+				["moeznig"]
+				field-boolean Absent {
+					label = "Ausencia";
+				}
+			}
+
+			["mspsatw"]
+			field-text Signature {
+				label = "Firma";
+			}
+			mapping {
+				index = ref Indice;
+			}
+
+			["teaas"]
+			view {
+				label = "Ficha";
+				show {
+					field = ref Date;
+					field = ref BusLine;
+					field = ref Manager;
+					field = ref Signature;
+					field = ref Absences;
+				}
+			}
+
+		}
+
+		["mkmb9vq"]
+		view {
+			label = "Todos";
+			show {
+				index {
+					sort-by = ref Indice.Date;
+					with-view = ref Indice.Normal;
+				}
+			}
+			analyze {
+				dimension {
+					attribute = ref Indice.Date;
+				}
+				sorting {
+					attribute = ref Indice.Date;
+				}
+			}
+		}
+
+	}
+}

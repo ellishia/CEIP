@@ -1,0 +1,91 @@
+package solicitud {
+
+	["mlgnu5g"]
+	definition CanteenApplication is form extends ServiceApplications.ServiceApplication {
+		label = "Comedor";
+
+		["mwhszqq"]
+		field-serial Identifier {
+			label = "Código de Solicitud";
+			serial IdName {
+				format = "Comedor-%4S/%2Y";
+			}
+		}
+
+		["m0si4ba"]
+		field-text Schedule {
+			label = "Turno";
+		}
+
+		["mhk2zma"]
+		field-boolean ActualPosition {
+			label = "Tiene plaza de comedor";
+		}
+
+		["mghojkq"]
+		field-boolean Subsidized {
+			label = "Subvencionda";
+		}
+
+		["mchengw"]
+		field-section Criteria {
+			label = "Criterios";
+
+			["mjsft9w"]
+			field-boolean WorkingPersonalLife {
+				label = "Conciliación de la vida familiar y laboral";
+			}
+
+			["mukyxea"]
+			field-boolean Siblings {
+				label = "Hermanos matriculados en el centro";
+			}
+
+			["mbrl4ka"]
+			field-boolean ParentsInSchool {
+				label = "Padre o madre trabajando en el centro";
+			}
+
+			["mn3jung"]
+			field-boolean AnualIncome {
+				label = "Renta Anual";
+			}
+
+			["mfg2bqw"]
+			field-boolean Handcaped {
+				label = "Discapacidad";
+			}
+
+			["myue3ew"]
+			field-boolean MonoParentalorNumberusFamily {
+				label = "Familia numerosa o monoparental";
+			}
+		}
+
+		["m45g4bg"]
+		field-text Observations {
+			label = "Observaciones";
+		}
+
+		["mybm40g"]
+		field-file Documents {
+			label = "Documentación Adjunta";
+			is-multiple;
+		}
+
+		["m2dketw"]
+		view {
+			label = "Datos de comedor";
+			show {
+				field = ref Schedule;
+				field = ref ActualPosition;
+				field = ref Subsidized;
+				field = ref Criteria;
+				field = ref Observations;
+				field = ref Documents;
+				field = ref Identifier;
+			}
+		}
+
+	}
+}

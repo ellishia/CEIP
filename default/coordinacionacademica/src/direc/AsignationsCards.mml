@@ -1,0 +1,53 @@
+package direc {
+
+	["m0qb0ga"]
+	definition AsignationsCards is collection {
+		label = "Asignaciones de Tarjetas";
+		index = ref Asignations.Indice;
+		add {
+			node = ref AsignationCard;
+		}
+
+		["fadf"]
+		view {
+			label = "Todos";
+			show {
+				index {
+					sort-by = ref Asignations.Indice.AcademicYear;
+					with-view = ref Asignations.Indice.Normal;
+				}
+			}
+			analyze {
+				dimension {
+					attribute = ref Asignations.Indice.AcademicYear;
+				}
+				sorting {
+					attribute = ref Asignations.Indice.AcademicYear;
+				}
+			}
+		}
+
+		["mqj2d_g"]
+		definition AsignationCard is form extends Asignations.AsignationDefault {
+			label = "Asignación de Tarjeta";
+
+			["mc32fdw"]
+			field-link CreditCard {
+				label = "Tarjeta de Crédito";
+				source {
+					index = ref direc.CreditCards.Indice;
+				}
+			}
+
+			["asfa"]
+			view AsignView {
+				label = "Tarjeta sin número";
+				show {
+					field = ref CreditCard;
+				}
+			}
+
+		}
+
+	}
+}

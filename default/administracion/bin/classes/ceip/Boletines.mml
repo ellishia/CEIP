@@ -1,0 +1,70 @@
+package ceip {
+
+	["msskukg"]
+	definition Boletines is collection {
+		label = "Boletines";
+		is-singleton;
+		add {
+			node = ref Boletin;
+		}
+
+		index = ref Index;
+
+		["mv6f4nw"]
+		view {
+			label = "Boletines";
+			show {
+				index {
+					sort-by = ref Index.Name;
+					with-view = ref Index.Normal;
+				}
+			}
+			analyze {
+				dimension {
+					attribute = ref Index.Name;
+				}
+				sorting {
+					attribute = ref Index.Name;
+				}
+			}
+		}
+		
+	
+		["ml3tpia"]
+		definition Index is index {
+			label = "item";
+
+			reference {
+				["mdzpx_q"]
+				attribute Name {
+					label = "Name";
+					type = STRING;
+				}
+				["mviej6q"]
+				attribute AcademicYear {
+					label = "Año Académico";
+					type = STRING;
+				}
+				["meac4mw"]
+				attribute Trimester {
+					label = "Trimestre";
+					type = TERM;
+				}
+				
+				["m1asb2a"]
+				attribute StudentName {
+					label = "Nombre de Alumno";
+					type = STRING;
+				}
+				
+			}
+
+			["mc2rhjw"]
+			view Normal {
+				show {
+					title = ref Name;
+				}
+			}
+		}		
+	}
+}

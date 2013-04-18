@@ -1,0 +1,77 @@
+package direc {
+
+	["muke6tq"]
+	definition CenterBook is form {
+		label = "Referencia Bibliográfica";
+
+		["md9l_xq"]
+		field-text Title {
+			label = "Título";
+		}
+
+		["mt_xa3a"]
+		field-serial Identifier {
+			label = "Identificador";
+			serial IdLibro {
+				format = "Libro-%4S";
+			}
+		}
+
+		["mk4q33a"]
+		field-text Editorial {
+			label = "Editorial";
+		}
+
+		["meagbsg"]
+		field-text Author {
+			label = "Autor";
+		}
+
+		["m4hgvha"]
+		field-date PublicationYear {
+			precision = YEARS;
+			label = "Año de Publicación";
+		}
+
+		["m_6nasa"]
+		field-select Level {
+			label = "Nivel";
+			use {
+				source = ref direc.shared.Levels;
+			}
+		}
+
+		["m87mrbg"]
+		field-select InUseSince {
+			label = "En Uso desde";
+			use {
+				source = ref direc.shared.AcademicYears;
+			}
+		}
+		mapping {
+			index = ref direc.CenterBooks.Indice;
+		}
+		properties {
+			calculate() {
+				var valor = getNode().getTitle() + " " + getNode().editorial;
+				getNode().setLabel(valor);
+			}
+		}
+
+		["asfas"]
+		view {
+			label = "Ficha de Libro";
+			show {
+				field = ref Title;
+				field = ref Editorial;
+				field = ref Author;
+				field = ref PublicationYear;
+				field = ref Level;
+				field = ref InUseSince;
+			}
+		}
+
+
+
+	}
+}

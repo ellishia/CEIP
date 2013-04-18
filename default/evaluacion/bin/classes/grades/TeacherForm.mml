@@ -1,0 +1,34 @@
+package grades {
+
+	["m_6cfaa"]
+	definition TeacherForm is form {
+		label = "Docente";
+		is-component;
+
+		["m_yybkq"]
+		field-select TeacherName {
+			label = "Nombre de Docente";
+			use {
+				source = ref grades.shared.Teachers;
+			}
+		}
+
+		["my_rctg"]
+		field-select Subject {
+			label = "Asignatura";
+			use {
+				source = ref grades.shared.Subjects;
+			}
+		}
+
+		["fad"]
+		view Ficha {
+			label = "Ficha";
+			show {
+				field = ref TeacherName;
+				field = ref Subject;
+			}
+		}
+
+	}
+}

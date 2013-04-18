@@ -1,0 +1,121 @@
+package direc {
+
+	["mzk7skg"]
+	definition Ejemplares is collection {
+		label = "Ejemplares";
+		is-singleton;
+		index = ref Indice;
+		add {
+			node = ref Ejemplar;
+		}
+
+		["mkg42zq"]
+		view {
+			label = "Todos";
+			show {
+				index {
+					sort-by = ref Indice.Libro;
+					with-view = ref Indice.Normal;
+				}
+			}
+			analyze {
+				dimension {
+					attribute = ref Indice.Libro;
+				}
+				sorting {
+					attribute = ref Indice.Libro;
+				}
+			}
+		}
+
+		["mwjdfjw"]
+		definition Indice is index {
+			label = "Todos los ejemplares";
+			reference {
+
+				["mhetbgq"]
+				attribute Libro {
+					label = "Libro";
+					type = TERM;
+				}
+
+				["mrui52w"]
+				attribute Estado {
+					label = "Estado";
+					type = STRING;
+				}
+
+				["mp_wqqg"]
+				attribute Codigo {
+					label = "ISBN";
+					type = TERM;
+				}
+			}
+
+			["mqgn37q"]
+			view Normal {
+				show {
+					line = ref Libro;
+					line = ref Codigo;
+				}
+			}
+
+		}
+
+		["mumocda"]
+		definition Ejemplar is form {
+			label = "Ejemplar";
+
+			["m8pawmw"]
+			field-link Libro {
+				label = "Libro";
+				source {
+					index = ref direc.CenterBooks.Indice;
+				}
+			}
+
+			["mp3xssa"]
+			field-serial Codigo {
+				label = "ISBN";
+				serial identificadorLibro {
+					format = "L-%6S-%2Y";
+				}
+			}
+
+			["mftvsow"]
+			field-text Estado {
+				label = "Estado";
+			}
+			mapping {
+				index = ref Indice;
+			}
+			properties {
+				calculate() {
+					getNode().setLabel(getNode().codigo + " " + getNode().libroAsTerm);
+				}
+			}
+
+			["m41_o5q"]
+			view AsignView {
+				label = "Libro";
+				show {
+					field = ref Libro;
+					field = ref Estado;
+					field = ref Codigo;
+				}
+			}
+
+			["m5ywoma"]
+			view VistaInversa {
+				label = "Lote al que pertenece";
+				show {
+					links:in {
+						node = ref direc.Lotes.Lote;
+					}
+				}
+			}
+
+		}
+
+	}
+}

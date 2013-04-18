@@ -1,0 +1,56 @@
+package ceip {
+
+	["mx_vlwg"]
+	definition Administracion is desktop {
+		label = "Administración";
+		is-singleton;
+		for {
+			role = ref ceip.shared.Administrador;
+		}
+
+		["umympgha"]
+		view {
+			label = "Gestion de Alumnos";
+			show {
+				link = ref Students;
+			}
+			is-default;
+		}
+
+		["amympgha"]
+		view {
+			label = "Calificaciones";
+			show {
+				link = ref Califications;
+				link = ref Boletines;
+			}
+		}
+
+		["pmympgha"]
+		view {
+			label = "Solicitudes";
+			show {
+				link = ref Applications;
+				link = ref ServiceApplications;
+			}
+		}
+
+		["m4iqy8w"]
+		view {
+			label = "Información del Centro";
+			show {
+				link = ref CentroInfo;
+				link = ref AcademicCalendars;
+			}
+		} 		["lmympgha"]
+		view {
+			label = "Tareas y Roles";
+			show {
+				link:roles;
+				link:taskboard;
+				}
+			}
+		}
+		
+		
+}

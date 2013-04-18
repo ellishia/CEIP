@@ -1,0 +1,19 @@
+package serv.shared {
+
+	["myyhbha"]
+	definition StopsName is thesaurus {
+		label = "StopsName";
+		ontology = "ParadasDeServicios";
+		is-self-generated;
+
+		self-generated {
+			index = ref serv.Stops.Indice;
+			mapping {
+				parent = ref serv.Stops.Indice.Identifier;
+				label = ref serv.Stops.Indice.Name;
+				key = ref serv.Stops.Indice.Identifier;
+			}
+		}
+
+	}
+}

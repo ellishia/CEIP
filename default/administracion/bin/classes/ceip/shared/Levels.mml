@@ -1,0 +1,46 @@
+package ceip.shared {
+
+	["mfyh_va"]
+	definition Levels is thesaurus {
+		label = "Levels";
+		ontology = "LevelsDeAdministracion";
+		terms {
+			term {
+				label = "Infantil 3 años";
+				key = "001";
+			}
+			term {
+				label = "Infantil 4 años";
+				key = "002";
+			}
+			term {
+				label = "Infantil 5 años";
+				key = "003";
+			}
+			term {
+				label = "Primero Primaria";
+				key = "004";
+			}
+			term {
+				label = "Segundo Primaria";
+				key = "005";
+			}
+			term {
+				label = "Tercero Primaria";
+				key = "006";
+			}
+			term {
+				label = "Cuarto Primaria";
+				key = "007";
+			}
+			term {
+				label = "Quinto Primaria";
+				key = "008";
+			}
+			term {
+				label = "Sexto Primaria";
+				key = "009";
+			}
+		}
+	}
+}

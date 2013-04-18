@@ -1,0 +1,83 @@
+package direc {
+
+	["mrycfjw"]
+	definition CenterBooks is collection {
+		label = "Referencias Bibliográficas";
+		is-singleton;
+		index = ref Indice;
+		add {
+			node = ref CenterBook;
+		}
+
+		["im67xsww"]
+		definition Indice is index {
+			label = "Indice";
+			reference {
+
+				["imiv3eja"]
+				attribute Title {
+					label = "Título";
+					type = STRING;
+				}
+
+				["mxw7sxa"]
+				attribute Level {
+					label = "Nivel";
+					type = TERM;
+				}
+
+				["m2n3hcw"]
+				attribute Editorial {
+					label = "Editorial";
+					type = STRING;
+				}
+
+				["mcgr0eg"]
+				attribute PublicationYear {
+					label = "Año de publicación";
+					type = STRING;
+				}
+			}
+
+			["i"]
+			view Normal {
+				show {
+					title = ref Title;
+				}
+			}
+
+		}
+
+		["mso22_g"]
+		view View {
+			label = "Todos";
+			show {
+				index {
+					sort-by = ref Indice.Title;
+					with-view = ref Indice.Normal;
+				}
+			}
+			analyze {
+				dimension {
+					attribute = ref Indice.Title;
+				}
+				sorting {
+					attribute = ref Indice.Title;
+					attribute = ref Indice.Level;
+				}
+			}
+		}
+		["m8cc6yq"]
+		operation ExemplairAddition {
+			label = "Añadir Ejemplares";			
+			execute(){
+				var tarea = direc::procesos::AnadirEjemplar:: createNew();
+				tarea.save;
+				tarea.resume;
+				ClientService:: redirectUserTo(MonetLink:: forTask(tarea.id));
+			}
+			
+		}
+
+	}
+}

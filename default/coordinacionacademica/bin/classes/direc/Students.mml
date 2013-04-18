@@ -1,0 +1,124 @@
+package direc {
+
+	["mphcdia"]
+	definition Students is collection {
+		label = "Alumnos/as";
+		is-singleton;
+		index = ref Index;
+		add {
+			node = ref Student;
+		}
+
+		["mlex9sw"]
+		view {
+			is-default;
+			label = "Todos";
+			show {
+				index {
+					sort-by = ref Index.Surname;
+					with-view = ref Index.Item;
+				}
+			}
+		}
+
+		["imphcdia"]
+		definition Index is index {
+			label = "Alumnos/as";
+			reference {
+
+				["imphcdia"]
+				attribute Name {
+					label = "Nombre";
+					type = STRING;
+				}
+
+				["mxxcmpg"]
+				attribute Surname {
+					label = "Apellidos";
+					type = STRING;
+				}
+
+				["mtrp82w"]
+				attribute Cial {
+					label = "Cial";
+					type = STRING;
+				}
+
+				["med9lia"]
+				attribute Level {
+					label = "Nivel";
+					type = TERM;
+				}
+			}
+
+			["mtv3aaw"]
+			view Item {
+				show {
+					line = ref Name;
+					line = ref Surname;
+					line = ref Cial;
+				}
+			}
+
+		}
+
+		["mw0lesw"]
+		definition Student is form {
+			label = "Alumno/a";
+			mapping {
+				index = ref Students.Index;
+			}
+			properties {
+				calculate() {
+					var nombreCompleto = getNode().getName();
+					nombreCompleto = nombreCompleto + " " + getNode().surname;
+					getNode().setLabel(nombreCompleto);
+				}
+			}
+
+			["mqjsehw"]
+			field-text Name {
+				label = "Nombre";
+			}
+
+			["m_ixcva"]
+			field-text Surname {
+				label = "Apellidos";
+			}
+
+			["mygtntq"]
+			field-select Level {
+				label = "Nivel";
+				use {
+					source = ref direc.shared.Levels;
+				}
+			}
+
+			["mfngi0w"]
+			field-text Cial {
+				label = "CIAL";
+			}
+
+			["mvaa1yq"]
+			field-date Date_of_Birth {
+				precision = DAYS;
+				label = "Fecha de nacimiento";
+			}
+
+			["m1ni4ea"]
+			view {
+				label = "Ficha";
+				is-default;
+				show {
+					field = ref Name;
+					field = ref Surname;
+					field = ref Level;
+					field = ref Cial;
+					field = ref Date_of_Birth;
+				}
+			}
+
+		}
+
+	}
+}

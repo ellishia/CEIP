@@ -1,0 +1,51 @@
+package direc {
+
+	["muz9b0a"]
+	definition ActivityFile is form {
+		label = "Ficha de la Actividad";
+		is-component;
+
+		["mqgbofw"]
+		field-date StartDate {
+			precision = MINUTES;
+			label = "Día de Comienzo";
+		}
+
+		["mkqrbkg"]
+		field-date EndDate {
+			precision = MINUTES;
+			label = "Día de Fin";
+		}
+
+		["muegmyq"]
+		field-text Description {
+			label = "Descripción";
+		}
+
+		["maveviq"]
+		field-text Name {
+			label = "Nombre";
+		}
+
+		["mqnpklw"]
+		field-text EducationalValues {
+			label = "Valor Educativo";
+		}
+		mapping {
+			index = ref Activities.Indice;
+		}
+
+		["mvqpq2q"]
+		view View {
+			label = "Ficha";
+			show {
+				field = ref Name;
+				field = ref StartDate;
+				field = ref EndDate;
+				field = ref Description;
+				field = ref EducationalValues;
+			}
+		}
+
+	}
+}

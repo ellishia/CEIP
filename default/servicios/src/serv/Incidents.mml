@@ -1,0 +1,104 @@
+package serv {
+
+	["mf_5msa"]
+	definition Incidents is collection {
+		label = "Incidencias";
+		index = ref Indice;
+		add {
+			node = ref Incident;
+		}
+
+		["imbeh6vw"]
+		definition Indice is index {
+			label = "Indice";
+			reference {
+
+				["imkufqig"]
+				attribute Date {
+					label = "Fecha";
+					type = DATE;
+				}
+
+				["m9bkhmq"]
+				attribute Busline {
+					label = "Ruta";
+					type = TERM;
+				}
+			}
+
+			["i"]
+			view Normal {
+				show {
+					title = ref Date;
+					line = ref Busline;
+				}
+			}
+
+		}
+
+		["ms3tapg"]
+		definition Incident is form {
+			label = "Incidencia";
+
+			["mjlmexa"]
+			field-date Date {
+				label = "Fecha de Registro";
+			}
+
+			["my8jdta"]
+			field-serial Identifier {
+				label = "Identificador";
+				serial SerialName {
+					format = "I-%4S";
+				}
+			}
+
+			["m_tgbmq"]
+			field-link BusLine {
+				label = "Ruta";
+				source {
+					index = ref serv.Buslines.Indice;
+				}
+			}
+
+			["mhjnkgg"]
+			field-text Manager {
+				label = "Encargado";
+			}
+
+			["mrheuna"]
+			field-text Description {
+				label = "Descripción";
+			}
+
+			["myxigka"]
+			field-select Clasification {
+				label = "Clasificación";
+				use {
+					source = ref serv.shared.Clasification;
+				}
+			}
+
+		}
+
+		["mrsirvw"]
+		view {
+			label = "Todos";
+			show {
+				index {
+					sort-by = ref Indice.Date;
+					with-view = ref Indice.Normal;
+				}
+			}
+			analyze {
+				dimension {
+					attribute = ref Indice.Date;
+				}
+				sorting {
+					attribute = ref Indice.Date;
+				}
+			}
+		}
+
+	}
+}

@@ -1,0 +1,9 @@
+package solicitud.shared {
+
+	["mvep_oa"]
+	definition AcademicYears is glossary {
+		label = "Años Académicos";
+		ontology = "AñosAcademicosAdmin";
+
+	}
+}

@@ -1,0 +1,54 @@
+import doc.Alumnado
+import doc.studentdoc.Importador
+
+package doc.procesos {
+
+	["mdxlp0a"]
+	definition StudentTransfer is service {
+		label = "Listado de Alumnado";
+		ontology = "1b095c4e-021d-4d36-998e-6d493757d4c9";
+		
+		
+		customer {
+			request Alumnado {
+				code = "Alumnado";
+				
+				import(CustomerRequest msg) {
+					Importador::doImportOf("Listado de Alumnos/as", msg).atGlobalScope;
+					getTask().doUnlock(Lock::Inicial_StopName);
+				}
+			}
+			
+			onRequest(CustomerRequest msg) {
+				getTask().addLog("Llega el mensaje", "mensaje");
+			}
+		}
+		["m2x4p_g"]
+		place Inicial { 
+			is-initial;
+			
+			["mf2ypwg"]
+			door WaitingDoor{
+
+				["mfxkz1w"]
+				exit StopName {
+					history = "Se ha recibido el listado de alumnos/as";
+					goto = ref Finalizar;
+				}
+				label = "Generar alumnos/as";
+				
+			}
+			
+			onArrive() {
+				addLog("Llega al inicial", "");
+			}
+		}
+		
+		
+		["muh7htq"]
+		place Finalizar {
+			is-final;
+		}
+	}
+}
+

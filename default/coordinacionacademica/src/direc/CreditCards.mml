@@ -1,0 +1,123 @@
+package direc {
+
+	["mhtm1na"]
+	definition CreditCards is collection {
+		label = "Tarjetas de Credito";
+		is-singleton;
+		index = ref Indice;
+
+		add {
+			node = ref CreditCard;
+		}
+
+		["mv1vzwq"]
+		definition Indice is index {
+			label = "Tarjetas de Crédito";
+			reference {
+
+				["mtnylpq"]
+				attribute AcademicYear {
+					label = "Año Académico";
+					type = TERM;
+				}
+
+				["myfgj_a"]
+				attribute CardNumber {
+					label = "Tarjeta de Crédito";
+					type = STRING;
+				}
+
+				["maumdtg"]
+				attribute Bank {
+					label = "Entidad Bancaria";
+					type = STRING;
+				}
+			}
+
+			["m_xhkog"]
+			view Normal {
+				show {
+					line = ref CardNumber;
+					line = ref Bank;
+					line = ref AcademicYear;
+				}
+			}
+
+		}
+
+		["mdx4mta"]
+		view {
+			label = "Todos";
+			show {
+				index {
+					sort-by = ref Indice.AcademicYear;
+					with-view = ref Indice.Normal;
+				}
+			}
+			analyze {
+				dimension {
+					attribute = ref Indice.AcademicYear;
+				}
+				sorting {
+					attribute = ref Indice.AcademicYear;
+					attribute = ref Indice.CardNumber;
+					attribute = ref Indice.Bank;
+				}
+			}
+		}
+
+		["m_mhwlw"]
+		definition CreditCard is form {
+			label = "Tarjeta de Crédito";
+
+			["myavokw"]
+			field-number CardNumber {
+				label = "Número tarjeta";
+				format = "#16";
+			}
+
+			["mdkmcig"]
+			field-text Bank {
+				label = "Entidad bancaria";
+			}
+
+			["mf2h3ha"]
+			field-number MoneyCredit {
+				label = "Cantidad de dinero";
+			}
+
+			["m5hasiw"]
+			field-select AcademicYear {
+				label = "Año Académico";
+				use {
+					source = ref direc.shared.AcademicYears;
+				}
+			}
+			mapping {
+				index = ref Indice;
+			}
+			properties {
+				calculate() {
+					var valor = getNode().bank + " " + getNode().cardNumber;
+					if(getNode().academicYear != null) {
+						valor = valor + " " + getNode().academicYear.getLabel();
+					}
+					getNode().setLabel(valor);
+				}
+			}
+
+			["m1mjjsa"]
+			view {
+				label = "Tarjeta sin número";
+				show {
+					field = ref CardNumber;
+					field = ref Bank;
+					field = ref MoneyCredit;
+					field = ref AcademicYear;
+				}
+			}
+
+		}
+
+	}
+}

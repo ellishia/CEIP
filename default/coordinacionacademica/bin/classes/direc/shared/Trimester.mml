@@ -1,0 +1,9 @@
+package direc.shared {
+
+	["moz3tfq"]
+	definition Trimester is glossary {
+		label = "Trimestre";
+		ontology = "TrimesterAdministracion";
+
+	}
+}

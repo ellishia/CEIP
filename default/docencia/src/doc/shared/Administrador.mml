@@ -1,0 +1,7 @@
+package doc.shared {
+
+	["mclvsjg"]
+	definition Administrador is role {
+		label = "Administrador";
+	}
+}

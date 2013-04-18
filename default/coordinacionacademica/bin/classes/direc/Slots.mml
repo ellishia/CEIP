@@ -1,0 +1,96 @@
+package direc {
+
+	["mobp_3a"]
+	definition Slots is collection {
+		label = "Slots";
+		index = ref Indice;
+		add {
+			node = ref Slot;
+		}
+
+		["imltz56q"]
+		definition Indice is index {
+			label = "Indice";
+			reference {
+
+				["ime33kpa"]
+				attribute Nombre {
+					label = "Nombre";
+					type = STRING;
+				}
+			}
+
+			["i"]
+			view Normal {
+				show {
+					title = ref Nombre;
+				}
+			}
+
+		}
+
+		["mkri5ug"]
+		view {
+			label = "Todos";
+			show {
+				index {
+					sort-by = ref Indice.Nombre;
+					with-view = ref Indice.Normal;
+				}
+			}
+			analyze {
+				dimension {
+					attribute = ref Indice.Nombre;
+				}
+				sorting {
+					attribute = ref Indice.Nombre;
+				}
+			}
+		}
+
+		["mahec1g"]
+		definition Slot is form {
+			label = "Slot";
+
+			["mp00m7a"]
+			field-select Weekday {
+				label = "Día de la semana";
+				use {
+					source = ref direc.shared.Weekdays;
+				}
+			}
+
+			["mar2pmq"]
+			field-number DayHour {
+				label = "Hora del día";
+			}
+
+			["m_bszeq"]
+			field-text Subject {
+				label = "Asignatura";
+			}
+
+			["mbzctla"]
+			field-link Group {
+				label = "Grupo";
+				source {
+					index = ref Groups.Indice;
+				}
+			}
+			mapping {
+				index = ref Indice;
+			}
+
+			["m1gpaoq"]
+			view {
+				label = "Ficha";
+				show {
+					field = ref Weekday;
+					field = ref DayHour;
+					field = ref Subject;
+					field = ref Group;
+				}
+			}
+		}
+	}
+}

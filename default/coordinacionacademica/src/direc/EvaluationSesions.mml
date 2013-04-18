@@ -1,0 +1,142 @@
+package direc {
+
+	["mp4ki8q"]
+	definition EvaluationSesions is collection {
+		label = "Sesiones de Evaluación";
+		index = ref Indice;
+		add {
+			node = ref EvaluationSesion;
+		}
+
+		["mifjqqa"]
+		definition Indice is index {
+			label = "Sesiones de Evaluación";
+			reference {
+
+				["mu0k4cq"]
+				attribute Title {
+					label = "Título";
+					type = STRING;
+				}
+			}
+
+			["m_fs9na"]
+			view Normal {
+				show {
+					title = ref Title;
+				}
+			}
+
+		}
+
+		["mue3juw"]
+		view View {
+			label = "Todos";
+			show {
+				index {
+					sort-by = ref Indice.Title;
+					with-view = ref Indice.Normal;
+				}
+			}
+			analyze {
+				dimension {
+					attribute = ref Indice.Title;
+				}
+				sorting {
+					attribute = ref Indice.Title;
+				}
+			}
+		}
+
+		["mdvasla"]
+		definition EvaluationSesion is form {
+			label = "Convocatoria de Evaluación";
+
+			["mjccohw"]
+			field-text Title {
+				label = "Título";
+			}
+
+			["mhkzxag"]
+			field-date Date {
+				label = "Fecha";
+			}
+
+			["myqp7mq"]
+			field-select Trimester {
+				label = "Trimestre";
+				use {
+					source = ref direc.shared.Trimester;
+				}
+			}
+
+			["mm8mjaw"]
+			field-link Room {
+				label = "Aula";
+				source {
+					index = ref direc.Rooms.Indice;
+				}
+			}
+
+			["mxdfqdg"]
+			field-link Group {
+				label = "Grupo";
+				source {
+					index = ref direc.Groups.Indice;
+				}
+			}
+
+			["m5pv79w"]
+			field-link Teachers {
+				label = "Docentes";
+				is-multiple;
+				source {
+					index = ref direc.Teachers.Indice;
+				}
+			}
+
+			["mm_y3ya"]
+			field-node EvaluationDoc {
+				label = "Documento de Convocatoria";
+				contain {
+					node = ref direc.EvaluationDoc;
+				}
+			}
+			mapping {
+				index = ref Indice;
+			}
+
+			["mqedryg"]
+			operation OperationName {
+				label = "crear documento de convocatoria";
+				execute() {
+					direc::evaluationdoc::Exportador::doExportOf(this).toDocument(this.evaluationDocField.getNode());
+				}
+			}
+
+			["madfzww"]
+			view {
+				label = "Convocatoria";
+				show {
+					field = ref Title;
+					field = ref Date;
+					field = ref Trimester;
+					field = ref Room;
+					field = ref Group;
+					field = ref Teachers;
+				}
+			}
+
+			["mgv3zfw"]
+			view ConvocatoriaView {
+				show {
+					attachments {
+						field:node = ref EvaluationDoc;
+					}
+				}
+			}
+
+		}
+
+	}
+}

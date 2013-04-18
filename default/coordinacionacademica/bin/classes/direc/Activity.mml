@@ -1,0 +1,38 @@
+package direc {
+
+	["mxj_qgg"]
+	definition Activity is container {
+		label = "Actividad Extraescolar";
+		contain {
+			node = ref ActivityFile;
+			node = ref ActivityGroups;
+			node = ref ActivityTeachers;
+		}
+
+		["kk"]
+		view {
+			label = "Información de Actividad";
+			is-default;
+			show {
+				component = ref ActivityFile.View;
+			}
+		}
+
+		["mtfexjw"]
+		view {
+			label = "Docentes";
+			show {
+				component = ref ActivityTeachers.View;
+			}
+		}
+
+		["mkzdqva"]
+		view {
+			label = "Grupos";
+			show {
+				component = ref ActivityGroups.View;
+			}
+		}
+
+	}
+}

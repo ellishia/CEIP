@@ -1,0 +1,73 @@
+package ceip.procesos {
+
+	["mh5pkhg"]
+	definition CargaInicial is activity {
+		label = "CargaInicial";
+
+		["mq_x8va"]
+		place Inicial {
+			is-initial;
+
+			["mxdig8q"]
+			edition {
+				goto = ref Final;
+				history = "Se han añadido características del Centro";
+				label = "Añadir Características de Centro";
+				use {
+					form = ref ceip.CenterInformation;
+					with-view = ref ceip.CenterInformation.View;
+				}
+				// crea el codigo 
+				onSolve(ceip.CenterInformation f) {
+					var centroInfo = ceip::CentroInfo:: instance;
+					var info = centroInfo.getCenterInformation();
+					info.centerCode = f.centerCode;
+					info.centerName = f.centerName;
+					info.academicYear = f.academicYear;
+					info.contactField.address = f.contactField.address;
+					info.contactField.ZIPCode = f.contactField.ZIPCode;
+					info.contactField.town = f.contactField.town;
+	
+					//info.contactField.telephone = f.contactField.telephone;
+					info.contactField.email = f.contactField.email;
+					info.influenceAreas = f.influenceAreas;
+					info.limitingAreas = f.limitingAreas;
+					info.save();
+				}
+				onValidate(ceip.CenterInformation f, ValidationResult vr) {					
+					if(f.centerCode.isEmpty()){
+						vr.addError("CenterCode", "está vacio");
+					}
+					if(f.centerName.isEmpty()) {
+						vr.addError("CenterName", "está vacio");
+					}
+					if(f.contactField.address.isEmpty()) {
+						vr.addError("Address", "está vacio");
+					}
+					if(f.contactField.town.isEmpty()) {
+						vr.addError("Town", "está vacio");
+					}
+//					if(f.contactField.ZIPCode.isEmpty()) {
+//						vr.addError("ZIPCode", "está vacio");
+//					}
+					if(f.contactField.email.isEmpty()) {
+						vr.addError("Email", "está vacio");
+					}
+					if(f.influenceAreas.isEmpty()){
+						vr.addError("InfluenceAreas", "está vacio");
+					}
+					if(f.limitingAreas.isEmpty()){
+						vr.addError("LimitingAreas", "está vacio");
+					}
+				}
+			}
+		}
+
+		["mnqwjiq"]
+		place Final {
+			is-final;
+		}
+
+	}
+}
+  

@@ -1,0 +1,153 @@
+package direc {
+
+	["mnsmu6a"]
+	definition Claustros is collection {
+		label = "Claustros de profesores";
+		index = ref Indice;
+		add {
+			node = ref Claustro;
+		}
+
+		["memofxa"]
+		definition Indice is index {
+			label = "Indice";
+			reference {
+
+				["mo3_vbq"]
+				attribute Title {
+					label = "Título";
+					type = STRING;
+				}
+			}
+
+			["i"]
+			view Normal {
+				show {
+					title = ref Title;
+				}
+			}
+
+		}
+
+		["myar8gg"]
+		view View {
+			label = "Todos";
+			show {
+				index {
+					sort-by = ref Indice.Title;
+					with-view = ref Indice.Normal;
+				}
+			}
+			analyze {
+				dimension {
+					attribute = ref Indice.Title;
+				}
+				sorting {
+					attribute = ref Indice.Title;
+				}
+			}
+		}
+
+		["mqfzaya"]
+		definition Claustro is form {
+			label = "Claustro de profesores";
+
+			["mosgdla"]
+			field-text Title {
+				label = "Título";
+			}
+
+			["mw0uj7a"]
+			field-date Date {
+				label = "Fecha";
+			}
+
+			["mxv85va"]
+			field-select Trimester {
+				label = "Trimestre";
+				use {
+					source = ref direc.shared.Trimester;
+				}
+			}
+
+			["mqsqrja"]
+			field-link Room {
+				label = "Aula";
+				source {
+					index = ref direc.Rooms.Indice;
+				}
+			}
+
+			["mys3hfg"]
+			field-link DayOrder {
+				label = "Orden del día";
+				is-required;
+				allow-add;
+				source {
+					index = ref direc.DayOrders.Indice;
+					collection = ref direc.DayOrders;
+				}
+			}
+
+			["mkdxtta"]
+			field-link Minute {
+				label = "Acta";
+				allow-add;
+				source {
+					index = ref direc.Minutes.Indice;
+				}
+			}
+
+			["mtbmdbq"]
+			field-link Teachers {
+				label = "Docentes";
+				is-multiple;
+				source {
+					index = ref direc.Teachers.Indice;
+				}
+			}
+
+			["mqpapww"]
+			field-node ClaustroDoc {
+				label = "Convocatoria de Claustro";
+				contain {
+					node = ref direc.ClaustroDoc;
+				}
+			}
+			mapping {
+				index = ref Indice;
+			}
+
+			["mxvaviq"]
+			operation OperationName {
+				label = "crear documento de convocatoria";
+				execute() {
+					direc::claustrodoc::Exportador:: doExportOf(this).toDocument(this.claustroDocField.getNode());
+				}
+			}
+
+			["mvp5lza"]
+			view {
+				label = "Convocatoria";
+				show {
+					field = ref Title;
+					field = ref Date;
+					field = ref Trimester;
+					field = ref Room;
+					field = ref DayOrder;
+				}
+			}
+
+			["mhwuvew"]
+			view ClaustroView {
+				show {
+					attachments {
+						field:node = ref ClaustroDoc;
+					}
+				}
+			}
+
+		}
+
+	}
+}

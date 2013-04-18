@@ -1,0 +1,96 @@
+package grades {
+
+	["m9lbsog"]
+	definition TrimestralEvaluations is collection {
+		label = "Evaluaciones Trimestrales";
+		index = ref Indice;
+		add {
+			node = ref TrimestralEvaluation;
+		}
+
+		["imfeyeig"]
+		definition Indice is index {
+			label = "Indice";
+			reference {
+
+				["mhga3lg"]
+				attribute AcademicYear {
+					label = "Año Académico";
+					type = TERM;
+				}
+
+				["m1swm9q"]
+				attribute Group {
+					label = "Grupo";
+					type = TERM;
+				}
+
+				["miark_g"]
+				attribute Teacher {
+					label = "Docente";
+					type = TERM;
+				}
+			}
+
+			["m5b7kcq"]
+			view Normal {
+				show {
+					line = ref AcademicYear;
+					line = ref Group;
+					line = ref Teacher;
+				}
+			}
+
+		}
+
+		["mp6envq"]
+		view {
+			label = "Todos";
+			show {
+				index {
+					sort-by = ref Indice.AcademicYear;
+					with-view = ref Indice.Normal;
+				}
+			}
+			analyze {
+				dimension {
+					attribute = ref Indice.Group;
+					attribute = ref Indice.Teacher;
+				}
+				sorting {
+					attribute = ref Indice.AcademicYear;
+				}
+			}
+		}
+
+		["mzs3dcq"]
+		definition TrimestralEvaluation is container {
+			label = "TrimestralEvaluation";
+			contain {
+				node = ref EvaluationForm;
+				node = ref Califications;
+			}
+
+			["ds"]
+			view {
+				label = "Ficha";
+				is-default;
+				show {
+					component = ref EvaluationForm.View;
+				}
+			}
+
+			["mx1uw4a"]
+			view CalificationsView {
+				show {
+					component = ref Califications.ViewAll;
+				}
+			}
+
+		}
+
+	}
+}
+
+	
+	

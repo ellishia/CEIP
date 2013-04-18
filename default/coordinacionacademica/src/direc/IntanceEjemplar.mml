@@ -1,0 +1,35 @@
+package direc {
+
+	["mdmc_4w"]
+	definition IntanceEjemplar is form {
+		label = "IntanceEjemplar";
+
+		["madx8gg"]
+		field-section Ejemplares {
+			label = "Ejemplares a Añadir";
+			is-multiple;
+
+			["mhpwoha"]
+			field-link Libro {
+				label = "Libro";
+				source {
+					index = ref direc.CenterBooks.Indice;
+				}
+			}
+
+			["myfoxra"]
+			field-number Number {
+				label = "Cantidad";
+			}
+		}
+
+		["mcdsria"]
+		view View {
+			label = "IntanceEjemplar";
+			show {
+				field = ref Ejemplares;
+			}
+		}
+
+	}
+}

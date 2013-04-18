@@ -1,0 +1,18 @@
+setup ventanilla extends ventanilla {
+	title = "Ventanilla Administrativa del Centro";
+	subtitle = "Ventanilla";
+
+	space ventanilla {
+		deploy-uri = "http://10.230.140.157:8090/ventanilla";
+	}
+	federation {
+		socket-uri = "socket://localhost:5346/";
+		secret = "1234";
+	}
+
+	assign-role {
+		user = "Padre/Madre";
+		role = ref solicitud.shared.Padre;
+	}
+
+}

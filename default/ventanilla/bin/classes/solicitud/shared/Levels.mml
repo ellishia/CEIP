@@ -1,0 +1,8 @@
+package solicitud.shared {
+
+	["mfyh_va"]
+	definition Levels is glossary {
+		label = "Levels";
+		ontology = "LevelsDeAdministracion";
+	}
+}

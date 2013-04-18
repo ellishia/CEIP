@@ -1,0 +1,99 @@
+package serv {
+
+	["mmzoakw"]
+	definition UsersTransport is collection {
+		label = "Usuarios de Transporte";
+		index = ref Indice;
+		add {
+			node = ref UserTransport;
+		}
+
+		["imbeh6vw"]
+		definition Indice is index extends Users.Indice {
+			label = "Indice";
+			reference {
+
+				["mnjokeq"]
+				attribute Bus {
+					label = "Ruta";
+					type = LINK;
+				}
+
+				["maf5pfq"]
+				attribute Stop {
+					label = "Parada";
+					type = TERM;
+				}
+			}
+
+			["i"]
+			view Normal {
+				show {
+					title = ref Bus;
+					line = ref Stop;
+				}
+			}
+
+		}
+
+		["ms3tapg"]
+		definition UserTransport is form extends Users.User {
+			label = "Usuario";
+
+			["mc9u8zg"]
+			field-text MedicalIssues {
+				label = "Enfermedades relevantes";
+			}
+
+			["mh_nnbw"]
+			field-link Busline {
+				label = "Ruta";
+				source {
+					index = ref Buslines.Indice;
+				}
+			}
+
+			["miy5p4g"]
+			field-select Stop {
+				label = "Parada";
+				use {
+					source = ref serv.shared.StopsName;
+				}
+			}
+			mapping {
+				index = ref Indice;
+			}
+
+			["teaas"]
+			view {
+				label = "Ficha";
+				show {
+					field = ref Busline;
+					field = ref Stop;
+					field = ref MedicalIssues;
+				}
+			}
+
+		}
+
+		["asdf"]
+		view {
+			label = "Todos";
+			show {
+				index {
+					sort-by = ref Indice.Bus;
+					with-view = ref Indice.Normal;
+				}
+			}
+			analyze {
+				dimension {
+					attribute = ref Indice.Bus;
+				}
+				sorting {
+					attribute = ref Indice.Bus;
+				}
+			}
+		}
+
+	}
+}

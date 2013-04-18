@@ -1,0 +1,20 @@
+package ceip {
+
+	["mskmouq"]
+	definition Historial is document extends AcademicRecords {
+		label = "Historial";
+		template = template Historial;
+		schema {
+			Adaptacion String;
+			Observations String;
+			many entry {
+//				Subject String;
+//				Level String;
+//				PrimerTrim Number;
+//				SegundoTrim Number;
+//				TercerTrim Number;
+//				Global Number;
+			}
+		}
+	}
+}

@@ -1,0 +1,21 @@
+package ceip {
+
+	["ml2_wla"]
+	abstract definition AcademicRecords is document {
+		label = "AcademicRecords";
+		template = template AcademicRecords;
+
+		schema {
+			CentroAcademico String;
+			AnyoAcademico String;
+			DocumentType String;
+			StudentName String;
+			StudentSurname String;
+			Cial String;
+			City String;
+			Date Date;
+		}
+
+		
+	}
+}

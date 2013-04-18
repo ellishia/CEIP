@@ -1,0 +1,33 @@
+package serv {
+
+	["mrpqggq"]
+	definition Servicios is desktop {
+		label = "Servicios";
+		is-singleton;
+		for {
+			role = ref serv.shared.Manager;
+		}
+
+		["u"]
+		view {
+			label = "Comedor";
+			show {
+				link = ref UsersCanteen;
+				link = ref SpecialMenus;
+			}
+			is-default;
+		}
+
+		["t"]
+		view {
+			label = "Transportes";
+			show {
+				link = ref UsersTransport;
+				link = ref Buslines;
+				link = ref DailyRecords;
+				link = ref Incidents;
+			}
+		}
+
+	}
+}

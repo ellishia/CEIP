@@ -1,0 +1,156 @@
+package grades {
+
+	["minbk5w"]
+	definition Califications is collection {
+		label = "Calificaciones";
+		is-singleton;
+		index = ref Indice;
+		add {
+			node = ref Calification;
+		}
+
+		["muf9cnq"]
+		view ViewAll {
+			is-default;
+			show {
+				index {
+					sort-by = ref Indice.Subject;
+					with-view = ref Indice.Normal;
+				}
+			}
+			analyze {
+				dimension {
+					attribute = ref Indice.Subject;
+					attribute = ref Indice.Level;
+					attribute = ref Indice.Student;
+				}
+				sorting {
+					attribute = ref Indice.AcademicYear;
+					attribute = ref Indice.Subject;
+					attribute = ref Indice.Level;
+					attribute = ref Indice.Student;
+				}
+			}
+		}
+
+		["iminbk5w"]
+		definition Indice is index {
+			label = "Indice";
+			reference {
+
+				["iminbk5w"]
+				attribute Subject {
+					label = "Asignatura";
+					type = TERM;
+				}
+
+				["mevbxmw"]
+				attribute Level {
+					label = "Curso";
+					type = TERM;
+				}
+
+				["mkrpqvg"]
+				attribute Grade {
+					label = "Nota";
+					type = STRING;
+				}
+
+				["mo9mzwg"]
+				attribute Trimester {
+					label = "Trimestre";
+					type = TERM;
+				}
+
+				["mi8peha"]
+				attribute AcademicYear {
+					label = "Año Académico";
+					type = TERM;
+				}
+
+				["mh5h9sw"]
+				attribute Student {
+					label = "Alumno";
+					type = TERM;
+				}
+
+				["m4azljw"]
+				attribute Cial {
+					label = "Cial";
+					type = STRING;
+				}
+			}
+
+			["imuf9cnq"]
+			view Normal {
+				show {
+					title = ref Subject;
+					line = ref Level;
+					line = ref Trimester;
+					line = ref AcademicYear;
+					line = ref Grade;
+				}
+			}
+
+		}
+
+		["mf1x_iw"]
+		definition Calification is form {
+			label = "Calificación";
+
+			["mpza0cw"]
+			field-select AcademicYear {
+				label = "Año Académico";
+				use {
+					source = ref grades.shared.AcademicYears;
+				}
+			}
+
+			["mf1x_iw"]
+			field-select Subject {
+				label = "Asignatura";
+				use {
+					source = ref grades.shared.Subjects;
+				}
+			}
+
+			["mbcp1yg"]
+			field-select Trimester {
+				label = "Trimestre";
+				use {
+					source = ref grades.shared.Trimesters;
+				}
+			}
+
+			["mujfnjq"]
+			field-text Grade {
+				label = "Nota";
+			}
+
+			["mqlc1xq"]
+			field-link Student {
+				label = "Alumno";
+				source {
+					index = ref grades.Students.Index;
+				}
+			}
+			mapping {
+				index = ref Indice;
+			}
+
+			["mveyj5w"]
+			view {
+				label = "Calificación";
+				show {
+					field = ref AcademicYear;
+					field = ref Subject;
+					field = ref Trimester;
+					field = ref Student;
+					field = ref Grade;
+				}
+			}
+
+		}
+
+	}
+}

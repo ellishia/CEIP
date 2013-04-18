@@ -1,0 +1,43 @@
+package doc {
+
+	["mmecnqq"]
+	definition Docencia is desktop {
+		label = "Docencia";
+		is-singleton;
+		for {
+			role = ref doc.shared.Administrador;
+		}
+
+		["u"]
+		view {
+			label = "Alumnado";
+			show {
+				link = ref Alumnado;
+				link = ref Groups;
+				link = ref Absences;
+				link = ref Incidents;
+				link = ref ParentVisits;
+			}
+			is-default;
+		}
+
+		["taasf"]
+		view {
+			label = "Área de conocimientos";
+			show {
+				link = ref SubjectLevels;
+				link = ref Subjects;
+			}
+		}
+
+		["mf0bqqq"]
+		view {
+			label = "Tareas y Roles";
+			show {
+				link:roles;
+				link:taskboard;
+			}
+		}
+
+	}
+}

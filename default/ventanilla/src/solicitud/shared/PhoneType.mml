@@ -1,0 +1,9 @@
+package solicitud.shared {
+
+	["moxxl_g"]
+	definition PhoneType is glossary {
+		label = "Phone Type";
+		ontology = "TipoTelefono";
+
+	}
+}

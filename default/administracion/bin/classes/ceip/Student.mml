@@ -1,0 +1,55 @@
+package ceip {
+
+	["mw39_ca"]
+	definition Student is container {
+		label = "Alumno/a";
+
+		contain {
+			node = ref BasicInfo;
+			node = ref MedicalIssues;
+			node = ref Relatives;
+		}
+
+		["mehmkfq"]
+		view {
+			label = "Alumno/a";
+			is-default;
+			show {
+				component = ref ceip.BasicInfo.Vista;
+			}
+		}
+
+		["muaxgvq"]
+		view {
+			label = "Tutores";
+			show {
+				component = ref ceip.Relatives.Vista2;
+			}
+		}
+
+		["mcaypxw"]
+		view {
+			label = "Familiares Autorizados";
+			show {
+				component = ref ceip.Relatives.RelativesView;
+			}
+		}
+
+		["m0c7lxw"]
+		view {
+			label = "Afecciones médicas";
+			show {
+				component = ref ceip.MedicalIssues.MedicalView;
+			}
+		}
+		
+		["miorrbg"]
+		view {
+			label = "Boletines";
+			show {  
+				component = ref ceip.BasicInfo.VistaBoletin;
+			}
+		}
+
+	}
+}

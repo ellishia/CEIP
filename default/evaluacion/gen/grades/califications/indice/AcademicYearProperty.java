@@ -1,0 +1,17 @@
+package grades.califications.indice;
+
+import org.monet.metamodel.AttributeProperty;
+
+public class AcademicYearProperty extends AttributeProperty {
+  public AcademicYearProperty() {
+    super();this._code = "mi8peha";
+    this._name = "AcademicYear";
+    this._label = "Año Académico";
+    this._type = org.monet.metamodel.AttributeProperty.TypeEnumeration.TERM;
+    
+  }
+  
+  public static String static_getName() {
+    return "AcademicYear";
+  }
+}

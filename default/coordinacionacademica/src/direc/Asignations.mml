@@ -1,0 +1,93 @@
+package direc {
+
+	["mrqfygw"]
+	definition Asignations is collection {
+		label = "Asignaciones";
+		is-singleton;
+		index = ref Indice;
+		add {
+			node = ref AsignationDefault;
+		}
+
+		["mofshbw"]
+		definition Indice is index {
+			label = "Indice";
+			reference {
+
+				["myack7a"]
+				attribute AcademicYear {
+					label = "Año Académico";
+					type = TERM;
+				}
+
+				["mzzyd7a"]
+				attribute Student {
+					label = "Alumno/a";
+					type = TERM;
+				}
+			}
+
+			["i"]
+			view Normal {
+				show {
+					title = ref AcademicYear;
+				}
+			}
+
+		}
+
+		["mbszzya"]
+		view ViewIndice {
+			label = "Todos";
+			show {
+				index {
+					sort-by = ref Indice.AcademicYear;
+					with-view = ref Indice.Normal;
+				}
+			}
+			analyze {
+				dimension {
+					attribute = ref Indice.AcademicYear;
+				}
+				sorting {
+					attribute = ref Indice.AcademicYear;
+				}
+			}
+		}
+
+		["mqj2d_g"]
+		abstract definition AsignationDefault is form {
+			label = "Asignación";
+
+			["mpnestq"]
+			field-select AcademicYear {
+				label = "Año Académico";
+				use {
+					source = ref direc.shared.AcademicYears;
+				}
+			}
+
+			["mfr11fg"]
+			field-link Student {
+				label = "Alumno/a";
+				source {
+					index = ref direc.Students.Index;
+				}
+			}
+			mapping {
+				index = ref Indice;
+			}
+
+			["asfa"]
+			view AsignView {
+				label = "Asignacion";
+				show {
+					field = ref Student;
+					field = ref AcademicYear;
+				}
+			}
+
+		}
+
+	}
+}

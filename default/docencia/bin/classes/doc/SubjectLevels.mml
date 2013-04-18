@@ -1,0 +1,146 @@
+package doc {
+
+	["m1ngrcq"]
+	definition SubjectLevels is collection {
+		label = "Asignaturas de Curso";
+		is-singleton;
+		index = ref Indice;
+		add {
+			node = ref SubjectLevel;
+		}
+
+		["imohdvqa"]
+		definition Indice is index {
+			label = "Indice";
+			reference {
+
+				["m03x2wq"]
+				attribute AsignaturaCompleta {
+					label = "Asignatura Completa";
+					type = STRING;
+				}
+
+				["imkmgxew"]
+				attribute Asignatura {
+					label = "Asignatura";
+					type = LINK;
+				}
+
+				["m9kmlwq"]
+				attribute Grade {
+					label = "Curso";
+					type = TERM;
+				}
+
+				["mlvkb3a"]
+				attribute Identifier {
+					label = "Identificador";
+					type = STRING;
+				}
+			}
+
+			["i"]
+			view Normal {
+				show {
+					line = ref Asignatura;
+					line = ref Grade;
+				}
+			}
+
+		}
+
+		["safa"]
+		view {
+			label = "Todos";
+			show {
+				index {
+					sort-by = ref Indice.Asignatura;
+					with-view = ref Indice.Normal;
+				}
+			}
+			analyze {
+				dimension {
+					attribute = ref Indice.Asignatura;
+				}
+				sorting {
+					attribute = ref Indice.Asignatura;
+				}
+			}
+		}
+
+		//--------------------------------
+		["mgkdizq"]
+		definition SubjectLevel is form {
+			label = "Asignatura y Curso";
+
+			["msczy7g"]
+			field-link Asignatura {
+				label = "Asignatura";
+				allow-add;
+				source {
+					index = ref Subjects.Indice;
+					collection = ref Subjects;
+				}
+			}
+
+			["mpbgwnq"]
+			field-select Grade {
+				label = "Curso";
+				use {
+					source = ref doc.shared.Grades;
+				}
+			}
+
+			["mj11zra"]
+			field-link Exams {
+				label = "Exámenes";
+				is-multiple;
+				source {
+					index = ref doc.Exams.Indice;
+				}
+			}
+
+			["m18aqeg"]
+			field-serial Identifier {
+				label = "Id";
+				serial SerialName {
+					format = "%4S";
+				}
+			}
+			mapping {
+				index = ref Indice;
+				calculate() {
+					var referencia = this.getReference();
+					var nodo = this.getNode();
+					referencia.setAsignaturaCompleta(nodo.asignaturaAsTerm + " " + nodo.getGrade());
+				}
+			}
+			properties {
+				calculate() {
+					this.getNode().setLabel(this.getNode().asignaturaAsTerm + " " + this.getNode().getGrade());
+				}
+			}
+
+			["mu0lnya"]
+			view {
+				label = "Especificación de Asignatura";
+				show {
+					field = ref Asignatura;
+					field = ref Grade;
+				}
+			}
+
+			["m2t_rqa"]
+			view ExamView {
+				label = "Examenes";
+				show {
+					links:in {
+						node = ref Exams.Exam;
+					}
+				}
+			}
+
+		}
+
+	}
+}

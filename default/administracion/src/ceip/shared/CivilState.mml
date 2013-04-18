@@ -1,0 +1,30 @@
+package ceip.shared {
+
+	["myt4eiw"]
+	definition CivilState is thesaurus {
+		label = "Civil State";
+		ontology = "EstadoCivilDeAdministracion";
+		terms {
+			term {
+				label = "Soltero";
+				key = "001";
+			}
+			term {
+				label = "Separado";
+				key = "002";
+			}
+			term {
+				label = "Casado";
+				key = "003";
+			}
+			term {
+				label = "Divorciado";
+				key = "004";
+			}
+			term {
+				label = "Viudo";
+				key = "005";
+			}
+		}
+	}
+}

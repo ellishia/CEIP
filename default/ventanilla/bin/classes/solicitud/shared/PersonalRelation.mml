@@ -1,0 +1,9 @@
+package solicitud.shared {
+
+	["m_0avtw"]
+	definition PersonalRelation is glossary {
+		label = "Personal relation";
+		ontology = "VinculosDeAdministracion";
+		
+	}
+}

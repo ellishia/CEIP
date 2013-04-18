@@ -1,0 +1,8 @@
+package grades.shared {
+
+	["mpd0ilq"]
+	definition AcademicYears is glossary {
+		label = "Años Académicos";
+		ontology = "AñosAcademicosAdmin";
+	}
+}

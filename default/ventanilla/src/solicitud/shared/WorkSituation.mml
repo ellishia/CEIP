@@ -1,0 +1,8 @@
+package solicitud.shared {
+
+	["ml5cexg"]
+	definition WorkSituation is glossary {
+		label = "Work situation";
+		ontology = "SituacionLaboralDeAdmin";
+	}
+}

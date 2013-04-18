@@ -1,0 +1,43 @@
+package direc {
+
+	["moozz0g"]
+	definition LoteInfo is form {
+		label = "LoteInfo";
+		is-component;
+
+		["mwb4prq"]
+		field-serial Identifier {
+			label = "Id";
+			serial SerialName {
+				format = "Lote-%4S/%2Y";
+			}
+		}
+
+		["moesara"]
+		field-select AcademicYear {
+			label = "Año Académico";
+			use {
+				source = ref direc.shared.AcademicYears;
+			}
+		}
+
+		["manedcw"]
+		field-select Level {
+			label = "Nivel";
+			use {
+				source = ref direc.shared.Levels;
+			}
+		}
+
+		["mwzxzuw"]
+		view Vista {
+			label = "Ficha";
+			show {
+				field = ref Identifier;
+				field = ref AcademicYear;
+				field = ref Level;
+			}
+		}
+
+	}
+}

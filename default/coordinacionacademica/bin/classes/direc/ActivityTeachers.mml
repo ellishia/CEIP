@@ -1,0 +1,24 @@
+package direc {
+
+	["mmrp2rg"]
+	definition ActivityTeachers is form {
+		label = "Docentes que realizan la actividad";
+
+		["mil2x0a"]
+		field-link Teachers {
+			label = "Docente";
+			is-multiple;
+			source {
+				index = ref Teachers.Indice;
+			}
+		}
+		["mkeacmg"]
+		view View {
+			label = "Docente";
+			show {
+				field = ref Teachers;
+			}
+		}
+
+	}
+}

@@ -1,0 +1,53 @@
+package direc {
+
+	["mlood_a"]
+	definition Schedules is collection {
+		label = "Horarios";
+		is-singleton;
+		index = ref Indice;
+		add {
+			node = ref AnualSchedule;
+		}
+
+		["imvvan9w"]
+		definition Indice is index {
+			label = "Horarios";
+			reference {
+
+				["imci9utq"]
+				attribute AcademicYear {
+					label = "Año Académico";
+					type = TERM;
+				}
+			}
+
+			["i"]
+			view Normal {
+				show {
+					line = ref AcademicYear;
+				}
+			}
+
+		}
+
+		["m2pt_ya"]
+		view View {
+			label = "Todos";
+			show {
+				index {
+					sort-by = ref Indice.AcademicYear;
+					with-view = ref Indice.Normal;
+				}
+			}
+			analyze {
+				dimension {
+					attribute = ref Indice.AcademicYear;
+				}
+				sorting {
+					attribute = ref Indice.AcademicYear;
+				}
+			}
+		}
+
+	}
+}

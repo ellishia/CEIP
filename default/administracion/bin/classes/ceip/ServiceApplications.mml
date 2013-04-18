@@ -1,0 +1,114 @@
+package ceip {
+
+	["mg7bi6g"]
+	definition ServiceApplications is collection {
+		label = "Solicitud de Servicios";
+		index = ref Indice;
+		add {
+			node = ref ServiceApplication;
+		}
+		is-singleton;
+
+		["img7bi6g"]
+		definition Indice is index {
+			label = "Solicitudes de Servicio";
+			reference {
+
+				["img7bi6g"]
+				attribute Date {
+					label = "Fecha";
+					type = STRING;
+				}
+
+				["mly34sg"]
+				attribute StudentName {
+					label = "Nombre";
+					type = STRING;
+				}
+
+				["mayyduq"]
+				attribute StudentSurname {
+					label = "Apellidos";
+					type = STRING;
+				}
+			}
+
+			["imhn1mbq"]
+			view Normal {
+				show {
+					line = ref Date;
+					line-below = ref StudentName;
+					line = ref StudentSurname;
+				}
+			}
+
+		}
+
+		["mhn1mbq"]
+		view {
+			label = "Solicitudes";
+			show {
+				index {
+					sort-by = ref Indice.Date;
+					with-view = ref Indice.Normal;
+				}
+			}
+			analyze {
+				dimension {
+					attribute = ref Indice.Date;
+				}
+				sorting {
+					attribute = ref Indice.Date;
+				}
+			}
+		}
+
+		["mxdc0hw"]
+		abstract definition ServiceApplication is form {
+			label = "ServiceApplication";
+
+			["mxdc0hw"]
+			field-text StudentName {
+				label = "Nombre de Alumno/a";
+			}
+
+			["mrfnr8q"]
+			field-text StudentSurname {
+				label = "Apellidos de Alumno/a";
+			}
+
+			["mrwd_eq"]
+			field-select AcademicYear {
+				label = "Año Académico";
+				use {
+					source = ref ceip.shared.AcademicYears;
+				}
+			}
+
+			["mnd1igq"]
+			field-date Date {
+				label = "Fecha";
+			}
+			mapping {
+				index = ref Indice;
+			}
+
+			constructor() {
+				this.date = new Date();
+			}
+
+			["m_03ymq"]
+			view {
+				label = "Solicitud de Servicio";
+				show {
+					field = ref StudentName;
+					field = ref StudentSurname;
+					field = ref AcademicYear;
+					field = ref Date;
+				}
+			}
+
+		}
+
+	}
+}

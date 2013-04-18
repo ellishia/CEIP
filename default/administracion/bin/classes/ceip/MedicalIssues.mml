@@ -1,0 +1,103 @@
+package ceip {
+
+	["m1hdzww"]
+	definition MedicalIssues is form {
+		label = "Afecciones";
+		is-component;
+
+		["m4erfca"]
+		field-section Epilepsia {
+			label = "Epilepsia";
+
+			["my4isiw"]
+			field-boolean Has {
+				label = "Padece";
+			}
+
+			["mdt8ssq"]
+			field-text Observations {
+				label = "Observaciones";
+			}
+		}
+
+		["mriye3g"]
+		field-section Diabetes {
+			label = "Diabetes";
+
+			["mydpexg"]
+			field-boolean Has {
+				label = "Padece";
+			}
+
+			["mbtnb3g"]
+			field-text Observations {
+				label = "Observaciones";
+			}
+		}
+
+		["mvq7lmg"]
+		field-section Allergies {
+			label = "Alergias";
+
+			["m_dybfw"]
+			field-boolean Has {
+				label = "Padece";
+			}
+
+			["mjzgq0g"]
+			field-text Especify {
+				label = "Especificar";
+			}
+
+			["miybr7q"]
+			field-text Observations {
+				label = "Observaciones";
+			}
+		}
+
+		["mknlj_a"]
+		field-section Others {
+			label = "Otros";
+
+			["mjj8nuq"]
+			field-boolean Has {
+				label = "Padece";
+			}
+
+			["mn1nkpw"]
+			field-text Especify {
+				label = "Especificar";
+			}
+
+			["mveghgq"]
+			field-text Observations {
+				label = "Observaciones";
+			}
+		}
+
+		["mg_jwwq"]
+		view {
+			label = "Afecciones médicas";
+			is-default;
+			show {
+				field = ref Epilepsia;
+				field = ref Diabetes;
+				field = ref Allergies;
+				field = ref Others;
+			}
+		}
+
+		["m3igw_w"]
+		view MedicalView {
+			label = "Afecciones médicas";
+			is-widget;
+			show {
+				field = ref Epilepsia;
+				field = ref Diabetes;
+				field = ref Allergies;
+				field = ref Others;
+			}
+		}
+
+	}
+}

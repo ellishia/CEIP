@@ -1,0 +1,71 @@
+import ceip.solicituddoc.Importador
+
+package ceip.procesos {
+
+	["mrhsbha"]
+	definition RecibirSolicitudPlaza is service {
+		label = "RecibirPlaza";
+		ontology = "SolicitudPlaza";
+
+		customer {
+			request Alumno {
+				code = "Premat";
+
+				import(CustomerRequest msg) {
+					Importador:: doImportOf("Preinscripcion", msg).atGlobalScope;
+					getTask().doUnlock(Lock:: Inicial_StopName);
+				}
+			}
+			response Procesada {
+				code = "PrematCorrecta";
+				constructor(CustomerResponse msg) {
+					msg.attachString("Preinscripcion", "Su preinscripción ha sido recibida correctamente");
+				}
+			}
+
+			onRequest(CustomerRequest msg) {
+				getTask().addLog("Llega el mensaje", "mensaje");
+			}
+		}
+
+		["m2x4p_g"]
+		place Inicial {
+			is-initial;
+
+			["mf2ypwg"]
+			door WaitingDoor {
+
+				["mfxkz1w"]
+				exit StopName {
+					history = "Se ha recibido la solicitud";
+					goto = ref EnviarResultado;
+				}
+				label = "Generar solicitud";
+			}
+
+			onArrive() {
+				addLog("Llega al inicial", "");
+			}
+		}
+
+		["mkh0efq"]
+		place EnviarResultado {
+
+			["mq6avqq"]
+			send-response {
+				history = "Recibida su solicitud";
+				response = ref Procesada;
+				label = "Recibiendo solicitud";
+				goto = ref Finalizar;
+			}
+		}
+
+		["muh7htq"]
+		place Finalizar {
+			is-final;
+		}
+
+	}
+}
+
+  

@@ -1,0 +1,49 @@
+import java.util.*
+import ceip.Applications.*
+import ceip.CentroInfo
+
+package ceip {
+
+	["mbafqga"]
+	definition AdmitedDoc is document extends AcademicRecords {
+		label = "Listado de Admitidos";
+		template = template AdmitedList;
+		schema {
+			many entry {
+				StudentName String;
+				StudentSurname String;
+				Cial String;
+				Level Term;
+			}
+		}
+
+		["mhdcjzg"]
+		definition Exportador is exporter {
+			label = "Exportador de Documento";
+			target = ref AdmitedDoc;
+
+			onExportItem(ceip.admiteddoc.Schema i) {
+				var ficha = this.getScope() as ceip.Applications;
+				i.date = new Date();
+				var centroInformation = ceip::CentroInfo:: instance.centerInformation;
+				i.centroAcademico = centroInformation.centerName;
+				i.anyoAcademico = centroInformation.academicYear.getLabel();
+				i.city = centroInformation.contactField.town;
+				for(item : ficha.all) {
+					var applic = item.indexedNode as ceip.applications.Application;
+					var entry = new ceip.admiteddoc.^schema.Entry();
+					if(applic.admitido) {
+						entry.studentName = applic.studentName;
+						entry.studentSurname = applic.studentSurname;
+						entry.cial = applic.cial;
+						entry.level = applic.level;
+						i.entry.^add(entry);
+					}
+				}
+			}
+
+		}
+
+	}
+}
+

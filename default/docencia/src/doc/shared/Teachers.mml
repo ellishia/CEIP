@@ -1,0 +1,8 @@
+package doc.shared {
+
+	["m8htx1a"]
+	definition Teachers is glossary {
+		label = "Docentes";
+		ontology = "DocentesDeCoordinacion";
+	}
+}

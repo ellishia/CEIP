@@ -1,0 +1,46 @@
+package serv.shared {
+
+	["ma6pz1a"]
+	definition Clasification is thesaurus {
+		label = "Clasification";
+		ontology = "86de6aa9-679f-4b69-9969-f42b31f66391";
+		terms {
+			term {
+				label = "Huelga";
+				key = "001";
+			}
+			term {
+				label = "Temporal";
+				key = "002";
+			}
+			term {
+				label = "Servicio no proporcionado";
+				key = "003";
+			}
+			term {
+				label = "Modificación de Parada";
+				key = "004";
+			}
+			term {
+				label = "Horario Incumplido";
+				key = "005";
+			}
+			term {
+				label = "Vehículo no autorizado";
+				key = "006";
+			}
+			term {
+				label = "Máximo de alumnos/as superado";
+				key = "007";
+			}
+			term {
+				label = "Auxiliar no asignado";
+				key = "008";
+			}
+			term {
+				label = "Fuciones de Auxiliar insatisfechas";
+				key = "009";
+			}
+		}
+	}
+}

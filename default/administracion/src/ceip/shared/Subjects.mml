@@ -1,0 +1,9 @@
+package ceip.shared {
+
+	["mcitehq"]
+	definition Subjects is glossary {
+		label = "Asignaturas";
+		ontology = "MateriasDeDocencia";
+
+	}
+}

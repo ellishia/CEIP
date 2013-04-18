@@ -1,0 +1,8 @@
+manifest administracion {
+
+version = "1.0.0";
+type = BACK;
+title = "administracion";
+author = "eowens";
+script = ref ceip.procesos.CargaInicial;
+}

@@ -1,0 +1,9 @@
+manifest coordinacionacademica {
+	title = "coordinacionacademica";
+	subtitle = "coordinacionacademica";
+
+	version = "1.0.0";
+	type = BACK;
+	author = "eowens";
+
+}

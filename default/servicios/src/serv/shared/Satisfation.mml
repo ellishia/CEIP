@@ -1,0 +1,26 @@
+package serv.shared {
+
+	["m_eck_q"]
+	definition Satisfation is thesaurus {
+		label = "Satisfation";
+		ontology = "bc4b7e40-70d8-4b06-8bee-f2a57d4fcdca";
+		terms {
+			term {
+				label = "Alta Satisfación";
+				key = "001";
+			}
+			term {
+				label = "Satisfación";
+				key = "002";
+			}
+			term {
+				label = "Menos de lo esperado";
+				key = "003";
+			}
+			term {
+				label = "Servicio Problemático";
+				key = "004";
+			}
+		}
+	}
+}

@@ -1,0 +1,19 @@
+package serv.shared {
+
+	["mvwqkrw"]
+	definition BusesName is thesaurus {
+		label = "Ruta";
+		ontology = "RutaDeServicios";
+		is-self-generated;
+
+		self-generated {
+			index = ref serv.Buslines.Indice;
+			mapping {
+				parent = ref serv.Buslines.Indice.Id;
+				label = ref serv.Buslines.Indice.Name;
+				key = ref serv.Buslines.Indice.Id;
+			}
+		}
+
+	}
+}

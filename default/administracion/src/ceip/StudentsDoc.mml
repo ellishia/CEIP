@@ -1,0 +1,47 @@
+import java.util.*
+import ceip.Students.*
+import ceip.CentroInfo
+
+package ceip {
+
+	["msnjbva"]
+	definition StudentsDoc is document extends AcademicRecords {
+		label = "Listado de Alumnos";
+		template = template StudentList;
+		schema {
+			many entry {
+				StudentName String;
+				StudentSurname String;
+				Cial String;
+				Birthdate Date;
+			}
+		}
+
+		["md3d7cg"]
+		definition Exportador is exporter {
+			label = "Exportador de Documento";
+			target = ref StudentsDoc;
+
+			onExportItem(ceip.studentsdoc.Schema i) {
+				var ficha = this.getScope() as ceip.Students;
+				i.date = new Date();
+				var centroInformation = ceip::CentroInfo:: instance.centerInformation;
+				i.centroAcademico = centroInformation.centerName;
+				i.anyoAcademico = centroInformation.academicYear.getLabel();
+				i.city = centroInformation.contactField.town;
+				for(item : ficha.all) {
+					var alumno = item.indexedNode as Student;
+					var basicinfo = alumno.basicInfo;
+					var entry = new ceip.studentsdoc.^schema.Entry();
+					entry.studentName = basicinfo.getName();
+					entry.studentSurname = basicinfo.surname;
+					entry.cial = basicinfo.cial;
+					entry.birthdate = basicinfo.date_of_Birth;
+					i.entry.^add(entry);
+				}
+			}
+
+		}
+
+	}
+}

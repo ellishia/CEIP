@@ -1,0 +1,35 @@
+import direc.students.Index
+package direc {
+
+	["m7yc7wq"]
+	definition StudentsCatalog is catalog {
+		label = "StudentsCatalog";
+		
+		index = ref Students.Index;	
+
+		["my8hvjq"]
+		view {
+			
+			label = "StudentsCatalog";
+			analyze {
+				dimension {
+					attribute = ref Students.Index.Name;
+				}
+				sorting {
+					attribute = ref Students.Index.Name;
+				}	
+			}	
+			show {  
+				index {
+					with-view = ref Students.Index.Item;
+					sort-by = ref Students.Index.Name;
+				}
+			}		
+			filter {
+				attribute = ref Students.Index.Level;
+				value = "parameter(level)";
+			}
+		}
+
+	}
+}

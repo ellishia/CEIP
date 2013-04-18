@@ -1,0 +1,9 @@
+manifest docencia {
+	title = "docencia";
+	subtitle = "docencia";
+
+	version = "1.0.0";
+	type = FRONT;
+	author = "eowens";
+
+}

@@ -1,0 +1,136 @@
+package solicitud {
+
+	["mttvylq"]
+	definition Relatives is form {
+		is-component;
+		label = "Familiares";
+
+		["mdcmujg"]
+		field-section Parent {
+			label = "Padre/Tutor";
+			is-multiple;
+
+			["mwe2dva"]
+			field-text Name {
+				label = "Nombre";
+			}
+
+			["mexbtwg"]
+			field-text Surname {
+				label = "Primer Apellido";
+			}
+
+			["mv_znqw"]
+			field-text SecondSurname {
+				label = "Segundo Apellido";
+			}
+
+			["ml4t5cw"]
+			field-text Dni {
+				label = "DNI";
+			}
+
+			["marun7w"]
+			field-text Profession {
+				label = "Profesión";
+			}
+
+			["mf5wauq"]
+			field-text Telephone {
+				label = "Teléfono";
+			}
+
+			["m6hliza"]
+			field-text Email {
+				label = "Correo electrónico";
+			}
+
+			["m_5i_bg"]
+			field-boolean Child_custody {
+				label = "Custodia del menor";
+			}
+
+			["mmbjizg"]
+			field-select Civil_state {
+				label = "Estado civil";
+				use {
+					source = ref solicitud.shared.CivilState;
+				}
+			}
+
+			["mdaq3kq"]
+			field-select Studies_level {
+				label = "Estudios";
+				use {
+					source = ref solicitud.shared.StudiesLevel;
+				}
+			}
+
+			["mpzcnfw"]
+			field-select Work_situation {
+				label = "Situación Laboral";
+				use {
+					source = ref solicitud.shared.WorkSituation;
+				}
+			}
+		}
+
+		["msddxzw"]
+		field-section AuthorizedRelatives {
+			label = "Familiares autorizados";
+			is-multiple;
+
+			["mipanqa"]
+			field-number Order {
+				label = "Orden";
+			}
+
+			["mp1ohiw"]
+			field-number TelephoneNumber {
+				label = "Telefóno";
+			}
+
+			["mepg7mg"]
+			field-select Type {
+				label = "Lugar";
+				use {
+					source = ref solicitud.shared.PhoneType;
+				}
+			}
+
+			["mq25pag"]
+			field-select Relation {
+				label = "Vínculo";
+				use {
+					source = ref solicitud.shared.PersonalRelation;
+				}
+			}
+		}
+
+		["mrutlga"]
+		view {
+			label = "Tutores";
+			is-default;
+			show {
+				field = ref Parent;
+			}
+		}
+
+		["m0hc6va"]
+		view Vista2 {
+			label = "Datos de tutores";
+			is-widget;
+			show {
+				field = ref Parent;
+			}
+		}
+
+		["mzfknwa"]
+		view RelativesView {
+			show {
+				field = ref AuthorizedRelatives;
+			}
+		}
+
+	}
+}

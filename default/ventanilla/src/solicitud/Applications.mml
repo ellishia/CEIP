@@ -1,0 +1,103 @@
+import solicitud.RegistrationPeriod
+
+package solicitud {
+
+	["mgioqeq"]
+	definition Applications is collection {
+		label = "Solicitudes";
+		is-singleton;
+		is-readonly;
+		index = ref Indice;
+		add {
+			node = ref Application;
+		}
+
+		["mtoc7dg"]
+		view {
+			label = "Todos";
+			//is-default;
+			show {
+				index {
+					sort-by = ref Indice.Identifier;
+					sort-mode = ASC;
+					with-view = ref Indice.Normal;
+				}
+			}
+			analyze {
+				dimension {
+					attribute = ref Indice.Identifier;
+					attribute = ref Indice.Cial;
+				}
+				sorting {
+					attribute = ref Indice.Identifier;
+					attribute = ref Indice.Cial;
+				}
+			}
+		}
+
+		["m0s48tg"]
+		operation AnadirSolicitud {
+			label = "Añadir Solicitud";
+			execute() {
+				var application = solicitud::Application:: createNew(this);
+				ClientService:: redirectUserTo(MonetLink:: forNode(application.toLink.id));
+			}
+		}
+
+		["msl_2ia"]
+		rule:operation {
+			add-flag = HIDDEN;
+			when = {
+				var fecha = new Date();
+				var periodo = RegistrationPeriod:: instance;
+				! fecha.isInInterval(periodo.initialDate, periodo.finalDate);
+			}
+			to {
+				operation = ref AnadirSolicitud;
+			}
+		}
+
+		["m4f9qfa"]
+		definition Indice is index {
+			label = "Solicitudes";
+			reference {
+
+				["m9tmdqg"]
+				attribute Identifier {
+					label = "Identificador";
+					type = STRING;
+				}
+
+				["mmqilaa"]
+				attribute StudentName {
+					label = "Nombre";
+					type = STRING;
+				}
+
+				["m7njy2q"]
+				attribute StudentSurname {
+					label = "Apellidos";
+					type = STRING;
+				}
+
+				["mzl__yg"]
+				attribute Cial {
+					label = "CIAL";
+					type = STRING;
+				}
+			}
+
+			["imtoc7dg"]
+			view Normal {
+				show {
+					title = ref Identifier;
+					line = ref StudentName;
+					line = ref StudentSurname;
+					line = ref Cial;
+				}
+			}
+
+		}
+
+	}
+}

@@ -1,0 +1,9 @@
+package ceip.shared {
+
+	["mi8m3bq"]
+	definition Gender is glossary {
+		label = "Gender";
+
+		ontology = "Generos";
+	}
+}

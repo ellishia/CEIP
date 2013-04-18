@@ -1,0 +1,26 @@
+package ceip.shared {
+
+	["m4qszeg"]
+	definition Trimester is thesaurus {
+		label = "Trimester";
+		ontology = "TrimesterAdministracion";
+		terms {
+			term {
+				label = "Primero";
+				key = "1";
+			}
+			term {
+				label = "Segundo";
+				key = "2";
+			}
+			term {
+				label = "Tercero";
+				key = "3";
+			}
+			term {
+				label = "Final";
+				key = "4";
+			}
+		}
+	}
+}

@@ -1,0 +1,48 @@
+import direc.teachers.Teacher
+
+package direc {
+
+	["m0s_5jq"]
+	definition EvaluationDoc is document extends DocumentoCentro {
+		label = "Sesión de Evaluación";
+		template = template SesionEvaluacion;
+		schema {
+			Group String;
+			Trimestre String;
+			DateMeeting Date;
+			Hour String;
+			Room String;
+			many docente {
+				Docente String;
+				Subject String;
+			}
+		}
+
+		["m1hxejw"]
+		definition Exportador is exporter {
+			label = "Exportador de Documento";
+			target = ref EvaluationDoc;
+
+			onExportItem(direc.evaluationdoc.Schema i) {
+				var ficha = this.getScope() as direc.evaluationsesions.EvaluationSesion;
+				i.group = ficha.group.getLabel();
+				i.trimestre = ficha.trimester.getLabel();
+				i.dateMeeting = ficha.date;
+				i.room = ficha.room.getLabel();
+				i.documentType = "Convocatoria de Sesión de Evaluación";
+				i.city = "Las Palmas de G.C.";
+				i.firmante = "La dirección";
+				for(item : ficha.teachersField.allFields) {
+					var teacher = item.getNode() as Teacher;
+					var docente = new direc.evaluationdoc.^schema.Docente();
+					docente.docente = teacher.getName() + " " + teacher.surname;
+					docente.subject = teacher.specialty;
+					i.docente.^add(docente);
+					
+				}
+			}
+
+		}
+
+	}
+}  

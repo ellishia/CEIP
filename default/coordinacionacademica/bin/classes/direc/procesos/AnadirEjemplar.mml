@@ -1,0 +1,44 @@
+package direc.procesos {
+
+	["mftuvmg"]
+	definition AnadirEjemplar is activity {
+		label = "AnadirEjemplar";
+
+		["mfdyzbq"]
+		place Inicial {
+			is-initial;
+
+			["mxdig8q"]
+			edition {
+				goto = ref Final;
+				history = "Se han añadido ejemplares";
+				label = "Añadir Ejemplares";
+				use {
+					form = ref direc.IntanceEjemplar;
+					with-view = ref direc.IntanceEjemplar.View;
+				}
+				// crea el codigo 
+				onSolve(direc.IntanceEjemplar f) {
+					for(item : f.ejemplaresField.allFields) {
+						var ejemplares = direc::Ejemplares::instance;
+						var i = item.number.intValue;
+						while(i>0){
+							var ejemplar = direc::ejemplares::Ejemplar::createNew(ejemplares);
+							ejemplar.libro = item.libro;
+							ejemplar.estado ="nuevo";
+							ejemplar.save();
+							i = i-1;
+						}
+					}
+				}
+			}
+		}
+
+		["mnqwjiq"]
+		place Final {
+			is-final;
+		}
+
+	}
+}
+  

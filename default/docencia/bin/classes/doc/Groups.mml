@@ -1,0 +1,132 @@
+package doc {
+
+	["mpvwdba"]
+	definition Groups is collection {
+		label = "Grupos";
+		index = ref Indice;
+		add {
+			node = ref Group;
+		}
+		is-singleton;
+
+		["mqanarw"]
+		definition Indice is index {
+			label = "Indice";
+			reference {
+
+				["im9nub3a"]
+				attribute Name {
+					label = "Nombre";
+					type = STRING;
+				}
+			}
+
+			["mqskadg"]
+			view Normal {
+				show {
+					title = ref Name;
+				}
+			}
+
+		}
+
+		["m_lsbda"]
+		view View {
+			label = "Todos";
+			show {
+				index {
+					sort-by = ref Indice.Name;
+					with-view = ref Indice.Normal;
+				}
+			}
+			analyze {
+				dimension {
+					attribute = ref Indice.Name;
+				}
+				sorting {
+					attribute = ref Indice.Name;
+				}
+			}
+		}
+
+		["mtkzxnw"]
+		definition Group is form {
+			label = "Grupo";
+
+			["m_qcekq"]
+			field-text Name {
+				label = "Nombre";
+			}
+
+			["mkb6jmg"]
+			field-select Grade {
+				label = "Curso Académico";
+				use {
+					source = ref doc.shared.Grades;
+				}
+			}
+
+			["mjd5r8a"]
+			field-select AcademicYear {
+				label = "Año Académico";
+				use {
+					source = ref doc.shared.AcademicYears;
+				}
+			}
+
+			["myockva"]
+			field-link Students {
+				label = "Alumno/as";
+				is-multiple;
+				source {
+					index = ref doc.Alumnado.Indice;
+				}
+			}
+
+			["mibzjkg"]
+			field-select Level {
+				label = "Nivel";
+				use {
+					source = ref doc.shared.Levels;
+				}
+			}
+
+			["mi_vsaw"]
+			field-select Area {
+				label = "Materia";
+				use {
+					source = ref doc.shared.Areas;
+				}
+			}
+			mapping {
+				index = ref Indice;
+			}
+
+			["m0wimlg"]
+			view {
+				label = "Ficha";
+				is-default;
+				show {
+					field = ref Name;
+					field = ref AcademicYear;
+					field = ref Grade;
+					field = ref Level;
+					field = ref Area;
+					field = ref Students;
+				}
+			}
+
+			["m373rfg"]
+			view View {
+				is-widget;
+				show {
+					field = ref Name;
+					field = ref Grade;
+					field = ref AcademicYear;
+				}
+			}
+
+		}
+
+	}
+}

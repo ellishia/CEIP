@@ -1,0 +1,48 @@
+package solicitud {
+
+	["mpwmfyg"]
+	definition Ventanilla is desktop {
+		label = "Ventanilla";
+		is-singleton;
+
+		for {
+			role = ref solicitud.shared.Padre;
+		}
+
+		["u"]
+		view {
+			label = "Solicitudes de Plaza";
+			show {
+				link = ref Applications;
+				//link = ref StudentDatas;
+			}
+			is-default;
+		}
+
+		["t"]
+		view {
+			label = "Solicitudes de Servicios";
+			show {
+				link = ref ServiceApplications;
+			}
+		}
+
+		["m_3nypg"]
+		view {
+			label = "Periodos y Fechas Importantes";
+			show {
+				link = ref RegistrationPeriod;
+			}
+		}
+
+		["mmwxj3q"]
+		view {
+			label = "Tareas y Roles";
+			show {
+				link:roles;
+				link:taskboard;
+			}
+		}
+
+	}
+}

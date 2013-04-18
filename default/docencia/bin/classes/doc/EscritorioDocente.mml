@@ -1,0 +1,22 @@
+package doc {
+
+	["mxlt98a"]
+	definition EscritorioDocente is desktop {
+		label = "Docencia";
+		is-singleton;
+		for {
+			role = ref doc.shared.Docente;
+		}
+
+		["mswnfta"]
+		view {
+			label = "Alumnado";
+			show {
+				link = ref Alumnado;
+				link = ref Groups;
+			}
+			is-default;
+		}
+
+	}
+}

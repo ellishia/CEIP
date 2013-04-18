@@ -1,0 +1,49 @@
+import direc.Minutes
+import direc.teachers.Teacher
+
+package direc {
+
+	["mi_mhdg"]
+	definition MinuteDoc is document extends DocumentoCentro {
+		label = "Documento de Acta";
+		template = template MinuteDoc;
+		schema {
+			DateMeeting Date;
+			Hour String;
+			Room String;
+			many docente {
+				Docente String;
+				Subject String;
+			}
+			Orden String;
+			Description String;
+		}
+
+		["mxqppyg"]
+		definition Exportador is exporter {
+			label = "TLabel";
+			target = ref MinuteDoc;
+			onExportItem(direc.minutedoc.Schema i) {
+				var ficha = this.getScope() as direc.minutes.Acta;
+				i.dateMeeting = ficha.date;
+				i.room = ficha.room.getLabel();
+				i.documentType = "Acta de reunión";
+				i.city = "Las Palmas de G.C.";
+				i.firmante = "La dirección";
+				//var dayOrder = ficha.dayOrderField.getNode() as DayOrder;
+				i.orden = ficha.getTitle();
+				i.setDescription(ficha.getDescription());
+				for(item : ficha.teachersField.allFields) {
+					var teacher = item.getNode() as Teacher;
+					var docente = new direc.minutedoc.^schema.Docente();
+					docente.docente = teacher.getName() + " " + teacher.surname;
+					docente.subject = teacher.specialty;
+					i.docente.^add(docente);
+				}
+			}
+
+		}
+
+	}
+}
+  

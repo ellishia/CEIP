@@ -1,0 +1,17 @@
+setup servicios extends servicios {
+	title = "Gestión de Servicios";
+	subtitle = "Gestión de Servicios";
+	space servicios {
+		deploy-uri = "http://10.230.140.157:8091/servicios";
+	}
+	federation {
+		socket-uri = "socket://localhost:5346/";
+		secret = "1234";
+	}
+
+	assign-role {
+		user = "Secretaria";
+		role = ref serv.shared.Manager;
+	}
+
+}

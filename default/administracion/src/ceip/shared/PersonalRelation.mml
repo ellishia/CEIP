@@ -1,0 +1,34 @@
+package ceip.shared {
+
+	["m_0avtw"]
+	definition PersonalRelation is thesaurus {
+		label = "Personal relation";
+		ontology = "VinculosDeAdministracion";
+		terms {
+			term {
+				label = "Padre/Madre";
+				key = "001";
+			}
+			term {
+				label = "Abuelo/a";
+				key = "002";
+			}
+			term {
+				label = "Tío/a";
+				key = "003";
+			}
+			term {
+				label = "Hermano/a Adulto";
+				key = "004";
+			}
+			term {
+				label = "Vecino/a";
+				key = "005";
+			}
+			term {
+				label = "Otro";
+				key = "006";
+			}
+		}
+	}
+}

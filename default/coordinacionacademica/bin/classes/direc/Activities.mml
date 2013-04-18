@@ -1,0 +1,53 @@
+package direc {
+
+	["mxk_djq"]
+	definition Activities is collection {
+		label = "Actividades Extraescolares";
+		index = ref Indice;
+		is-singleton;
+		add {
+			node = ref Activity;
+		}
+
+		["mfm7mbg"]
+		definition Indice is index {
+			label = "Actividades";
+			reference {
+
+				["im_8grta"]
+				attribute Name {
+					label = "Nombre";
+					type = STRING;
+				}
+			}
+
+			["i"]
+			view Normal {
+				show {
+					title = ref Name;
+				}
+			}
+
+		}
+
+		["ss"]
+		view View {
+			label = "Actividades";
+			show {
+				index {
+					sort-by = ref Indice.Name;
+					with-view = ref Indice.Normal;
+				}
+			}
+			analyze {
+				dimension {
+					attribute = ref Indice.Name;
+				}
+				sorting {
+					attribute = ref Indice.Name;
+				}
+			}
+		}
+
+	}
+}

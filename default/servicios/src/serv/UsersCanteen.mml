@@ -1,0 +1,86 @@
+package serv {
+
+	["m7p1bbq"]
+	definition UsersCanteen is collection {
+		label = "Usuarios de Comedor";
+		index = ref Indice;
+		add {
+			node = ref UserCanteen;
+		}
+
+		["imbeh6vw"]
+		definition Indice is index extends Users.Indice {
+			label = "Indice";
+			reference {
+
+				["mnjokeq"]
+				attribute Schedule {
+					label = "Turno";
+					type = STRING;
+				}
+			}
+
+			["i"]
+			view Normal {
+				show {
+					title = ref Schedule;
+				}
+			}
+
+		}
+
+		["ms3tapg"]
+		definition UserCanteen is form extends Users.User {
+			label = "Usuario de Comedor";
+
+			["mc9u8zg"]
+			field-text Allergies {
+				label = "Alergías relevantes";
+			}
+
+			["mcxs8vq"]
+			field-boolean Diabetes {
+				label = "Diabetes";
+			}
+
+			["mylg8nw"]
+			field-text Schedule {
+				label = "Turno";
+			}
+			mapping {
+				index = ref Indice;
+			}
+
+			["teaas"]
+			view {
+				label = "Ficha";
+				show {
+					field = ref Schedule;
+					field = ref Allergies;
+					field = ref Diabetes;
+				}
+			}
+
+		}
+
+		["maurmiw"]
+		view {
+			label = "Todos";
+			show {
+				index {
+					sort-by = ref Indice.Schedule;
+					with-view = ref Indice.Normal;
+				}
+			}
+			analyze {
+				dimension {
+					attribute = ref Indice.Schedule;
+				}
+				sorting {
+					attribute = ref Indice.Schedule;
+				}
+			}
+		}
+
+	}
+}

@@ -1,0 +1,19 @@
+package direc.shared {
+
+	["mm8o_pa"]
+	definition Groups is thesaurus {
+		label = "Grupos";
+		ontology = "GruposDeCoordinacion";
+		is-self-generated;
+
+		self-generated {
+			index = ref direc.Groups.Indice;
+			mapping {
+				parent = ref direc.Groups.Indice.Name;
+				label = ref direc.Groups.Indice.Name;
+				key = ref direc.Groups.Indice.Identifier;
+			}
+		}
+
+	}
+}

@@ -1,0 +1,192 @@
+package ceip {
+
+	["minbk5w"]
+	definition Califications is collection {
+		label = "Calificaciones";
+		is-singleton;
+		index = ref Indice;
+		add {
+			node = ref Calification;
+		}
+
+		["mho6x0q"]
+		operation Boletines {
+			label = "Generar Boletines";
+			execute() {
+				for(student : ceip::Students:: getInstance().getAll()) {
+					var Student studentcontainer = student.indexedNode as Student;
+					var BasicInfo basicInfo = studentcontainer.getBasicInfo() as BasicInfo;
+					var boletin = boletin::Exportador:: doExportOf(basicInfo).toNewDocument;
+					boletin.consolidate;
+					basicInfo.getBoletin.^add(boletin.toLink);
+					basicInfo.save();
+				}
+			}
+		}
+
+		["muf9cnq"]
+		view {
+			is-default;
+			show {
+				index {
+					sort-by = ref Indice.Subject;
+					with-view = ref Indice.Normal;
+				}
+			}
+			analyze {
+				dimension {
+					attribute = ref Indice.Subject;
+					attribute = ref Indice.Level;
+					attribute = ref Indice.Student;
+				}
+				sorting {
+					attribute = ref Indice.AcademicYear;
+					attribute = ref Indice.Subject;
+					attribute = ref Indice.Level;
+					attribute = ref Indice.Student;
+				}
+			}
+		}
+
+		["iminbk5w"]
+
+		definition Indice is index {
+			label = "Indice";
+			reference {
+
+				["mh5h9sw"]
+				attribute Student {
+					label = "Alumno";
+					type = TERM;
+				}
+
+				["iminbk5w"]
+				attribute Subject {
+					label = "Asignatura";
+					type = TERM;
+				}
+
+				["mevbxmw"]
+				attribute Level {
+					label = "Curso";
+					type = TERM;
+				}
+
+				["mkrpqvg"]
+				attribute Grade {
+					label = "Nota";
+					type = STRING;
+				}
+
+				["mo9mzwg"]
+				attribute Trimester {
+					label = "Trimestre";
+					type = TERM;
+				}
+
+				["mi8peha"]
+				attribute AcademicYear {
+					label = "Año Académico";
+					type = TERM;
+				}
+
+				["m4azljw"]
+				attribute Cial {
+					label = "Cial";
+					type = STRING;
+				}
+			}
+
+			["imuf9cnq"]
+			view Normal {
+				show {
+					title = ref Subject;
+					line = ref Level;
+					line = ref Trimester;
+					line = ref AcademicYear;
+					line = ref Grade;
+				}
+			}
+
+		}
+
+		["mf1x_iw"]
+		definition Calification is form {
+			label = "Calificación";
+
+			["mpza0cw"]
+			field-select AcademicYear {
+				label = "Año Académico";
+				use {
+					source = ref ceip.shared.AcademicYears;
+				}
+			}
+
+			["mf1x_iw"]
+			field-select Subject {
+				label = "Asignatura";
+				use {
+					source = ref ceip.shared.Subjects;
+				}
+			}
+
+			["mi6koxa"]
+			field-select Level {
+				label = "Curso";
+				use {
+					source = ref ceip.shared.Levels;
+				}
+			}
+
+			["mbcp1yg"]
+			field-select Trimester {
+				label = "Trimestre";
+				use {
+					source = ref ceip.shared.Trimester;
+				}
+			}
+
+			["mujfnjq"]
+			field-text Grade {
+				label = "Nota";
+			}
+
+			["mqlc1xq"]
+			field-link Student {
+				label = "Alumno";
+				source {
+					index = ref ceip.Students.Index;
+				}
+			}
+			mapping {
+				index = ref Indice;
+
+				calculate() {
+					var student = getNode().getStudentField();
+					if(student != null) {
+						var stu = student.getNode() as Student;
+						if(stu != null) {
+							var BasicInfo info = stu.basicInfo;
+							getReference().setCial(info.getCial());
+						}
+					}
+				}
+			}
+
+			["mveyj5w"]
+			view {
+				label = "Calificación";
+				show {
+					field = ref AcademicYear;
+					field = ref Subject;
+					field = ref Level;
+					field = ref Trimester;
+					field = ref Student;
+					field = ref Grade;
+				}
+			}
+
+		}
+
+	}
+}

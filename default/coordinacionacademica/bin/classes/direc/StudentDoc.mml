@@ -1,0 +1,48 @@
+import direc.students.Index
+
+package direc {
+
+	["m5jbdcg"]
+	definition StudentDoc is document {
+
+		label = "Listado de Alumnos";
+		schema {
+			CentroAcademico String;
+			AnyoAcademico String;
+			DocumentType String;
+			City String;
+			Date Date;
+			many entry {
+				StudentName String;
+				StudentSurname String;
+				Cial String;
+				Birthdate Date;
+			}
+		}
+
+		["mtv7_zg"]
+		definition Importador is importer {
+			label = "Importador";
+
+			target = ref StudentDoc;
+
+			onImportItem(direc.studentdoc.Schema item) {
+				var students = direc::Students:: instance;
+				for(entry : item.entry) {
+					if(students.getCount(Index:: Cial.Eq(entry.cial)) == 0) {
+						var student = direc::students::Student:: createNew(students);
+						student.setName(entry.studentName);
+						student.setSurname(entry.studentSurname);
+						student.setCial(entry.cial);
+						student.setDate_of_Birth(entry.birthdate);
+						student.save();
+					}
+				}
+			}
+
+		}
+
+	}
+}
+
+  

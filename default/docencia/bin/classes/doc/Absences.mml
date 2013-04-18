@@ -1,0 +1,115 @@
+package doc {
+
+	["m0ovhvq"]
+	definition Absences is collection {
+		label = "Ausencias";
+		is-singleton;
+		index = ref Indice;
+		add {
+			node = ref Absence;
+		}
+
+		["mvxudpa"]
+		definition Indice is index {
+			label = "Indice";
+			reference {
+
+				["mnrveow"]
+				attribute Date {
+					label = "Fecha";
+					type = DATE;
+				}
+
+				["mycgusa"]
+				attribute Student {
+					label = "Alumno/a";
+					type = LINK;
+				}
+			}
+
+			["mvrvxdw"]
+			view Normal {
+				show {
+					title = ref Student;
+					line = ref Date;
+				}
+			}
+
+		}
+
+		["m8q81rw"]
+		view {
+			label = "Todos";
+			show {
+				index {
+					sort-by = ref Indice.Date;
+					with-view = ref Indice.Normal;
+				}
+			}
+			analyze {
+				dimension {
+					attribute = ref Indice.Student;
+				}
+				sorting {
+					attribute = ref Indice.Student;
+				}
+			}
+		}
+
+		["mdlztvq"]
+		definition Absence is form {
+			label = "Ausencia";
+
+			["mtcfakq"]
+			field-date Date {
+				precision = DAYS;
+				label = "Fecha";
+			}
+
+			["mem7pkq"]
+			field-text Hour {
+				label = "Hora";
+				is-multiple;
+			}
+
+			["mnfn6tq"]
+			field-select Areas {
+				label = "Asignaturas";
+				is-multiple;
+				use {
+					source = ref doc.shared.Areas;					
+				}
+			}
+
+			["mqglzka"]
+			field-link Student {
+				label = "Alumno/a";
+				source {
+					index = ref Alumnado.Indice;
+				}
+			}
+
+			["mtg6sha"]
+			field-file Justificante {
+				label = "Justificante";
+			}
+			mapping {
+				index = ref Indice;
+			}
+
+			["asfda"]
+			view {
+				label = "Ausencia";
+				show {
+					field = ref Date;
+					field = ref Hour;
+					field = ref Areas;
+					field = ref Student;
+					field = ref Justificante;
+				}
+			}
+
+		}
+
+	}
+}

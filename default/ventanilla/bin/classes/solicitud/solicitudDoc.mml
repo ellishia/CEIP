@@ -1,0 +1,70 @@
+import solicitud.Applications.*
+
+package solicitud {
+
+	["mt9mhfg"]
+	definition solicitudDoc is document {
+		label = "solicitudDoc";
+		//template = template solicitudDoc;
+		schema {
+			StudentName String;
+			StudentSurname String;
+			Cial String;
+			Identifier String;
+			AcademicLevel Term;
+			AcademicYear Term;
+			BirthDate Date;
+			Nationality String;
+			Gender Term;
+			Matriculable Boolean;
+			Address {
+				Designation String;
+				Street_name String;
+				Number Number;
+				Appartment String;
+				Neigbourhood String;
+				City String;
+				zip_code Number;
+			}
+			Siblings String;
+			Parents String;
+			many entry {
+				Centers String;
+				Order String;
+			}
+		}
+
+		["mbriung"]
+		definition Exportador is exporter {
+			label = "Exportador de Documento";
+			target = ref solicitudDoc;
+
+			onExportItem(solicitud.solicituddoc.Schema i) {
+				var contenedor = this.getScope() as solicitud.Application;
+				var ficha = contenedor.applicationInfo;
+				i.studentName = ficha.studentName;
+				i.studentSurname = ficha.studentSurname;
+				i.cial = ficha.cial;
+				i.birthDate = ficha.birthdate;
+				i.academicLevel = ficha.level;
+				i.academicYear = ficha.academicYear;
+				i.nationality = ficha.nationality;
+				i.gender = ficha.gender;
+				i.identifier = ficha.identifier;
+				i.siblings = ficha.siblings;
+				i.parents = ficha.parentsInCenter;
+				i.matriculable = ficha.matriculable;
+				i.address.designation = ficha.addressField.designation;
+				i.address.street_name = ficha.addressField.street_name;
+				i.address.number = ficha.addressField.number;
+				i.address.appartment = ficha.addressField.appartament;
+				i.address.neigbourhood = ficha.addressField.neigbourhood;
+				i.address.city = ficha.addressField.city;
+				i.address.zip_code = ficha.addressField.zip_code;
+			}
+
+		}
+
+	}
+}
+  

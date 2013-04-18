@@ -1,0 +1,87 @@
+import java.util.*
+
+package ceip {
+
+	["mk2ruba"]
+	definition Boletin is document extends AcademicRecords {
+		label = "Boletin";
+		template = template Boletin;
+		schema {
+			Faltas Number;
+			Injustificadas Number;
+			Observations String;
+			many entry {
+				Subject String;
+				PrimerTrim String;
+				SegundoTrim String;
+				TercerTrim String;
+				Global String;
+			}
+		}
+		mapping {
+			index = ref ceip.Boletines.Index;
+			calculate() {
+				var referencia =this.getReference() ;
+				var esq = this.getNode().getSchema();
+				if (esq != null){
+				referencia.setName(esq.studentName + " " +  esq.studentSurname+ esq.anyoAcademico);
+				referencia.setAcademicYear(esq.anyoAcademico);
+				referencia.setStudentName(esq.studentName + " " + esq.studentSurname);
+				}
+			}
+		}
+		//			
+		["m97fegw"]
+		definition Exportador is exporter {
+			label = "Exportador de Documento";
+			target = ref Boletin;
+
+			onExportItem(ceip.boletin.Schema i) {
+				var BasicInfo ficha = this.getScope() as BasicInfo;
+				var centroInformation = ceip::CentroInfo:: instance.centerInformation;
+				var centerName = centroInformation.centerName;
+				var centerTown = centroInformation.contactField.town;
+				var academicYear = centroInformation.academicYear;
+				var documentType = "Boletín de notas";
+				i.centroAcademico = centerName;
+				i.city = centerTown;
+				i.date = new Date();
+				i.anyoAcademico = academicYear.toString;
+				i.documentType = documentType;
+				i.studentName = ficha.getName();
+				i.studentSurname = ficha.surname;
+				var cial = ficha.cial;
+				i.cial = cial;
+				var hash = new HashMap <String, ceip.boletin.^schema.Entry>();
+				var _filter = Expression:: And(ceip::califications::Indice:: Cial.Eq(cial), ceip::califications::Indice:: AcademicYear.Eq(academicYear));
+				for(calificationEntry : Califications:: instance.get(_filter)) {
+					var String caliKey = calificationEntry.subject.getKey();
+					var ceip.boletin.^schema.Entry entryItem;
+					entryItem = hash.get(caliKey) as ceip.boletin.^schema.Entry;
+					if(entryItem == null) {
+						entryItem = new ceip.boletin.^schema.Entry();
+						entryItem.subject = calificationEntry.subject.toString();
+						i.entry.^add(entryItem);
+					}
+					switch(calificationEntry.trimester) {
+						case "1" : {
+							entryItem.primerTrim = calificationEntry.grade;
+						}
+						case "2" : {
+							entryItem.segundoTrim = calificationEntry.grade;
+						}
+						case "3" : {
+							entryItem.tercerTrim = calificationEntry.grade;
+						}
+						case "4" : {
+							entryItem.global = calificationEntry.grade;
+						}
+					}
+					hash.put(caliKey, entryItem);
+				}
+			}
+
+		}
+
+	}
+}

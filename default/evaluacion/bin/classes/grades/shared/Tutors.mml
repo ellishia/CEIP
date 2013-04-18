@@ -1,0 +1,8 @@
+package grades.shared
+ {
+
+	["mn2v6bq"]
+	definition Tutors is role {
+		label = "Tutors";
+	}
+}

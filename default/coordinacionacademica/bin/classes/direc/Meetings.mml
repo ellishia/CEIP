@@ -1,0 +1,39 @@
+package direc {
+
+	["mo_87bg"]
+	definition Meetings is container {
+		label = "Reuniones";
+		is-singleton;
+		contain {
+			node = ref EvaluationSesions;
+			node = ref Claustros;
+			node = ref ParentsMeetings;
+		}
+
+		["daf"]
+		view {
+			label = "Sesiones de Evaluación";
+			is-default;
+			show {
+				component = ref EvaluationSesions.View;
+			}
+		}
+
+		["mwyqu2g"]
+		view {
+			label = "Claustros";
+			show {
+				component = ref Claustros.View;
+			}
+		}
+
+		["mctx9kg"]
+		view {
+			label = "Reuniones de Padres";
+			show {
+				component = ref ParentsMeetings.View;
+			}
+		}
+
+	}
+}

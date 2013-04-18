@@ -1,0 +1,9 @@
+package grades.shared {
+
+	["m2xfx7w"]
+	definition Subjects is glossary {
+		label = "Asignaturas";
+		ontology = "MateriasDeDocencia";
+	}
+}
+

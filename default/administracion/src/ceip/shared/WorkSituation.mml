@@ -1,0 +1,22 @@
+package ceip.shared {
+
+	["ml5cexg"]
+	definition WorkSituation is thesaurus {
+		label = "Situación Laboral";
+		ontology = "SituacionLaboralDeAdmin";
+		terms {
+			term {
+				label = "En Activo";
+				key = "001";
+			}
+			term {
+				label = "Parado";
+				key = "002";
+			}
+			term {
+				label = "Jubilado";
+				key = "003";
+			}
+		}
+	}
+}

@@ -1,0 +1,30 @@
+package direc.shared {
+
+	["mjw9ptg"]
+	definition Weekdays is thesaurus {
+		label = "Días de la semana";
+		ontology = "55e69ef6-8547-4701-b0c2-326b0c626977";
+		terms {
+			term {
+				label = "Lunes";
+				key = "001";
+			}
+			term {
+				label = "Martes";
+				key = "002";
+			}
+			term {
+				label = "Miércoles";
+				key = "003";
+			}
+			term {
+				label = "Jueves";
+				key = "004";
+			}
+			term {
+				label = "Viernes";
+				key = "005";
+			}
+		}
+	}
+}

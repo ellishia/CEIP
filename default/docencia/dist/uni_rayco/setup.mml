@@ -1,0 +1,30 @@
+setup docencia extends docencia {
+	title = "Gestión Docente";
+	subtitle = "Gestión Docente";
+	space docencia {
+		deploy-uri = "http://10.13.13.191:8091/docencia";
+	}
+	federation {
+		socket-uri = "socket://localhost:5346/";
+		secret = "1234";
+	}
+
+	assign-role {
+		user = "Secretaria";
+		role = ref doc.shared.Administrador;
+	}
+
+	assign-role {
+		user = "Docente";
+		role = ref doc.shared.Docente;
+	}
+
+	publish {
+		federation {
+			setup-uri = "http://10.13.13.191:8091/empresa";
+		}
+		service = ref doc.procesos.StudentTransfer;
+		source = ref doc.shared.Areas;
+	}
+
+}

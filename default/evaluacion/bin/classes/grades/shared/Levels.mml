@@ -1,0 +1,9 @@
+package grades.shared {
+
+	["minleha"]
+	definition Levels is glossary {
+		label = "Nivel Académico";
+
+		ontology = "EstudiosDeAdministrcion";
+	}
+}

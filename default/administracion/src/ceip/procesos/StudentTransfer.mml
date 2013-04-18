@@ -1,0 +1,152 @@
+import ceip.Students
+
+package ceip.procesos {
+
+	["ms7xsyq"]
+	definition StudentTransfer is activity {
+		label = "Transferir listado de alumnos/as";
+		target = ref ceip.StudentsDoc;
+		role = ref ceip.shared.Administrador;
+		shortcut shIncidencia;
+
+		onInitialize() {
+			setTarget(ceip::studentsdoc::Exportador:: doExportOf(Students:: instance).toNewDocument);
+			setContextVariable("roles", "");
+			save();
+		}
+
+		["mqqdxza"]
+		place Iniciado {
+			is-initial;
+
+			["mf8ajyq"]
+			line {
+
+				["mea8i7g"]
+				stop Generar {
+					history = "Se generará el listado de alumnos";
+					goto = ref Generado;
+					label = "Se generará el listado de alumnos";
+				}
+
+				["mjpe8pw"]
+				stop Salir {
+					history = "Salir";
+					goto = ref Finalizado;
+					label = "Salir";
+				}
+				label = "Decidir si generar o no";
+			}
+		}
+
+		["mqbx2ia"]
+		place Generado {
+
+			["mfyok5g"]
+			delegation {
+				history = "Generado el listado";
+				label = "Generando Listado";
+				goto = ref Enviando;
+				// lo hago aqui
+				provider = ref ProviderName;
+
+				onSelectRole(RoleChooser roleChooser) {
+					var candidates = roleChooser.candidates;
+					if(candidates.^size() > 0) {
+						var String rolesYaEnviados = getContextVariable("roles");
+						var candidato = candidates.get(0);
+						// recorro el vector de candidados mientras este en el vector
+						var i = 1;
+						while(rolesYaEnviados.indexOf(";" + candidato.serviceUrl + ";") > - 1 && i < candidates.^size()) {
+							candidato = candidates.get(i);
+							i = i + 1;
+						}
+						setContextVariable("rolesrestantes", String:: valueOf(i < candidates.^size()));
+						roleChooser.choose(candidato);
+						rolesYaEnviados = rolesYaEnviados + ";" + candidato.serviceUrl + ";";
+						setContextVariable("roles", rolesYaEnviados);
+						save();
+					}
+				}
+
+				onSetup(DelegationSetup ds) {
+					ds.cancel();
+				}
+			}
+		}
+
+		["mujxbea"]
+		place Enviando {
+
+			["m8i22bg"]
+			send-request {
+				label = "Enviando Documento";
+				history = "Documento enviado";
+				request = ref ProviderName.Alumnado;
+				provider = ref ProviderName;
+				goto = ref Bloqueo;
+			}
+		}
+
+		["mbc05gq"]
+		place Bloqueo {
+
+			["mmfocfg"]
+			door DoorBloqueo {
+				label = "Enviando Listado de Alumnos";
+
+				["mhyolxg"]
+				exit ExitBloqueo {
+					goto = ref MasRoles;
+					history = "Listado enviado";
+				}
+			}
+		}
+
+		["mpaycha"]
+		place MasRoles {
+			onArrive() {
+				var restantes = getContextVariable("rolesrestantes");
+				var i = Boolean:: parseBoolean(restantes);
+				if(i) {
+					doGoto(Place:: Generado, null);
+				}
+				else {
+					doGoto(Place:: Finalizado, null);
+				}
+			}
+		}
+
+		["mzbebbg"]
+		place Finalizado {
+			is-final;
+		}
+
+		//envia el mensaje con el documento
+		["mkfjovw"]
+		provider ProviderName {
+			role = ref ceip.shared.Administrador;
+			external {
+				request Alumnado {
+					code = "Alumnado";
+					constructor(ProviderRequest msg) {
+						try {
+							msg.attachSchema("Listado de Alumnos/as", getTask().getTarget());
+						}
+						catch(java.lang.Exception ex) {
+							getTask().addLog("excepcion", ex.getMessage());
+						}
+					}
+				}
+				onTerminate() {
+					var bloq = Lock::Bloqueo_ExitBloqueo;
+					this.getTask.doUnlock(bloq);
+				
+				}
+				
+			}
+		}
+
+	}
+}
+	

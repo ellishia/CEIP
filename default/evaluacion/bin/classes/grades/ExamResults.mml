@@ -1,0 +1,167 @@
+package grades {
+
+	["m4ewvpq"]
+	definition ExamResults is collection {
+		label = "Resultados de Exámenes";
+		index = ref Indice;
+		add {
+			node = ref ExamResult;
+		}
+
+		["imfeyeig"]
+		definition Indice is index {
+			label = "Indice";
+			reference {
+
+				["imkcv5_a"]
+				attribute Subject {
+					label = "Asignatura";
+					type = TERM;
+				}
+
+				["msmlfaw"]
+				attribute Group {
+					label = "Grupo";
+					type = TERM;
+				}
+
+				["m_gi5gg"]
+				attribute Teacher {
+					label = "Docente";
+					type = TERM;
+				}
+
+				["mgypnuw"]
+				attribute Date {
+					label = "Fecha";
+					type = DATE;
+				}
+			}
+
+			["i"]
+			view Normal {
+				show {
+					line = ref Subject;
+					line = ref Group;
+					line = ref Teacher;
+					line = ref Date;
+				}
+			}
+
+		}
+
+		["mi5clga"]
+		view {
+			label = "Todos";
+			show {
+				index {
+					sort-by = ref Indice.Date;
+					with-view = ref Indice.Normal;
+				}
+			}
+			analyze {
+				dimension {
+					attribute = ref Indice.Date;
+					attribute = ref Indice.Group;
+					attribute = ref Indice.Subject;
+					attribute = ref Indice.Teacher;
+				}
+				sorting {
+					attribute = ref Indice.Date;
+				}
+			}
+		}
+
+		["m2sdlba"]
+		definition ExamResult is form {
+			label = "Examen";
+
+			["msrpifa"]
+			field-link Student {
+				label = "Alumno/a";
+				source {
+					index = ref Students.Index;
+				}
+			}
+
+			["mozedcw"]
+			field-select AcademicGrade {
+				label = "Curso";
+				use {
+					source = ref grades.shared.Grades;
+				}
+			}
+
+			["mr_tkeq"]
+			field-select Subject {
+				label = "Asignatura";
+				use {
+					source = ref grades.shared.Subjects;
+				}
+			}
+
+			["mw0anxg"]
+			field-select Teacher {
+				label = "Docente";
+				use {
+					source = ref grades.shared.Teachers;
+				}
+			}
+
+			["mq89svg"]
+			field-text Exam {
+				label = "Examen";
+			}
+
+			["metjbqq"]
+			field-number Calification {
+				label = "Nota";
+			}
+
+			["mcitrwq"]
+			field-date Date {
+				label = "Fecha";
+			}
+
+			["mbcicgg"]
+			field-text Mistakes {
+				label = "Errores";
+			}
+
+			["m3oshkw"]
+			field-text Corrections {
+				label = "Correcciones";
+			}
+
+			["mhmp2fq"]
+			field-text Observations {
+				label = "Observaciones";
+			}
+			mapping {
+				index = ref Indice;
+			}
+			mapping {
+				index = ref ContinuosEvaluation.Index;
+			}
+
+			["adfa"]
+			view {
+				label = "Ficha";
+				show {
+					field = ref Date;
+					field = ref Exam;
+					field = ref Student;
+					field = ref AcademicGrade;
+					field = ref Subject;
+					field = ref Calification;
+					field = ref Teacher;
+					field = ref Mistakes;
+					field = ref Corrections;
+					field = ref Observations;
+				}
+			}
+
+		}
+
+	}
+}

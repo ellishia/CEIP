@@ -1,0 +1,165 @@
+package serv {
+
+	["mpnt0eg"]
+	definition Buslines is collection {
+		label = "Rutas";
+		index = ref Indice;
+		add {
+			node = ref Busline;
+		}
+
+		["imbeh6vw"]
+		definition Indice is index {
+			label = "Indice";
+			reference {
+
+				["imkufqig"]
+				attribute Name {
+					label = "Nombre";
+					type = STRING;
+				}
+
+				["menunpq"]
+				attribute Id {
+					label = "Identifier";
+					type = STRING;
+				}
+			}
+
+			["i"]
+			view Normal {
+				show {
+					title = ref Name;
+				}
+			}
+
+		}
+
+		["ms3tapg"]
+		definition Busline is form {
+			label = "Ruta";
+
+			["mm_pvtg"]
+			field-serial Id {
+				label = "Identificador";
+				serial Serial {
+					format = "Ruta-%2S";
+				}
+			}
+
+			["mylsbhg"]
+			field-text Name {
+				label = "Nombre";
+			}
+
+			["mrryiqw"]
+			field-select Stops {
+				label = "Paradas";
+				is-multiple;
+				use {
+					source = ref serv.shared.StopsName;
+				}
+			}
+
+			["mhjnkgg"]
+			field-text Manager {
+				label = "Encargado";
+				is-multiple;
+			}
+
+			["m_6skvq"]
+			field-text Auxiliar {
+				label = "Auxiliar de transporte";
+			}
+
+			["m0r0dbw"]
+			field-section Dates {
+				label = "Fechas de Servicio";
+
+				["mb24dfw"]
+				field-date From {
+					label = "Desde";
+				}
+
+				["my2ylbq"]
+				field-date To {
+					label = "Hasta";
+				}
+				view {
+					show {
+						field = ref From;
+						field = ref To;
+					}
+				}
+			}
+
+			["mp0_qyg"]
+			field-text Schedule {
+				label = "Horario";
+			}
+
+			["mspsatw"]
+			field-text Direction {
+				label = "Sentido";
+			}
+			mapping {
+				index = ref Indice;
+			}
+
+			["teaas"]
+			view {
+				label = "Ficha";
+				show {
+					field = ref Name;
+					field = ref Stops;
+					field = ref Manager;
+					field = ref Auxiliar;
+					field = ref Dates;
+					field = ref Schedule;
+					field = ref Direction;
+				}
+			}
+
+			["mepy_9w"]
+			view Incidents {
+				label = "Incidencias de la Ruta";
+				show {
+					links:in {
+						node = ref serv.Incidents.Incident;
+					}
+				}
+			}
+
+			["m6g_y_g"]
+			view DailyRecords {
+				label = "Registros";
+				show {
+					links:in {
+						node = ref DailyRecords.DailyRecord;
+					}
+				}
+			}
+
+		}
+
+		["mrcegxw"]
+		view {
+			label = "Todos";
+			show {
+				index {
+					sort-by = ref Indice.Name;
+					with-view = ref Indice.Normal;
+				}
+			}
+			analyze {
+				dimension {
+					attribute = ref Indice.Name;
+				}
+				sorting {
+					attribute = ref Indice.Name;
+				}
+			}
+		}
+
+	}
+}

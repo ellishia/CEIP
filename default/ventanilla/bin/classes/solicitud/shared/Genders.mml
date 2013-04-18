@@ -1,0 +1,19 @@
+package solicitud.shared {
+
+	["mdufera"]
+	definition Genders is thesaurus {
+		label = "Genders";
+		ontology = "Generos";
+
+		terms {
+			term {
+				label = "Varón";
+				key = "001";
+			}
+			term {
+				label = "Hembra";
+				key = "002";
+			}
+		}
+	}
+}

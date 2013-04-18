@@ -1,0 +1,109 @@
+package grades.analytics {
+
+	["mogzodg"]
+	definition Estadistics is cube {
+
+		["msh1n_q"]
+		view {
+			show {
+				scale = DAY;
+				size = 5;
+			}
+		}
+		resolution = DAYS;
+
+		["mlfo_wq"]
+		metric metrica {
+			type = INTEGER;
+		}
+
+		["mxfolqw"]
+		indicator indicador {
+			unit {
+				label = "Inicador";
+				type = DISCRETE;
+			}
+			label = "Inicador";
+		}
+		label = "Estadísticas";
+
+		["fmfwcjjw"]
+		dimension Fecha {
+			type = DATE;
+			label = "FechaEncargo";
+		}
+
+		["pmvsi_ew"]
+		dimension Subject {
+			type = STRING;
+			label = "Asignatura";
+		}
+
+		["rmqxdt9g"]
+		dimension Student {
+			label = "Alumno";
+			type = STRING;
+
+			["umb2gcqg"]
+			hierarchy Personal {
+
+				["mj_auxg"]
+				attribute Nationality {
+					type = STRING;
+					label = "Nacionalidad";
+				}
+
+				["mf6rx9w"]
+				attribute Neighbourhood {
+					type = STRING;
+					label = "Municipio";
+				}
+
+				["mwn21ya"]
+				attribute BirthYear {
+					type = INTEGER;
+					label = "Año de Nacimiento";
+				}
+
+				["mvwzysa"]
+				attribute Gender {
+					type = STRING;
+					label = "Sexo";
+				}
+			}
+
+			["mjmc0cg"]
+			hierarchy FamilyIssues {
+
+				["mc7dcsq"]
+				attribute Situation {
+					type = TERM;
+					label = "Situación familiar";
+				}
+
+				["mewtifq"]
+				attribute AcademicLevelFather {
+					type = TERM;
+					label = "Nivel Académico Padre";
+				}
+
+				["mbp3jxw"]
+				attribute AcademicLevelMother {
+					type = TERM;
+					label = "Nivel Académico Madre";
+				}
+			}
+		}
+
+		["mvyixzq"]
+		dimension Teacher {
+			type = STRING;
+			label = "Docente";
+
+			["m8nvmhg"]
+			hierarchy Area {
+			}
+		}
+
+	}
+}			

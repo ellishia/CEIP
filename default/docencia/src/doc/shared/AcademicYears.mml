@@ -1,0 +1,8 @@
+package doc.shared {
+
+	["mncmrfw"]
+	definition AcademicYears is glossary {
+		label = "Años Académicos";
+		ontology = "AñosAcademicosAdmin";
+	}
+}

@@ -1,0 +1,24 @@
+setup coordinacionacademica extends coordinacionacademica {
+	title = "Coordinación Académica";
+	subtitle = "Coordinación Académica";
+
+	space coordinacionacademica {
+		deploy-uri = "http://10.13.13.191:8091/coordinacionacademica";
+	}
+	federation {
+		socket-uri = "socket://localhost:5346/";
+		secret = "1234";
+	}
+	assign-role {
+		user = "Secretaria";
+		role = ref direc.shared.Administrador;
+	}
+
+	publish {
+		federation {
+			setup-uri = "http://10.13.13.191:8091/empresa";
+		}
+		service = ref direc.procesos.StudentTransfer;
+		source = ref direc.shared.Teachers;
+	}
+}

@@ -1,0 +1,148 @@
+package grades {
+
+	["m7ze6fa"]
+	definition Controls is collection {
+		label = "Controles";
+		index = ref Indice;
+		add {
+			node = ref Control;
+		}
+
+		["imfeyeig"]
+		definition Indice is index {
+			label = "Indice";
+			reference {
+
+				["imkcv5_a"]
+				attribute Subject {
+					label = "Asignatura";
+					type = TERM;
+				}
+
+				["msmlfaw"]
+				attribute Group {
+					label = "Grupo";
+					type = TERM;
+				}
+
+				["m_gi5gg"]
+				attribute Teacher {
+					label = "Docente";
+					type = TERM;
+				}
+
+				["mgypnuw"]
+				attribute Date {
+					label = "Fecha";
+					type = DATE;
+				}
+			}
+
+			["i"]
+			view Normal {
+				show {
+					line = ref Subject;
+					line = ref Group;
+					line = ref Teacher;
+					line = ref Date;
+				}
+			}
+
+		}
+
+		["mdawhcg"]
+		view {
+			label = "Todos";
+			show {
+				index {
+					sort-by = ref Indice.Date;
+					with-view = ref Indice.Normal;
+				}
+			}
+			analyze {
+				dimension {
+					attribute = ref Indice.Date;
+					attribute = ref Indice.Group;
+					attribute = ref Indice.Subject;
+					attribute = ref Indice.Teacher;
+				}
+				sorting {
+					attribute = ref Indice.Date;
+				}
+			}
+		}
+
+		["m2sdlba"]
+		definition Control is form {
+			label = "Control";
+
+			["mh_i1bg"]
+			field-section DiaryControl {
+				label = "Control Diario";
+				is-multiple;
+
+				["md6ewva"]
+				field-number Grade {
+					label = "Nota";
+				}
+
+				["msrpifa"]
+				field-link Student {
+					label = "Alumno/a";
+					source {
+						index = ref Students.Index;
+					}
+				}
+			}
+
+			["mr_tkeq"]
+			field-select Subject {
+				label = "Asignatura";
+				use {
+					source = ref grades.shared.Subjects;
+				}
+			}
+
+			["mozedcw"]
+			field-select AcademicGrade {
+				label = "Curso";
+				use {
+					source = ref grades.shared.Grades;
+				}
+			}
+
+			["mmai_kq"]
+			field-select Teacher {
+				label = "Docente";
+				use {
+					source = ref grades.shared.Teachers;
+				}
+			}
+
+			["mcitrwq"]
+			field-date Date {
+				label = "Fecha";
+			}
+			mapping {
+				index = ref Indice;
+			}
+			mapping {
+				index = ref ContinuosEvaluation.Index;
+			}
+
+			["adfa"]
+			view {
+				label = "Ficha";
+				show {
+					field = ref Subject;
+					field = ref Teacher;
+					field = ref AcademicGrade;
+					field = ref Date;
+					field = ref DiaryControl;
+				}
+			}
+
+		}
+
+	}
+}

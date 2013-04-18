@@ -1,0 +1,145 @@
+package doc {
+
+	["m_2zduq"]
+	definition ParentVisits is collection {
+		label = "Vistas de Padres";
+		is-singleton;
+		index = ref Indice;
+		add {
+			node = ref ParentVisit;
+		}
+
+		["mihlypg"]
+		definition Indice is index {
+			label = "Indice";
+			reference {
+
+				["mig11aq"]
+				attribute Title {
+					label = "Título";
+					type = STRING;
+				}
+
+				["mdtjgla"]
+				attribute Date {
+					label = "Fecha";
+					type = DATE;
+				}
+
+				["msokzaa"]
+				attribute Identifier {
+					label = "Identificador";
+					type = STRING;
+				}
+			}
+
+			["msksh3a"]
+			view Normal {
+				show {
+					title = ref Title;
+					line = ref Date;
+				}
+			}
+
+		}
+
+		["m7lqy7g"]
+		view {
+			label = "Todos";
+			show {
+				index {
+					sort-by = ref Indice.Date;
+					with-view = ref Indice.Normal;
+				}
+			}
+			analyze {
+				dimension {
+					attribute = ref Indice.Title;
+				}
+				sorting {
+					attribute = ref Indice.Title;
+				}
+			}
+		}
+
+		//-----------------------
+		["m51calg"]
+		definition ParentVisit is form {
+			label = "Visita de Padres";
+
+			["mp0rcma"]
+			field-serial Identifier {
+				label = "Iden";
+				serial SerialName {
+					format = "Visita-%4S";
+				}
+			}
+
+			["my2knda"]
+			field-text Title {
+				label = "Título";
+			}
+
+			["mtcfakq"]
+			field-date Date {
+				label = "Fecha";
+			}
+
+			["mnfn6tq"]
+			field-select Areas {
+				label = "Asignaturas";
+				is-multiple;
+				use {
+					source = ref doc.shared.Areas;
+				}
+			}
+
+			["mvfujjg"]
+			field-link Student {
+				label = "Alumno/a";
+				source {
+					index = ref Alumnado.Indice;
+				}
+			}
+
+			["mri_4iq"]
+			field-select Teacher {
+				label = "Docentes";
+				is-multiple;
+				use {
+					source = ref doc.shared.Teachers;
+				}
+			}
+
+			["m_4vb2w"]
+			field-text Topics {
+				label = "Temas";
+			}
+
+			["mhtwycw"]
+			field-text Observations {
+				label = "Observaciones";
+			}
+			mapping {
+				index = ref Indice;
+			}
+
+			["asfda"]
+			view {
+				label = "Especificación de Asignatura";
+				show {
+					field = ref Title;
+					field = ref Date;
+					field = ref Identifier;
+					field = ref Areas;
+					field = ref Teacher;
+					field = ref Student;
+					field = ref Topics;
+					field = ref Observations;
+				}
+			}
+
+		}
+
+	}
+}

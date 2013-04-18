@@ -1,0 +1,93 @@
+package serv {
+
+	["mrwbpyq"]
+	definition Users is collection {
+		label = "Usuarios";
+		index = ref Indice;
+		add {
+			node = ref User;
+		}
+
+		["imbeh6vw"]
+		definition Indice is index {
+			label = "Indice";
+			reference {
+
+				["imkufqig"]
+				attribute Name {
+					label = "Nombre";
+					type = STRING;
+				}
+
+				["mqkfmla"]
+				attribute Surname {
+					label = "Apellidos";
+					type = STRING;
+				}
+			}
+
+			["i"]
+			view Normal {
+				show {
+					title = ref Name;
+				}
+			}
+
+		}
+
+		["ms3tapg"]
+		abstract definition User is form {
+			label = "Usuario";
+
+			["mm_pvtg"]
+			field-section Information {
+				label = "Información";
+
+				["miwsa4g"]
+				field-text Name {
+					label = "Nombre";
+				}
+
+				["mwku9iw"]
+				field-text Surname {
+					label = "Apellidos";
+				}
+
+				["m63lsgw"]
+				field-text Age {
+					label = "Edad";
+				}
+			}
+
+			["teaas"]
+			view {
+				label = "Ficha";
+				show {
+					field = ref Information.Name;
+					field = ref Information.Surname;
+				}
+			}
+
+		}
+
+		["mmcwe1q"]
+		view {
+			label = "Todos";
+			show {
+				index {
+					sort-by = ref Indice.Name;
+					with-view = ref Indice.Normal;
+				}
+			}
+			analyze {
+				dimension {
+					attribute = ref Indice.Name;
+				}
+				sorting {
+					attribute = ref Indice.Name;
+				}
+			}
+		}
+
+	}
+}

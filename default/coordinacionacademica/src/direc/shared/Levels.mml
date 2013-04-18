@@ -1,0 +1,8 @@
+package direc.shared {
+
+	["mhmnuaw"]
+	definition Levels is glossary {
+		label = "Levels";
+		ontology = "LevelsDeAdministracion";
+	}
+}

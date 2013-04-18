@@ -1,0 +1,31 @@
+package ceip {
+
+	["md_rleg"]
+	definition StudentData is container {
+		label = "StudentData";
+
+		contain {
+			node = ref MedicalIssues;
+			node = ref Relatives;
+		}
+
+		
+
+		["m8c7e4a"]
+		view {
+			label = "Aspectos médicos";
+			show {
+				component = ref MedicalIssues.MedicalView;
+			}
+		}
+
+		["mz4gh_q"]
+		view {
+			label = "Familiares";
+			show {
+				component = ref Relatives.RelativesView;
+			}
+		}
+
+	}
+}

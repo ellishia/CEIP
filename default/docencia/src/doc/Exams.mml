@@ -1,0 +1,152 @@
+package doc {
+
+	["m7wj31q"]
+	definition Exams is collection {
+		label = "Exámenes y Controles";
+		index = ref Indice;
+		add {
+			node = ref Exam;
+		}
+
+		["im86137q"]
+		definition Indice is index {
+			label = "Indice";
+			reference {
+
+				["im9nub3a"]
+				attribute Name {
+					label = "Nombre";
+					type = STRING;
+				}
+			}
+
+			["i"]
+			view Normal {
+				show {
+					title = ref Name;
+				}
+			}
+
+		}
+
+		["lala"]
+		view View {
+			label = "Todos";
+			show {
+				index {
+					sort-by = ref Indice.Name;
+					with-view = ref Indice.Normal;
+				}
+			}
+			analyze {
+				dimension {
+					attribute = ref Indice.Name;
+				}
+				sorting {
+					attribute = ref Indice.Name;
+				}
+			}
+		}
+
+		["mb_mlew"]
+		definition Exam is container {
+			label = "Exam";
+
+			contain {
+				node = ref ExamForm;
+				node = ref ExamDocs;
+			}
+
+			["dasdf"]
+			view {
+				label = "Ficha";
+				is-default;
+				show {
+					component = ref ExamForm.View;
+				}
+			}
+
+		}
+
+		//---------------------------------------------------
+		["mpqipva"]
+		definition ExamForm is form {
+			label = "Examen";
+			is-component;
+
+			["mkm2iua"]
+			field-text Title {
+				label = "Título";
+			}
+
+			["msckojq"]
+			field-select Area {
+				label = "Área de Conocimiento";
+				use {
+					source = ref doc.shared.Areas;
+				}
+			}
+
+			["mkb6jmg"]
+			field-select Grade {
+				label = "Curso Académico";
+				use {
+					source = ref doc.shared.Grades;
+				}
+			}
+
+			["mibzjkg"]
+			field-select Level {
+				label = "Nivel";
+				use {
+					source = ref doc.shared.Levels;
+				}
+			}
+
+			["mb_7wiq"]
+			field-text Questions {
+				label = "Preguntas";
+				is-multiple;
+			}
+
+			["m_qcekq"]
+			field-text Instructions {
+				label = "Instrucciones";
+			}
+			mapping {
+				index = ref Indice;
+			}
+
+			["me8pzoa"]
+			operation ExamDoc {
+				label = "Generar Documento de Examen";
+				
+//				
+				}
+
+				["pi"]
+				view {
+					label = "Ficha";
+					is-default;
+					show {
+						field = ref Title;
+						field = ref Grade;
+						field = ref Level;
+						field = ref Questions;
+						field = ref Instructions;
+					}
+				}
+
+				["m373rfg"]
+				view View {
+					is-widget;
+					show {
+						field = ref Title;
+						field = ref Grade;
+					}
+				}
+			}
+
+		}
+
+	}

@@ -1,0 +1,101 @@
+package doc {
+
+	["m4e62wg"]
+	definition Subjects is collection {
+		label = "Asignaturas";
+		is-singleton;
+		index = ref Indice;
+		add {
+			node = ref Subject;
+		}
+
+		["mqrvk7w"]
+		definition Indice is index {
+			label = "Indice";
+			reference {
+
+				["mt_1fqq"]
+				attribute Name {
+					label = "Nombre";
+					type = STRING;
+				}
+
+				["mzmk4og"]
+				attribute Identifier {
+					label = "Identificador";
+					type = STRING;
+				}
+			}
+
+			["mjeaxwq"]
+			view Normal {
+				show {
+					title = ref Name;
+				}
+			}
+
+		}
+
+		["may_d_w"]
+		view {
+			label = "Todos";
+			show {
+				index {
+					sort-by = ref Indice.Name;
+					with-view = ref Indice.Normal;
+				}
+			}
+			analyze {
+				dimension {
+					attribute = ref Indice.Name;
+				}
+				sorting {
+					attribute = ref Indice.Name;
+				}
+			}
+		}
+
+		["mqk5h_g"]
+		definition Subject is form {
+			label = "Asignatura";
+
+			["m62hlbq"]
+			field-text Name {
+				label = "Nombre";
+			}
+
+			["mfdodyq"]
+			field-text Area {
+				label = "Area de conocimiento";
+			}
+
+			["m18aqeg"]
+			field-serial Identifier {
+				label = "Id";
+				serial SerialName {
+					format = "%3S";
+				}
+			}
+			mapping {
+				index = ref Indice;
+			}
+			properties {
+				calculate() {
+					getNode().setLabel(getNode().getName());
+				}
+			}
+
+			["mnl1skw"]
+			view {
+				label = "Especificación de Asignatura";
+				show {
+					field = ref Name;
+					field = ref Area;
+					field = ref Identifier;
+				}
+			}
+
+		}
+
+	}
+}

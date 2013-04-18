@@ -1,0 +1,9 @@
+package grades.shared {
+
+	["mqlv6oq"]
+	definition Trimesters is glossary {
+		label = "Trimestres";
+		ontology = "TrimesterAdministracion";
+
+	}
+}

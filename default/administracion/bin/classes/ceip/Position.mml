@@ -1,0 +1,65 @@
+package ceip {
+
+	["mb16loa"]
+	definition Position is form {
+		label = "Plaza";
+		
+		["ma7dfnq"]
+		field-select AcademicYear {
+			label = "Año académico";
+			use {
+				source = ref ceip.shared.AcademicYears;
+			}
+		}
+
+		["mkuxpdq"]
+		field-section SpecificPosition {
+			label = "Plazas";
+			is-multiple;
+
+			["mnog8_a"]
+			field-select Levels {
+				label = "Nivel";
+				use {
+					source = ref ceip.shared.Levels;
+				}
+			}
+
+			["mzpfudw"]
+			field-number NumberPositions {
+				label = "Nº de plazas";
+			}
+		}
+		
+		mapping {
+			index = ref ceip.AvailablePositions.Indice;
+		}
+		
+		properties {  
+			calculate() {
+				var academicYear = getNode().academicYear;
+				var String anyo;
+				if (academicYear == null) {
+					
+					anyo = "Año sin asignar";
+				}
+				else {
+					anyo = academicYear.getLabel();
+				}
+				getNode().setLabel(anyo); 
+				
+			}
+		}
+		
+		
+		["mv1hfcw"]
+		view {
+			label = "Plazas disponibles por nivel";
+			show {
+				field = ref SpecificPosition;
+				field = ref AcademicYear;
+			}
+		}
+
+	}
+}

@@ -1,0 +1,69 @@
+package direc {
+
+	["mbpaklg"]
+	definition Coordinacion is desktop {
+		label = "Coordinación";
+		is-singleton;
+		for {
+			role = ref direc.shared.Administrador;
+		}
+
+		["u"]
+		view {
+			label = "Planificación";
+			show {
+				link = ref Activities;
+				link = ref Schedules;
+				link = ref Meetings;
+			}
+			is-default;
+		}
+
+		["m7qxcnw"]
+		view {
+			label = "Aulas";
+			show {
+				link = ref Rooms;
+			}
+		}
+
+		["t"]
+		view {
+			label = "Grupos y Alumnado";
+			show {
+				link = ref Groups;
+				link = ref Students;
+			}
+		}
+
+		["m4ruesg"]
+		view {
+			label = "Docentes";
+			show {
+				link = ref Teachers;
+			}
+		}
+
+		["mqbgbhg"]
+		view {
+			label = "Gestión de Textos y Tarjetas";
+			show {
+				link = ref CenterBooks;
+				link = ref Ejemplares;
+				link = ref Lotes;
+				link = ref CreditCards;
+				link = ref Asignations;
+			}
+		}
+		
+		["mg0dnsg"]
+		view {
+			label = "Tareas y Roles";
+			show { 
+				link:roles;
+				link:taskboard;
+			}
+		}
+
+	}
+}

@@ -1,0 +1,17 @@
+package direc {
+
+	["ml2_wla"]
+	abstract definition DocumentoCentro is document {
+		label = "DocumentoCentro";
+		template = template DocumentoCentro;
+		
+		schema { CentroAcademico String;
+			AnyoAcademico String;
+			DocumentType String;
+			Firma String;
+			Firmante String;
+			City String;
+			Date Date;
+		}
+	}
+}

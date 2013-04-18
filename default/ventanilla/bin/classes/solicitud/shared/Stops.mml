@@ -1,0 +1,8 @@
+package solicitud.shared {
+
+	["mmgs97w"]
+	definition Stops is glossary {
+		label = "Paradas";
+		ontology = "ParadasDeServicios";
+	}
+}

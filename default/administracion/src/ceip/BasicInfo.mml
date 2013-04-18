@@ -1,0 +1,144 @@
+package ceip {
+
+	["mw0lesw"]
+	definition BasicInfo is form {
+		label = "Alumno/a";
+		is-component;
+		mapping {
+			index = ref Students.Index;
+		}
+		properties {
+			calculate() {
+				var nombreCompleto = getNode().getName();
+				nombreCompleto = nombreCompleto + " " + getNode().surname;
+				getNode().setLabel(nombreCompleto);
+			}
+		}
+
+		["mqjsehw"]
+		field-text Name {
+			label = "Nombre";
+		}
+
+		["m_ixcva"]
+		field-text Surname {
+			label = "Apellidos";
+		}
+
+		["mygtntq"]
+		field-select Level {
+			label = "Nivel";
+		}
+
+		["mfngi0w"]
+		field-text Cial {
+			label = "CIAL";
+		}
+
+		["mvaa1yq"]
+		field-date Date_of_Birth {
+			precision = DAYS;
+			label = "Fecha de nacimiento";
+		}
+
+		["mjsqa2q"]
+		field-section Address {
+			label = "Dirección";
+
+			["mcn4joq"]
+			field-text Designation {
+				label = "Tipo de vía";
+			}
+
+			["mouscxq"]
+			field-text StreetName {
+				label = "Nombre de vía";
+			}
+
+			["mug8k2q"]
+			field-number Number {
+				label = "Número";
+			}
+
+			["mmgptcw"]
+			field-number Appartament {
+				label = "Piso, letra";
+			}
+
+			["m1lxdka"]
+			field-text Neigbourhood {
+				label = "Localidad/Barrio";
+			}
+
+			["m_sfxfa"]
+			field-text City {
+				label = "Municipio";
+			}
+
+			["mnzounw"]
+			field-number ZipCode {
+				label = "Código Postal";
+			}
+			view {
+				mode = EXPANDED;
+				show {
+					field = ref Designation;
+					field = ref StreetName;
+					field = ref Number;
+					field = ref Appartament;
+					field = ref ZipCode;
+					field = ref Neigbourhood;
+					field = ref City;
+				}
+			}
+		}
+
+		["m1zeyea"]
+		field-node Boletin {
+			label = "Boletín";
+			is-multiple;
+			add {
+				node = ref ceip.Boletin;
+			}
+		}
+
+		["mh_lw3g"]
+		view {
+			label = "Ficha de Alumno";
+			is-default;
+			show {
+				field = ref Name;
+				field = ref Surname;
+				field = ref Cial;
+				field = ref Date_of_Birth;
+				field = ref Address;
+				field = ref Boletin;
+			}
+		}
+
+		["mkix_vg"]
+		view Vista {
+			label = "Datos del Alumno";
+			is-widget;
+			show {
+				field = ref Name;
+				field = ref Surname;
+				field = ref Cial;
+				field = ref Date_of_Birth;
+				field = ref Address;
+				field = ref Boletin;
+			}
+		}
+
+		["m6tw42w"]
+		view VistaBoletin {
+			is-widget;
+			show {
+				attachments {
+					field:node = ref Boletin;
+				}
+			}
+		}
+
+	}
+}

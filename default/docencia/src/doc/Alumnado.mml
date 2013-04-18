@@ -1,0 +1,127 @@
+package doc {
+
+	["mezq0ha"]
+	definition Alumnado is collection {
+		label = "Alumnado";
+		index = ref Indice;
+		add {
+			node = ref Student;
+		}
+
+		is-singleton;
+
+		["im1knjrg"]
+		definition Indice is index {
+			label = "Alumnado";
+			reference {
+
+				["immdlljg"]
+				attribute Name {
+					label = "Nombre";
+					type = STRING;
+				}
+
+				["mrzyyaq"]
+				attribute Surname {
+					label = "Apellidos";
+					type = STRING;
+				}
+
+				["mgaelyq"]
+				attribute Cial {
+					label = "cial";
+					type = STRING;
+				}
+
+				["mbl7uda"]
+				attribute BirthDate {
+					label = "Fecha de Nacimiento";
+					type = DATE;
+				}
+			}
+
+			["i"]
+			view Normal {
+				show {
+					line = ref Name;
+					line = ref Surname;
+					line = ref Cial;
+					line = ref BirthDate;
+				}
+			}
+
+		}
+
+		["mm2f2hg"]
+		definition Student is form {
+			label = "Alumno/a";
+
+			["m2kdvya"]
+			field-text Name {
+				label = "Nombre";
+			}
+
+			["m7morrg"]
+			field-text Surname {
+				label = "Apellidos";
+			}
+
+			["mevoe0q"]
+			field-text Cial {
+				label = "cial";
+			}
+
+			["mnkozoa"]
+			field-date BirthDate {
+				label = "Fecha de Nacimiento";
+			}
+
+			["mvni5oq"]
+			field-text Data {
+				label = "Datos Relevantes";
+			}
+			mapping {
+				index = ref Indice;
+			}
+			properties {
+				calculate() {
+					var nombreCompleto = getNode.getName() + " " + getNode.getSurname();
+					getNode().setLabel(nombreCompleto);
+				}
+			}
+
+			["fas"]
+			view {
+				label = "Ficha";
+				show {
+					field = ref Name;
+					field = ref Surname;
+					field = ref Cial;
+					field = ref BirthDate;
+					field = ref Data;
+				}
+			}
+
+		}
+
+		["asda"]
+		view {
+			label = "Todos";
+			show {
+				index {
+					sort-by = ref Indice.Surname;
+					with-view = ref Indice.Normal;
+				}
+			}
+			analyze {
+				dimension {
+					attribute = ref Indice.Name;
+				}
+				sorting {
+					attribute = ref Indice.Name;
+				}
+			}
+		}
+
+	}
+}

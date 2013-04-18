@@ -1,0 +1,54 @@
+package ceip {
+
+	["m_waeqq"]
+	definition TotalPositions is collection {
+		label = "Total Positions";
+		is-component;
+
+		index = ref AvailablePositions.Indice;
+
+		add {
+			node = ref Position;
+		}
+
+		["m7ky88q"]
+		view {
+			label = "Todos";
+			is-default;
+			show {  
+				index {
+					sort-by = ref AvailablePositions.Indice.Anyo;
+					with-view = ref AvailablePositions.Indice.Item;
+				}
+			}
+			analyze {
+				dimension {
+					attribute = ref AvailablePositions.Indice.Anyo;
+				}
+				sorting {
+					attribute = ref AvailablePositions.Indice.Anyo;
+				}
+			}
+		}
+
+		["mdcppsa"]
+		view View {
+			is-widget;
+			show {  
+				index {
+					sort-by = ref AvailablePositions.Indice.Anyo;
+					with-view = ref AvailablePositions.Indice.Item;
+				}
+			}
+			analyze {
+				dimension {
+					attribute = ref AvailablePositions.Indice.Anyo;
+				}
+				sorting {
+					attribute = ref AvailablePositions.Indice.Anyo;
+				}
+			}
+		}
+
+	}
+}

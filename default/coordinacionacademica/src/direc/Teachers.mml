@@ -1,0 +1,128 @@
+package direc {
+
+	["mjmrgqg"]
+	definition Teachers is collection {
+		label = "Docentes";
+		is-singleton;
+		index = ref Indice;
+		add {
+			node = ref Teacher;
+		}
+
+		["imjxw34w"]
+		definition Indice is index {
+			label = "Docentes";
+			reference {
+
+				["imrlvfkg"]
+				attribute Name {
+					label = "Nombre";
+					type = STRING;
+				}
+
+				["mhahdla"]
+				attribute Surname {
+					label = "Apellidos";
+					type = STRING;
+				}
+
+				["my7etra"]
+				attribute Identifier {
+					label = "Identificador";
+					type = STRING;
+				}
+			}
+
+			["i"]
+			view Normal {
+				show {
+					title = ref Surname;
+					line = ref Name;
+				}
+			}
+
+		}
+
+		["aasfdsa"]
+		view View {
+			label = "Todos";
+			show {
+				index {
+					sort-by = ref Indice.Surname;
+					with-view = ref Indice.Normal;
+				}
+			}
+			analyze {
+				dimension {
+					attribute = ref Indice.Surname;
+				}
+				sorting {
+					attribute = ref Indice.Surname;
+				}
+			}
+		}
+
+		["mjrveww"]
+		definition Teacher is form {
+			label = "Docente";
+
+			["mdcedga"]
+			field-text Name {
+				label = "Nombre";
+			}
+
+			["mdbi4_w"]
+			field-text Surname {
+				label = "Apellidos";
+			}
+
+			["mruthgw"]
+			field-serial Identifier {
+				label = "Iden";
+				serial SerialName {
+					format = "%4S";
+				}
+			}
+
+			["mhh80tq"]
+			field-text Specialty {
+				label = "Especialidad";
+			}
+
+			["m_ybwew"]
+			field-date TeachingSince {
+				precision = MONTHS;
+				label = "En la docencia desde";
+			}
+
+			["mvintow"]
+			field-text Level {
+				label = "Nivel";
+			}
+			mapping {
+				index = ref Teachers.Indice;
+			}
+			properties {
+				calculate() {
+					var nombreCompleto = getNode().getName();
+					nombreCompleto = nombreCompleto + " " + getNode().surname;
+					getNode().setLabel(nombreCompleto);
+				}
+			}
+
+			["kald"]
+			view {
+				label = "Ficha";
+				show {
+					field = ref Name;
+					field = ref Surname;
+					field = ref Specialty;
+					field = ref TeachingSince;
+					field = ref Level;
+				}
+			}
+
+		}
+
+	}
+}

@@ -1,0 +1,30 @@
+package ceip.shared {
+
+	["mgfmwna"]
+	definition AcademicYears is thesaurus {
+		label = "Años Académicos";
+		ontology = "AñosAcademicosAdmin";
+		terms {
+			term {
+				label = "2011/2012";
+				key = "001";
+			}
+			term {
+				label = "2012/2013";
+				key = "002";
+			}
+			term {
+				label = "2013/2014";
+				key = "003";
+			}
+			term {
+				label = "2014/2015";
+				key = "004";
+			}
+			term {
+				label = "2015/2016";
+				key = "005";
+			}
+		}
+	}
+}

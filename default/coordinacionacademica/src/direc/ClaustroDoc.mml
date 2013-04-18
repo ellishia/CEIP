@@ -1,0 +1,48 @@
+import direc.teachers.Teacher
+import direc.dayorders.DayOrder
+
+package direc {
+
+	["m6utwha"]
+	definition ClaustroDoc is document extends DocumentoCentro {
+		label = "Convocatoria de Claustro";
+		template = template ClaustroDoc;
+		schema {
+			DateMeeting Date;
+			Hour String;
+			Room String;
+			many docente {
+				Docente String;
+				Subject String;
+			}
+			Order String;
+		}
+
+		["mggpfjq"]
+		definition Exportador is exporter {
+			label = "Exportador de Documento";
+			target = ref ClaustroDoc;
+
+			onExportItem(direc.claustrodoc.Schema i) {
+				var ficha = this.getScope() as direc.claustros.Claustro;
+				i.dateMeeting = ficha.date;
+				i.room = ficha.room.getLabel();
+				i.documentType = "Convocatoria de Claustro";
+				i.city = "Las Palmas de G.C.";
+				i.firmante = "La dirección";
+				var dayOrder = ficha.dayOrderField.getNode() as DayOrder;
+				i.order = dayOrder.getTopics();
+				for(item : ficha.teachersField.allFields) {
+					var teacher = item.getNode() as Teacher;
+					var docente = new direc.claustrodoc.^schema.Docente();
+					docente.docente = teacher.getName() + " " + teacher.surname;
+					docente.subject = teacher.specialty;
+					i.docente.^add(docente);
+				}
+			}
+
+		}
+
+	}
+}
+  

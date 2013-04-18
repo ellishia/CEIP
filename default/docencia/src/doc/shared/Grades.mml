@@ -1,0 +1,9 @@
+package doc.shared {
+
+	["mf_uqww"]
+	definition Grades is glossary {
+		label = "Cursos";
+		ontology = "LevelsDeAdministracion";
+
+	}
+}

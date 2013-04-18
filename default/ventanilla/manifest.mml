@@ -1,0 +1,9 @@
+manifest ventanilla {
+	title = "ventanilla";
+	subtitle = "ventanilla";
+
+	version = "1.0.0";
+	type = FRONT;
+	author = "eowens";
+
+}

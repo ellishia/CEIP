@@ -1,0 +1,37 @@
+package solicitud {
+
+	["mx9hpwa"]
+	definition RegistrationPeriod is form {
+		label = "Periodo de Preinscripcion";
+		is-readonly;
+		is-singleton;
+
+		["mwz3yea"]
+		field-date InitialDate {
+			label = "Inicio";
+			precision = DAYS;
+		}
+
+		["mk_jm4w"]
+		field-date FinalDate {
+			label = "Fin";
+			precision = DAYS;
+		}
+		constructor() {
+			var date = new Date();
+			var final = new Date();
+			this.initialDate = date;
+			this.finalDate = final.plusDays(5);
+		}
+
+		["mihp_yw"]
+		view {
+			label = "RegistrationPeriod";
+			show {
+				field = ref InitialDate;
+				field = ref FinalDate;
+			}
+		}
+
+	}
+}

@@ -1,0 +1,91 @@
+import ceip.Applications.*
+
+package ceip {
+
+	["mt9mhfg"]
+	definition solicitudDoc is document {
+		label = "solicitudDoc";
+		//template = template solicitudDoc;
+		schema {
+			StudentName String;
+			StudentSurname String;
+			Cial String;
+			AcademicLevel Term;
+			AcademicYear Term;
+			Identifier String;
+			BirthDate Date;
+			Nationality String;
+			Gender Term;
+			Address {
+				Designation String;
+				Street_name String;
+				Number Number;
+				Appartment String;
+				Neigbourhood String;
+				City String;
+				zip_code Number;
+			}
+			Siblings String;
+			Parents String;
+			Matriculable Boolean;
+			many entry {
+				Centers String;
+				Order Number;
+			}
+		}
+
+		["mbriung"]
+		definition Importador is importer {
+			label = "Importador de Solicitud";
+			target = ref solicitudDoc;
+
+			onImportItem(ceip.solicituddoc.Schema i) {
+				var solicitudes = ceip::Applications:: instance;
+				var ceip.applications.Application solicitud;
+				if (solicitudes.getCount(ceip::applications::Indice:: Identifier.Eq(i.identifier)) != 0) {
+					var appls = solicitudes.getFirst(ceip::applications::Indice:: Identifier.Eq(i.identifier));
+					var appl = appls.indexedNode;
+					solicitud = appl as ceip.applications.Application;
+				}
+				else {
+					solicitud = ceip::applications::Application:: createNew(solicitudes);
+				}
+				solicitud.identifier = i.identifier;
+				solicitud.studentName = i.studentName;
+				solicitud.studentSurname = i.studentSurname;
+				solicitud.birthDate = i.birthDate;
+				solicitud.cial = i.cial;
+				solicitud.level = i.academicLevel;
+				solicitud.academicYear = i.academicYear;
+				solicitud.gender = i.gender;
+				solicitud.nationality = i.nationality;
+				solicitud.siblings = i.siblings;
+				solicitud.parentsInCenter = i.parents;
+				solicitud.addressField.designation = i.address.designation;
+				solicitud.addressField.street_name = i.address.street_name;
+				if(i.address.number != null) {
+					solicitud.addressField.number = i.address.number;
+				}
+				else {
+					solicitud.addressField.number = 0;
+				}
+				solicitud.addressField.appartament = i.address.appartment;
+				solicitud.addressField.neigbourhood = i.address.neigbourhood;
+				solicitud.addressField.city = i.address.city;
+				if(i.address.zip_code != null) {
+					solicitud.addressField.zip_code = i.address.zip_code;
+				}
+				else {
+					solicitud.addressField.zip_code = 0;
+				}
+				solicitud.save();
+				//				if (i.matriculable){
+				//					
+				//				}
+			}
+
+		}
+
+	}
+}
+  

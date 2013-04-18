@@ -1,0 +1,34 @@
+setup administracion extends administracion {
+
+	title = "Administración del Centro";
+	subtitle = "Administración de CEIP";
+
+	space administracion {
+		deploy-uri = "http://10.230.140.157:8091/administracion";
+	}
+	federation {
+		socket-uri = "socket://localhost:5346/";
+		secret = "1234";
+	}
+
+	assign-role {
+		user = "Secretaria";
+		role = ref ceip.shared.Administrador;
+	}
+
+	publish {
+		federation {
+			setup-uri = "http://10.230.140.157:8091/empresa";
+		}
+		service = ref ceip.procesos.RecibirSolicitudPlaza;
+		source = ref ceip.shared.AcademicYears;
+		source = ref ceip.shared.Levels;
+		source = ref ceip.shared.Trimester;
+		source = ref ceip.shared.CivilState;
+		source = ref ceip.shared.PersonalRelation;
+		source = ref ceip.shared.PhoneType;
+		source = ref ceip.shared.WorkSituation;
+		source = ref ceip.shared.StudiesLevel;
+	}
+}
+	

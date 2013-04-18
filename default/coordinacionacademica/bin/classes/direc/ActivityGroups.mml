@@ -1,0 +1,25 @@
+package direc {
+
+	["m_nqm9g"]
+	definition ActivityGroups is form {
+		label = "Grupos participantes";
+
+		["mm2gi4g"]
+		field-link Groups {
+			label = "Grupos";
+			is-multiple;
+			source {
+				index = ref Groups.Indice;
+			}
+		}
+
+		["mksm0_a"]
+		view View {
+			label = "Grupos";
+			show {
+				field = ref Groups;
+			}
+		}
+
+	}
+}

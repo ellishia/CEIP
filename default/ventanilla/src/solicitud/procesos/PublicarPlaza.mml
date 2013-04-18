@@ -1,0 +1,118 @@
+package solicitud.procesos {
+
+	["mtwh1yw"]
+	definition PublicarPlaza is activity {
+		label = "Preinscripción";
+		target = ref solicitud.Application;
+		role = ref solicitud.shared.Padre;
+
+		["mfdyzbq"]
+		place Inicial {
+			is-initial;
+
+			["mf8ajyq"]
+			line {
+
+				["mea8i7g"]
+				stop Generar {
+					history = "Se generará la preinscripción";
+					goto = ref Generado;
+					label = "Se enviará la preinscripción";
+				}
+
+				["mjpe8pw"]
+				stop Salir {
+					history = "Salir";
+					goto = ref Finalizado;
+					label = "Salir";
+				}
+				label = "Decidir si generar o no";
+			}
+		}
+
+		["mmirmbg"]
+		place Generado {
+
+			["mmt0mag"]
+			delegation {
+				history = "Generada la preinscripción";
+				label = "Generando Preinscripción";
+				goto = ref Enviando;
+				provider = ref Preinscripcion;
+
+				onSetup(DelegationSetup ds) {
+					ds.cancel();
+				}
+			}
+		}
+
+		["mooct_q"]
+		place Enviando {
+
+			["mmtnz5a"]
+			send-request {
+				label = "Enviando Documento";
+				history = "Documento enviado";
+				request = ref Preinscripcion.Alumno;
+				provider = ref Preinscripcion;
+				goto = ref EsperandoRespuesta;
+			}
+		}
+		
+		["mufdlfw"]
+		place EsperandoRespuesta { 
+				["mmbg7vw"]
+			door DoorRespuesta {
+				label = "Esperando Respuesta";
+
+				["mkhczeg"]
+				exit ExitRespuesta {
+					history = "Respuesta recibida";
+					goto = ref Finalizado;
+				}
+			}
+		}
+
+		["m2nagkg"]
+		place Finalizado {
+			is-final;
+		}
+
+		["mss03rg"]
+		provider Preinscripcion {
+			role = ref solicitud.shared.Padre;
+			external {
+				request Alumno {
+					code = "Premat";
+					constructor(ProviderRequest msg) {
+						try {
+							var preinscripcion = this.getTask().getTarget();
+							var solicitud = solicitud::solicituddoc::Exportador:: doExportOf(preinscripcion).toNewDocument;
+							msg.attachSchema("Preinscripcion", solicitud);
+						}
+						catch(java.lang.Exception ex) {
+							getTask().addLog("exception", ex.getMessage());
+						}
+					}
+				}
+				response Procesada {
+					code = "PrematCorrecta";
+					import(ProviderResponse msg) {
+						var mess = msg.getString("Preinscripcion");
+						var post = Post:: createRequest();
+						post.setTitle("Aviso de Preinscripción");
+						// post.setTitleLink(tarea.toMonetLink());
+						post.setBody(mess);
+						//post.setBodyLink(tarea.toMonetLink());
+						NewsService:: postAndNotifyToAll(post);
+						this.getTask().doUnlock(Lock::EsperandoRespuesta_ExitRespuesta);
+					}
+				}
+			}
+		}
+
+	}
+}
+  
+  
+  

@@ -1,0 +1,9 @@
+package direc.shared {
+
+	["mmurmea"]
+	definition AcademicYears is glossary {
+		label = "Años Académicos";
+		ontology = "AñosAcademicosAdmin";
+
+	}
+}

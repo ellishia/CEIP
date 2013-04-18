@@ -1,0 +1,95 @@
+package direc {
+
+	["mv6fg6g"]
+	definition Schedule is collection {
+		label = "Horario";
+		is-component;
+		index = ref Indice;
+		add {
+			node = ref ScheduleSlot;
+		}
+
+		["mfvxu5w"]
+		definition Indice is index {
+			label = "Horario";
+			reference {
+
+				["imci9utq"]
+				attribute Slot {
+					label = "Casilla";
+					type = TERM;
+				}
+
+				["makme0a"]
+				attribute Teacher {
+					label = "Docente";
+					type = LINK;
+				}
+			}
+
+			["i"]
+			view Normal {
+				show {
+					line = ref Slot;
+					line = ref Teacher;
+				}
+			}
+
+		}
+
+		["pppp"]
+		view View {
+			label = "Todos";
+			show {
+				index {
+					sort-by = ref Indice.Slot;
+					with-view = ref Indice.Normal;
+				}
+			}
+			analyze {
+				dimension {
+					attribute = ref Indice.Slot;
+				}
+				sorting {
+					attribute = ref Indice.Slot;
+					attribute = ref Indice.Teacher;
+				}
+			}
+		}
+
+		["m4cam2w"]
+		definition ScheduleSlot is form {
+			label = "Casilla de Horario";
+
+			["mgbvgjg"]
+			field-link Slot {
+				label = "Slot";
+				source {
+					index = ref direc.Slots.Indice;
+				}
+			}
+
+			["mms5fba"]
+			field-link Teacher {
+				label = "Asignación de Docente";
+				source {
+					index = ref direc.TeacherAsignations.Indice;
+				}
+			}
+			mapping {
+				index = ref Indice;
+			}
+
+			["mch8_1w"]
+			view {
+				label = "Ficha";
+				show {
+					field = ref Slot;
+					field = ref Teacher;
+				}
+			}
+
+		}
+
+	}
+}

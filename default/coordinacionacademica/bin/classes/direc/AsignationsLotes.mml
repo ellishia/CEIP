@@ -1,0 +1,53 @@
+package direc {
+
+	["mt7wjka"]
+	definition AsignationsLotes is collection {
+		label = "Asignaciones de Lotes";
+		index = ref Asignations.Indice;
+		add {
+			node = ref AsignationLote;
+		}
+
+		["mleze1a"]
+		view {
+			label = "Todos";
+			show {
+				index {
+					sort-by = ref Asignations.Indice.AcademicYear;
+					with-view = ref Asignations.Indice.Normal;
+				}
+			}
+			analyze {
+				dimension {
+					attribute = ref Asignations.Indice.AcademicYear;
+				}
+				sorting {
+					attribute = ref Asignations.Indice.AcademicYear;
+				}
+			}
+		}
+
+		["mumocda"]
+		definition AsignationLote is form extends Asignations.AsignationDefault {
+			label = "Asignación de Lote";
+
+			["m8pawmw"]
+			field-link Lote {
+				label = "Lote";
+				source {
+					index = ref direc.Lotes.Index;
+				}
+			}
+
+			["m41_o5q"]
+			view AsignView {
+				label = "Lote sin número";
+				show {
+					field = ref Lote;
+				}
+			}
+
+		}
+
+	}
+}

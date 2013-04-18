@@ -1,0 +1,107 @@
+package serv {
+
+	["majfevw"]
+	definition SpecialMenus is collection {
+		label = "Registro Diario";
+		index = ref Indice;
+		add {
+			node = ref SpecialMenu;
+		}
+
+		["imbeh6vw"]
+		definition Indice is index {
+			label = "Indice";
+			reference {
+
+				["imkufqig"]
+				attribute Suitable {
+					label = "Apto para";
+					type = STRING;
+				}
+
+				["m9bkhmq"]
+				attribute Identifier {
+					label = "Id";
+					type = STRING;
+				}
+			}
+
+			["i"]
+			view Normal {
+				show {
+					title = ref Identifier;
+					line = ref Suitable;
+				}
+			}
+
+		}
+
+		["ms3tapg"]
+		definition SpecialMenu is form {
+			label = "Menu";
+
+			["mzhdtbq"]
+			field-text FirstCourse {
+				label = "PrimerPlato";
+			}
+
+			["me14qpa"]
+			field-text MainCourse {
+				label = "SegundoPlato";
+			}
+
+			["m0f4c_q"]
+			field-text Dessert {
+				label = "Postre";
+			}
+
+			["msrvg_g"]
+			field-text Suitable {
+				label = "Apto para";
+			}
+
+			["momvyua"]
+			field-serial Identifier {
+				label = "Id";
+				serial SerialName {
+					format = "#S:4#";
+				}
+			}
+			mapping {
+				index = ref Indice;
+			}
+
+			["teaas"]
+			view {
+				label = "Ficha";
+				show {
+					field = ref FirstCourse;
+					field = ref MainCourse;
+					field = ref Dessert;
+					field = ref Suitable;
+				}
+			}
+
+		}
+
+		["mrcnlva"]
+		view {
+			label = "Todos";
+			show {
+				index {
+					sort-by = ref Indice.Suitable;
+					with-view = ref Indice.Normal;
+				}
+			}
+			analyze {
+				dimension {
+					attribute = ref Indice.Suitable;
+				}
+				sorting {
+					attribute = ref Indice.Suitable;
+				}
+			}
+		}
+
+	}
+}

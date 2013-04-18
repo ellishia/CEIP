@@ -1,0 +1,120 @@
+package grades {
+
+	["mphcdia"]
+	definition Students is collection {
+		label = "Alumnado";
+		is-singleton;
+		index = ref Index;
+		add {
+			node = ref Student;
+		}
+
+		["mlex9sw"]
+		view {
+			is-default;
+			label = "Todos";
+			show {
+				index {
+					sort-by = ref Index.Nombre;
+					with-view = ref Index.Item;
+				}
+			}
+		}
+
+		["imphcdia"]
+		definition Index is index {
+			label = "Alumnos/as";
+			reference {
+
+				["imphcdia"]
+				attribute Nombre {
+					label = "Nombre";
+					type = STRING;
+				}
+
+				["mxxcmpg"]
+				attribute Surname {
+					label = "Apellidos";
+					type = STRING;
+				}
+
+				["mtrp82w"]
+				attribute Cial {
+					label = "Cial";
+					type = STRING;
+				}
+			}
+
+			["mtv3aaw"]
+			view Item {
+				show {
+					line = ref Nombre;
+					line = ref Surname;
+					line = ref Cial;
+				}
+			}
+
+		}
+
+		["mtu9biq"]
+		definition Student is form {
+			label = "Alumno/a";
+			mapping {
+				index = ref Students.Index;
+			}
+
+			["mqjsehw"]
+			field-text Nombre {
+				label = "Nombre";
+			}
+
+			["m_ixcva"]
+			field-text Surname {
+				label = "Apellidos";
+			}
+
+			["mygtntq"]
+			field-select Level {
+				label = "Curso";
+			}
+
+			["mfngi0w"]
+			field-text Gender {
+				label = "Sexo";
+			}
+
+			["mvaa1yq"]
+			field-date Date_of_Birth {
+				label = "Fecha de nacimiento";
+			}
+
+			["m1lxdka"]
+			field-text Neigbourhood {
+				label = "Localidad/Barrio";
+			}
+
+			["m_sfxfa"]
+			field-text City {
+				label = "Municipio";
+			}
+
+			["mrlbffg"]
+			field-select ParentAcademicLevel {
+				label = "Nivel académico de padre";
+				use {
+					source = ref grades.shared.Levels;
+				}
+			}
+
+			["mu3svpg"]
+			field-select MotherAcademicLevel {
+				label = "Nivel académico de madre";
+				use {
+					source = ref grades.shared.Levels;
+				}
+			}
+
+		}
+
+	}
+}

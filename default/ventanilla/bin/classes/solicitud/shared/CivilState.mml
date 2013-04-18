@@ -1,0 +1,8 @@
+package solicitud.shared {
+
+	["myt4eiw"]
+	definition CivilState is glossary {
+		label = "Civil State";
+		ontology = "EstadoCivilDeAdministracion";
+	}
+}

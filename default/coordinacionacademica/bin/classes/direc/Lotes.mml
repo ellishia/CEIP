@@ -1,0 +1,141 @@
+package direc {
+
+	["muol0_w"]
+	definition Lotes is collection {
+		label = "Lotes";
+		is-singleton;
+		index = ref Index;
+		add {
+			node = ref Lote;
+		}
+
+		["mnzsekq"]
+		definition Index is index {
+			label = "Lotes";
+			reference {
+
+				["imdhfuzq"]
+				attribute Identifier {
+					label = "Identificador";
+					type = STRING;
+				}
+
+				["mpvpteq"]
+				attribute AcademicYear {
+					label = "Año Académico";
+					type = TERM;
+				}
+
+				["mju9q8q"]
+				attribute Level {
+					label = "Nivel";
+					type = TERM;
+				}
+			}
+
+			["msbrxha"]
+			view LoteView {
+				show {
+					title = ref Identifier;
+					line = ref AcademicYear;
+					line = ref Level;
+				}
+			}
+
+		}
+
+		["mt8xdcq"]
+		view View {
+			label = "Lotes";
+			show {
+				index {
+					sort-by = ref Index.Identifier;
+					with-view = ref Index.LoteView;
+				}
+			}
+			analyze {
+				dimension {
+					attribute = ref Index.Identifier;
+				}
+				sorting {
+					attribute = ref Index.Identifier;
+					attribute = ref Index.AcademicYear;
+					attribute = ref Index.Level;
+				}
+			}
+		}
+
+		["mrfnkdw"]
+		definition Lote is form {
+			label = "Lote";
+
+			mapping {
+				index = ref direc.Lotes.Index;
+			}
+
+			["mwb4prq"]
+			field-serial Identifier {
+				label = "Id";
+				serial SerialName {
+					format = "Lote-%4S/%2Y";
+				}
+			}
+
+			["moesara"]
+			field-select AcademicYear {
+				label = "Año Académico";
+				use {
+					source = ref direc.shared.AcademicYears;
+				}
+			}
+
+			["manedcw"]
+			field-select Level {
+				label = "Nivel";
+				use {
+					source = ref direc.shared.Levels;
+				}
+			}
+
+			["mpr5ogg"]
+			field-link Books {
+				label = "Libros";
+				is-multiple;
+				allow-add;
+				source {
+					index = ref direc.Ejemplares.Indice;
+					collection = ref direc.Ejemplares;
+				}
+			}
+			properties {
+				calculate() {
+					var valor = getNode().identifier + " ";
+					if(getNode().academicYear != null) {
+						valor = valor + getNode().academicYear.getLabel();
+					}
+					getNode().setLabel(valor);
+				}
+			}
+
+			["mwzxzuw"]
+			view Vista {
+				label = "Ficha";
+				show {
+					field = ref Identifier;
+					field = ref AcademicYear;
+					field = ref Level;
+				}
+			}
+
+			["mxbwg7q"]
+			view ViewBooks {
+				label = "Libros del Lote";
+				show {
+					field = ref Books;
+				}
+			}
+
+		}
+
+	}
+}

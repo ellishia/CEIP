@@ -1,0 +1,7 @@
+package doc.shared {
+
+	["mfehsta"]
+	definition Docente is role {
+		label = "Docente";
+	}
+}

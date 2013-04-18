@@ -1,0 +1,89 @@
+package direc {
+
+	["mbdn_ew"]
+	definition TeacherAsignations is collection {
+		label = "Asignaciones de Slots";
+		index = ref Indice;
+		add {
+			node = ref TeacherAsignation;
+		}
+
+		["imz72kgw"]
+		definition Indice is index {
+			label = "Indice";
+			reference {
+
+				["im69logq"]
+				attribute Teacher {
+					label = "Docente";
+					type = TERM;
+				}
+			}
+
+			["i"]
+			view Normal {
+				show {
+					title = ref Teacher;
+				}
+			}
+
+		}
+
+		["aaa"]
+		view {
+			label = "Todos";
+			show {
+				index {
+					sort-by = ref Indice.Teacher;
+					with-view = ref Indice.Normal;
+				}
+			}
+			analyze {
+				dimension {
+					attribute = ref Indice.Teacher;
+				}
+				sorting {
+					attribute = ref Indice.Teacher;
+				}
+			}
+		}
+
+		["m8jehqa"]
+		definition TeacherAsignation is form {
+			label = "Asignación Horaria";
+
+			["mz4m8ka"]
+			field-date From {
+				label = "Desde";
+			}
+
+			["mhzbcfg"]
+			field-date To {
+				label = "Hasta";
+			}
+
+			["mmf1h9w"]
+			field-link Teacher {
+				label = "Docente";
+				source {
+					index = ref Teachers.Indice;
+				}
+			}
+			mapping {
+				index = ref Indice;
+			}
+
+			["mc24t5q"]
+			view {
+				label = "Ficha";
+				show {
+					field = ref From;
+					field = ref To;
+					field = ref Teacher;
+				}
+			}
+
+		}
+
+	}
+}

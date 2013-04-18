@@ -1,0 +1,101 @@
+package serv {
+
+	["mkbvrmw"]
+	definition Stops is collection {
+		label = "Paradas";
+		index = ref Indice;
+		add {
+			node = ref Stop;
+		}
+
+		["imbeh6vw"]
+		definition Indice is index {
+			label = "Indice";
+			reference {
+
+				["imkufqig"]
+				attribute Name {
+					label = "Nombre";
+					type = STRING;
+				}
+
+				["m_ewveq"]
+				attribute Identifier {
+					label = "Identificador";
+					type = STRING;
+				}
+			}
+
+			["i"]
+			view Normal {
+				show {
+					title = ref Name;
+				}
+			}
+
+		}
+
+		["ms3tapg"]
+		abstract definition Stop is form {
+			label = "Parada";
+
+			["mqqvl8a"]
+			field-serial Id {
+				label = "Identificador";
+				serial Serial {
+					format = "P-#S:2#";
+				}
+			}
+
+			["miwsa4g"]
+			field-text Name {
+				label = "Nombre";
+			}
+
+			["mwku9iw"]
+			field-text Address {
+				label = "Dirección";
+			}
+
+			["m63lsgw"]
+			field-text Km {
+				label = "Km al centro";
+			}
+			mapping {
+				index = ref Indice;
+			}
+
+			["teaas"]
+			view {
+				label = "Ficha";
+				show {
+					field = ref Name;
+					field = ref Address;
+					field = ref Km;
+				}
+			}
+
+		}
+
+		["m5y7afg"]
+		view {
+			label = "Todos";
+			show {
+				index {
+					sort-by = ref Indice.Name;
+					with-view = ref Indice.Normal;
+				}
+			}
+			analyze {
+				dimension {
+					attribute = ref Indice.Name;
+					attribute = ref Indice.Identifier;
+				}
+				sorting {
+					attribute = ref Indice.Name;
+				}
+			}
+		}
+
+	}
+}

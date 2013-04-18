@@ -1,0 +1,60 @@
+package grades {
+
+	["m7_jvra"]
+	definition EvaluationForm is form {
+		label = "EvaluationForm";
+
+		["mpr7qxw"]
+		field-select Group {
+			label = "Grupo";
+			use {
+				source = ref grades.shared.Grades;
+			}
+		}
+
+		["mbnmssg"]
+		field-select Tutor {
+			label = "Tutor";
+			use {
+				source = ref grades.shared.Teachers;
+			}
+		}
+
+		["mnzh_9g"]
+		field-date Date {
+			label = "Fecha";
+		}
+
+		["mbucsza"]
+		field-select AcademicYear {
+			label = "Año Académico";
+			use {
+				source = ref grades.shared.AcademicYears;
+			}
+		}
+
+		["mba48sg"]
+		field-select Trimester {
+			label = "Trimestre";
+			use {
+				source = ref grades.shared.Trimesters;
+			}
+		}
+		mapping {
+			index = ref grades.TrimestralEvaluations.Indice;
+		}
+
+		["fadfa"]
+		view View {
+			label = "Ficha";
+			show {
+				field = ref Group;
+				field = ref Tutor;
+				field = ref AcademicYear;
+				field = ref Date;
+				field = ref Trimester;
+			}
+		}
+
+	}
+}

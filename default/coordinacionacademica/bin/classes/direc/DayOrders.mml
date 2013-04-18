@@ -1,0 +1,80 @@
+package direc {
+
+	["maufq_g"]
+	definition DayOrders is collection {
+		label = "Ordenes del Día";
+		index = ref Indice;
+		add {
+			node = ref DayOrder;
+		}
+
+		["mjso_xg"]
+		definition Indice is index {
+			label = "Indice";
+			reference {
+
+				["imcb_1xq"]
+				attribute Title {
+					label = "Título";
+					type = STRING;
+				}
+			}
+
+			["m9147qa"]
+			view Normal {
+				show {
+					title = ref Title;
+				}
+			}
+
+		}
+
+		["mnagimw"]
+		view {
+			label = "Todos";
+			show {
+				index {
+					sort-by = ref Indice.Title;
+					with-view = ref Indice.Normal;
+				}
+			}
+			analyze {
+				dimension {
+					attribute = ref Indice.Title;
+				}
+				sorting {
+					attribute = ref Indice.Title;
+				}
+			}
+		}
+
+		["mai6tnq"]
+		definition DayOrder is form {
+			label = "Orden del día";
+
+			["mlgrdog"]
+			field-text Title {
+				label = "Título";
+			}
+
+			["m9e08xa"]
+			field-text Topics {
+				label = "Temas a tratar";
+			}
+			mapping {
+				index = ref Indice;
+			}
+
+			["modt_yg"]
+			view {
+				label = "Convocatoria";
+				show {
+					field = ref Title;
+					field = ref Topics;
+				}
+			}
+
+		}
+
+	}
+}

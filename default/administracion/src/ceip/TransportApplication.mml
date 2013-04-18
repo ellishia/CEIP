@@ -1,0 +1,45 @@
+package ceip {
+
+	["mqs6x8q"]
+	definition TransportApplication is form extends ceip.ServiceApplications.ServiceApplication {
+		label = "Solicitud de Transporte";
+
+		["mzmc57q"]
+		field-text Address {
+			label = "Dirección";
+		}
+
+		["m6osq2q"]
+		field-number Distance {
+			label = "Distancia al centro en Km.";
+		}
+
+		["mgy_5ha"]
+		field-text Trip {
+			label = "Ruta";
+		}
+
+		["mscxqtw"]
+		field-text Stop {
+			label = "Parada";
+		}
+
+		["mto56sw"]
+		field-text LeaveAt {
+			label = "Salida del centro";
+		}
+
+		["mcrttmq"]
+		view {
+			label = "Ficha";
+			show {
+				field = ref Address;
+				field =  ref Distance;
+				field = ref Trip;
+				field = ref Stop;
+				field = ref LeaveAt;
+			}
+		}
+
+	}
+}

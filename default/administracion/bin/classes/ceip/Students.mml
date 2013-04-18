@@ -1,0 +1,72 @@
+package ceip {
+
+	["mphcdia"]
+	definition Students is collection {
+		label = "Alumnado";
+		is-singleton;
+
+		index = ref Index;
+
+		add {
+			node = ref Student;
+		}
+
+		["morgpxw"]
+		operation OperacionTramitar {
+			label = "Publicar listado de alumnos/as";
+			execute() {
+				var listado = ceip::procesos::StudentTransfer:: createNew();
+				listado.resume;
+				ClientService:: redirectUserTo(MonetLink:: forTask(listado.id));
+			}
+		}
+
+		["mnisrwg"]
+		view {
+			is-default;
+			label = "Todos";
+			show {
+				index {
+					sort-by = ref Index.Name;
+					with-view = ref Index.Item;
+				}
+			}
+		}
+
+		["m8vwv4a"]
+		definition Index is index {
+			label = "Alumnos/as";
+			reference {
+
+				["mimpvgw"]
+				attribute Name {
+					label = "Nombre";
+					type = STRING;
+				}
+
+				["mxxcmpg"]
+				attribute Surname {
+					label = "Apellidos";
+					type = STRING;
+				}
+
+				["mtrp82w"]
+				attribute Cial {
+					label = "Cial";
+					type = STRING;
+				}
+			}
+
+			["mtv3aaw"]
+			view Item {
+				show {
+					line = ref Name;
+					line = ref Surname;
+					line = ref Cial;
+				}
+			}
+
+		}
+
+	}
+}

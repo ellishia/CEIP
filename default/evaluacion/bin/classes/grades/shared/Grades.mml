@@ -1,0 +1,8 @@
+package grades.shared {
+
+	["mnir6wa"]
+	definition Grades is glossary {
+		label = "Grupos";
+		ontology = "GruposDeCoordinacion";
+	}
+}

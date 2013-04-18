@@ -1,0 +1,9 @@
+manifest evaluacion {
+	title = "evaluacion";
+	subtitle = "evaluacion";
+
+	version = "1.0.0";
+	type = FRONT;
+	author = "eowens";
+
+}

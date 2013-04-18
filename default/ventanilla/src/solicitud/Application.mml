@@ -1,0 +1,103 @@
+package solicitud {
+
+	["md_rleg"]
+	definition Application is container {
+		label = "Solicitud";
+		contain {
+			node = ref ApplicationInfo;
+			node = ref MedicalIssues;
+			node = ref Relatives;
+		}
+
+		["m5xbohw"]
+		view {
+			label = "Solicitud";
+			is-default;
+			show {
+				component = ref ApplicationInfo.View;
+			}
+		}
+
+		["mohlgtw"]
+		view {
+			label = "Domicilio";
+			show {
+				component = ref ApplicationInfo.HomeAdd;
+			}
+		}
+
+		["mpan5ga"]
+		view {
+			label = "Padres o Tutores";
+			show {
+				component = ref Relatives.Vista2;
+			}
+		}
+
+		["mnano_g"]
+		view {
+			label = "Centros y Baremos Adicionales";
+			show {
+				component = ref ApplicationInfo.Criteria;
+			}
+		}
+
+		["ms_eg2q"]
+		view MedicalAspects {
+			label = "Aspectos médicos";
+			show {
+				component = ref MedicalIssues.MedicalView;
+			}
+		}
+
+		["mg6acbg"]
+		rule:view {
+			add-flag = HIDDEN;
+			when = {
+				var Application application = this as Application;
+				! application.applicationInfo.matriculable.booleanValue;
+			}
+			to {
+				view = ref MedicalAspects;
+				view = ref RelativesView;
+			}
+		}
+
+		["ma25txg"]
+		operation Formalizar {
+			label = "Formalizar Matricula";
+			execute() {
+				var preinscripcion = solicitud::procesos::PublicarPlaza:: createNew();
+				var Application contenedor = this;
+				preinscripcion.setTarget(contenedor as Application);
+				preinscripcion.save();
+				preinscripcion.resume();
+				ClientService:: redirectUserTo(MonetLink:: forTask(preinscripcion.id));
+			}
+		}
+
+		["mypr_bq"]
+		rule:operation {
+			add-flag = HIDDEN;
+			when = {
+				var fecha = new Date();
+				var periodo = RegistrationPeriod:: instance;
+				var application = this as Application;
+				! application.applicationInfo.matriculable.booleanValue; //||(application.applicationInfo.matriculable.booleanValue && fecha.before(periodo.initialDate));
+				//fecha.before(periodo.initialDate);
+			}
+			to {
+				operation = ref Formalizar;
+			}
+		}
+
+		["mz4gh_q"]
+		view RelativesView {
+			label = "Familiares";
+			show {
+				component = ref Relatives.RelativesView;
+			}
+		}
+
+	}
+}

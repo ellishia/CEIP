@@ -1,0 +1,46 @@
+package solicitud.shared {
+
+	["mxumwbq"]
+	definition Subjects is thesaurus {
+		label = "Asignaturas";
+		ontology = "f0c013b4-4074-48a4-86b4-2992619c1da4";
+		terms {
+			term {
+				label = "Lengua y Lituratura";
+				key = "001";
+			}
+			term {
+				label = "Matemáticas";
+				key = "002";
+			}
+			term {
+				label = "Inglés";
+				key = "003";
+			}
+			term {
+				label = "Conocimiento del Medio";
+				key = "004";
+			}
+			term {
+				label = "Educación Física";
+				key = "005";
+			}
+			term {
+				label = "Plástica";
+				key = "006";
+			}
+			term {
+				label = "Música";
+				key = "007";
+			}
+			term {
+				label = "Religión";
+				key = "008";
+			}
+			term {
+				label = "Alternativa";
+				key = "009";
+			}
+		}
+	}
+}

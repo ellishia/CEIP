@@ -1,0 +1,22 @@
+package ceip.shared {
+
+	["moxxl_g"]
+	definition PhoneType is thesaurus {
+		label = "Phone Type";
+		ontology = "TipoTelefono";
+		terms {
+			term {
+				label = "Domicilio";
+				key = "001";
+			}
+			term {
+				label = "Trabajo";
+				key = "002";
+			}
+			term {
+				label = "Movil";
+				key = "003";
+			}
+		}
+	}
+}

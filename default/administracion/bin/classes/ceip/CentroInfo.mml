@@ -1,0 +1,41 @@
+package ceip {
+
+	["mn6oplg"]
+	definition CentroInfo is container {
+		label = "Características del Centro";
+		is-singleton;
+
+		contain {
+			node = ref AvailablePositions;
+			node = ref TotalPositions;
+			node = ref CenterInformation;
+		}
+
+		
+		["m72latq"]
+		view {
+			label = "Información del Centro";
+			is-default;
+			show { 
+				component = ref ceip.CenterInformation.View;
+			}
+		}
+		["m549x3q"]
+		view {
+			label = "Plazas disponibles";
+			
+			show {
+				component = ref ceip.AvailablePositions.Vista;
+			}
+		}
+		["mg_c7wq"]
+		view {
+			label = "Plazas totales";
+			show { 
+				component = ref ceip.TotalPositions.View;
+			}
+		}
+		
+
+	}
+}

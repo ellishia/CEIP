@@ -1,0 +1,133 @@
+package direc {
+
+	["mwhvm0q"]
+	definition Minutes is collection {
+		label = "Actas";
+		index = ref Indice;
+		add {
+			node = ref Acta;
+		}
+
+		["mdfitea"]
+		definition Indice is index {
+			label = "Sesiones de Evaluación";
+			reference {
+
+				["mxnwh6g"]
+				attribute Title {
+					label = "Título";
+					type = STRING;
+				}
+			}
+
+			["mozwd2a"]
+			view Normal {
+				show {
+					title = ref Title;
+				}
+			}
+
+		}
+
+		["mddlfka"]
+		view {
+			label = "Todos";
+			show {
+				index {
+					sort-by = ref Indice.Title;
+					with-view = ref Indice.Normal;
+				}
+			}
+			analyze {
+				dimension {
+					attribute = ref Indice.Title;
+				}
+				sorting {
+					attribute = ref Indice.Title;
+				}
+			}
+		}
+
+		["mkxzkhq"]
+		definition Acta is form {
+			label = "Acta";
+
+			["mle9ivw"]
+			field-text Title {
+				label = "Título";
+			}
+
+			["mcsmaug"]
+			field-date Date {
+				label = "Fecha";
+			}
+
+			["mfc_jsg"]
+			field-link Room {
+				label = "Aula";
+				source {
+					index = ref direc.Rooms.Indice;
+				}
+			}
+
+			["m_juidq"]
+			field-link Teachers {
+				label = "Docentes";
+				is-multiple;
+				source {
+					index = ref direc.Teachers.Indice;
+				}
+			}
+
+			["mjfaacq"]
+			field-text Description {
+				label = "Description";
+			}
+
+			["mzr6lnw"]
+			field-text Author {
+				label = "Autor";
+			}
+
+			["mvim_vq"]
+			field-node MinuteDoc {
+				label = "Documento de Acta";
+				contain {
+					node = ref direc.MinuteDoc;
+				}
+			}
+			mapping {
+				index = ref Indice;
+			}
+
+			["mfh1znw"]
+			operation CreateMinute {
+				label = "crear acta de reunión";
+				execute() {
+					direc::minutedoc::Exportador:: doExportOf(this).toDocument(this.minuteDocField.getNode());
+				}
+			}
+
+			["mgrca1q"]
+			view {
+				label = "Ficha de Acta";
+				show {
+					field = ref Title;
+					field = ref Date;
+					field = ref Room;
+				}
+			}
+
+			["moluugw"]
+			view MinuteView {
+				show {
+					attachments {
+						field:node = ref MinuteDoc;
+					}
+				}
+			}
+
+		}
+
+	}
+}

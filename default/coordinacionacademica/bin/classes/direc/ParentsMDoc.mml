@@ -1,0 +1,47 @@
+import direc.teachers.Teacher
+
+package direc {
+
+	["ms9cs4q"]
+	definition ParentsMDoc is document extends DocumentoCentro {
+		label = "Convocatoria de Reunión de Padres";
+		template = template ParentsMDoc;
+		schema {
+			DateMeeting Date;
+			Hour String;
+			Room String;
+			TitleMeet String;
+			Group String;
+			many docente {
+				Docente String;
+				Subject String;
+			}
+			Description String;
+			Observations String;
+		}
+
+		["msyyama"]
+		definition Exportador is exporter {
+			label = "Exportador de Documento";
+			target = ref ParentsMDoc;
+
+			onExportItem(direc.parentsmdoc.Schema i) {
+				var parentmet = this.getScope() as direc.parentsmeetings.ParentsMeeting;
+				i.titleMeet = parentmet.getTitle();
+				i.dateMeeting = parentmet.date;
+				i.group = parentmet.group.getLabel();
+				i.room = parentmet.room.getLabel();
+				for(item : parentmet.teachersField.allFields) {
+					var teacher = item.getNode() as Teacher;
+					var docente = new direc.parentsmdoc.^schema.Docente();
+					docente.docente = teacher.getName() + " " + teacher.surname;
+					docente.subject = teacher.specialty;
+					i.docente.^add(docente);
+				}
+			}
+
+		}
+
+	}
+}
+  

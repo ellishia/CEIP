@@ -1,0 +1,23 @@
+package direc {
+
+	["m91_yua"]
+	definition AnualSchedule is container {
+		label = "Horario";
+		contain {
+			node = ref Schedule;
+			node = ref ScheduleYear;
+		}
+
+		["m9esc_w"]
+		view {
+			label = "Horario de Curso Académico";
+			show {
+				component = ref Schedule.View;
+				component = ref ScheduleYear.View;
+			}
+		}
+
+	}
+
+
+}

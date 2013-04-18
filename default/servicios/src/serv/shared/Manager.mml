@@ -1,0 +1,7 @@
+package serv.shared {
+
+	["m65cisa"]
+	definition Manager is role {
+		label = "Manager";
+	}
+}

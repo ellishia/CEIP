@@ -1,0 +1,9 @@
+manifest servicios {
+	title = "servicios";
+	subtitle = "servicios";
+
+	version = "1.0.0";
+	type = BACK;
+	author = "eowens";
+
+}

@@ -1,0 +1,111 @@
+package direc {
+
+	["m0csl4q"]
+	definition Rooms is collection {
+		label = "Aulas";
+		index = ref Indice;
+		is-singleton;
+		add {
+			node = ref Room;
+		}
+
+		["imyfcogg"]
+		definition Indice is index {
+			label = "Aulas";
+			reference {
+
+				["imvd8exq"]
+				attribute Nombre {
+					label = "Nombre";
+					type = STRING;
+				}
+
+				["mhcwfyq"]
+				attribute Capacity {
+					label = "Capacidad";
+					type = INTEGER;
+				}
+
+				["mtc7pwq"]
+				attribute Placement {
+					label = "Ubicación";
+					type = STRING;
+				}
+			}
+
+			["i"]
+			view Normal {
+				show {
+					title = ref Nombre;
+					line = ref Capacity;
+					line = ref Placement;
+				}
+			}
+
+		}
+
+		["m3nktiq"]
+		view {
+			label = "Todos";
+			show {
+				index {
+					sort-by = ref Indice.Nombre;
+					with-view = ref Indice.Normal;
+				}
+			}
+			analyze {
+				dimension {
+					attribute = ref Indice.Nombre;
+				}
+				sorting {
+					attribute = ref Indice.Nombre;
+				}
+			}
+		}
+
+		["m9ybxmq"]
+		definition Room is form {
+			label = "Aula o estancia";
+
+			["mt3whja"]
+			field-text Nombre {
+				label = "Nombre";
+			}
+
+			["msfs1bg"]
+			field-text Placement {
+				label = "Ubicación";
+			}
+
+			["mcjdbdg"]
+			field-number Capacity {
+				label = "Capacidad";
+			}
+			mapping {
+				index = ref Indice;
+			}
+			properties {  
+				calculate() {
+					if (getNode().nombre != null){
+						getNode().setLabel(getNode().nombre);
+					}
+					else {
+						getNode().setLabel("Aula sin nombre");
+					}
+				}
+			}
+
+			["m62v6dq"]
+			view {
+				label = "Ficha";
+				show {
+					field = ref Nombre;
+					field = ref Capacity;
+					field = ref Placement;
+				}
+			}
+
+		}
+
+	}
+}

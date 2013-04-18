@@ -1,0 +1,21 @@
+setup evaluacion extends evaluacion {
+title = "Gestión de Evaluación";
+	subtitle = "Gestión de Evaluación";
+	
+	deploy-uri = "http://10.230.140.157:8090/evaluacion";
+	federation {  
+		socket-uri = "socket://localhost:5346/";
+		secret = "1234";
+	}
+
+	create-user-role {
+		username = "Tutor";
+		role = ref grades.shared.Tutors;
+	}
+	
+	create-user-role {
+		username = "Docente";
+		role = ref grades.shared.Teacher;
+	}
+
+}

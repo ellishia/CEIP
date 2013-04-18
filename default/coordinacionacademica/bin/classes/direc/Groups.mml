@@ -1,0 +1,150 @@
+package direc {
+
+	["m9mbhzg"]
+	definition Groups is collection {
+		label = "Grupos";
+		is-singleton;
+		index = ref Indice;
+		add {
+			node = ref Group;
+		}
+
+		["im86137q"]
+		definition Indice is index {
+			label = "Indice";
+			reference {
+
+				["im9nub3a"]
+				attribute Name {
+					label = "Nombre";
+					type = STRING;
+				}
+
+				["meodvlg"]
+				attribute Identifier {
+					label = "Id";
+					type = STRING;
+				}
+
+				["mxnbm_a"]
+				attribute AcademicYear {
+					label = "Año Académico";
+					type = TERM;
+				}
+			}
+
+			["i"]
+			view Normal {
+				show {
+					title = ref Name;
+				}
+			}
+
+		}
+
+		["lala"]
+		view View {
+			label = "Todos";
+			show {
+				index {
+					sort-by = ref Indice.Name;
+					with-view = ref Indice.Normal;
+				}
+			}
+			analyze {
+				dimension {
+					attribute = ref Indice.Name;
+				}
+				sorting {
+					attribute = ref Indice.Name;
+					attribute = ref Indice.AcademicYear;
+				}
+			}
+		}
+
+		["mpqipva"]
+		definition Group is form {
+			label = "Grupo";
+
+			["m_qcekq"]
+			field-text Name {
+				label = "Nombre";
+			}
+
+			["mkb6jmg"]
+			field-select EducationalLevel {
+				label = "Nivel Educativo";
+				use {
+					source = ref direc.shared.Levels;
+				}
+			}
+
+			["mjd5r8a"]
+			field-select AcademicYear {
+				label = "Año Académico";
+				use {
+					source = ref direc.shared.AcademicYears;
+				}
+			}
+
+			["myockva"]
+			field-link Students {
+				label = "Alumno/as";
+				is-multiple;
+				source {
+					index = ref direc.Students.Index;
+					filter {
+						attribute = ref direc.Students.Index.Level;
+						value = ref EducationalLevel;
+					}
+				}
+			}
+
+			["my2hhbg"]
+			field-serial Identifier {
+				label = "Id";
+				serial SerialName {
+					format = "%2S/%4Y";
+				}
+			}
+			mapping {
+				index = ref Indice;
+			}
+			properties {
+				calculate() {
+					var nombreCompleto = getNode().getName();
+					if(getNode().academicYear != null) {
+						nombreCompleto = nombreCompleto + " " + getNode().academicYear.getLabel();
+					}
+					getNode().setLabel(nombreCompleto);
+				}
+			}
+
+			["pi"]
+			view {
+				label = "Ficha";
+				is-default;
+				show {
+					field = ref Name;
+					field = ref EducationalLevel;
+					field = ref AcademicYear;
+					field = ref Students;
+				}
+			}
+
+			["m373rfg"]
+			view View {
+				is-widget;
+				show {
+					field = ref Name;
+					field = ref EducationalLevel;
+					field = ref AcademicYear;
+					field = ref Students;
+					field = ref Identifier;
+				}
+			}
+
+		}
+
+	}
+}

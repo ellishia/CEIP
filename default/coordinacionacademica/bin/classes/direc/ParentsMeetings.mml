@@ -1,0 +1,169 @@
+package direc {
+
+	["mjceiga"]
+	definition ParentsMeetings is collection {
+		label = "Reuniones de Padres";
+		index = ref Indice;
+		add {
+			node = ref ParentsMeeting;
+		}
+
+		["imrtwigw"]
+		definition Indice is index {
+			label = "Indice";
+			reference {
+
+				["imcb_1xq"]
+				attribute Title {
+					label = "Título";
+					type = STRING;
+				}
+
+				["mtq8ota"]
+				attribute Date {
+					label = "Fecha";
+					type = DATE;
+				}
+
+				["mb03o6a"]
+				attribute Group {
+					label = "Grupo";
+					type = TERM;
+				}
+
+				["mnrbmfg"]
+				attribute Teacher {
+					label = "Docente";
+					type = TERM;
+				}
+			}
+
+			["i"]
+			view Normal {
+				show {
+					title = ref Title;
+					line = ref Date;
+					line = ref Group;
+					line = ref Teacher;
+				}
+			}
+
+		}
+
+		["sss"]
+		view View {
+			label = "Todos";
+			show {
+				index {
+					sort-by = ref Indice.Title;
+					with-view = ref Indice.Normal;
+				}
+			}
+			analyze {
+				dimension {
+					attribute = ref Indice.Title;
+				}
+				sorting {
+					attribute = ref Indice.Title;
+					attribute = ref Indice.Date;
+					attribute = ref Indice.Group;
+					attribute = ref Indice.Teacher;
+				}
+			}
+		}
+
+		["mbpafyq"]
+		definition ParentsMeeting is form {
+			label = "Reunión de Padres";
+
+			["mosgdla"]
+			field-text Title {
+				label = "Título";
+			}
+
+			["m22njaw"]
+			field-date Date {
+				label = "Fecha";
+			}
+
+			["mj8l2ug"]
+			field-link Group {
+				label = "Grupo";
+				source {
+					index = ref direc.Groups.Indice;
+				}
+			}
+
+			["mlwjrjq"]
+			field-link Room {
+				label = "Aula";
+				source {
+					index = ref direc.Rooms.Indice;
+				}
+			}
+
+			["mn87_ua"]
+			field-link Teachers {
+				is-multiple;
+				label = "Docentes";
+				source {
+					index = ref direc.Teachers.Indice;
+				}
+			}
+
+			["mqhsz0g"]
+			field-text Description {
+				label = "Descripción";
+			}
+
+			["m__lvoa"]
+			field-text Observations {
+				label = "Observaciones";
+			}
+
+			["ms4mfxg"]
+			field-node ReunionDoc {
+				label = "Documento de Reunión";
+				contain {
+					node = ref direc.ParentsMDoc;
+				}
+			}
+			mapping {
+				index = ref Indice;
+			}
+
+			["m4ec3hg"]
+			operation OperationName {
+				label = "crear documento de reunión";
+				execute() {
+					direc::parentsmdoc::Exportador::doExportOf(this).toDocument(this.reunionDocField.getNode());
+				}
+			}
+
+			["m5ldg8g"]
+			view {
+				label = "Convocatoria";
+				show {
+					field = ref Title;
+					field = ref Date;
+					field = ref Group;
+					field = ref Room;
+					field = ref Teachers;
+					field = ref Description;
+					field = ref Observations;
+				}
+			}
+
+			["marntdg"]
+			view ReunionView {
+				show {
+					attachments {
+						field:node = ref ReunionDoc;
+					}
+				}
+			}
+
+		}
+
+	}
+}

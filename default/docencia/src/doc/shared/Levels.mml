@@ -1,0 +1,22 @@
+package doc.shared {
+
+	["mfngpdg"]
+	definition Levels is thesaurus {
+		label = "Levels";
+		ontology = "fc319857-63d4-4bfe-a778-a2fd09fac8ec";
+		terms {
+			term {
+				label = "Alto";
+				key = "001";
+			}
+			term {
+				label = "Medio";
+				key = "002";
+			}
+			term {
+				label = "Bajo";
+				key = "003";
+			}
+		}
+	}
+}

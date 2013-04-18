@@ -1,0 +1,9 @@
+package direc.shared {
+
+	["mzm5kjw"]
+	definition Subjects is glossary {
+		label = "Asignaturas";
+		ontology = "MateriasDeDocencia";
+
+	}
+}

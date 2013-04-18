@@ -1,0 +1,129 @@
+package ceip {
+
+	["m23vtdw"]
+	definition CenterInformation is form {
+		label = "Información del Centro";
+
+		["misj7ma"]
+		field-text CenterCode {
+			label = "Código del centro";
+		}
+
+		["m4t9gsq"]
+		field-text CenterName {
+			label = "Nombre del centro";
+		}
+
+		["mtwrdpw"]
+		field-section Contact {
+			label = "Contacto";
+
+			["mjar8hg"]
+			field-text Address {
+				label = "Dirección";
+			}
+
+			["md3_ecg"]
+			field-number ZIPCode {
+				label = "Código Postal";
+			}
+
+			["mkchv0w"]
+			field-text Town {
+				label = "Localidad";
+			}
+
+			["ma354tw"]
+			field-number Telephone {
+				is-multiple;
+				label = "Teléfono";
+			}
+
+			["mjghwzq"]
+			field-text Email {
+				label = "Email";
+			}
+
+			["mgc7ktq"]
+			field-text Web {
+				label = "Página web";
+			}
+		}
+
+		["msw_72a"]
+		field-text InfluenceAreas {
+			label = "Áreas de Influencia";
+		}
+
+		["msosdsa"]
+		field-text LimitingAreas {
+			label = "Áreas Limítrofes";
+		}
+
+		["mtzgfpa"]
+		field-text RelatedPreeschools {
+			is-multiple;
+			label = "Centros de Infantil adscritos";
+		}
+
+		["mf24nmq"]
+		field-text Specifics {
+			is-multiple;
+			label = "Especificidades";
+		}
+
+		["m_wiiag"]
+		field-text ComplementaryCriteria {
+			label = "Criterio complementario";
+		}
+
+		["mfig1_w"]
+		field-file RequiredDocs {
+			is-multiple;
+			label = "Docuemntos requiridos";
+		}
+
+		["mucf1zg"]
+		field-select AcademicYear {
+			label = "Año académico";
+			use {
+				source = ref ceip.shared.AcademicYears;
+			}
+		}
+
+		["mlfxc3q"]
+		view {
+			label = "Ficha de Centro";
+			show {
+				field = ref CenterCode;
+				field = ref CenterName;
+				field = ref Contact;
+				field = ref InfluenceAreas;
+				field = ref LimitingAreas;
+				field = ref RelatedPreeschools;
+				field = ref Specifics;
+				field = ref ComplementaryCriteria;
+				field = ref RequiredDocs;
+			}
+		}
+
+		["mgfrgdg"]
+		view View {
+			is-widget;
+			label = "Ficha de Centro";
+			show {
+				field = ref AcademicYear;
+				field = ref CenterCode;
+				field = ref CenterName;
+				field = ref Contact;
+				field = ref InfluenceAreas;
+				field = ref LimitingAreas;
+				field = ref RelatedPreeschools;
+				field = ref Specifics;
+				field = ref ComplementaryCriteria;
+				field = ref RequiredDocs;
+			}
+		}
+
+	}
+}

@@ -1,0 +1,19 @@
+package direc.shared {
+
+	["myyhbha"]
+	definition Teachers is thesaurus {
+		label = "Docentes";
+		ontology = "DocentesDeCoordinacion";
+		is-self-generated;
+
+		self-generated {
+			index = ref direc.Teachers.Indice;
+			mapping {
+				parent = ref direc.Teachers.Indice.Identifier;
+				label = ref direc.Teachers.Indice.Surname;
+				key = ref direc.Teachers.Indice.Identifier;
+			}
+		}
+
+	}
+}

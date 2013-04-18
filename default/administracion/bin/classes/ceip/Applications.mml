@@ -1,0 +1,272 @@
+package ceip {
+
+	["mzjznhq"]
+	definition Applications is collection {
+		label = "Solicitudes";
+		is-singleton;
+		index = ref Indice;
+
+		add {
+			node = ref Application;
+		}
+
+		["m4xjxow"]
+		operation NuevosAlumnos {
+			label = "Publicar listado de admitidos/as";
+			execute() {
+				var listado = ceip::procesos::StudentNewlyAdmited:: createNew();
+				listado.resume;
+				ClientService:: redirectUserTo(MonetLink:: forTask(listado.id));
+			}
+		}
+
+		["mtoc7dg"]
+		view {
+			label = "Todos";
+			show {
+				index {
+					sort-by = ref Indice.Identifier;
+					with-view = ref Indice.Normal;
+				}
+			}
+			analyze {
+				dimension {
+					attribute = ref Indice.Identifier;
+					attribute = ref Indice.StudentSurname;
+				}
+				sorting {
+					attribute = ref Indice.Identifier;
+					attribute = ref Indice.StudentSurname;
+					attribute = ref Indice.Level;
+				}
+			}
+		}
+
+		["msbsuvw"]
+		definition Indice is index {
+			label = "Solicitudes";
+			reference {
+
+				["imzjznhq"]
+				attribute Identifier {
+					label = "Identificador";
+					type = STRING;
+				}
+
+				["mmqilaa"]
+				attribute StudentName {
+					label = "Nombre";
+					type = STRING;
+				}
+
+				["m7njy2q"]
+				attribute StudentSurname {
+					label = "Apellidos";
+					type = STRING;
+				}
+
+				["mh7c5cq"]
+				attribute Level {
+					label = "Nivel Académico";
+					type = TERM;
+				}
+			}
+
+			["imtoc7dg"]
+			view Normal {
+				show {
+					title = ref Identifier;
+					line = ref StudentName;
+					line = ref StudentSurname;
+				}
+			}
+
+		}
+
+		//------------------------ Pendiente de leer el BOC
+		["mug0jug"]
+		definition Application is form {
+			label = "Solicitud";
+
+			["mmxps8a"]
+			field-text Identifier {
+				label = "Código de Solicitud";
+				is-readonly;
+			}
+
+			["mzcn8kg"]
+			field-text Cial {
+				label = "CIAL";
+				is-readonly;
+			}
+
+			["m_6vacw"]
+			field-text StudentName {
+				label = "Nombre de Alumno";
+			}
+
+			["mujyvta"]
+			field-text StudentSurname {
+				label = "Apellidos de Alumno";
+			}
+
+			["muijfjg"]
+			field-date BirthDate {
+				label = "Fecha de Nacimiento";
+				precision = DAYS;
+			}
+
+			["m5mro6w"]
+			field-text Nationality {
+				label = "Nacionalidad";
+			}
+
+			["mmtuwag"]
+			field-select Level {
+				label = "Curso";
+				use {
+					source = ref ceip.shared.Levels;
+				}
+			}
+
+			["m23kg4q"]
+			field-select Gender {
+				label = "Sexo";
+				use {
+					source = ref ceip.shared.Gender;
+				}
+			}
+
+			["m2ypi9w"]
+			field-select AcademicYear {
+				label = "Año Académico";
+				use {
+					source = ref ceip.shared.AcademicYears;
+				}
+			}
+
+			["maaymtw"]
+			field-text Siblings {
+				label = "Hermanos/as en el centro";
+			}
+
+			["mkmd1ow"]
+			field-text ParentsInCenter {
+				label = "Padres trabajando en el centro";
+			}
+
+			["mqtnfka"]
+			field-file Documents {
+				is-multiple;
+				label = "Adjuntos";
+			}
+
+			["myvpduq"]
+			field-section Address {
+				label = "Dirección";
+
+				["mcn4joq"]
+				field-text Designation {
+					label = "Tipo de vía";
+				}
+
+				["mouscxq"]
+				field-text Street_name {
+					label = "Nombre de vía";
+				}
+
+				["mug8k2q"]
+				field-number Number {
+					label = "Número";
+				}
+
+				["mmgptcw"]
+				field-text Appartament {
+					label = "Piso, letra";
+				}
+
+				["m1lxdka"]
+				field-text Neigbourhood {
+					label = "Localidad/Barrio";
+				}
+
+				["m_sfxfa"]
+				field-text City {
+					label = "Municipio";
+				}
+
+				["mnzounw"]
+				field-number Zip_code {
+					label = "Código Postal";
+				}
+				view {
+					mode = EXPANDED;
+					show {
+						field = ref Designation;
+						field = ref Street_name;
+						field = ref Number;
+						field = ref Appartament;
+						field = ref Zip_code;
+						field = ref Neigbourhood;
+						field = ref City;
+					}
+				}
+			}
+
+			["mfzuv6w"]
+			field-boolean Admitido {
+				label = "Admitido";
+			}
+			mapping {
+				index = ref Indice;
+			}
+			properties {
+				calculate() {
+					var String nombreCompleto = this.getNode().getStudentName();
+					nombreCompleto = nombreCompleto + " " + this.getNode().studentSurname;
+					this.getNode().setLabel(getNode().identifier + " " + nombreCompleto);
+				}
+			}
+			constructor() {
+				var String nombreCompleto = getStudentName();
+				nombreCompleto = nombreCompleto + " " + studentSurname;
+				setLabel(identifier + " " + nombreCompleto);
+			}
+
+			["m4ud4za"]
+			view {
+				label = "Preinscripción";
+				show {
+					field = ref Identifier;
+					field = ref Admitido;
+					field = ref StudentName;
+					field = ref StudentSurname;
+					field = ref Cial;
+					field = ref Level;
+					field = ref AcademicYear;
+					//field = ref Address;
+				}
+			}
+
+			["mmy1wyg"]
+			view {
+				label = "Domicilio";
+				show {
+					field = ref Address;
+				}
+			}
+
+			["mt6h4xa"]
+			view {
+				label = "Criterios de Baremación";
+				show {
+					field = ref Siblings;
+					field = ref ParentsInCenter;
+					field = ref Documents;
+				}
+			}
+
+		}
+
+	}
+}
