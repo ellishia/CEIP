@@ -19,9 +19,15 @@ public class $Definition$ extends ContainerDefinition implements HasBehaviour, H
     viewProperty4.setCode("m9esc_w");
     org.monet.metamodel.ContainerDefinition.ViewProperty.ShowProperty showProperty5 = new org.monet.metamodel.ContainerDefinition.ViewProperty.ShowProperty();
     showProperty5.getComponent().add(new org.monet.metamodel.internal.Ref("View","direc.Schedule","direc.Schedule.View"));
-    showProperty5.getComponent().add(new org.monet.metamodel.internal.Ref("View","direc.ScheduleYear","direc.ScheduleYear.View"));
     viewProperty4.setShow(showProperty5);
     this.addView(viewProperty4);
+    org.monet.metamodel.ContainerDefinition.ViewProperty viewProperty8 = new org.monet.metamodel.ContainerDefinition.ViewProperty();
+    viewProperty8.setLabel("Año Académico");
+    viewProperty8.setCode("mndxmva");
+    org.monet.metamodel.ContainerDefinition.ViewProperty.ShowProperty showProperty9 = new org.monet.metamodel.ContainerDefinition.ViewProperty.ShowProperty();
+    showProperty9.getComponent().add(new org.monet.metamodel.internal.Ref("View","direc.ScheduleYear","direc.ScheduleYear.View"));
+    viewProperty8.setShow(showProperty9);
+    this.addView(viewProperty8);
     
   }
   static {

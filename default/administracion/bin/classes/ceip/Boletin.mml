@@ -40,7 +40,8 @@ package ceip {
 				var BasicInfo ficha = this.getScope() as BasicInfo;
 				var centroInformation = ceip::CentroInfo:: instance.centerInformation;
 				var centerName = centroInformation.centerName;
-				var centerTown = centroInformation.contactField.town;
+				var contacto = centroInformation.contactField as centerinformation.Contact;
+				var centerTown = contacto.town;
 				var academicYear = centroInformation.academicYear;
 				var documentType = "Boletín de notas";
 				i.centroAcademico = centerName;

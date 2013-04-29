@@ -2,6 +2,7 @@ package grades.examresults.examresult;
 
 import org.monet.metamodel.DateFieldProperty;
 
+@SuppressWarnings("all")
 public class DateProperty extends DateFieldProperty {
   public DateProperty() {
     super();this._code = "mcitrwq";

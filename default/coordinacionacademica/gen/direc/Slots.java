@@ -2,7 +2,6 @@ package direc;
 
 import direc.slots.Indice;
 import org.monet.bpi.Expression;
-import org.monet.bpi.Node;
 import org.monet.bpi.OrderExpression;
 import org.monet.bpi.java.NodeCollectionImpl;
 
@@ -28,11 +27,11 @@ public class Slots extends NodeCollectionImpl {
     return (direc.slots.Indice)genericGetFirst(where);
   }
   
-  public void executeCommand(final String operation) {
-    super.executeCommand(operation);
+  public static Slots getInstance() {
+    return (direc.Slots)org.monet.bpi.NodeService.locate("direc.Slots");
   }
   
-  public static Slots createNew(final Node parent) {
-    return (direc.Slots)org.monet.bpi.NodeService.create(direc.Slots.class, parent);
+  public void executeCommand(final String operation) {
+    super.executeCommand(operation);
   }
 }

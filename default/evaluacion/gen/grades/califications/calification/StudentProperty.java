@@ -2,6 +2,7 @@ package grades.califications.calification;
 
 import org.monet.metamodel.LinkFieldProperty;
 
+@SuppressWarnings("all")
 public class StudentProperty extends LinkFieldProperty {
   public StudentProperty() {
     super();this._code = "mqlc1xq";

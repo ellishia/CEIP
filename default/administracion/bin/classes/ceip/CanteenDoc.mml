@@ -1,0 +1,56 @@
+package ceip {
+
+	["mlduu8q"]
+	definition CanteenDoc is document {
+		label = "canteendoc";
+
+		schema {
+			StudentName String;
+			StudentSurname String;
+			Cial String;
+			Identifier String;
+			AcademicYear Term;
+			Schedule String;
+			ActualPosition Boolean;
+			Subsidized Boolean;
+			Criteria {
+				WorkingPersonalLife Boolean;
+				Siblings Boolean;
+				ParentsInSchool Boolean;
+				AnualIncome Boolean;
+				Handcaped Boolean;
+				MonoParentalorNumberusFamily Boolean;
+			}
+			Observations String;
+		}
+
+		["mgs9jew"]
+		definition Importador is importer {
+			label = "Exportador de solicitud de Comedor";
+			target = ref CanteenDoc;
+			onImportItem(ceip.canteendoc.Schema i) {
+				var servicios = ceip::ServiceApplications:: instance;
+				var ficha = ceip::CanteenApplication:: createNew(servicios);
+				ficha.academicYear = i.academicYear;
+				ficha.studentName = i.studentName;
+				ficha.studentSurname = i.studentSurname;
+				ficha.cial = i.cial;		
+				//ficha.identifier = i.identifier;
+				ficha.schedule = i.schedule;
+				ficha.actualPosition=i.actualPosition  ;
+				ficha.subsidized= i.subsidized  ;
+				var criteria = ficha.criteriaField as ceip.canteenapplication.Criteria;				
+				criteria.anualIncome =i.criteria.anualIncome;
+				criteria.workingPersonalLife = i.criteria.workingPersonalLife;
+				criteria.siblings = i.criteria.siblings;
+				criteria.parentsInSchool= i.criteria.parentsInSchool;
+				criteria.handcaped = i.criteria.handcaped;
+				ficha.observations= i.observations;
+				ficha.save();
+			}
+
+		}
+
+	}
+}
+  

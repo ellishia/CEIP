@@ -2,6 +2,7 @@ package grades.students.student;
 
 import org.monet.metamodel.TextFieldProperty;
 
+@SuppressWarnings("all")
 public class NeigbourhoodProperty extends TextFieldProperty {
   public NeigbourhoodProperty() {
     super();this._code = "m1lxdka";

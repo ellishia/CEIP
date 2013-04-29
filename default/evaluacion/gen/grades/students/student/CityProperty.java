@@ -2,6 +2,7 @@ package grades.students.student;
 
 import org.monet.metamodel.TextFieldProperty;
 
+@SuppressWarnings("all")
 public class CityProperty extends TextFieldProperty {
   public CityProperty() {
     super();this._code = "m_sfxfa";

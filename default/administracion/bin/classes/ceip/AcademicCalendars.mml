@@ -36,12 +36,10 @@ package ceip {
 
 			properties {
 				calculate() {
-					var lab = "Calendario Académico ";
 					var academicYear = getNode().getAcademicYear();
 					if(academicYear != null) {
-						this.getNode().setLabel(academicYear.toString());
+						this.getNode().setLabel("Calendario Académico " + academicYear.toString());
 					}
-					this.getNode().setLabel(lab + this.getNode().getLabel());
 				}
 			}
 			mapping {

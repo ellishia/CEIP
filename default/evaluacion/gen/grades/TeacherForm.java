@@ -5,7 +5,7 @@ import org.monet.bpi.Node;
 import org.monet.bpi.java.NodeFormImpl;
 import org.monet.bpi.types.Term;
 
-@SuppressWarnings(value = "all")
+@SuppressWarnings("all")
 public class TeacherForm extends NodeFormImpl {
   public FieldSelect getTeacherNameField() {
     return ((org.monet.bpi.FieldSelect)this.getField("TeacherForm", "TeacherName"));

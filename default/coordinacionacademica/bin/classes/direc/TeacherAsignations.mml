@@ -20,7 +20,7 @@ package direc {
 				}
 			}
 
-			["i"]
+			["mdckyyw"]
 			view Normal {
 				show {
 					title = ref Teacher;
@@ -29,7 +29,7 @@ package direc {
 
 		}
 
-		["aaa"]
+		["mxunqha"]
 		view {
 			label = "Todos";
 			show {

@@ -2,6 +2,7 @@ package grades.students.student;
 
 import org.monet.metamodel.SelectFieldProperty;
 
+@SuppressWarnings("all")
 public class ParentAcademicLevelProperty extends SelectFieldProperty {
   public ParentAcademicLevelProperty() {
     super();this._code = "mrlbffg";

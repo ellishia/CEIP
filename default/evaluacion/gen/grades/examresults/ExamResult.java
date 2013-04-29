@@ -13,7 +13,7 @@ import org.monet.bpi.types.Date;
 import org.monet.bpi.types.Link;
 import org.monet.bpi.types.Term;
 
-@SuppressWarnings(value = "all")
+@SuppressWarnings("all")
 public class ExamResult extends NodeFormImpl {
   public FieldLink getStudentField() {
     return ((org.monet.bpi.FieldLink)this.getField("ExamResult", "Student"));

@@ -24,14 +24,14 @@ package ceip.procesos {
 					info.centerCode = f.centerCode;
 					info.centerName = f.centerName;
 					info.academicYear = f.academicYear;
-					info.contactField.address = f.contactField.address;
-					info.contactField.ZIPCode = f.contactField.ZIPCode;
-					info.contactField.town = f.contactField.town;
+					var contacto = info.contactField as ceip.centerinformation.Contact;
+					var fcontacto = f.contactField as ceip.centerinformation.Contact;
+					contacto.address = fcontacto.address;
+					contacto.ZIPCode = fcontacto.ZIPCode;
+					contacto.town = fcontacto.town;
 	
 					//info.contactField.telephone = f.contactField.telephone;
-					info.contactField.email = f.contactField.email;
-					info.influenceAreas = f.influenceAreas;
-					info.limitingAreas = f.limitingAreas;
+					contacto.email = fcontacto.email;
 					info.save();
 				}
 				onValidate(ceip.CenterInformation f, ValidationResult vr) {					
@@ -41,23 +41,19 @@ package ceip.procesos {
 					if(f.centerName.isEmpty()) {
 						vr.addError("CenterName", "está vacio");
 					}
-					if(f.contactField.address.isEmpty()) {
+					var fcontact = f.contactField as ceip.centerinformation.Contact;
+					if(fcontact.address.isEmpty()) {
 						vr.addError("Address", "está vacio");
 					}
-					if(f.contactField.town.isEmpty()) {
+					
+					if(fcontact.town.isEmpty()) {
 						vr.addError("Town", "está vacio");
 					}
 //					if(f.contactField.ZIPCode.isEmpty()) {
 //						vr.addError("ZIPCode", "está vacio");
 //					}
-					if(f.contactField.email.isEmpty()) {
+					if(fcontact.email.isEmpty()) {
 						vr.addError("Email", "está vacio");
-					}
-					if(f.influenceAreas.isEmpty()){
-						vr.addError("InfluenceAreas", "está vacio");
-					}
-					if(f.limitingAreas.isEmpty()){
-						vr.addError("LimitingAreas", "está vacio");
 					}
 				}
 			}

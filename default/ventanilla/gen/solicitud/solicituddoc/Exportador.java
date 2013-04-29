@@ -1,14 +1,15 @@
 package solicitud.solicituddoc;
 
+import org.monet.bpi.FieldSection;
 import org.monet.bpi.Node;
 import org.monet.bpi.java.ExporterImpl;
 import org.monet.bpi.types.Date;
 import org.monet.bpi.types.Term;
 import solicitud.Application;
 import solicitud.ApplicationInfo;
+import solicitud.applicationinfo.Address;
 import solicitud.solicituddoc.Schema;
 import solicitud.solicituddoc.exportador.ExporterScope;
-import solicitud.solicituddoc.schema.Address;
 
 @SuppressWarnings("all")
 public class Exportador extends ExporterImpl {
@@ -40,33 +41,28 @@ public class Exportador extends ExporterImpl {
     i.setParents(_parentsInCenter);
     boolean _matriculable = ficha.getMatriculable();
     i.setMatriculable(Boolean.valueOf(_matriculable));
-    Address _address = i.getAddress();
-    solicitud.applicationinfo.Address _addressField = ficha.getAddressField();
-    String _designation = _addressField.getDesignation();
+    FieldSection _addressField = ficha.getAddressField();
+    Address address = ((Address) _addressField);
+    solicitud.solicituddoc.schema.Address _address = i.getAddress();
+    String _designation = address.getDesignation();
     _address.setDesignation(_designation);
-    Address _address_1 = i.getAddress();
-    solicitud.applicationinfo.Address _addressField_1 = ficha.getAddressField();
-    String _street_name = _addressField_1.getStreet_name();
+    solicitud.solicituddoc.schema.Address _address_1 = i.getAddress();
+    String _street_name = address.getStreet_name();
     _address_1.setStreet_name(_street_name);
-    Address _address_2 = i.getAddress();
-    solicitud.applicationinfo.Address _addressField_2 = ficha.getAddressField();
-    org.monet.bpi.types.Number _number = _addressField_2.getNumber();
+    solicitud.solicituddoc.schema.Address _address_2 = i.getAddress();
+    org.monet.bpi.types.Number _number = address.getNumber();
     _address_2.setNumber(_number);
-    Address _address_3 = i.getAddress();
-    solicitud.applicationinfo.Address _addressField_3 = ficha.getAddressField();
-    String _appartament = _addressField_3.getAppartament();
+    solicitud.solicituddoc.schema.Address _address_3 = i.getAddress();
+    String _appartament = address.getAppartament();
     _address_3.setAppartment(_appartament);
-    Address _address_4 = i.getAddress();
-    solicitud.applicationinfo.Address _addressField_4 = ficha.getAddressField();
-    String _neigbourhood = _addressField_4.getNeigbourhood();
+    solicitud.solicituddoc.schema.Address _address_4 = i.getAddress();
+    String _neigbourhood = address.getNeigbourhood();
     _address_4.setNeigbourhood(_neigbourhood);
-    Address _address_5 = i.getAddress();
-    solicitud.applicationinfo.Address _addressField_5 = ficha.getAddressField();
-    String _city = _addressField_5.getCity();
+    solicitud.solicituddoc.schema.Address _address_5 = i.getAddress();
+    String _city = address.getCity();
     _address_5.setCity(_city);
-    Address _address_6 = i.getAddress();
-    solicitud.applicationinfo.Address _addressField_6 = ficha.getAddressField();
-    org.monet.bpi.types.Number _zip_code = _addressField_6.getZip_code();
+    solicitud.solicituddoc.schema.Address _address_6 = i.getAddress();
+    org.monet.bpi.types.Number _zip_code = address.getZip_code();
     _address_6.setZip_code(_zip_code);
   }
   

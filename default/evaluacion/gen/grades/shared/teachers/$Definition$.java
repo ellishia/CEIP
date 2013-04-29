@@ -3,6 +3,7 @@ package grades.shared.teachers;
 import org.monet.metamodel.GlossaryDefinition;
 import org.monet.metamodel.interfaces.HasClientBehaviour;
 
+@SuppressWarnings("all")
 public class $Definition$ extends GlossaryDefinition implements HasClientBehaviour {
   public $Definition$() {
     super();this._code = "mavimog";

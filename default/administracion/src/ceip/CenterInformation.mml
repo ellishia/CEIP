@@ -72,6 +72,11 @@ package ceip {
 			label = "Especificidades";
 		}
 
+		["m08oxqg"]
+		field-text ProximityCriteria {
+			label = "Criterio de proximidad";
+		}
+
 		["m_wiiag"]
 		field-text ComplementaryCriteria {
 			label = "Criterio complementario";
@@ -98,10 +103,18 @@ package ceip {
 				field = ref CenterCode;
 				field = ref CenterName;
 				field = ref Contact;
+			}
+		}
+
+		["mfk_kpw"]
+		view MatDatos {
+			label = "Información relativa de matriculación";
+			show {
 				field = ref InfluenceAreas;
 				field = ref LimitingAreas;
 				field = ref RelatedPreeschools;
 				field = ref Specifics;
+				field = ref ProximityCriteria;
 				field = ref ComplementaryCriteria;
 				field = ref RequiredDocs;
 			}
@@ -116,14 +129,10 @@ package ceip {
 				field = ref CenterCode;
 				field = ref CenterName;
 				field = ref Contact;
-				field = ref InfluenceAreas;
-				field = ref LimitingAreas;
-				field = ref RelatedPreeschools;
-				field = ref Specifics;
-				field = ref ComplementaryCriteria;
-				field = ref RequiredDocs;
 			}
 		}
+
+		
 
 	}
 }

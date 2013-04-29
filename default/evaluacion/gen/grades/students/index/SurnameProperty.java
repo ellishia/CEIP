@@ -2,6 +2,7 @@ package grades.students.index;
 
 import org.monet.metamodel.AttributeProperty;
 
+@SuppressWarnings("all")
 public class SurnameProperty extends AttributeProperty {
   public SurnameProperty() {
     super();this._code = "mxxcmpg";

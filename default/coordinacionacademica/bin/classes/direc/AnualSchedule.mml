@@ -13,11 +13,16 @@ package direc {
 			label = "Horario de Curso Académico";
 			show {
 				component = ref Schedule.View;
+			}
+		}
+
+		["mndxmva"]
+		view {
+			label = "Año Académico";
+			show {
 				component = ref ScheduleYear.View;
 			}
 		}
 
 	}
-
-
 }

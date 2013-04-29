@@ -1,7 +1,9 @@
 package ceip.serviceapplications.serviceapplication;
 
 import ceip.serviceapplications.serviceapplication.AcademicYearProperty;
+import ceip.serviceapplications.serviceapplication.CialProperty;
 import ceip.serviceapplications.serviceapplication.DateProperty;
+import ceip.serviceapplications.serviceapplication.IdentifierProperty;
 import ceip.serviceapplications.serviceapplication.StudentNameProperty;
 import ceip.serviceapplications.serviceapplication.StudentSurnameProperty;
 import org.monet.metamodel.FormDefinition;
@@ -17,21 +19,25 @@ public class $Definition$ extends FormDefinition implements HasBehaviour, HasCli
     this._isAbstract = new IsAbstract();this._label = "ServiceApplication";
     this.addTextFieldProperty(StudentName);
     this.addTextFieldProperty(StudentSurname);
+    this.addTextFieldProperty(Cial);
+    this.addTextFieldProperty(Identifier);
     this.addSelectFieldProperty(AcademicYear);
     this.addDateFieldProperty(Date);
-    org.monet.metamodel.FormDefinition.MappingProperty mappingProperty5 = new org.monet.metamodel.FormDefinition.MappingProperty();
-    mappingProperty5.setIndex(new org.monet.metamodel.internal.Ref("ceip.ServiceApplications.Indice"));
-    this.getMappingList().add(mappingProperty5);
-    org.monet.metamodel.FormDefinition.FormViewProperty formViewProperty8 = new org.monet.metamodel.FormDefinition.FormViewProperty();
-    formViewProperty8.setLabel("Solicitud de Servicio");
-    formViewProperty8.setCode("m_03ymq");
-    org.monet.metamodel.FormDefinition.FormViewProperty.ShowProperty showProperty9 = new org.monet.metamodel.FormDefinition.FormViewProperty.ShowProperty();
-    showProperty9.getField().add(new org.monet.metamodel.internal.Ref("StudentName","ceip.ServiceApplications.ServiceApplication","ceip.ServiceApplications.ServiceApplication.StudentName"));
-    showProperty9.getField().add(new org.monet.metamodel.internal.Ref("StudentSurname","ceip.ServiceApplications.ServiceApplication","ceip.ServiceApplications.ServiceApplication.StudentSurname"));
-    showProperty9.getField().add(new org.monet.metamodel.internal.Ref("AcademicYear","ceip.ServiceApplications.ServiceApplication","ceip.ServiceApplications.ServiceApplication.AcademicYear"));
-    showProperty9.getField().add(new org.monet.metamodel.internal.Ref("Date","ceip.ServiceApplications.ServiceApplication","ceip.ServiceApplications.ServiceApplication.Date"));
-    formViewProperty8.setShow(showProperty9);
-    this.addView(formViewProperty8);
+    org.monet.metamodel.FormDefinition.MappingProperty mappingProperty7 = new org.monet.metamodel.FormDefinition.MappingProperty();
+    mappingProperty7.setIndex(new org.monet.metamodel.internal.Ref("ceip.ServiceApplications.Indice"));
+    this.getMappingList().add(mappingProperty7);
+    org.monet.metamodel.FormDefinition.FormViewProperty formViewProperty10 = new org.monet.metamodel.FormDefinition.FormViewProperty();
+    formViewProperty10.setLabel("Solicitud de Servicio");
+    formViewProperty10.setCode("m_03ymq");
+    org.monet.metamodel.FormDefinition.FormViewProperty.ShowProperty showProperty11 = new org.monet.metamodel.FormDefinition.FormViewProperty.ShowProperty();
+    showProperty11.getField().add(new org.monet.metamodel.internal.Ref("Identifier","ceip.ServiceApplications.ServiceApplication","ceip.ServiceApplications.ServiceApplication.Identifier"));
+    showProperty11.getField().add(new org.monet.metamodel.internal.Ref("StudentName","ceip.ServiceApplications.ServiceApplication","ceip.ServiceApplications.ServiceApplication.StudentName"));
+    showProperty11.getField().add(new org.monet.metamodel.internal.Ref("StudentSurname","ceip.ServiceApplications.ServiceApplication","ceip.ServiceApplications.ServiceApplication.StudentSurname"));
+    showProperty11.getField().add(new org.monet.metamodel.internal.Ref("Cial","ceip.ServiceApplications.ServiceApplication","ceip.ServiceApplications.ServiceApplication.Cial"));
+    showProperty11.getField().add(new org.monet.metamodel.internal.Ref("AcademicYear","ceip.ServiceApplications.ServiceApplication","ceip.ServiceApplications.ServiceApplication.AcademicYear"));
+    showProperty11.getField().add(new org.monet.metamodel.internal.Ref("Date","ceip.ServiceApplications.ServiceApplication","ceip.ServiceApplications.ServiceApplication.Date"));
+    formViewProperty10.setShow(showProperty11);
+    this.addView(formViewProperty10);
     
   }
   static {
@@ -63,6 +69,10 @@ public class $Definition$ extends FormDefinition implements HasBehaviour, HasCli
   private final StudentNameProperty StudentName = new ceip.serviceapplications.serviceapplication.StudentNameProperty();
   
   private final StudentSurnameProperty StudentSurname = new ceip.serviceapplications.serviceapplication.StudentSurnameProperty();
+  
+  private final CialProperty Cial = new ceip.serviceapplications.serviceapplication.CialProperty();
+  
+  private final IdentifierProperty Identifier = new ceip.serviceapplications.serviceapplication.IdentifierProperty();
   
   private final AcademicYearProperty AcademicYear = new ceip.serviceapplications.serviceapplication.AcademicYearProperty();
   

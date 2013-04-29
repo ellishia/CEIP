@@ -12,6 +12,8 @@ public class Mapping__0 extends MappingImpl {
     ceip.serviceapplications.Indice reference = (ceip.serviceapplications.Indice) this.genericGetReference();
     reference.setStudentName(node.getStudentName());
     reference.setStudentSurname(node.getStudentSurname());
+    reference.setCial(node.getCial());
+    reference.setIdentifier(node.getIdentifier());
     
   }
   

@@ -15,7 +15,7 @@ public class $Definition$ extends IndexDefinition implements HasBehaviour, HasCl
     referenceProperty1.addAttributeProperty(Nombre);
     this.setReference(referenceProperty1);
     org.monet.metamodel.IndexDefinition.IndexViewProperty indexViewProperty3 = new org.monet.metamodel.IndexDefinition.IndexViewProperty();
-    indexViewProperty3.setCode("i");
+    indexViewProperty3.setCode("mvscjug");
     indexViewProperty3.setName("Normal");
     org.monet.metamodel.IndexDefinition.IndexViewProperty.ShowProperty showProperty3 = new org.monet.metamodel.IndexDefinition.IndexViewProperty.ShowProperty();
     showProperty3.setTitle(new org.monet.metamodel.internal.Ref("Nombre","direc.Slots.Indice","direc.Slots.Indice.Nombre"));

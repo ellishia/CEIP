@@ -3,7 +3,7 @@ package grades.students;
 import org.monet.bpi.Param;
 import org.monet.bpi.java.IndexEntryImpl;
 
-@SuppressWarnings(value = "all")
+@SuppressWarnings("all")
 public class Index extends IndexEntryImpl {
   public final static Param Nombre = new org.monet.bpi.Param("imphcdia");
   

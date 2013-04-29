@@ -1,0 +1,43 @@
+package solicitud {
+
+	["mnpvp0a"]
+	definition transportDoc is document {
+		label = "transportDoc";
+
+		schema {
+			StudentName String;
+			StudentSurname String;
+			Cial String;
+			Identifier String;
+			AcademicYear Term;
+			Address String;
+			Distance Number;
+			Trip String;
+			Stop String;
+			LeaveAt String;
+		}
+
+		["mct_qkw"]
+		definition Exportador is exporter {
+			label = "exportador de solicitud de Transporte";
+			target = ref transportDoc;
+
+			onExportItem(solicitud.transportdoc.Schema i) {
+				var ficha = this.getScope() as solicitud.TransportApplication;
+				i.studentName = ficha.studentName;
+				i.studentSurname = ficha.studentSurname;
+				i.cial = ficha.cial;
+				i.identifier = ficha.identifier;
+				i.academicYear = ficha.academicYear;
+				i.address = ficha.address;
+				i.distance = ficha.distance;
+				i.trip = ficha.trip;
+				i.setStop(ficha.getStop());
+				i.leaveAt = ficha.leaveAt;
+			}
+
+		}
+
+	}
+}
+  

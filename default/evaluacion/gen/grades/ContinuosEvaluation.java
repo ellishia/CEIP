@@ -6,7 +6,7 @@ import org.monet.bpi.Node;
 import org.monet.bpi.OrderExpression;
 import org.monet.bpi.java.NodeCatalogImpl;
 
-@SuppressWarnings(value = "all")
+@SuppressWarnings("all")
 public class ContinuosEvaluation extends NodeCatalogImpl {
   public Iterable<Index> getAll() {
     return (Iterable<grades.continuosevaluation.Index>)genericGetAll();

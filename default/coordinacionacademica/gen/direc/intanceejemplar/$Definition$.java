@@ -1,6 +1,6 @@
 package direc.intanceejemplar;
 
-import direc.intanceejemplar.EjemplaresProperty;
+import direc.intanceejemplar.EjemplaresSeccionProperty;
 import org.monet.metamodel.FormDefinition;
 import org.monet.metamodel.interfaces.HasBehaviour;
 import org.monet.metamodel.interfaces.HasClientBehaviour;
@@ -12,13 +12,13 @@ public class $Definition$ extends FormDefinition implements HasBehaviour, HasCli
     super();this._code = "mdmc_4w";
     this._name = "direc.IntanceEjemplar";
     this._isAbstract = null;this._label = "IntanceEjemplar";
-    this.addSectionFieldProperty(Ejemplares);
+    this.addSectionFieldProperty(EjemplaresSeccion);
     org.monet.metamodel.FormDefinition.FormViewProperty formViewProperty2 = new org.monet.metamodel.FormDefinition.FormViewProperty();
     formViewProperty2.setLabel("IntanceEjemplar");
     formViewProperty2.setCode("mcdsria");
     formViewProperty2.setName("View");
     org.monet.metamodel.FormDefinition.FormViewProperty.ShowProperty showProperty3 = new org.monet.metamodel.FormDefinition.FormViewProperty.ShowProperty();
-    showProperty3.getField().add(new org.monet.metamodel.internal.Ref("Ejemplares","direc.IntanceEjemplar","direc.IntanceEjemplar.Ejemplares"));
+    showProperty3.getField().add(new org.monet.metamodel.internal.Ref("EjemplaresSeccion","direc.IntanceEjemplar","direc.IntanceEjemplar.EjemplaresSeccion"));
     formViewProperty2.setShow(showProperty3);
     this.addView(formViewProperty2);
     
@@ -48,5 +48,5 @@ public class $Definition$ extends FormDefinition implements HasBehaviour, HasCli
     return super.getMappingClass(code);
   }
   
-  private final EjemplaresProperty Ejemplares = new direc.intanceejemplar.EjemplaresProperty();
+  private final EjemplaresSeccionProperty EjemplaresSeccion = new direc.intanceejemplar.EjemplaresSeccionProperty();
 }

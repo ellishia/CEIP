@@ -15,7 +15,7 @@ public class $Definition$ extends IndexDefinition implements HasBehaviour, HasCl
     referenceProperty1.addAttributeProperty(AcademicYear);
     this.setReference(referenceProperty1);
     org.monet.metamodel.IndexDefinition.IndexViewProperty indexViewProperty3 = new org.monet.metamodel.IndexDefinition.IndexViewProperty();
-    indexViewProperty3.setCode("i");
+    indexViewProperty3.setCode("mwml0sa");
     indexViewProperty3.setName("Normal");
     org.monet.metamodel.IndexDefinition.IndexViewProperty.ShowProperty showProperty3 = new org.monet.metamodel.IndexDefinition.IndexViewProperty.ShowProperty();
     showProperty3.getLine().add(new org.monet.metamodel.internal.Ref("AcademicYear","direc.Schedules.Indice","direc.Schedules.Indice.AcademicYear"));

@@ -1,5 +1,6 @@
 package grades.manifest;
 
+@SuppressWarnings("all")
 public class Manifest extends org.monet.metamodel.Manifest {
   public Manifest() {
     super();this._name = "evaluacion";

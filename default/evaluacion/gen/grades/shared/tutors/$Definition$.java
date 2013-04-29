@@ -3,6 +3,7 @@ package grades.shared.tutors;
 import org.monet.metamodel.RoleDefinition;
 import org.monet.metamodel.interfaces.HasClientBehaviour;
 
+@SuppressWarnings("all")
 public class $Definition$ extends RoleDefinition implements HasClientBehaviour {
   public $Definition$() {
     super();this._code = "mn2v6bq";

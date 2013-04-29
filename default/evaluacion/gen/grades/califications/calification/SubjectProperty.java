@@ -2,6 +2,7 @@ package grades.califications.calification;
 
 import org.monet.metamodel.SelectFieldProperty;
 
+@SuppressWarnings("all")
 public class SubjectProperty extends SelectFieldProperty {
   public SubjectProperty() {
     super();this._code = "mf1x_iw";

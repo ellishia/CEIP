@@ -31,6 +31,18 @@ package ceip {
 					label = "Apellidos";
 					type = STRING;
 				}
+
+				["mbh8uvw"]
+				attribute Cial {
+					label = "Cial";
+					type = STRING;
+				}
+
+				["mfkgxrg"]
+				attribute Identifier {
+					label = "Identificador";
+					type = STRING;
+				}
 			}
 
 			["imhn1mbq"]
@@ -56,9 +68,15 @@ package ceip {
 			analyze {
 				dimension {
 					attribute = ref Indice.Date;
+					attribute = ref Indice.StudentSurname;
+					attribute = ref Indice.Cial;
+					attribute = ref Indice.Identifier;
 				}
 				sorting {
 					attribute = ref Indice.Date;
+					attribute = ref Indice.StudentSurname;
+					attribute = ref Indice.Cial;
+					attribute = ref Indice.Identifier;
 				}
 			}
 		}
@@ -75,6 +93,16 @@ package ceip {
 			["mrfnr8q"]
 			field-text StudentSurname {
 				label = "Apellidos de Alumno/a";
+			}
+
+			["mr7ds6a"]
+			field-text Cial {
+				label = "cial";
+			}
+
+			["md80pmw"]
+			field-text Identifier {
+				label = "Identificador";
 			}
 
 			["mrwd_eq"]
@@ -101,8 +129,10 @@ package ceip {
 			view {
 				label = "Solicitud de Servicio";
 				show {
+					field = ref Identifier;
 					field = ref StudentName;
 					field = ref StudentSurname;
+					field = ref Cial;
 					field = ref AcademicYear;
 					field = ref Date;
 				}

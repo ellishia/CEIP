@@ -2,6 +2,7 @@ package grades.examresults.examresult;
 
 import org.monet.metamodel.TextFieldProperty;
 
+@SuppressWarnings("all")
 public class MistakesProperty extends TextFieldProperty {
   public MistakesProperty() {
     super();this._code = "mbcicgg";

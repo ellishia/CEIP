@@ -10,7 +10,23 @@ public class Lock extends org.monet.metamodel.internal.Lock {
   
   public static Lock Inicial_Salir = new Lock("mfdyzbq","mjpe8pw");
   
+  public static Lock AnadirTrans_Add = new Lock("mtbyd1q","mozytya");
+  
+  public static Lock AnadirTrans_Seguir = new Lock("mtbyd1q","ma1unsg");
+  
+  public static Lock Anadir_Add = new Lock("m8xoz1a","mozytya");
+  
+  public static Lock Anadir_Seguir = new Lock("m8xoz1a","ma1unsg");
+  
   public static Lock EsperandoRespuesta_ExitRespuesta = new Lock("mufdlfw","mkhczeg");
+  
+  public static Lock Recopilado = new Lock("mymsurw","mymsurw");
+  
+  public static Lock AnadirEscoge = new Lock("mri47fw","mri47fw");
+  
+  public static Lock RedirigidoTrans = new Lock("mlwztba","mlwztba");
+  
+  public static Lock Redirigido = new Lock("mfftfvq","mfftfvq");
   
   public static Lock Generado = new Lock("mmirmbg","mmirmbg");
   

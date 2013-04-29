@@ -2,7 +2,7 @@ setup docencia extends docencia {
 	title = "Gestión Docente";
 	subtitle = "Gestión Docente";
 	space docencia {
-		deploy-uri = "http://192.168.1.34:8090/docencia";
+		deploy-uri = "http://192.168.1.34:8091/docencia";
 	}
 	federation {
 		socket-uri = "socket://localhost:5346/";
@@ -19,7 +19,7 @@ setup docencia extends docencia {
 	}
 	publish {
 		federation {
-			setup-uri = "http://192.168.1.34:8090/empresa";
+			setup-uri = "http://192.168.1.34:8091/federation";
 		}
 		service = ref doc.procesos.StudentTransfer;
 		source = ref doc.shared.Areas;

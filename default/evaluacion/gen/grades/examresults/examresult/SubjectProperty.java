@@ -2,6 +2,7 @@ package grades.examresults.examresult;
 
 import org.monet.metamodel.SelectFieldProperty;
 
+@SuppressWarnings("all")
 public class SubjectProperty extends SelectFieldProperty {
   public SubjectProperty() {
     super();this._code = "mr_tkeq";

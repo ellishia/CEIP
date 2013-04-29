@@ -18,7 +18,7 @@ setup administracion extends administracion {
 
 	publish {
 		federation {
-			setup-uri = "http://10.230.140.157:8091/empresa";
+			setup-uri = "http://10.230.140.157:8091/federation";
 		}
 		service = ref ceip.procesos.RecibirSolicitudPlaza;
 		source = ref ceip.shared.AcademicYears;

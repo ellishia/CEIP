@@ -4,6 +4,7 @@ import org.monet.metamodel.ContainerDefinition;
 import org.monet.metamodel.interfaces.HasBehaviour;
 import org.monet.metamodel.interfaces.HasClientBehaviour;
 
+@SuppressWarnings("all")
 public class $Definition$ extends ContainerDefinition implements HasBehaviour, HasClientBehaviour {
   public $Definition$() {
     super();this._code = "mzs3dcq";

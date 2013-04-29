@@ -80,7 +80,7 @@ public class Admitidos extends ServiceImpl {
     switch(hash) {}
   }
   
-  public void onSetupDelegationComplete(final String placeCode, final String actionCode, final Date p0, final Date p1, final String p2, final boolean p3) {
+  public void onSetupDelegationComplete(final String placeCode, final String actionCode, final String p0, final Date p1, final Date p2, final String p3, final boolean p4) {
     int hash = (actionCode + placeCode).hashCode();
     switch(hash) {}
   }

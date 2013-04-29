@@ -1,6 +1,8 @@
 package ceip.serviceapplications.indice;
 
+import ceip.serviceapplications.indice.CialProperty;
 import ceip.serviceapplications.indice.DateProperty;
+import ceip.serviceapplications.indice.IdentifierProperty;
 import ceip.serviceapplications.indice.StudentNameProperty;
 import ceip.serviceapplications.indice.StudentSurnameProperty;
 import org.monet.metamodel.IndexDefinition;
@@ -17,16 +19,18 @@ public class $Definition$ extends IndexDefinition implements HasBehaviour, HasCl
     referenceProperty1.addAttributeProperty(Date);
     referenceProperty1.addAttributeProperty(StudentName);
     referenceProperty1.addAttributeProperty(StudentSurname);
+    referenceProperty1.addAttributeProperty(Cial);
+    referenceProperty1.addAttributeProperty(Identifier);
     this.setReference(referenceProperty1);
-    org.monet.metamodel.IndexDefinition.IndexViewProperty indexViewProperty5 = new org.monet.metamodel.IndexDefinition.IndexViewProperty();
-    indexViewProperty5.setCode("imhn1mbq");
-    indexViewProperty5.setName("Normal");
-    org.monet.metamodel.IndexDefinition.IndexViewProperty.ShowProperty showProperty5 = new org.monet.metamodel.IndexDefinition.IndexViewProperty.ShowProperty();
-    showProperty5.getLine().add(new org.monet.metamodel.internal.Ref("Date","ceip.ServiceApplications.Indice","ceip.ServiceApplications.Indice.Date"));
-    showProperty5.getLineBelow().add(new org.monet.metamodel.internal.Ref("StudentName","ceip.ServiceApplications.Indice","ceip.ServiceApplications.Indice.StudentName"));
-    showProperty5.getLine().add(new org.monet.metamodel.internal.Ref("StudentSurname","ceip.ServiceApplications.Indice","ceip.ServiceApplications.Indice.StudentSurname"));
-    indexViewProperty5.setShow(showProperty5);
-    this.addView(indexViewProperty5);
+    org.monet.metamodel.IndexDefinition.IndexViewProperty indexViewProperty7 = new org.monet.metamodel.IndexDefinition.IndexViewProperty();
+    indexViewProperty7.setCode("imhn1mbq");
+    indexViewProperty7.setName("Normal");
+    org.monet.metamodel.IndexDefinition.IndexViewProperty.ShowProperty showProperty7 = new org.monet.metamodel.IndexDefinition.IndexViewProperty.ShowProperty();
+    showProperty7.getLine().add(new org.monet.metamodel.internal.Ref("Date","ceip.ServiceApplications.Indice","ceip.ServiceApplications.Indice.Date"));
+    showProperty7.getLineBelow().add(new org.monet.metamodel.internal.Ref("StudentName","ceip.ServiceApplications.Indice","ceip.ServiceApplications.Indice.StudentName"));
+    showProperty7.getLine().add(new org.monet.metamodel.internal.Ref("StudentSurname","ceip.ServiceApplications.Indice","ceip.ServiceApplications.Indice.StudentSurname"));
+    indexViewProperty7.setShow(showProperty7);
+    this.addView(indexViewProperty7);
     
   }
   static {
@@ -52,4 +56,8 @@ public class $Definition$ extends IndexDefinition implements HasBehaviour, HasCl
   private final StudentNameProperty StudentName = new ceip.serviceapplications.indice.StudentNameProperty();
   
   private final StudentSurnameProperty StudentSurname = new ceip.serviceapplications.indice.StudentSurnameProperty();
+  
+  private final CialProperty Cial = new ceip.serviceapplications.indice.CialProperty();
+  
+  private final IdentifierProperty Identifier = new ceip.serviceapplications.indice.IdentifierProperty();
 }

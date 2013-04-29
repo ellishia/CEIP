@@ -1,7 +1,7 @@
 package solicitud.shared {
 
 	["mb_ne7w"]
-	definition StudiesLevel is thesaurus {
+	definition StudiesLevel is glossary {
 		label = "Studies level";
 		ontology = "EstudiosDeAdministrcion";
 

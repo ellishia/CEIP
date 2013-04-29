@@ -2,6 +2,7 @@ package grades.examresults.indice;
 
 import org.monet.metamodel.AttributeProperty;
 
+@SuppressWarnings("all")
 public class SubjectProperty extends AttributeProperty {
   public SubjectProperty() {
     super();this._code = "imkcv5_a";

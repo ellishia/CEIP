@@ -8,6 +8,7 @@ import ceip.solicituddoc.Schema;
 import com.google.common.base.Objects;
 import org.monet.bpi.ContestantRequest;
 import org.monet.bpi.CustomerRequest;
+import org.monet.bpi.FieldSection;
 import org.monet.bpi.ImporterScope;
 import org.monet.bpi.Node;
 import org.monet.bpi.NodeDocument;
@@ -63,49 +64,42 @@ public class Importador extends ImporterImpl {
     solicitud.setSiblings(_siblings);
     String _parents = i.getParents();
     solicitud.setParentsInCenter(_parents);
-    Address _addressField = solicitud.getAddressField();
+    FieldSection _addressField = solicitud.getAddressField();
+    Address address = ((Address) _addressField);
     ceip.solicituddoc.schema.Address _address = i.getAddress();
     String _designation = _address.getDesignation();
-    _addressField.setDesignation(_designation);
-    Address _addressField_1 = solicitud.getAddressField();
+    address.setDesignation(_designation);
     ceip.solicituddoc.schema.Address _address_1 = i.getAddress();
     String _street_name = _address_1.getStreet_name();
-    _addressField_1.setStreet_name(_street_name);
+    address.setStreet_name(_street_name);
     ceip.solicituddoc.schema.Address _address_2 = i.getAddress();
     org.monet.bpi.types.Number _number = _address_2.getNumber();
     boolean _notEquals_1 = (!Objects.equal(_number, null));
     if (_notEquals_1) {
-      Address _addressField_2 = solicitud.getAddressField();
       ceip.solicituddoc.schema.Address _address_3 = i.getAddress();
       org.monet.bpi.types.Number _number_1 = _address_3.getNumber();
-      _addressField_2.setNumber(_number_1);
+      address.setNumber(_number_1);
     } else {
-      Address _addressField_3 = solicitud.getAddressField();
-      _addressField_3.setNumber(0);
+      address.setNumber(0);
     }
-    Address _addressField_4 = solicitud.getAddressField();
     ceip.solicituddoc.schema.Address _address_4 = i.getAddress();
     String _appartment = _address_4.getAppartment();
-    _addressField_4.setAppartament(_appartment);
-    Address _addressField_5 = solicitud.getAddressField();
+    address.setAppartament(_appartment);
     ceip.solicituddoc.schema.Address _address_5 = i.getAddress();
     String _neigbourhood = _address_5.getNeigbourhood();
-    _addressField_5.setNeigbourhood(_neigbourhood);
-    Address _addressField_6 = solicitud.getAddressField();
+    address.setNeigbourhood(_neigbourhood);
     ceip.solicituddoc.schema.Address _address_6 = i.getAddress();
     String _city = _address_6.getCity();
-    _addressField_6.setCity(_city);
+    address.setCity(_city);
     ceip.solicituddoc.schema.Address _address_7 = i.getAddress();
     org.monet.bpi.types.Number _zip_code = _address_7.getZip_code();
     boolean _notEquals_2 = (!Objects.equal(_zip_code, null));
     if (_notEquals_2) {
-      Address _addressField_7 = solicitud.getAddressField();
       ceip.solicituddoc.schema.Address _address_8 = i.getAddress();
       org.monet.bpi.types.Number _zip_code_1 = _address_8.getZip_code();
-      _addressField_7.setZip_code(_zip_code_1);
+      address.setZip_code(_zip_code_1);
     } else {
-      Address _addressField_8 = solicitud.getAddressField();
-      _addressField_8.setZip_code(0);
+      address.setZip_code(0);
     }
     solicitud.save();
   }

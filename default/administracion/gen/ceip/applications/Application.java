@@ -1,12 +1,12 @@
 package ceip.applications;
 
 import ceip.applications.Indice;
-import ceip.applications.application.Address;
 import java.util.ArrayList;
 import org.monet.bpi.FieldBoolean;
 import org.monet.bpi.FieldDate;
 import org.monet.bpi.FieldFile;
 import org.monet.bpi.FieldMultiple;
+import org.monet.bpi.FieldSection;
 import org.monet.bpi.FieldSelect;
 import org.monet.bpi.FieldText;
 import org.monet.bpi.Node;
@@ -157,8 +157,8 @@ public class Application extends NodeFormImpl {
     return ((org.monet.bpi.FieldMultiple<org.monet.bpi.FieldFile, org.monet.bpi.types.File>)this.getField("Application", "Documents")).getAll();
   }
   
-  public Address getAddressField() {
-    return ((ceip.applications.application.Address)this.getField("Application", "Address"));
+  public FieldSection getAddressField() {
+    return ((org.monet.bpi.FieldSection)this.getField("Application", "Address"));
   }
   
   public FieldBoolean getAdmitidoField() {

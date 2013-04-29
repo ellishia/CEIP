@@ -5,6 +5,7 @@ import grades.controls.control.diarycontrol.StudentProperty;
 import org.monet.metamodel.SectionFieldProperty;
 import org.monet.metamodel.interfaces.HasBehaviour;
 
+@SuppressWarnings("all")
 public class DiaryControlProperty extends SectionFieldProperty implements HasBehaviour {
   public DiaryControlProperty() {
     super();this._code = "mh_i1bg";

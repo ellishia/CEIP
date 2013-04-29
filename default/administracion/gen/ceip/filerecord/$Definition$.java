@@ -12,7 +12,7 @@ public class $Definition$ extends DocumentDefinition implements HasBehaviour, Ha
     super();this._code = "mxpuvda";
     this._name = "ceip.FileRecord";
     this._isAbstract = null;this._label = "FileRecord";
-    this._template = ceip.Resources.Template.FileRecord;
+    this._template = nopackage.Resources.Template.FileRecord;
     this.setIsReadonly(true);
     
   }

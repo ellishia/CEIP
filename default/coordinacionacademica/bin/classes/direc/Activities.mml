@@ -21,7 +21,7 @@ package direc {
 				}
 			}
 
-			["i"]
+			["mblt51g"]
 			view Normal {
 				show {
 					title = ref Name;

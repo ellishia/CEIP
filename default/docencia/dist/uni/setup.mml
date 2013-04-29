@@ -22,7 +22,7 @@ setup docencia extends docencia {
 
 	publish {
 		federation {
-			setup-uri = "http://10.230.140.157:8091/empresa";
+			setup-uri = "http://10.230.140.157:8091/federation";
 		}
 		service = ref doc.procesos.StudentTransfer;
 		source = ref doc.shared.Areas;

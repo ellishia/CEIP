@@ -21,7 +21,7 @@ package direc {
 				}
 			}
 
-			["i"]
+			["mwml0sa"]
 			view Normal {
 				show {
 					line = ref AcademicYear;

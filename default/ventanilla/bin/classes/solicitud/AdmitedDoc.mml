@@ -1,6 +1,6 @@
 import java.util.*
 import solicitud.Applications.*
-import ceip.CentroInfo
+//import ceip.CentroInfo
 
 package solicitud {
 

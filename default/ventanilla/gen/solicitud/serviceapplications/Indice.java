@@ -34,4 +34,14 @@ public class Indice extends IndexEntryImpl {
   public void setStudentSurname(final String StudentSurname) {
     this.setAttribute("mayyduq", StudentSurname);
   }
+  
+  public final static Param Cial = new org.monet.bpi.Param("mle3kbg");
+  
+  public String getCial() {
+    return (java.lang.String)this.getAttribute("mle3kbg");
+  }
+  
+  public void setCial(final String Cial) {
+    this.setAttribute("mle3kbg", Cial);
+  }
 }

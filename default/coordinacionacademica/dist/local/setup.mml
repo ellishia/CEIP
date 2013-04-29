@@ -3,7 +3,7 @@ setup coordinacionacademica extends coordinacionacademica {
 	subtitle = "Coordinación Académica";
 
 	space coordinacionacademica {
-		deploy-uri = "http://192.168.1.33:8090/coordinacionacademica";
+		deploy-uri = "http://192.168.1.34:8091/coordinacionacademica";
 	}
 	federation {
 		socket-uri = "socket://localhost:5346/";
@@ -15,7 +15,7 @@ setup coordinacionacademica extends coordinacionacademica {
 	}
 	publish {
 		federation {
-			setup-uri = "http://192.168.1.33:8090/empresa";
+			setup-uri = "http://192.168.1.34:8091/federation";
 		}
 		service = ref direc.procesos.StudentTransfer;
 		source = ref direc.shared.Teachers;

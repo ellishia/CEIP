@@ -4,6 +4,7 @@ import org.monet.metamodel.CatalogDefinition;
 import org.monet.metamodel.interfaces.HasBehaviour;
 import org.monet.metamodel.interfaces.HasClientBehaviour;
 
+@SuppressWarnings("all")
 public class $Definition$ extends CatalogDefinition implements HasBehaviour, HasClientBehaviour {
   public $Definition$() {
     super();this._code = "mtmtz3w";

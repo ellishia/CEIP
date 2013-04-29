@@ -2,19 +2,19 @@ package grades.controls;
 
 import grades.continuosevaluation.Index;
 import grades.controls.Indice;
-import grades.controls.control.DiaryControl;
 import org.monet.bpi.FieldDate;
 import org.monet.bpi.FieldMultiple;
+import org.monet.bpi.FieldSection;
 import org.monet.bpi.FieldSelect;
 import org.monet.bpi.Node;
 import org.monet.bpi.java.NodeFormImpl;
 import org.monet.bpi.types.Date;
 import org.monet.bpi.types.Term;
 
-@SuppressWarnings(value = "all")
+@SuppressWarnings("all")
 public class Control extends NodeFormImpl {
-  public FieldMultiple<DiaryControl,Void> getDiaryControlField() {
-    return ((org.monet.bpi.FieldMultiple<grades.controls.control.DiaryControl, java.lang.Void>)this.getField("Control", "DiaryControl"));
+  public FieldMultiple<FieldSection,Void> getDiaryControlField() {
+    return ((org.monet.bpi.FieldMultiple<org.monet.bpi.FieldSection, java.lang.Void>)this.getField("Control", "DiaryControl"));
   }
   
   public FieldSelect getSubjectField() {

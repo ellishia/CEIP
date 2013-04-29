@@ -12,7 +12,7 @@ public class $Definition$ extends ceip.academicrecords.$Definition$ implements H
     this._name = "ceip.AdmitedDoc";
     this._parent = "ceip.AcademicRecords";
     this._isAbstract = null;this._label = "Listado de Admitidos";
-    this._template = ceip.Resources.Template.AdmitedList;
+    this._template = nopackage.Resources.Template.AdmitedList;
     
   }
   static {

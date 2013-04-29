@@ -54,17 +54,16 @@ package solicitud {
 				i.siblings = ficha.siblings;
 				i.parents = ficha.parentsInCenter;
 				i.matriculable = ficha.matriculable;
-				i.address.designation = ficha.addressField.designation;
-				i.address.street_name = ficha.addressField.street_name;
-				i.address.number = ficha.addressField.number;
-				i.address.appartment = ficha.addressField.appartament;
-				i.address.neigbourhood = ficha.addressField.neigbourhood;
-				i.address.city = ficha.addressField.city;
-				i.address.zip_code = ficha.addressField.zip_code;
+				var address = ficha.addressField as applicationinfo.Address;
+				i.address.designation = address.designation;
+				i.address.street_name = address.street_name;
+				i.address.number = address.number;
+				i.address.appartment = address.appartament;
+				i.address.neigbourhood = address.neigbourhood;
+				i.address.city = address.city;
+				i.address.zip_code = address.zip_code;
 			}
-
 		}
-
 	}
 }
   

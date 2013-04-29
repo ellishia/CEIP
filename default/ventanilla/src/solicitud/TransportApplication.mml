@@ -38,7 +38,7 @@ package solicitud {
 		}
 
 		["mcrttmq"]
-		view {
+		view Vista{
 			label = "Datos de Transporte";
 			show {
 				field = ref Address;

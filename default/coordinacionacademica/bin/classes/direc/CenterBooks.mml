@@ -39,7 +39,7 @@ package direc {
 				}
 			}
 
-			["i"]
+			["mcag7og"]
 			view Normal {
 				show {
 					title = ref Title;
@@ -67,16 +67,16 @@ package direc {
 				}
 			}
 		}
+
 		["m8cc6yq"]
 		operation ExemplairAddition {
-			label = "Añadir Ejemplares";			
-			execute(){
+			label = "Añadir Ejemplares";
+			execute() {
 				var tarea = direc::procesos::AnadirEjemplar:: createNew();
 				tarea.save;
 				tarea.resume;
 				ClientService:: redirectUserTo(MonetLink:: forTask(tarea.id));
 			}
-			
 		}
 
 	}

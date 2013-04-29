@@ -2,6 +2,7 @@ package grades.teacherform;
 
 import org.monet.metamodel.SelectFieldProperty;
 
+@SuppressWarnings("all")
 public class TeacherNameProperty extends SelectFieldProperty {
   public TeacherNameProperty() {
     super();this._code = "m_yybkq";

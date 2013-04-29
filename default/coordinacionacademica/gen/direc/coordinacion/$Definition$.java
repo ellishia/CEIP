@@ -16,7 +16,7 @@ public class $Definition$ extends DesktopDefinition implements HasBehaviour, Has
     this.setFor(forProperty2);
     org.monet.metamodel.DesktopDefinition.ViewProperty viewProperty4 = new org.monet.metamodel.DesktopDefinition.ViewProperty();
     viewProperty4.setLabel("Planificación");
-    viewProperty4.setCode("u");
+    viewProperty4.setCode("mzssrma");
     org.monet.metamodel.DesktopDefinition.ViewProperty.ShowProperty showProperty5 = new org.monet.metamodel.DesktopDefinition.ViewProperty.ShowProperty();
     showProperty5.getLink().add(new org.monet.metamodel.internal.Ref("direc.Activities"));
     showProperty5.getLink().add(new org.monet.metamodel.internal.Ref("direc.Schedules"));

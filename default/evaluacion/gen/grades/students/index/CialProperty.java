@@ -2,6 +2,7 @@ package grades.students.index;
 
 import org.monet.metamodel.AttributeProperty;
 
+@SuppressWarnings("all")
 public class CialProperty extends AttributeProperty {
   public CialProperty() {
     super();this._code = "mtrp82w";

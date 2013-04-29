@@ -2,6 +2,7 @@ package grades.califications.calification;
 
 import org.monet.metamodel.TextFieldProperty;
 
+@SuppressWarnings("all")
 public class GradeProperty extends TextFieldProperty {
   public GradeProperty() {
     super();this._code = "mujfnjq";

@@ -2,6 +2,7 @@ package grades.examresults.examresult;
 
 import org.monet.metamodel.NumberFieldProperty;
 
+@SuppressWarnings("all")
 public class CalificationProperty extends NumberFieldProperty {
   public CalificationProperty() {
     super();this._code = "metjbqq";

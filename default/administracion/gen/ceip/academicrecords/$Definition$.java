@@ -12,7 +12,7 @@ public class $Definition$ extends DocumentDefinition implements HasBehaviour, Ha
     super();this._code = "ml2_wla";
     this._name = "ceip.AcademicRecords";
     this._isAbstract = new IsAbstract();this._label = "AcademicRecords";
-    this._template = ceip.Resources.Template.AcademicRecords;
+    this._template = nopackage.Resources.Template.AcademicRecords;
     
   }
   static {

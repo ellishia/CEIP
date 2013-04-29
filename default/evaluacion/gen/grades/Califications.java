@@ -5,7 +5,7 @@ import org.monet.bpi.Expression;
 import org.monet.bpi.OrderExpression;
 import org.monet.bpi.java.NodeCollectionImpl;
 
-@SuppressWarnings(value = "all")
+@SuppressWarnings("all")
 public class Califications extends NodeCollectionImpl {
   public static Califications getInstance() {
     return (grades.Califications)org.monet.bpi.NodeService.locate("grades.Califications");

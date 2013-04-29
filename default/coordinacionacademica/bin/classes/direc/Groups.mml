@@ -33,7 +33,7 @@ package direc {
 				}
 			}
 
-			["i"]
+			["mvaxnga"]
 			view Normal {
 				show {
 					title = ref Name;

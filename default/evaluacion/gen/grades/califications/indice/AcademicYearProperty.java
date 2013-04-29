@@ -2,6 +2,7 @@ package grades.califications.indice;
 
 import org.monet.metamodel.AttributeProperty;
 
+@SuppressWarnings("all")
 public class AcademicYearProperty extends AttributeProperty {
   public AcademicYearProperty() {
     super();this._code = "mi8peha";

@@ -2,6 +2,7 @@ package grades.examresults.examresult;
 
 import org.monet.metamodel.LinkFieldProperty;
 
+@SuppressWarnings("all")
 public class StudentProperty extends LinkFieldProperty {
   public StudentProperty() {
     super();this._code = "msrpifa";

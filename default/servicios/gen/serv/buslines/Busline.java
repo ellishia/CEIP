@@ -2,6 +2,7 @@ package serv.buslines;
 
 import java.util.ArrayList;
 import org.monet.bpi.FieldMultiple;
+import org.monet.bpi.FieldSection;
 import org.monet.bpi.FieldSelect;
 import org.monet.bpi.FieldSerial;
 import org.monet.bpi.FieldText;
@@ -9,7 +10,6 @@ import org.monet.bpi.Node;
 import org.monet.bpi.java.NodeFormImpl;
 import org.monet.bpi.types.Term;
 import serv.buslines.Indice;
-import serv.buslines.busline.Dates;
 
 @SuppressWarnings("all")
 public class Busline extends NodeFormImpl {
@@ -65,8 +65,8 @@ public class Busline extends NodeFormImpl {
     this.getAuxiliarField().set(value);
   }
   
-  public Dates getDatesField() {
-    return ((serv.buslines.busline.Dates)this.getField("Busline", "Dates"));
+  public FieldSection getDatesField() {
+    return ((org.monet.bpi.FieldSection)this.getField("Busline", "Dates"));
   }
   
   public FieldText getScheduleField() {

@@ -8,7 +8,7 @@ import org.monet.bpi.java.NodeFormImpl;
 import org.monet.bpi.types.Date;
 import org.monet.bpi.types.Term;
 
-@SuppressWarnings(value = "all")
+@SuppressWarnings("all")
 public class EvaluationForm extends NodeFormImpl {
   public FieldSelect getGroupField() {
     return ((org.monet.bpi.FieldSelect)this.getField("EvaluationForm", "Group"));

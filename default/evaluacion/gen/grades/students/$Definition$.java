@@ -4,6 +4,7 @@ import org.monet.metamodel.CollectionDefinition;
 import org.monet.metamodel.interfaces.HasBehaviour;
 import org.monet.metamodel.interfaces.HasClientBehaviour;
 
+@SuppressWarnings("all")
 public class $Definition$ extends CollectionDefinition implements HasBehaviour, HasClientBehaviour {
   public $Definition$() {
     super();this._code = "mphcdia";

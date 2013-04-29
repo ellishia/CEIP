@@ -1,16 +1,19 @@
 package direc.procesos;
 
+import direc.Ejemplares;
 import direc.IntanceEjemplar;
 import direc.ejemplares.Ejemplar;
-import direc.intanceejemplar.Ejemplares;
+import direc.intanceejemplar.EjemplaresSeccion;
 import direc.procesos.anadirejemplar.Lock;
 import direc.procesos.anadirejemplar.Place;
 import java.util.ArrayList;
 import org.monet.bpi.DelegationSetup;
 import org.monet.bpi.FieldMultiple;
+import org.monet.bpi.FieldSection;
 import org.monet.bpi.JobRequest;
 import org.monet.bpi.JobResponse;
 import org.monet.bpi.JobSetup;
+import org.monet.bpi.MonetLink;
 import org.monet.bpi.Node;
 import org.monet.bpi.RoleChooser;
 import org.monet.bpi.ValidationResult;
@@ -37,19 +40,20 @@ public class AnadirEjemplar extends ActivityImpl {
   }
   
   private void onSolve0(final IntanceEjemplar f) {
-    FieldMultiple<Ejemplares,Void> _ejemplaresField = f.getEjemplaresField();
-    ArrayList<Ejemplares> _allFields = _ejemplaresField.getAllFields();
-    for (final Ejemplares item : _allFields) {
+    FieldMultiple<FieldSection,Void> _ejemplaresSeccionField = f.getEjemplaresSeccionField();
+    ArrayList<FieldSection> _allFields = _ejemplaresSeccionField.getAllFields();
+    for (final FieldSection item : _allFields) {
       {
-        direc.Ejemplares ejemplares = direc.Ejemplares.getInstance();
-        org.monet.bpi.types.Number _number = item.getNumber();
+        Ejemplares ejemplares = Ejemplares.getInstance();
+        EjemplaresSeccion ejem = ((EjemplaresSeccion) item);
+        org.monet.bpi.types.Number _number = ejem.getNumber();
         int i = _number.intValue();
         boolean _greaterThan = (i > 0);
         boolean _while = _greaterThan;
         while (_while) {
           {
             Ejemplar ejemplar = Ejemplar.createNew(ejemplares);
-            Link _libro = item.getLibro();
+            Link _libro = ejem.getLibro();
             ejemplar.setLibro(_libro);
             ejemplar.setEstado("nuevo");
             ejemplar.save();
@@ -63,9 +67,20 @@ public class AnadirEjemplar extends ActivityImpl {
     }
   }
   
+  private void onArrive1() {
+    Ejemplares ejemplares = Ejemplares.getInstance();
+    MonetLink elink = ejemplares.toMonetLink();
+    ArrayList<MonetLink> links = null;
+    links.add(elink);
+    this.addLog("Finalizado", "Se han creado los ejemplares especificados", links);
+  }
+  
   public void onArrivePlace(final String placeCode) {
     int hash = (placeCode).hashCode();
-    switch(hash) {}
+    switch(hash) {case 1210868267 :
+      onArrive1();
+    break;
+    }
   }
   
   public void onTimeoutPlace(final String placeCode, final String actionCode) {
@@ -116,7 +131,7 @@ public class AnadirEjemplar extends ActivityImpl {
     switch(hash) {}
   }
   
-  public void onSetupDelegationComplete(final String placeCode, final String actionCode, final Date p0, final Date p1, final String p2, final boolean p3) {
+  public void onSetupDelegationComplete(final String placeCode, final String actionCode, final String p0, final Date p1, final Date p2, final String p3, final boolean p4) {
     int hash = (actionCode + placeCode).hashCode();
     switch(hash) {}
   }

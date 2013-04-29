@@ -4,7 +4,14 @@ package solicitud.procesos {
 	definition PublicarPlaza is activity {
 		label = "Preinscripción";
 		target = ref solicitud.Application;
+		shortcut shServiceApplications;
 		role = ref solicitud.shared.Padre;
+
+		onInitialize() {
+			setContextVariable("canteen", "false");
+			setContextVariable("transport", "false");
+			save();
+		}
 
 		["mfdyzbq"]
 		place Inicial {
@@ -16,8 +23,8 @@ package solicitud.procesos {
 				["mea8i7g"]
 				stop Generar {
 					history = "Se generará la preinscripción";
-					goto = ref Generado;
-					label = "Se enviará la preinscripción";
+					goto = ref Recopilado;
+					label = "Presentar la preinscripción";
 				}
 
 				["mjpe8pw"]
@@ -27,6 +34,187 @@ package solicitud.procesos {
 					label = "Salir";
 				}
 				label = "Decidir si generar o no";
+			}
+		}
+
+		["mymsurw"]
+		place Recopilado {
+			onArrive() {
+				var serviceAppl = solicitud::ServiceApplications:: instance;
+				var sol = this.getTarget() as solicitud.Application;
+				var solicitudes = serviceAppl.get(solicitud::serviceapplications::Indice:: Cial.Eq(sol.applicationInfo.cial));
+				var Boolean canteen = false;
+				var Boolean transport = false;
+				for(serv : solicitudes) {
+					var nodo = serv.indexedNode;
+					if(nodo instanceof solicitud.CanteenApplication) {
+						canteen = true;
+					}
+					else {
+						transport = true;
+					}
+				}
+				setContextVariable("canteen", canteen.toString);
+				setContextVariable("transport", transport.toString);
+				if(! canteen || ! transport) {
+					doGoto(Place:: AnadirEscoge, "Adjuntar solicitudes de servicios");
+				}
+				else {
+					doGoto(Place:: Generado, null);
+				}
+			}
+		}
+
+		["mri47fw"]
+		place AnadirEscoge {
+			onArrive() {
+				var transport = getContextVariable("transport");
+				var i = Boolean:: parseBoolean(transport);
+				if(! i) {
+					doGoto(Place:: AnadirTrans, "Visualizar solicitud de transporte");
+					return;
+				}
+				var canteen = getContextVariable("canteen");
+				i = Boolean:: parseBoolean(canteen);
+				if(! i) {
+					doGoto(Place:: Anadir, "Visualizar solicitud de comedor");
+					return;
+				}
+				else {
+					doGoto(Place:: Generado, "ya se han adjuntado las solicitudes de servicios");
+					return;
+				}
+			}
+		}
+
+		["mtbyd1q"]
+		place AnadirTrans {
+
+			onArrive() {
+				setContextVariable("transport", true.toString);
+			}
+
+			["mcqfsjq"]
+			line {
+
+				["mozytya"]
+				stop Add {
+					history = "Se ha adjuntado una solicitud de transporte";
+					goto = ref RedirigidoTrans;
+					label = "Se añadirá una solicitud de transporte";
+				}
+
+				["ma1unsg"]
+				stop Seguir {
+					history = "Continuar";
+					goto = ref AnadirEscoge;
+					label = "Continuar";
+				}
+				label = "Decidir si añadir o no";
+			}
+		}
+
+		["m8xoz1a"]
+		place Anadir {
+			onArrive() {
+				setContextVariable("canteen", true.toString);
+			}
+
+			["mcqfsjq"]
+			line {
+
+				["mozytya"]
+				stop Add {
+					history = "Se ha adjuntado una solicitud";
+					goto = ref Redirigido;
+					label = "Se añadirá una solicitud de comedor";
+				}
+
+				["ma1unsg"]
+				stop Seguir {
+					history = "Continuar";
+					goto = ref AnadirEscoge;
+					label = "Continuar";
+				}
+				label = "Decidir si añadir o no";
+			}
+		}
+
+		["mlwztba"]
+		place RedirigidoTrans {
+
+			["msacpda"]
+			edition {
+				goto = ref AnadirEscoge;
+				history = "Se ha añadido solicitud";
+				label = "Añadir solicitud de transporte";
+				use {
+					form = ref solicitud.TransportApplication;
+					with-view = ref solicitud.TransportApplication.Vista;
+				}
+				onSolve(solicitud.TransportApplication f) {
+				//setContextVariable("transport", true.toString);
+					if(! f.address.nullOrEmpty && f.distance != null) {
+						var servicios = solicitud::ServiceApplications:: instance;
+						var solitrans = solicitud::TransportApplication:: createNew(servicios);
+						var applicationInfo = this.getTarget().applicationInfo as solicitud.ApplicationInfo;
+						solitrans.academicYear = applicationInfo.academicYear;
+						solitrans.setCial(applicationInfo.cial);
+						solitrans.studentName = applicationInfo.studentName;
+						solitrans.studentSurname = applicationInfo.studentSurname;
+						solitrans.date = new Date();
+						solitrans.address = f.address;
+						solitrans.distance = f.distance;
+						solitrans.trip = f.trip;
+						solitrans.setStop(f.getStop());
+						solitrans.leaveAt = f.leaveAt;
+						solitrans.save();
+					}
+				}
+			}
+		}
+
+		["mfftfvq"]
+		place Redirigido {
+
+			["mta5arw"]
+			edition {
+				goto = ref AnadirEscoge;
+				history = "Se ha añadido solicitud";
+				label = "Añadir solicitud";
+				use {
+					form = ref solicitud.CanteenApplication;
+					with-view = ref solicitud.CanteenApplication.Vista;
+				}
+
+				onSolve(solicitud.CanteenApplication f) {
+				//comprobar que haya habido cambios	
+				//setContextVariable("canteen", true.toString);
+					if(! f.schedule.nullOrEmpty) {
+						var servicios = solicitud::ServiceApplications:: instance;
+						var solicomensal = solicitud::CanteenApplication:: createNew(servicios);
+						var applicationInfo = this.getTarget().applicationInfo as solicitud.ApplicationInfo;
+						solicomensal.academicYear = applicationInfo.academicYear;
+						solicomensal.setCial(applicationInfo.cial);
+						solicomensal.studentName = applicationInfo.studentName;
+						solicomensal.studentSurname = applicationInfo.studentSurname;
+						solicomensal.date = new Date();
+						solicomensal.actualPosition = f.actualPosition;
+						solicomensal.schedule = f.schedule;
+						solicomensal.subsidized = f.subsidized;
+						var criterios = f.criteriaField as solicitud.canteenapplication.Criteria;
+						var solicriterios = solicomensal.criteriaField as solicitud.canteenapplication.Criteria;
+						solicriterios.anualIncome = criterios.anualIncome;
+						solicriterios.handcaped = criterios.handcaped;
+						solicriterios.siblings = criterios.siblings;
+						solicriterios.monoParentalorNumberusFamily = criterios.monoParentalorNumberusFamily;
+						solicriterios.workingPersonalLife = criterios.workingPersonalLife;
+						solicriterios.parentsInSchool = criterios.parentsInSchool;
+						solicomensal.observations = f.observations;
+						solicomensal.documents.addAll(f.documents);
+						solicomensal.save();
+					}
+				}
 			}
 		}
 
@@ -58,10 +246,11 @@ package solicitud.procesos {
 				goto = ref EsperandoRespuesta;
 			}
 		}
-		
+
 		["mufdlfw"]
-		place EsperandoRespuesta { 
-				["mmbg7vw"]
+		place EsperandoRespuesta {
+
+			["mmbg7vw"]
 			door DoorRespuesta {
 				label = "Esperando Respuesta";
 
@@ -87,8 +276,24 @@ package solicitud.procesos {
 					constructor(ProviderRequest msg) {
 						try {
 							var preinscripcion = this.getTask().getTarget();
-							var solicitud = solicitud::solicituddoc::Exportador:: doExportOf(preinscripcion).toNewDocument;
-							msg.attachSchema("Preinscripcion", solicitud);
+							var solicitudDoc = solicitud::solicituddoc::Exportador:: doExportOf(preinscripcion).toNewDocument;
+							msg.attachSchema("Preinscripcion", solicitudDoc);
+							var serviceAppl = solicitud::ServiceApplications:: instance;
+							var solicitudes = serviceAppl.get(solicitud::serviceapplications::Indice:: Cial.Eq(preinscripcion.applicationInfo.cial));
+							if(! solicitudes.isEmpty) {
+								for(sol : solicitudes) {
+									var servsol = sol.indexedNode;
+									// si es de una clase hacer un export y si es de otra otro									
+									if(servsol instanceof solicitud.CanteenApplication) {
+										var docu = solicitud::canteendoc::Exportador:: doExportOf(servsol).toNewDocument;
+										msg.attachDocument("Comedor", docu);
+									}
+									else {
+										var docu = solicitud::transportdoc::Exportador:: doExportOf(servsol).toNewDocument;
+										msg.attachDocument("Transporte", docu);
+									}
+								}
+							}
 						}
 						catch(java.lang.Exception ex) {
 							getTask().addLog("exception", ex.getMessage());
@@ -104,8 +309,8 @@ package solicitud.procesos {
 						// post.setTitleLink(tarea.toMonetLink());
 						post.setBody(mess);
 						//post.setBodyLink(tarea.toMonetLink());
-						NewsService:: postAndNotifyToAll(post);
-						this.getTask().doUnlock(Lock::EsperandoRespuesta_ExitRespuesta);
+						NewsService:: postToAll(post);
+						this.getTask().doUnlock(Lock:: EsperandoRespuesta_ExitRespuesta);
 					}
 				}
 			}

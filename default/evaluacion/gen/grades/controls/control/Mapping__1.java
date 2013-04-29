@@ -4,6 +4,7 @@ import grades.continuosevaluation.Index;
 import grades.controls.Control;
 import org.monet.bpi.java.MappingImpl;
 
+@SuppressWarnings("all")
 public class Mapping__1 extends MappingImpl {
   public void calculateMapping() {
     super.calculateMapping();

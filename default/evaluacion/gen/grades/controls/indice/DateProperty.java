@@ -2,6 +2,7 @@ package grades.controls.indice;
 
 import org.monet.metamodel.AttributeProperty;
 
+@SuppressWarnings("all")
 public class DateProperty extends AttributeProperty {
   public DateProperty() {
     super();this._code = "mgypnuw";

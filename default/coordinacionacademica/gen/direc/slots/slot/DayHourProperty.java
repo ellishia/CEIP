@@ -1,9 +1,9 @@
 package direc.slots.slot;
 
-import org.monet.metamodel.NumberFieldProperty;
+import org.monet.metamodel.TextFieldProperty;
 
 @SuppressWarnings("all")
-public class DayHourProperty extends NumberFieldProperty {
+public class DayHourProperty extends TextFieldProperty {
   public DayHourProperty() {
     super();this._code = "mar2pmq";
     this._name = "DayHour";

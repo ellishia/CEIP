@@ -2,6 +2,7 @@ package grades.trimestralevaluations.indice;
 
 import org.monet.metamodel.AttributeProperty;
 
+@SuppressWarnings("all")
 public class GroupProperty extends AttributeProperty {
   public GroupProperty() {
     super();this._code = "m1swm9q";

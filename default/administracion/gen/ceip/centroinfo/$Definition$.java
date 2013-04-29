@@ -25,19 +25,26 @@ public class $Definition$ extends ContainerDefinition implements HasBehaviour, H
     viewProperty6.setShow(showProperty8);
     this.addView(viewProperty6);
     org.monet.metamodel.ContainerDefinition.ViewProperty viewProperty11 = new org.monet.metamodel.ContainerDefinition.ViewProperty();
-    viewProperty11.setLabel("Plazas disponibles");
-    viewProperty11.setCode("m549x3q");
+    viewProperty11.setLabel("Información para matriculación");
+    viewProperty11.setCode("mpomrqw");
     org.monet.metamodel.ContainerDefinition.ViewProperty.ShowProperty showProperty12 = new org.monet.metamodel.ContainerDefinition.ViewProperty.ShowProperty();
-    showProperty12.getComponent().add(new org.monet.metamodel.internal.Ref("Vista","ceip.AvailablePositions","ceip.AvailablePositions.Vista"));
+    showProperty12.getComponent().add(new org.monet.metamodel.internal.Ref("MatDatos","ceip.CenterInformation","ceip.CenterInformation.MatDatos"));
     viewProperty11.setShow(showProperty12);
     this.addView(viewProperty11);
     org.monet.metamodel.ContainerDefinition.ViewProperty viewProperty15 = new org.monet.metamodel.ContainerDefinition.ViewProperty();
-    viewProperty15.setLabel("Plazas totales");
-    viewProperty15.setCode("mg_c7wq");
+    viewProperty15.setLabel("Plazas disponibles");
+    viewProperty15.setCode("m549x3q");
     org.monet.metamodel.ContainerDefinition.ViewProperty.ShowProperty showProperty16 = new org.monet.metamodel.ContainerDefinition.ViewProperty.ShowProperty();
-    showProperty16.getComponent().add(new org.monet.metamodel.internal.Ref("View","ceip.TotalPositions","ceip.TotalPositions.View"));
+    showProperty16.getComponent().add(new org.monet.metamodel.internal.Ref("Vista","ceip.AvailablePositions","ceip.AvailablePositions.Vista"));
     viewProperty15.setShow(showProperty16);
     this.addView(viewProperty15);
+    org.monet.metamodel.ContainerDefinition.ViewProperty viewProperty19 = new org.monet.metamodel.ContainerDefinition.ViewProperty();
+    viewProperty19.setLabel("Plazas totales");
+    viewProperty19.setCode("mg_c7wq");
+    org.monet.metamodel.ContainerDefinition.ViewProperty.ShowProperty showProperty20 = new org.monet.metamodel.ContainerDefinition.ViewProperty.ShowProperty();
+    showProperty20.getComponent().add(new org.monet.metamodel.internal.Ref("View","ceip.TotalPositions","ceip.TotalPositions.View"));
+    viewProperty19.setShow(showProperty20);
+    this.addView(viewProperty19);
     
   }
   static {

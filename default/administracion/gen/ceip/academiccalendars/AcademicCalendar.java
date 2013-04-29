@@ -1,8 +1,8 @@
 package ceip.academiccalendars;
 
 import ceip.academiccalendars.Index;
-import ceip.academiccalendars.academiccalendar.Event;
 import org.monet.bpi.FieldMultiple;
+import org.monet.bpi.FieldSection;
 import org.monet.bpi.FieldSelect;
 import org.monet.bpi.Node;
 import org.monet.bpi.java.NodeFormImpl;
@@ -26,8 +26,8 @@ public class AcademicCalendar extends NodeFormImpl {
     this.getAcademicYearField().set(value);
   }
   
-  public FieldMultiple<Event,Void> getEventField() {
-    return ((org.monet.bpi.FieldMultiple<ceip.academiccalendars.academiccalendar.Event, java.lang.Void>)this.getField("AcademicCalendar", "Event"));
+  public FieldMultiple<FieldSection,Void> getEventField() {
+    return ((org.monet.bpi.FieldMultiple<org.monet.bpi.FieldSection, java.lang.Void>)this.getField("AcademicCalendar", "Event"));
   }
   
   public void executeCommand(final String operation) {

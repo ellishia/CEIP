@@ -5,7 +5,7 @@ package direc {
 		label = "IntanceEjemplar";
 
 		["madx8gg"]
-		field-section Ejemplares {
+		field-section EjemplaresSeccion {
 			label = "Ejemplares a Añadir";
 			is-multiple;
 
@@ -27,7 +27,7 @@ package direc {
 		view View {
 			label = "IntanceEjemplar";
 			show {
-				field = ref Ejemplares;
+				field = ref EjemplaresSeccion;
 			}
 		}
 

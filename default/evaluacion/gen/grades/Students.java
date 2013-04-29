@@ -5,7 +5,7 @@ import org.monet.bpi.Expression;
 import org.monet.bpi.OrderExpression;
 import org.monet.bpi.java.NodeCollectionImpl;
 
-@SuppressWarnings(value = "all")
+@SuppressWarnings("all")
 public class Students extends NodeCollectionImpl {
   public static Students getInstance() {
     return (grades.Students)org.monet.bpi.NodeService.locate("grades.Students");

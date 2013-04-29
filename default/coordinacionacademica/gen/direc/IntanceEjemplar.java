@@ -1,14 +1,14 @@
 package direc;
 
-import direc.intanceejemplar.Ejemplares;
 import org.monet.bpi.FieldMultiple;
+import org.monet.bpi.FieldSection;
 import org.monet.bpi.Node;
 import org.monet.bpi.java.NodeFormImpl;
 
 @SuppressWarnings("all")
 public class IntanceEjemplar extends NodeFormImpl {
-  public FieldMultiple<Ejemplares,Void> getEjemplaresField() {
-    return ((org.monet.bpi.FieldMultiple<direc.intanceejemplar.Ejemplares, java.lang.Void>)this.getField("IntanceEjemplar", "Ejemplares"));
+  public FieldMultiple<FieldSection,Void> getEjemplaresSeccionField() {
+    return ((org.monet.bpi.FieldMultiple<org.monet.bpi.FieldSection, java.lang.Void>)this.getField("IntanceEjemplar", "EjemplaresSeccion"));
   }
   
   public void executeCommand(final String operation) {

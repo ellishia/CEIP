@@ -1,13 +1,13 @@
 package serv.users;
 
+import org.monet.bpi.FieldSection;
 import org.monet.bpi.Node;
 import org.monet.bpi.java.NodeFormImpl;
-import serv.users.user.Information;
 
 @SuppressWarnings("all")
 public abstract class User extends NodeFormImpl {
-  public Information getInformationField() {
-    return ((serv.users.user.Information)this.getField("User", "Information"));
+  public FieldSection getInformationField() {
+    return ((org.monet.bpi.FieldSection)this.getField("User", "Information"));
   }
   
   public void executeCommand(final String operation) {

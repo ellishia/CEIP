@@ -2,6 +2,7 @@ package grades.califications.calification;
 
 import org.monet.metamodel.SelectFieldProperty;
 
+@SuppressWarnings("all")
 public class AcademicYearProperty extends SelectFieldProperty {
   public AcademicYearProperty() {
     super();this._code = "mpza0cw";

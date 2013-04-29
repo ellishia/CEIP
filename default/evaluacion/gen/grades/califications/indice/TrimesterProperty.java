@@ -2,6 +2,7 @@ package grades.califications.indice;
 
 import org.monet.metamodel.AttributeProperty;
 
+@SuppressWarnings("all")
 public class TrimesterProperty extends AttributeProperty {
   public TrimesterProperty() {
     super();this._code = "mo9mzwg";

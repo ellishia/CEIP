@@ -1,9 +1,9 @@
 package ceip;
 
-import ceip.centerinformation.Contact;
 import java.util.ArrayList;
 import org.monet.bpi.FieldFile;
 import org.monet.bpi.FieldMultiple;
+import org.monet.bpi.FieldSection;
 import org.monet.bpi.FieldSelect;
 import org.monet.bpi.FieldText;
 import org.monet.bpi.Node;
@@ -37,8 +37,8 @@ public class CenterInformation extends NodeFormImpl {
     this.getCenterNameField().set(value);
   }
   
-  public Contact getContactField() {
-    return ((ceip.centerinformation.Contact)this.getField("CenterInformation", "Contact"));
+  public FieldSection getContactField() {
+    return ((org.monet.bpi.FieldSection)this.getField("CenterInformation", "Contact"));
   }
   
   public FieldText getInfluenceAreasField() {
@@ -79,6 +79,18 @@ public class CenterInformation extends NodeFormImpl {
   
   public ArrayList<String> getSpecifics() {
     return ((org.monet.bpi.FieldMultiple<org.monet.bpi.FieldText, java.lang.String>)this.getField("CenterInformation", "Specifics")).getAll();
+  }
+  
+  public FieldText getProximityCriteriaField() {
+    return ((org.monet.bpi.FieldText)this.getField("CenterInformation", "ProximityCriteria"));
+  }
+  
+  public String getProximityCriteria() {
+    return ((org.monet.bpi.FieldText)this.getField("CenterInformation", "ProximityCriteria")).get();
+  }
+  
+  public void setProximityCriteria(final String value) {
+    this.getProximityCriteriaField().set(value);
   }
   
   public FieldText getComplementaryCriteriaField() {

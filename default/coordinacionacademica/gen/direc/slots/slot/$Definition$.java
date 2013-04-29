@@ -16,7 +16,7 @@ public class $Definition$ extends FormDefinition implements HasBehaviour, HasCli
     this._name = "direc.Slots.Slot";
     this._isAbstract = null;this._label = "Slot";
     this.addSelectFieldProperty(Weekday);
-    this.addNumberFieldProperty(DayHour);
+    this.addTextFieldProperty(DayHour);
     this.addTextFieldProperty(Subject);
     this.addLinkFieldProperty(Group);
     org.monet.metamodel.FormDefinition.MappingProperty mappingProperty5 = new org.monet.metamodel.FormDefinition.MappingProperty();

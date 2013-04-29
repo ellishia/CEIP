@@ -1,0 +1,45 @@
+package ceip {
+
+	["mnpvp0a"]
+	definition TransportDoc is document {
+		label = "transportDoc";
+
+		schema {
+			StudentName String;
+			StudentSurname String;
+			Cial String;
+			Identifier String;
+			AcademicYear Term;
+			Address String;
+			Distance Number;
+			Trip String;
+			Stop String;
+			LeaveAt String;
+		}
+
+		["mct_qkw"]
+		definition Importador is importer {
+			label = "importador de solicitud de Transporte";
+			target = ref TransportDoc;
+
+			onImportItem(ceip.transportdoc.Schema i) {
+				var servicios = ceip::ServiceApplications::instance;
+				var ficha = ceip::TransportApplication::createNew(servicios);
+				ficha.studentName = i.studentName; 
+				ficha.studentSurname= i.studentSurname;
+				//ficha.cial =i.cial;
+				//i.identifier = ficha.identifier;
+				ficha.academicYear =i.academicYear ;
+				ficha.address = i.address;
+				 ficha.distance =i.distance;
+				ficha.trip =i.trip ;
+				ficha.setStop(i.getStop());
+				ficha.leaveAt = i.leaveAt;
+				ficha.save();
+			}
+
+		}
+
+	}
+}
+  

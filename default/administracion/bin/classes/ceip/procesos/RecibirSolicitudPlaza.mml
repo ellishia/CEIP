@@ -1,4 +1,6 @@
 import ceip.solicituddoc.Importador
+import ceip.TransportDoc
+import ceip.CanteenDoc
 
 package ceip.procesos {
 
@@ -13,6 +15,14 @@ package ceip.procesos {
 
 				import(CustomerRequest msg) {
 					Importador:: doImportOf("Preinscripcion", msg).atGlobalScope;
+					var transport = msg.getDocument("Transporte", typeof(TransportDoc));
+					if(transport != null) {
+						ceip::transportdoc::Importador:: doImportOf("Transporte", msg).atGlobalScope;
+					}
+					var canteen = msg.getDocument("Comedor", typeof(CanteenDoc));
+					if(canteen != null) {
+						ceip::canteendoc::Importador:: doImportOf("Comedor", msg).atGlobalScope;
+					}
 					getTask().doUnlock(Lock:: Inicial_StopName);
 				}
 			}

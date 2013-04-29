@@ -7,6 +7,7 @@ import org.monet.bpi.java.FieldSectionImpl;
 import org.monet.bpi.types.Link;
 import org.monet.bpi.types.Term;
 
+@SuppressWarnings("all")
 public class DiaryControl extends FieldSectionImpl implements FieldSection {
   public FieldNumber getGradeField() {
     return ((org.monet.bpi.FieldNumber)this.getField("Control", "Grade"));

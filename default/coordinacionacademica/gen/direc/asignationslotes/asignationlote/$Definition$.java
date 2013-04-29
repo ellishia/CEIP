@@ -14,7 +14,7 @@ public class $Definition$ extends direc.asignations.asignationdefault.$Definitio
     this._isAbstract = null;this._label = "Asignación de Lote";
     this.addLinkFieldProperty(Lote);
     org.monet.metamodel.FormDefinition.FormViewProperty formViewProperty2 = new org.monet.metamodel.FormDefinition.FormViewProperty();
-    formViewProperty2.setLabel("Lote sin número");
+    formViewProperty2.setLabel("Lote");
     formViewProperty2.setCode("m41_o5q");
     formViewProperty2.setName("AsignView");
     org.monet.metamodel.FormDefinition.FormViewProperty.ShowProperty showProperty3 = new org.monet.metamodel.FormDefinition.FormViewProperty.ShowProperty();

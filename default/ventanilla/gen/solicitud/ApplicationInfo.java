@@ -6,6 +6,7 @@ import org.monet.bpi.FieldBoolean;
 import org.monet.bpi.FieldDate;
 import org.monet.bpi.FieldFile;
 import org.monet.bpi.FieldMultiple;
+import org.monet.bpi.FieldSection;
 import org.monet.bpi.FieldSelect;
 import org.monet.bpi.FieldSerial;
 import org.monet.bpi.FieldText;
@@ -16,8 +17,6 @@ import org.monet.bpi.types.Date;
 import org.monet.bpi.types.File;
 import org.monet.bpi.types.Term;
 import solicitud.Application;
-import solicitud.applicationinfo.Address;
-import solicitud.applicationinfo.AppliedCenters;
 import solicitud.applications.Indice;
 import solicitud.procesos.PublicarPlaza;
 
@@ -131,12 +130,12 @@ public class ApplicationInfo extends NodeFormImpl {
     this.getGenderField().set(value);
   }
   
-  public Address getAddressField() {
-    return ((solicitud.applicationinfo.Address)this.getField("ApplicationInfo", "Address"));
+  public FieldSection getAddressField() {
+    return ((org.monet.bpi.FieldSection)this.getField("ApplicationInfo", "Address"));
   }
   
-  public FieldMultiple<AppliedCenters,Void> getAppliedCentersField() {
-    return ((org.monet.bpi.FieldMultiple<solicitud.applicationinfo.AppliedCenters, java.lang.Void>)this.getField("ApplicationInfo", "AppliedCenters"));
+  public FieldMultiple<FieldSection,Void> getAppliedCentersField() {
+    return ((org.monet.bpi.FieldMultiple<org.monet.bpi.FieldSection, java.lang.Void>)this.getField("ApplicationInfo", "AppliedCenters"));
   }
   
   public FieldSelect getLevelField() {

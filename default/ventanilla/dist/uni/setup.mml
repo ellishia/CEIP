@@ -17,7 +17,7 @@ setup ventanilla extends ventanilla {
 
 	publish {
 		federation {
-			setup-uri = "http://10.230.140.157:8091/empresa";
+			setup-uri = "http://10.230.140.157:8091/federation";
 		}
 		service = ref solicitud.procesos.Admitidos;
 		source = ref solicitud.shared.Genders;

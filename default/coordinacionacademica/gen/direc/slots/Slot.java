@@ -2,7 +2,6 @@ package direc.slots;
 
 import direc.slots.Indice;
 import org.monet.bpi.FieldLink;
-import org.monet.bpi.FieldNumber;
 import org.monet.bpi.FieldSelect;
 import org.monet.bpi.FieldText;
 import org.monet.bpi.Node;
@@ -24,20 +23,16 @@ public class Slot extends NodeFormImpl {
     this.getWeekdayField().set(value);
   }
   
-  public FieldNumber getDayHourField() {
-    return ((org.monet.bpi.FieldNumber)this.getField("Slot", "DayHour"));
+  public FieldText getDayHourField() {
+    return ((org.monet.bpi.FieldText)this.getField("Slot", "DayHour"));
   }
   
-  public org.monet.bpi.types.Number getDayHour() {
-    return ((org.monet.bpi.FieldNumber)this.getField("Slot", "DayHour")).get();
+  public String getDayHour() {
+    return ((org.monet.bpi.FieldText)this.getField("Slot", "DayHour")).get();
   }
   
-  public void setDayHour(final org.monet.bpi.types.Number value) {
+  public void setDayHour(final String value) {
     this.getDayHourField().set(value);
-  }
-  
-  public void setDayHour(final double value) {
-    this.getDayHourField().set(new org.monet.bpi.types.Number(value));
   }
   
   public FieldText getSubjectField() {

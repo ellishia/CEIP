@@ -8,9 +8,11 @@ public class TeacherProperty extends LinkFieldProperty {
     super();this._code = "mms5fba";
     this._name = "Teacher";
     this._label = "Asignación de Docente";
-    org.monet.metamodel.LinkFieldProperty.SourceProperty sourceProperty1 = new org.monet.metamodel.LinkFieldProperty.SourceProperty();
-    sourceProperty1.setIndex(new org.monet.metamodel.internal.Ref("direc.TeacherAsignations.Indice"));
-    this.setSource(sourceProperty1);
+    this.setAllowAdd(true);
+    org.monet.metamodel.LinkFieldProperty.SourceProperty sourceProperty2 = new org.monet.metamodel.LinkFieldProperty.SourceProperty();
+    sourceProperty2.setIndex(new org.monet.metamodel.internal.Ref("direc.TeacherAsignations.Indice"));
+    sourceProperty2.setCollection(new org.monet.metamodel.internal.Ref("direc.TeacherAsignations"));
+    this.setSource(sourceProperty2);
     
   }
   

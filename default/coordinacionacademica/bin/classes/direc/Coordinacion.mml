@@ -8,7 +8,7 @@ package direc {
 			role = ref direc.shared.Administrador;
 		}
 
-		["u"]
+		["mzssrma"]
 		view {
 			label = "Planificación";
 			show {
@@ -55,11 +55,11 @@ package direc {
 				link = ref Asignations;
 			}
 		}
-		
+
 		["mg0dnsg"]
 		view {
 			label = "Tareas y Roles";
-			show { 
+			show {
 				link:roles;
 				link:taskboard;
 			}

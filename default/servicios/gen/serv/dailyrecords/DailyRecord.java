@@ -3,6 +3,7 @@ package serv.dailyrecords;
 import org.monet.bpi.FieldDate;
 import org.monet.bpi.FieldLink;
 import org.monet.bpi.FieldMultiple;
+import org.monet.bpi.FieldSection;
 import org.monet.bpi.FieldText;
 import org.monet.bpi.Node;
 import org.monet.bpi.java.NodeFormImpl;
@@ -10,7 +11,6 @@ import org.monet.bpi.types.Date;
 import org.monet.bpi.types.Link;
 import org.monet.bpi.types.Term;
 import serv.dailyrecords.Indice;
-import serv.dailyrecords.dailyrecord.Absences;
 
 @SuppressWarnings("all")
 public class DailyRecord extends NodeFormImpl {
@@ -54,8 +54,8 @@ public class DailyRecord extends NodeFormImpl {
     this.getManagerField().set(value);
   }
   
-  public FieldMultiple<Absences,Void> getAbsencesField() {
-    return ((org.monet.bpi.FieldMultiple<serv.dailyrecords.dailyrecord.Absences, java.lang.Void>)this.getField("DailyRecord", "Absences"));
+  public FieldMultiple<FieldSection,Void> getAbsencesField() {
+    return ((org.monet.bpi.FieldMultiple<org.monet.bpi.FieldSection, java.lang.Void>)this.getField("DailyRecord", "Absences"));
   }
   
   public FieldText getSignatureField() {

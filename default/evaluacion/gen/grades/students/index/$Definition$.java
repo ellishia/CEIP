@@ -7,6 +7,7 @@ import org.monet.metamodel.IndexDefinition;
 import org.monet.metamodel.interfaces.HasBehaviour;
 import org.monet.metamodel.interfaces.HasClientBehaviour;
 
+@SuppressWarnings("all")
 public class $Definition$ extends IndexDefinition implements HasBehaviour, HasClientBehaviour {
   public $Definition$() {
     super();this._code = "imphcdia";

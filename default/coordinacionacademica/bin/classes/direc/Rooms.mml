@@ -33,7 +33,7 @@ package direc {
 				}
 			}
 
-			["i"]
+			["mhrf9iw"]
 			view Normal {
 				show {
 					title = ref Nombre;
@@ -84,9 +84,9 @@ package direc {
 			mapping {
 				index = ref Indice;
 			}
-			properties {  
+			properties {
 				calculate() {
-					if (getNode().nombre != null){
+					if(getNode().nombre != null) {
 						getNode().setLabel(getNode().nombre);
 					}
 					else {

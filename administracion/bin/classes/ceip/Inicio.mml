@@ -1,0 +1,21 @@
+package ceip {
+
+	["msbcllw"]
+	definition Inicio is desktop {
+		label = "Inicio";
+
+		for {
+			role = ref comun.Usuario;
+		}
+
+		["m1esjsq"]
+		view {
+			label ="Últimas noticias";
+			is-default;
+			show {  
+				news;
+			}			
+		}
+	}
+
+}

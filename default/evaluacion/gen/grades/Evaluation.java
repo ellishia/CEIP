@@ -2,7 +2,7 @@ package grades;
 
 import org.monet.bpi.java.NodeDesktopImpl;
 
-@SuppressWarnings(value = "all")
+@SuppressWarnings("all")
 public class Evaluation extends NodeDesktopImpl {
   public static Evaluation getInstance() {
     return (grades.Evaluation)org.monet.bpi.NodeService.locate("grades.Evaluation");

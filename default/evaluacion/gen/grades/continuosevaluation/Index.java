@@ -5,7 +5,7 @@ import org.monet.bpi.java.IndexEntryImpl;
 import org.monet.bpi.types.Date;
 import org.monet.bpi.types.Term;
 
-@SuppressWarnings(value = "all")
+@SuppressWarnings("all")
 public class Index extends IndexEntryImpl {
   public final static Param Subject = new org.monet.bpi.Param("imkcv5_a");
   

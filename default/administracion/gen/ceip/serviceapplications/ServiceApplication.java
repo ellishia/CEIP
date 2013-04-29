@@ -35,6 +35,30 @@ public abstract class ServiceApplication extends NodeFormImpl {
     this.getStudentSurnameField().set(value);
   }
   
+  public FieldText getCialField() {
+    return ((org.monet.bpi.FieldText)this.getField("ServiceApplication", "Cial"));
+  }
+  
+  public String getCial() {
+    return ((org.monet.bpi.FieldText)this.getField("ServiceApplication", "Cial")).get();
+  }
+  
+  public void setCial(final String value) {
+    this.getCialField().set(value);
+  }
+  
+  public FieldText getIdentifierField() {
+    return ((org.monet.bpi.FieldText)this.getField("ServiceApplication", "Identifier"));
+  }
+  
+  public String getIdentifier() {
+    return ((org.monet.bpi.FieldText)this.getField("ServiceApplication", "Identifier")).get();
+  }
+  
+  public void setIdentifier(final String value) {
+    this.getIdentifierField().set(value);
+  }
+  
   public FieldSelect getAcademicYearField() {
     return ((org.monet.bpi.FieldSelect)this.getField("ServiceApplication", "AcademicYear"));
   }

@@ -31,6 +31,12 @@ package solicitud {
 					label = "Apellidos";
 					type = STRING;
 				}
+
+				["mle3kbg"]
+				attribute Cial {
+					label = "CIAL";
+					type = STRING;
+				}
 			}
 
 			["imhn1mbq"]
@@ -78,6 +84,14 @@ package solicitud {
 				label = "Apellidos de Alumno/a";
 			}
 
+			["mkijrzg"]
+			field-text Cial {
+				label = "CIAL";
+				display {
+					message = "Debe coincidir con el código de identificación del alumno introducido en la solicitud de plaza";
+				}
+			}
+
 			["mrwd_eq"]
 			field-select AcademicYear {
 				label = "Año Académico";
@@ -103,6 +117,7 @@ package solicitud {
 				show {
 					field = ref StudentName;
 					field = ref StudentSurname;
+					field = ref Cial;
 					field = ref AcademicYear;
 					field = ref Date;
 				}

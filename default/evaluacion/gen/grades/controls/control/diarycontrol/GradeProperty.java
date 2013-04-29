@@ -2,6 +2,7 @@ package grades.controls.control.diarycontrol;
 
 import org.monet.metamodel.NumberFieldProperty;
 
+@SuppressWarnings("all")
 public class GradeProperty extends NumberFieldProperty {
   public GradeProperty() {
     super();this._code = "md6ewva";

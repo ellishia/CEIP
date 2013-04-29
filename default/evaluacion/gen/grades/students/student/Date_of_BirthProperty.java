@@ -2,6 +2,7 @@ package grades.students.student;
 
 import org.monet.metamodel.DateFieldProperty;
 
+@SuppressWarnings("all")
 public class Date_of_BirthProperty extends DateFieldProperty {
   public Date_of_BirthProperty() {
     super();this._code = "mvaa1yq";

@@ -4,6 +4,7 @@ package direc {
 	definition Slots is collection {
 		label = "Slots";
 		index = ref Indice;
+		is-singleton;
 		add {
 			node = ref Slot;
 		}
@@ -20,7 +21,7 @@ package direc {
 				}
 			}
 
-			["i"]
+			["mvscjug"]
 			view Normal {
 				show {
 					title = ref Nombre;
@@ -61,7 +62,7 @@ package direc {
 			}
 
 			["mar2pmq"]
-			field-number DayHour {
+			field-text DayHour {
 				label = "Hora del día";
 			}
 
@@ -91,6 +92,8 @@ package direc {
 					field = ref Group;
 				}
 			}
+
 		}
+
 	}
 }

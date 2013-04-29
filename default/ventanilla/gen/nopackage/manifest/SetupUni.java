@@ -24,7 +24,7 @@ public class SetupUni extends Manifest {
     publishProperty10.getService().add(new org.monet.metamodel.internal.Ref("solicitud.procesos.Admitidos"));
     publishProperty10.getSource().add(new org.monet.metamodel.internal.Ref("solicitud.shared.Genders"));
     org.monet.metamodel.Setup.PublishProperty.FederationProperty federationProperty10 = new org.monet.metamodel.Setup.PublishProperty.FederationProperty();
-    federationProperty10.setSetupUri(java.net.URI.create("http://10.230.140.157:8091/empresa"));
+    federationProperty10.setSetupUri(java.net.URI.create("http://10.230.140.157:8091/federation"));
     publishProperty10.setFederation(federationProperty10);
     this.getPublishList().add(publishProperty10);
     

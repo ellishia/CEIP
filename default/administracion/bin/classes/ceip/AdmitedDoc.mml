@@ -28,7 +28,8 @@ package ceip {
 				var centroInformation = ceip::CentroInfo:: instance.centerInformation;
 				i.centroAcademico = centroInformation.centerName;
 				i.anyoAcademico = centroInformation.academicYear.getLabel();
-				i.city = centroInformation.contactField.town;
+				var contacto = centroInformation.contactField  as centerinformation.Contact;
+				i.city = contacto.town;
 				for(item : ficha.all) {
 					var applic = item.indexedNode as ceip.applications.Application;
 					var entry = new ceip.admiteddoc.^schema.Entry();

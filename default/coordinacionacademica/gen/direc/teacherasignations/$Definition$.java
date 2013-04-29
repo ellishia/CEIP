@@ -16,7 +16,7 @@ public class $Definition$ extends CollectionDefinition implements HasBehaviour, 
     this.setAdd(addProperty2);
     org.monet.metamodel.CollectionDefinition.SetViewProperty setViewProperty5 = new org.monet.metamodel.CollectionDefinition.SetViewProperty();
     setViewProperty5.setLabel("Todos");
-    setViewProperty5.setCode("aaa");
+    setViewProperty5.setCode("mxunqha");
     org.monet.metamodel.CollectionDefinition.SetViewProperty.ShowProperty showProperty6 = new org.monet.metamodel.CollectionDefinition.SetViewProperty.ShowProperty();
     org.monet.metamodel.CollectionDefinition.SetViewProperty.ShowProperty.IndexProperty indexProperty6 = new org.monet.metamodel.CollectionDefinition.SetViewProperty.ShowProperty.IndexProperty();
     indexProperty6.setSortBy(new org.monet.metamodel.internal.Ref("Teacher","direc.TeacherAsignations.Indice","direc.TeacherAsignations.Indice.Teacher"));

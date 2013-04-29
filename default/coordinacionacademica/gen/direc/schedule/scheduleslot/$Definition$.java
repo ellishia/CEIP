@@ -18,14 +18,14 @@ public class $Definition$ extends FormDefinition implements HasBehaviour, HasCli
     org.monet.metamodel.FormDefinition.MappingProperty mappingProperty3 = new org.monet.metamodel.FormDefinition.MappingProperty();
     mappingProperty3.setIndex(new org.monet.metamodel.internal.Ref("direc.Schedule.Indice"));
     this.getMappingList().add(mappingProperty3);
-    org.monet.metamodel.FormDefinition.FormViewProperty formViewProperty5 = new org.monet.metamodel.FormDefinition.FormViewProperty();
-    formViewProperty5.setLabel("Ficha");
-    formViewProperty5.setCode("mch8_1w");
-    org.monet.metamodel.FormDefinition.FormViewProperty.ShowProperty showProperty6 = new org.monet.metamodel.FormDefinition.FormViewProperty.ShowProperty();
-    showProperty6.getField().add(new org.monet.metamodel.internal.Ref("Slot","direc.Schedule.ScheduleSlot","direc.Schedule.ScheduleSlot.Slot"));
-    showProperty6.getField().add(new org.monet.metamodel.internal.Ref("Teacher","direc.Schedule.ScheduleSlot","direc.Schedule.ScheduleSlot.Teacher"));
-    formViewProperty5.setShow(showProperty6);
-    this.addView(formViewProperty5);
+    org.monet.metamodel.FormDefinition.FormViewProperty formViewProperty6 = new org.monet.metamodel.FormDefinition.FormViewProperty();
+    formViewProperty6.setLabel("Ficha");
+    formViewProperty6.setCode("mch8_1w");
+    org.monet.metamodel.FormDefinition.FormViewProperty.ShowProperty showProperty7 = new org.monet.metamodel.FormDefinition.FormViewProperty.ShowProperty();
+    showProperty7.getField().add(new org.monet.metamodel.internal.Ref("Slot","direc.Schedule.ScheduleSlot","direc.Schedule.ScheduleSlot.Slot"));
+    showProperty7.getField().add(new org.monet.metamodel.internal.Ref("Teacher","direc.Schedule.ScheduleSlot","direc.Schedule.ScheduleSlot.Teacher"));
+    formViewProperty6.setShow(showProperty7);
+    this.addView(formViewProperty6);
     
   }
   static {

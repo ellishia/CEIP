@@ -15,7 +15,7 @@ setup coordinacionacademica extends coordinacionacademica {
 
 	publish {
 		federation {
-			setup-uri = "http://10.230.140.157:8091/empresa";
+			setup-uri = "http://10.230.140.157:8091/federation";
 		}
 		service = ref direc.procesos.StudentTransfer;
 		source = ref direc.shared.Teachers;

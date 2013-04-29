@@ -6,7 +6,7 @@ import org.monet.bpi.Node;
 import org.monet.bpi.OrderExpression;
 import org.monet.bpi.java.NodeCollectionImpl;
 
-@SuppressWarnings(value = "all")
+@SuppressWarnings("all")
 public class TrimestralEvaluations extends NodeCollectionImpl {
   public Iterable<Indice> getAll() {
     return (Iterable<grades.trimestralevaluations.Indice>)genericGetAll();

@@ -4,7 +4,7 @@ setup administracion extends administracion {
 	subtitle = "Administración de CEIP";
 
 	space administracion {
-		deploy-uri = "http://192.168.1.33:8090/administracion";
+		deploy-uri = "http://192.168.1.34:8091/administracion";
 	}
 	federation {
 		socket-uri = "socket://localhost:5346/";
@@ -18,7 +18,7 @@ setup administracion extends administracion {
 
 	publish {
 		federation {
-			setup-uri = "http://192.168.1.33:8090/empresa";
+			setup-uri = "http://192.168.1.34:8091/federation";
 		}
 		source = ref ceip.shared.AcademicYears;
 		source = ref ceip.shared.Levels;

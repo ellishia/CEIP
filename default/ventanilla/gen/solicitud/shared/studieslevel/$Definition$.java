@@ -1,10 +1,10 @@
 package solicitud.shared.studieslevel;
 
-import org.monet.metamodel.ThesaurusDefinition;
+import org.monet.metamodel.GlossaryDefinition;
 import org.monet.metamodel.interfaces.HasClientBehaviour;
 
 @SuppressWarnings("all")
-public class $Definition$ extends ThesaurusDefinition implements HasClientBehaviour {
+public class $Definition$ extends GlossaryDefinition implements HasClientBehaviour {
   public $Definition$() {
     super();this._code = "mb_ne7w";
     this._name = "solicitud.shared.StudiesLevel";

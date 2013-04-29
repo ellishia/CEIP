@@ -2,6 +2,7 @@ package grades.califications.calification;
 
 import org.monet.metamodel.SelectFieldProperty;
 
+@SuppressWarnings("all")
 public class TrimesterProperty extends SelectFieldProperty {
   public TrimesterProperty() {
     super();this._code = "mbcp1yg";

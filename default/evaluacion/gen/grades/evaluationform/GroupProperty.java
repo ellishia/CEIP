@@ -2,6 +2,7 @@ package grades.evaluationform;
 
 import org.monet.metamodel.SelectFieldProperty;
 
+@SuppressWarnings("all")
 public class GroupProperty extends SelectFieldProperty {
   public GroupProperty() {
     super();this._code = "mpr7qxw";

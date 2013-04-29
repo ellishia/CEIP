@@ -12,7 +12,7 @@ public class $Definition$ extends ceip.academicrecords.$Definition$ implements H
     this._name = "ceip.Boletin";
     this._parent = "ceip.AcademicRecords";
     this._isAbstract = null;this._label = "Boletin";
-    this._template = ceip.Resources.Template.Boletin;
+    this._template = nopackage.Resources.Template.Boletin;
     org.monet.metamodel.DocumentDefinition.MappingProperty mappingProperty3 = new org.monet.metamodel.DocumentDefinition.MappingProperty();
     mappingProperty3.setIndex(new org.monet.metamodel.internal.Ref("ceip.Boletines.Index"));
     this.getMappingList().add(mappingProperty3);

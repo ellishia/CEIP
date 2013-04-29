@@ -1,28 +1,25 @@
 package ceip;
 
-import ceip.medicalissues.Allergies;
-import ceip.medicalissues.Diabetes;
-import ceip.medicalissues.Epilepsia;
-import ceip.medicalissues.Others;
+import org.monet.bpi.FieldSection;
 import org.monet.bpi.Node;
 import org.monet.bpi.java.NodeFormImpl;
 
 @SuppressWarnings("all")
 public class MedicalIssues extends NodeFormImpl {
-  public Epilepsia getEpilepsiaField() {
-    return ((ceip.medicalissues.Epilepsia)this.getField("MedicalIssues", "Epilepsia"));
+  public FieldSection getEpilepsiaField() {
+    return ((org.monet.bpi.FieldSection)this.getField("MedicalIssues", "Epilepsia"));
   }
   
-  public Diabetes getDiabetesField() {
-    return ((ceip.medicalissues.Diabetes)this.getField("MedicalIssues", "Diabetes"));
+  public FieldSection getDiabetesField() {
+    return ((org.monet.bpi.FieldSection)this.getField("MedicalIssues", "Diabetes"));
   }
   
-  public Allergies getAllergiesField() {
-    return ((ceip.medicalissues.Allergies)this.getField("MedicalIssues", "Allergies"));
+  public FieldSection getAllergiesField() {
+    return ((org.monet.bpi.FieldSection)this.getField("MedicalIssues", "Allergies"));
   }
   
-  public Others getOthersField() {
-    return ((ceip.medicalissues.Others)this.getField("MedicalIssues", "Others"));
+  public FieldSection getOthersField() {
+    return ((org.monet.bpi.FieldSection)this.getField("MedicalIssues", "Others"));
   }
   
   public void executeCommand(final String operation) {

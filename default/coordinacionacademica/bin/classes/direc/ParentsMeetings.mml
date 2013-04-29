@@ -38,7 +38,7 @@ package direc {
 				}
 			}
 
-			["i"]
+			["m1bkolg"]
 			view Normal {
 				show {
 					title = ref Title;
@@ -136,7 +136,7 @@ package direc {
 			operation OperationName {
 				label = "crear documento de reunión";
 				execute() {
-					direc::parentsmdoc::Exportador::doExportOf(this).toDocument(this.reunionDocField.getNode());
+					direc::parentsmdoc::Exportador:: doExportOf(this).toDocument(this.reunionDocField.getNode());
 				}
 			}
 

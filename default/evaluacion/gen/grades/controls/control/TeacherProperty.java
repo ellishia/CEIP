@@ -2,6 +2,7 @@ package grades.controls.control;
 
 import org.monet.metamodel.SelectFieldProperty;
 
+@SuppressWarnings("all")
 public class TeacherProperty extends SelectFieldProperty {
   public TeacherProperty() {
     super();this._code = "mmai_kq";

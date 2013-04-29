@@ -26,6 +26,7 @@ public class $Definition$ extends solicitud.serviceapplications.serviceapplicati
     org.monet.metamodel.FormDefinition.FormViewProperty formViewProperty7 = new org.monet.metamodel.FormDefinition.FormViewProperty();
     formViewProperty7.setLabel("Datos de Transporte");
     formViewProperty7.setCode("mcrttmq");
+    formViewProperty7.setName("Vista");
     org.monet.metamodel.FormDefinition.FormViewProperty.ShowProperty showProperty8 = new org.monet.metamodel.FormDefinition.FormViewProperty.ShowProperty();
     showProperty8.getField().add(new org.monet.metamodel.internal.Ref("Address","solicitud.TransportApplication","solicitud.TransportApplication.Address"));
     showProperty8.getField().add(new org.monet.metamodel.internal.Ref("Distance","solicitud.TransportApplication","solicitud.TransportApplication.Distance"));

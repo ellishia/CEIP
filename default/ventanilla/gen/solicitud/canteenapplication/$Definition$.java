@@ -28,6 +28,7 @@ public class $Definition$ extends solicitud.serviceapplications.serviceapplicati
     org.monet.metamodel.FormDefinition.FormViewProperty formViewProperty8 = new org.monet.metamodel.FormDefinition.FormViewProperty();
     formViewProperty8.setLabel("Datos de comedor");
     formViewProperty8.setCode("m2dketw");
+    formViewProperty8.setName("Vista");
     org.monet.metamodel.FormDefinition.FormViewProperty.ShowProperty showProperty9 = new org.monet.metamodel.FormDefinition.FormViewProperty.ShowProperty();
     showProperty9.getField().add(new org.monet.metamodel.internal.Ref("Schedule","solicitud.CanteenApplication","solicitud.CanteenApplication.Schedule"));
     showProperty9.getField().add(new org.monet.metamodel.internal.Ref("ActualPosition","solicitud.CanteenApplication","solicitud.CanteenApplication.ActualPosition"));

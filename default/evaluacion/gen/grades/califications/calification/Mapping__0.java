@@ -4,6 +4,7 @@ import grades.califications.Calification;
 import grades.califications.Indice;
 import org.monet.bpi.java.MappingImpl;
 
+@SuppressWarnings("all")
 public class Mapping__0 extends MappingImpl {
   public void calculateMapping() {
     super.calculateMapping();

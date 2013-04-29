@@ -2,6 +2,7 @@ package grades.students.index;
 
 import org.monet.metamodel.AttributeProperty;
 
+@SuppressWarnings("all")
 public class NombreProperty extends AttributeProperty {
   public NombreProperty() {
     super();this._code = "imphcdia";

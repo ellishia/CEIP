@@ -12,6 +12,7 @@ public class Mapping__0 extends MappingImpl {
     solicitud.serviceapplications.Indice reference = (solicitud.serviceapplications.Indice) this.genericGetReference();
     reference.setStudentName(node.getStudentName());
     reference.setStudentSurname(node.getStudentSurname());
+    reference.setCial(node.getCial());
     
   }
   

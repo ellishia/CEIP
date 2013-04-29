@@ -1,8 +1,8 @@
 package ceip;
 
 import ceip.availablepositions.Indice;
-import ceip.position.SpecificPosition;
 import org.monet.bpi.FieldMultiple;
+import org.monet.bpi.FieldSection;
 import org.monet.bpi.FieldSelect;
 import org.monet.bpi.Node;
 import org.monet.bpi.java.NodeFormImpl;
@@ -22,8 +22,8 @@ public class Position extends NodeFormImpl {
     this.getAcademicYearField().set(value);
   }
   
-  public FieldMultiple<SpecificPosition,Void> getSpecificPositionField() {
-    return ((org.monet.bpi.FieldMultiple<ceip.position.SpecificPosition, java.lang.Void>)this.getField("Position", "SpecificPosition"));
+  public FieldMultiple<FieldSection,Void> getSpecificPositionField() {
+    return ((org.monet.bpi.FieldMultiple<org.monet.bpi.FieldSection, java.lang.Void>)this.getField("Position", "SpecificPosition"));
   }
   
   public Indice getIndice() {

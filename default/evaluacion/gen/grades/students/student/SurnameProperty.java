@@ -2,6 +2,7 @@ package grades.students.student;
 
 import org.monet.metamodel.TextFieldProperty;
 
+@SuppressWarnings("all")
 public class SurnameProperty extends TextFieldProperty {
   public SurnameProperty() {
     super();this._code = "m_ixcva";

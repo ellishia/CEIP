@@ -2,6 +2,7 @@ package grades.students.student;
 
 import org.monet.metamodel.SelectFieldProperty;
 
+@SuppressWarnings("all")
 public class LevelProperty extends SelectFieldProperty {
   public LevelProperty() {
     super();this._code = "mygtntq";

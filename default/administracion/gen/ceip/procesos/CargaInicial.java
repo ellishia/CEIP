@@ -6,6 +6,7 @@ import ceip.centerinformation.Contact;
 import ceip.procesos.cargainicial.Lock;
 import ceip.procesos.cargainicial.Place;
 import org.monet.bpi.DelegationSetup;
+import org.monet.bpi.FieldSection;
 import org.monet.bpi.JobRequest;
 import org.monet.bpi.JobResponse;
 import org.monet.bpi.JobSetup;
@@ -43,26 +44,18 @@ public class CargaInicial extends ActivityImpl {
     info.setCenterName(_centerName);
     Term _academicYear = f.getAcademicYear();
     info.setAcademicYear(_academicYear);
-    Contact _contactField = info.getContactField();
-    Contact _contactField_1 = f.getContactField();
-    String _address = _contactField_1.getAddress();
-    _contactField.setAddress(_address);
-    Contact _contactField_2 = info.getContactField();
-    Contact _contactField_3 = f.getContactField();
-    org.monet.bpi.types.Number _zIPCode = _contactField_3.getZIPCode();
-    _contactField_2.setZIPCode(_zIPCode);
-    Contact _contactField_4 = info.getContactField();
-    Contact _contactField_5 = f.getContactField();
-    String _town = _contactField_5.getTown();
-    _contactField_4.setTown(_town);
-    Contact _contactField_6 = info.getContactField();
-    Contact _contactField_7 = f.getContactField();
-    String _email = _contactField_7.getEmail();
-    _contactField_6.setEmail(_email);
-    String _influenceAreas = f.getInfluenceAreas();
-    info.setInfluenceAreas(_influenceAreas);
-    String _limitingAreas = f.getLimitingAreas();
-    info.setLimitingAreas(_limitingAreas);
+    FieldSection _contactField = info.getContactField();
+    Contact contacto = ((Contact) _contactField);
+    FieldSection _contactField_1 = f.getContactField();
+    Contact fcontacto = ((Contact) _contactField_1);
+    String _address = fcontacto.getAddress();
+    contacto.setAddress(_address);
+    org.monet.bpi.types.Number _zIPCode = fcontacto.getZIPCode();
+    contacto.setZIPCode(_zIPCode);
+    String _town = fcontacto.getTown();
+    contacto.setTown(_town);
+    String _email = fcontacto.getEmail();
+    contacto.setEmail(_email);
     info.save();
   }
   
@@ -77,33 +70,22 @@ public class CargaInicial extends ActivityImpl {
     if (_isEmpty_1) {
       vr.addError("CenterName", "est\u00E1 vacio");
     }
-    Contact _contactField = f.getContactField();
-    String _address = _contactField.getAddress();
+    FieldSection _contactField = f.getContactField();
+    Contact fcontact = ((Contact) _contactField);
+    String _address = fcontact.getAddress();
     boolean _isEmpty_2 = _address.isEmpty();
     if (_isEmpty_2) {
       vr.addError("Address", "est\u00E1 vacio");
     }
-    Contact _contactField_1 = f.getContactField();
-    String _town = _contactField_1.getTown();
+    String _town = fcontact.getTown();
     boolean _isEmpty_3 = _town.isEmpty();
     if (_isEmpty_3) {
       vr.addError("Town", "est\u00E1 vacio");
     }
-    Contact _contactField_2 = f.getContactField();
-    String _email = _contactField_2.getEmail();
+    String _email = fcontact.getEmail();
     boolean _isEmpty_4 = _email.isEmpty();
     if (_isEmpty_4) {
       vr.addError("Email", "est\u00E1 vacio");
-    }
-    String _influenceAreas = f.getInfluenceAreas();
-    boolean _isEmpty_5 = _influenceAreas.isEmpty();
-    if (_isEmpty_5) {
-      vr.addError("InfluenceAreas", "est\u00E1 vacio");
-    }
-    String _limitingAreas = f.getLimitingAreas();
-    boolean _isEmpty_6 = _limitingAreas.isEmpty();
-    if (_isEmpty_6) {
-      vr.addError("LimitingAreas", "est\u00E1 vacio");
     }
   }
   
@@ -160,7 +142,7 @@ public class CargaInicial extends ActivityImpl {
     switch(hash) {}
   }
   
-  public void onSetupDelegationComplete(final String placeCode, final String actionCode, final Date p0, final Date p1, final String p2, final boolean p3) {
+  public void onSetupDelegationComplete(final String placeCode, final String actionCode, final String p0, final Date p1, final Date p2, final String p3, final boolean p4) {
     int hash = (actionCode + placeCode).hashCode();
     switch(hash) {}
   }

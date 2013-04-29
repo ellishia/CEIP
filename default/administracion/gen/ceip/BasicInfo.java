@@ -1,11 +1,11 @@
 package ceip;
 
-import ceip.basicinfo.Address;
 import ceip.students.Index;
 import java.util.ArrayList;
 import org.monet.bpi.FieldDate;
 import org.monet.bpi.FieldMultiple;
 import org.monet.bpi.FieldNode;
+import org.monet.bpi.FieldSection;
 import org.monet.bpi.FieldSelect;
 import org.monet.bpi.FieldText;
 import org.monet.bpi.Node;
@@ -80,8 +80,8 @@ public class BasicInfo extends NodeFormImpl {
     this.getDate_of_BirthField().set(value);
   }
   
-  public Address getAddressField() {
-    return ((ceip.basicinfo.Address)this.getField("BasicInfo", "Address"));
+  public FieldSection getAddressField() {
+    return ((org.monet.bpi.FieldSection)this.getField("BasicInfo", "Address"));
   }
   
   public FieldMultiple<FieldNode,Link> getBoletinField() {

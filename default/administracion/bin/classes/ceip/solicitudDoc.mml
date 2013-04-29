@@ -61,22 +61,23 @@ package ceip {
 				solicitud.nationality = i.nationality;
 				solicitud.siblings = i.siblings;
 				solicitud.parentsInCenter = i.parents;
-				solicitud.addressField.designation = i.address.designation;
-				solicitud.addressField.street_name = i.address.street_name;
+				var address = solicitud.addressField as ceip.applications.application.Address;
+				address.designation = i.address.designation;
+				address.street_name = i.address.street_name;
 				if(i.address.number != null) {
-					solicitud.addressField.number = i.address.number;
+					address.number = i.address.number;
 				}
 				else {
-					solicitud.addressField.number = 0;
+					address.number = 0;
 				}
-				solicitud.addressField.appartament = i.address.appartment;
-				solicitud.addressField.neigbourhood = i.address.neigbourhood;
-				solicitud.addressField.city = i.address.city;
+				address.appartament = i.address.appartment;
+				address.neigbourhood = i.address.neigbourhood;
+				address.city = i.address.city;
 				if(i.address.zip_code != null) {
-					solicitud.addressField.zip_code = i.address.zip_code;
+					address.zip_code = i.address.zip_code;
 				}
 				else {
-					solicitud.addressField.zip_code = 0;
+					address.zip_code = 0;
 				}
 				solicitud.save();
 				//				if (i.matriculable){

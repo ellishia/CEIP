@@ -9,7 +9,7 @@ import org.monet.bpi.java.NodeFormImpl;
 import org.monet.bpi.types.Link;
 import org.monet.bpi.types.Term;
 
-@SuppressWarnings(value = "all")
+@SuppressWarnings("all")
 public class Calification extends NodeFormImpl {
   public FieldSelect getAcademicYearField() {
     return ((org.monet.bpi.FieldSelect)this.getField("Calification", "AcademicYear"));

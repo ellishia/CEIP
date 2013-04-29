@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import org.monet.bpi.FieldBoolean;
 import org.monet.bpi.FieldFile;
 import org.monet.bpi.FieldMultiple;
+import org.monet.bpi.FieldSection;
 import org.monet.bpi.FieldSerial;
 import org.monet.bpi.FieldText;
 import org.monet.bpi.Node;
 import org.monet.bpi.types.File;
-import solicitud.canteenapplication.Criteria;
 import solicitud.serviceapplications.ServiceApplication;
 
 @SuppressWarnings("all")
@@ -61,8 +61,8 @@ public class CanteenApplication extends ServiceApplication {
     this.getSubsidizedField().set(value);
   }
   
-  public Criteria getCriteriaField() {
-    return ((solicitud.canteenapplication.Criteria)this.getField("CanteenApplication", "Criteria"));
+  public FieldSection getCriteriaField() {
+    return ((org.monet.bpi.FieldSection)this.getField("CanteenApplication", "Criteria"));
   }
   
   public FieldText getObservationsField() {

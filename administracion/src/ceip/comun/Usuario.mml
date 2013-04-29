@@ -1,0 +1,8 @@
+package ceip.comun {
+
+	["mowm7ka"]
+	definition Usuario is role {
+		label = "Usuario";
+	}
+
+}

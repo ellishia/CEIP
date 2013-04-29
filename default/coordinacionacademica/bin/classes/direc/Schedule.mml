@@ -14,10 +14,28 @@ package direc {
 			label = "Horario";
 			reference {
 
-				["imci9utq"]
-				attribute Slot {
-					label = "Casilla";
+				["mqnqraw"]
+				attribute Group {
+					label = "Grupo";
+					type = LINK;
+				}
+
+				["m1pfonq"]
+				attribute Weekday {
+					label = "Día de la semana";
 					type = TERM;
+				}
+
+				["mzilrsq"]
+				attribute DayHour {
+					label = "hora";
+					type = STRING;
+				}
+
+				["mno6_qg"]
+				attribute Subject {
+					label = "Asignatura";
+					type = STRING;
 				}
 
 				["makme0a"]
@@ -27,10 +45,9 @@ package direc {
 				}
 			}
 
-			["i"]
+			["mydvvxa"]
 			view Normal {
 				show {
-					line = ref Slot;
 					line = ref Teacher;
 				}
 			}
@@ -42,17 +59,24 @@ package direc {
 			label = "Todos";
 			show {
 				index {
-					sort-by = ref Indice.Slot;
+					sort-by = ref Indice.Teacher;
 					with-view = ref Indice.Normal;
 				}
 			}
 			analyze {
 				dimension {
-					attribute = ref Indice.Slot;
+					attribute = ref Indice.Weekday;
+					attribute = ref Indice.DayHour;
+					attribute = ref Indice.Teacher;
+					attribute = ref Indice.Group;
+					attribute = ref Indice.Subject;
 				}
 				sorting {
-					attribute = ref Indice.Slot;
+					attribute = ref Indice.Weekday;
+					attribute = ref Indice.DayHour;
 					attribute = ref Indice.Teacher;
+					attribute = ref Indice.Group;
+					attribute = ref Indice.Subject;
 				}
 			}
 		}
@@ -64,20 +88,42 @@ package direc {
 			["mgbvgjg"]
 			field-link Slot {
 				label = "Slot";
+				allow-add;
 				source {
 					index = ref direc.Slots.Indice;
+					collection = ref direc.Slots;
 				}
 			}
 
 			["mms5fba"]
 			field-link Teacher {
 				label = "Asignación de Docente";
+				allow-add;
 				source {
 					index = ref direc.TeacherAsignations.Indice;
+					collection = ref direc.TeacherAsignations;
 				}
 			}
 			mapping {
 				index = ref Indice;
+
+				calculate() {
+					var nodo = this.^node;
+					var referencia = this.^reference;
+					if(nodo != null) {
+						var slotField = nodo.slotField;
+						referencia.teacher = nodo.teacher;
+						if(slotField != null) {
+							var slot = slotField.^node as direc.slots.Slot;
+							if(slot != null) {
+								referencia.group = slot.group;
+								referencia.dayHour = slot.dayHour;
+								referencia.weekday = slot.weekday;
+								referencia.subject = slot.subject;
+							}
+						}
+					}
+				}
 			}
 
 			["mch8_1w"]

@@ -10,6 +10,7 @@ import ceip.applications.Application;
 import ceip.applications.Indice;
 import ceip.centerinformation.Contact;
 import java.util.ArrayList;
+import org.monet.bpi.FieldSection;
 import org.monet.bpi.Node;
 import org.monet.bpi.java.ExporterImpl;
 import org.monet.bpi.types.Date;
@@ -29,8 +30,9 @@ public class Exportador extends ExporterImpl {
     Term _academicYear = centroInformation.getAcademicYear();
     String _label = _academicYear.getLabel();
     i.setAnyoAcademico(_label);
-    Contact _contactField = centroInformation.getContactField();
-    String _town = _contactField.getTown();
+    FieldSection _contactField = centroInformation.getContactField();
+    Contact contacto = ((Contact) _contactField);
+    String _town = contacto.getTown();
     i.setCity(_town);
     Iterable<Indice> _all = ficha.getAll();
     for (final Indice item : _all) {

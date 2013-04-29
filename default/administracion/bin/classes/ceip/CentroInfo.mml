@@ -20,6 +20,14 @@ package ceip {
 				component = ref ceip.CenterInformation.View;
 			}
 		}
+		
+		["mpomrqw"]
+		view {
+			label = "Información para matriculación";
+			show {  
+				component = ref ceip.CenterInformation.MatDatos;
+			}
+		}
 		["m549x3q"]
 		view {
 			label = "Plazas disponibles";

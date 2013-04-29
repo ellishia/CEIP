@@ -1,0 +1,52 @@
+package solicitud {
+
+	["mlduu8q"]
+	definition canteenDoc is document {
+		label = "canteendoc";
+
+		schema {
+			StudentName String;
+			StudentSurname String;
+			Cial String;
+			Identifier String;
+			AcademicYear Term;
+			Schedule String;
+			ActualPosition Boolean;
+			Subsidized Boolean;
+			Criteria {
+				WorkingPersonalLife Boolean;
+				Siblings Boolean;
+				ParentsInSchool Boolean;
+				AnualIncome Boolean;
+				Handcaped Boolean;
+				MonoParentalorNumberusFamily Boolean;
+			}
+			Observations String;
+		}
+
+		["mgs9jew"]
+		definition Exportador is exporter {
+			label = "Exportador de solicitud de Comedor";
+			target = ref canteenDoc;
+			onExportItem(solicitud.canteendoc.Schema i) {
+				var ficha = this.getScope() as solicitud.CanteenApplication;
+				i.academicYear = ficha.academicYear;
+				i.studentName = ficha.studentName;
+				i.studentSurname = ficha.studentSurname;
+				i.cial = ficha.cial;
+				i.identifier = ficha.identifier;
+				i.schedule = ficha.schedule;
+				i.actualPosition = ficha.actualPosition;
+				i.subsidized = ficha.subsidized;
+				var criteria = ficha.criteriaField as solicitud.canteenapplication.Criteria;
+				i.criteria.anualIncome = criteria.anualIncome;
+				i.criteria.workingPersonalLife = criteria.workingPersonalLife;
+				i.criteria.siblings = criteria.siblings;
+				i.criteria.parentsInSchool = criteria.parentsInSchool;
+				i.observations = ficha.observations;
+				
+			}
+		}
+	}
+}
+  

@@ -10,6 +10,7 @@ import org.monet.metamodel.interfaces.HasBehaviour;
 import org.monet.metamodel.interfaces.HasClientBehaviour;
 import org.monet.metamodel.interfaces.HasMappings;
 
+@SuppressWarnings("all")
 public class $Definition$ extends FormDefinition implements HasBehaviour, HasClientBehaviour, HasMappings {
   public $Definition$() {
     super();this._code = "m7_jvra";

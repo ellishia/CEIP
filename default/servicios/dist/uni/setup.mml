@@ -2,7 +2,7 @@ setup servicios extends servicios {
 	title = "Gestión de Servicios";
 	subtitle = "Gestión de Servicios";
 	space servicios {
-		deploy-uri = "http://10.230.140.157:8091/servicios";
+		deploy-uri = "http://10.230.140.157:8092/servicios";
 	}
 	federation {
 		socket-uri = "socket://localhost:5346/";

@@ -9,7 +9,7 @@ import org.monet.bpi.java.NodeFormImpl;
 import org.monet.bpi.types.Date;
 import org.monet.bpi.types.Term;
 
-@SuppressWarnings(value = "all")
+@SuppressWarnings("all")
 public class Student extends NodeFormImpl {
   public Index getIndex() {
     return (grades.students.Index)this.getIndexEntry("grades.Students.Index");

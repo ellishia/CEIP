@@ -41,7 +41,7 @@ package direc {
 
 			["m41_o5q"]
 			view AsignView {
-				label = "Lote sin número";
+				label = "Lote";
 				show {
 					field = ref Lote;
 				}

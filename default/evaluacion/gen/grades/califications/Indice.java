@@ -4,7 +4,7 @@ import org.monet.bpi.Param;
 import org.monet.bpi.java.IndexEntryImpl;
 import org.monet.bpi.types.Term;
 
-@SuppressWarnings(value = "all")
+@SuppressWarnings("all")
 public class Indice extends IndexEntryImpl {
   public final static Param Subject = new org.monet.bpi.Param("iminbk5w");
   
