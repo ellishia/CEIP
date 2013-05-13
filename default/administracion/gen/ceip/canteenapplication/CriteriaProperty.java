@@ -1,7 +1,7 @@
 package ceip.canteenapplication;
 
 import ceip.canteenapplication.criteria.AnualIncomeProperty;
-import ceip.canteenapplication.criteria.HandcapedProperty;
+import ceip.canteenapplication.criteria.HandicapedProperty;
 import ceip.canteenapplication.criteria.MonoParentalorNumberusFamilyProperty;
 import ceip.canteenapplication.criteria.ParentsInSchoolProperty;
 import ceip.canteenapplication.criteria.SiblingsProperty;
@@ -19,7 +19,7 @@ public class CriteriaProperty extends SectionFieldProperty implements HasBehavio
     this.addBooleanFieldProperty(Siblings);
     this.addBooleanFieldProperty(ParentsInSchool);
     this.addBooleanFieldProperty(AnualIncome);
-    this.addBooleanFieldProperty(Handcaped);
+    this.addBooleanFieldProperty(Handicaped);
     this.addBooleanFieldProperty(MonoParentalorNumberusFamily);
     
   }
@@ -40,7 +40,7 @@ public class CriteriaProperty extends SectionFieldProperty implements HasBehavio
   
   private final AnualIncomeProperty AnualIncome = new ceip.canteenapplication.criteria.AnualIncomeProperty();
   
-  private final HandcapedProperty Handcaped = new ceip.canteenapplication.criteria.HandcapedProperty();
+  private final HandicapedProperty Handicaped = new ceip.canteenapplication.criteria.HandicapedProperty();
   
   private final MonoParentalorNumberusFamilyProperty MonoParentalorNumberusFamily = new ceip.canteenapplication.criteria.MonoParentalorNumberusFamilyProperty();
 }

@@ -1,7 +1,10 @@
 package doc;
 
+import doc.procesos.AnadirAsignaturas;
 import doc.subjectlevels.Indice;
+import org.monet.bpi.ClientService;
 import org.monet.bpi.Expression;
+import org.monet.bpi.MonetLink;
 import org.monet.bpi.OrderExpression;
 import org.monet.bpi.java.NodeCollectionImpl;
 
@@ -31,7 +34,18 @@ public class SubjectLevels extends NodeCollectionImpl {
     return (doc.subjectlevels.Indice)genericGetFirst(where);
   }
   
+  public void onAddSubjects() {
+    AnadirAsignaturas tarea = AnadirAsignaturas.createNew();
+    tarea.save();
+    tarea.resume();
+    String _id = tarea.getId();
+    MonetLink _forTask = MonetLink.forTask(_id);
+    ClientService.redirectUserTo(_forTask);
+  }
+  
   public void executeCommand(final String operation) {
-    super.executeCommand(operation);
+    if(operation.equals("AddSubjects")) {
+    	this.onAddSubjects();
+    }super.executeCommand(operation);
   }
 }

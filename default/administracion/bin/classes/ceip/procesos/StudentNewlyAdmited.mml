@@ -11,6 +11,7 @@ package ceip.procesos {
 
 		onInitialize() {
 			setTarget(ceip::admiteddoc::Exportador:: doExportOf(Applications:: instance).toNewDocument);
+			this.save();
 		}
 
 		["mzqjoiw"]
@@ -47,6 +48,9 @@ package ceip.procesos {
 				goto = ref Enviando;
 				// lo hago aqui
 				provider = ref ProviderName;
+				onSetup(DelegationSetup ds) {
+					ds.cancel();
+				}
 			}
 		}
 

@@ -5,10 +5,10 @@ import org.monet.metamodel.AttributeProperty;
 @SuppressWarnings("all")
 public class SlotProperty extends AttributeProperty {
   public SlotProperty() {
-    super();this._code = "imci9utq";
+    super();this._code = "m7fdgmq";
     this._name = "Slot";
-    this._label = "Casilla";
-    this._type = org.monet.metamodel.AttributeProperty.TypeEnumeration.TERM;
+    this._label = "Slot";
+    this._type = org.monet.metamodel.AttributeProperty.TypeEnumeration.LINK;
     
   }
   

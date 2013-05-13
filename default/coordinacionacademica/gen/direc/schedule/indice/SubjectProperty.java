@@ -8,7 +8,7 @@ public class SubjectProperty extends AttributeProperty {
     super();this._code = "mno6_qg";
     this._name = "Subject";
     this._label = "Asignatura";
-    this._type = org.monet.metamodel.AttributeProperty.TypeEnumeration.STRING;
+    this._type = org.monet.metamodel.AttributeProperty.TypeEnumeration.TERM;
     
   }
   

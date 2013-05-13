@@ -1,6 +1,8 @@
 package direc.slots.indice;
 
-import direc.slots.indice.NombreProperty;
+import direc.slots.indice.DayHourProperty;
+import direc.slots.indice.GroupProperty;
+import direc.slots.indice.WeekdayProperty;
 import org.monet.metamodel.IndexDefinition;
 import org.monet.metamodel.interfaces.HasBehaviour;
 import org.monet.metamodel.interfaces.HasClientBehaviour;
@@ -12,15 +14,19 @@ public class $Definition$ extends IndexDefinition implements HasBehaviour, HasCl
     this._name = "direc.Slots.Indice";
     this._isAbstract = null;this._label = "Indice";
     org.monet.metamodel.IndexDefinition.ReferenceProperty referenceProperty1 = new org.monet.metamodel.IndexDefinition.ReferenceProperty();
-    referenceProperty1.addAttributeProperty(Nombre);
+    referenceProperty1.addAttributeProperty(Group);
+    referenceProperty1.addAttributeProperty(Weekday);
+    referenceProperty1.addAttributeProperty(DayHour);
     this.setReference(referenceProperty1);
-    org.monet.metamodel.IndexDefinition.IndexViewProperty indexViewProperty3 = new org.monet.metamodel.IndexDefinition.IndexViewProperty();
-    indexViewProperty3.setCode("mvscjug");
-    indexViewProperty3.setName("Normal");
-    org.monet.metamodel.IndexDefinition.IndexViewProperty.ShowProperty showProperty3 = new org.monet.metamodel.IndexDefinition.IndexViewProperty.ShowProperty();
-    showProperty3.setTitle(new org.monet.metamodel.internal.Ref("Nombre","direc.Slots.Indice","direc.Slots.Indice.Nombre"));
-    indexViewProperty3.setShow(showProperty3);
-    this.addView(indexViewProperty3);
+    org.monet.metamodel.IndexDefinition.IndexViewProperty indexViewProperty5 = new org.monet.metamodel.IndexDefinition.IndexViewProperty();
+    indexViewProperty5.setCode("mvscjug");
+    indexViewProperty5.setName("Normal");
+    org.monet.metamodel.IndexDefinition.IndexViewProperty.ShowProperty showProperty5 = new org.monet.metamodel.IndexDefinition.IndexViewProperty.ShowProperty();
+    showProperty5.setTitle(new org.monet.metamodel.internal.Ref("Group","direc.Slots.Indice","direc.Slots.Indice.Group"));
+    showProperty5.getLine().add(new org.monet.metamodel.internal.Ref("Weekday","direc.Slots.Indice","direc.Slots.Indice.Weekday"));
+    showProperty5.getLine().add(new org.monet.metamodel.internal.Ref("DayHour","direc.Slots.Indice","direc.Slots.Indice.DayHour"));
+    indexViewProperty5.setShow(showProperty5);
+    this.addView(indexViewProperty5);
     
   }
   static {
@@ -41,5 +47,9 @@ public class $Definition$ extends IndexDefinition implements HasBehaviour, HasCl
     return "var imltz56q = new Object();imltz56q.refresh = function (node) {if (!node.isEditable()) return;};imltz56q.onChangeField = function (node, field) {};";
   }
   
-  private final NombreProperty Nombre = new direc.slots.indice.NombreProperty();
+  private final GroupProperty Group = new direc.slots.indice.GroupProperty();
+  
+  private final WeekdayProperty Weekday = new direc.slots.indice.WeekdayProperty();
+  
+  private final DayHourProperty DayHour = new direc.slots.indice.DayHourProperty();
 }

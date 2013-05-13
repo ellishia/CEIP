@@ -57,10 +57,10 @@ package solicitud.procesos {
 				setContextVariable("canteen", canteen.toString);
 				setContextVariable("transport", transport.toString);
 				if(! canteen || ! transport) {
-					doGoto(Place:: AnadirEscoge, "Adjuntar solicitudes de servicios");
+					doGoto(Place::AnadirEscoge, "Adjuntar solicitudes de servicios");
 				}
 				else {
-					doGoto(Place:: Generado, null);
+					doGoto(Place::Generado, null);
 				}
 			}
 		}
@@ -150,10 +150,9 @@ package solicitud.procesos {
 				label = "Añadir solicitud de transporte";
 				use {
 					form = ref solicitud.TransportApplication;
-					with-view = ref solicitud.TransportApplication.Vista;
+					with-view = ref solicitud.TransportApplication.VistaWidget;
 				}
 				onSolve(solicitud.TransportApplication f) {
-				//setContextVariable("transport", true.toString);
 					if(! f.address.nullOrEmpty && f.distance != null) {
 						var servicios = solicitud::ServiceApplications:: instance;
 						var solitrans = solicitud::TransportApplication:: createNew(servicios);
@@ -184,12 +183,11 @@ package solicitud.procesos {
 				label = "Añadir solicitud";
 				use {
 					form = ref solicitud.CanteenApplication;
-					with-view = ref solicitud.CanteenApplication.Vista;
+					with-view = ref solicitud.CanteenApplication.VistaForm;
 				}
 
 				onSolve(solicitud.CanteenApplication f) {
 				//comprobar que haya habido cambios	
-				//setContextVariable("canteen", true.toString);
 					if(! f.schedule.nullOrEmpty) {
 						var servicios = solicitud::ServiceApplications:: instance;
 						var solicomensal = solicitud::CanteenApplication:: createNew(servicios);
@@ -205,7 +203,7 @@ package solicitud.procesos {
 						var criterios = f.criteriaField as solicitud.canteenapplication.Criteria;
 						var solicriterios = solicomensal.criteriaField as solicitud.canteenapplication.Criteria;
 						solicriterios.anualIncome = criterios.anualIncome;
-						solicriterios.handcaped = criterios.handcaped;
+						solicriterios.handicaped = criterios.handicaped;
 						solicriterios.siblings = criterios.siblings;
 						solicriterios.monoParentalorNumberusFamily = criterios.monoParentalorNumberusFamily;
 						solicriterios.workingPersonalLife = criterios.workingPersonalLife;

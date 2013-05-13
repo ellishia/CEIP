@@ -10,6 +10,7 @@ public class TeacherProperty extends LinkFieldProperty {
     this._label = "Docente";
     org.monet.metamodel.LinkFieldProperty.SourceProperty sourceProperty1 = new org.monet.metamodel.LinkFieldProperty.SourceProperty();
     sourceProperty1.setIndex(new org.monet.metamodel.internal.Ref("direc.Teachers.Indice"));
+    sourceProperty1.setCollection(new org.monet.metamodel.internal.Ref("direc.Teachers"));
     this.setSource(sourceProperty1);
     
   }

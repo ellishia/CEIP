@@ -15,24 +15,29 @@ public class $Definition$ extends CollectionDefinition implements HasBehaviour, 
     org.monet.metamodel.CollectionDefinition.AddProperty addProperty3 = new org.monet.metamodel.CollectionDefinition.AddProperty();
     addProperty3.getNode().add(new org.monet.metamodel.internal.Ref("doc.SubjectLevels.SubjectLevel"));
     this.setAdd(addProperty3);
-    org.monet.metamodel.CollectionDefinition.SetViewProperty setViewProperty6 = new org.monet.metamodel.CollectionDefinition.SetViewProperty();
-    setViewProperty6.setLabel("Todos");
-    setViewProperty6.setCode("safa");
-    org.monet.metamodel.CollectionDefinition.SetViewProperty.ShowProperty showProperty7 = new org.monet.metamodel.CollectionDefinition.SetViewProperty.ShowProperty();
-    org.monet.metamodel.CollectionDefinition.SetViewProperty.ShowProperty.IndexProperty indexProperty7 = new org.monet.metamodel.CollectionDefinition.SetViewProperty.ShowProperty.IndexProperty();
-    indexProperty7.setSortBy(new org.monet.metamodel.internal.Ref("Asignatura","doc.SubjectLevels.Indice","doc.SubjectLevels.Indice.Asignatura"));
-    indexProperty7.setWithView(new org.monet.metamodel.internal.Ref("Normal","doc.SubjectLevels.Indice","doc.SubjectLevels.Indice.Normal"));
-    showProperty7.setIndex(indexProperty7);
-    setViewProperty6.setShow(showProperty7);
-    org.monet.metamodel.CollectionDefinition.SetViewProperty.AnalyzeProperty analyzeProperty11 = new org.monet.metamodel.CollectionDefinition.SetViewProperty.AnalyzeProperty();
-    org.monet.metamodel.CollectionDefinition.SetViewProperty.AnalyzeProperty.DimensionProperty dimensionProperty11 = new org.monet.metamodel.CollectionDefinition.SetViewProperty.AnalyzeProperty.DimensionProperty();
-    dimensionProperty11.getAttribute().add(new org.monet.metamodel.internal.Ref("Asignatura","doc.SubjectLevels.Indice","doc.SubjectLevels.Indice.Asignatura"));
-    analyzeProperty11.setDimension(dimensionProperty11);
-    org.monet.metamodel.CollectionDefinition.SetViewProperty.AnalyzeProperty.SortingProperty sortingProperty13 = new org.monet.metamodel.CollectionDefinition.SetViewProperty.AnalyzeProperty.SortingProperty();
-    sortingProperty13.getAttribute().add(new org.monet.metamodel.internal.Ref("Asignatura","doc.SubjectLevels.Indice","doc.SubjectLevels.Indice.Asignatura"));
-    analyzeProperty11.setSorting(sortingProperty13);
-    setViewProperty6.setAnalyze(analyzeProperty11);
-    this.addView(setViewProperty6);
+    org.monet.metamodel.CollectionDefinition.OperationProperty operationProperty5 = new org.monet.metamodel.CollectionDefinition.OperationProperty();
+    operationProperty5.setLabel("Añadir Asignaturas");
+    operationProperty5.setCode("mc5fyfg");
+    operationProperty5.setName("AddSubjects");
+    this.addOperation(operationProperty5);
+    org.monet.metamodel.CollectionDefinition.SetViewProperty setViewProperty9 = new org.monet.metamodel.CollectionDefinition.SetViewProperty();
+    setViewProperty9.setLabel("Todos");
+    setViewProperty9.setCode("safa");
+    org.monet.metamodel.CollectionDefinition.SetViewProperty.ShowProperty showProperty10 = new org.monet.metamodel.CollectionDefinition.SetViewProperty.ShowProperty();
+    org.monet.metamodel.CollectionDefinition.SetViewProperty.ShowProperty.IndexProperty indexProperty10 = new org.monet.metamodel.CollectionDefinition.SetViewProperty.ShowProperty.IndexProperty();
+    indexProperty10.setSortBy(new org.monet.metamodel.internal.Ref("Asignatura","doc.SubjectLevels.Indice","doc.SubjectLevels.Indice.Asignatura"));
+    indexProperty10.setWithView(new org.monet.metamodel.internal.Ref("Normal","doc.SubjectLevels.Indice","doc.SubjectLevels.Indice.Normal"));
+    showProperty10.setIndex(indexProperty10);
+    setViewProperty9.setShow(showProperty10);
+    org.monet.metamodel.CollectionDefinition.SetViewProperty.AnalyzeProperty analyzeProperty14 = new org.monet.metamodel.CollectionDefinition.SetViewProperty.AnalyzeProperty();
+    org.monet.metamodel.CollectionDefinition.SetViewProperty.AnalyzeProperty.DimensionProperty dimensionProperty14 = new org.monet.metamodel.CollectionDefinition.SetViewProperty.AnalyzeProperty.DimensionProperty();
+    dimensionProperty14.getAttribute().add(new org.monet.metamodel.internal.Ref("Asignatura","doc.SubjectLevels.Indice","doc.SubjectLevels.Indice.Asignatura"));
+    analyzeProperty14.setDimension(dimensionProperty14);
+    org.monet.metamodel.CollectionDefinition.SetViewProperty.AnalyzeProperty.SortingProperty sortingProperty16 = new org.monet.metamodel.CollectionDefinition.SetViewProperty.AnalyzeProperty.SortingProperty();
+    sortingProperty16.getAttribute().add(new org.monet.metamodel.internal.Ref("Asignatura","doc.SubjectLevels.Indice","doc.SubjectLevels.Indice.Asignatura"));
+    analyzeProperty14.setSorting(sortingProperty16);
+    setViewProperty9.setAnalyze(analyzeProperty14);
+    this.addView(setViewProperty9);
     
   }
   static {

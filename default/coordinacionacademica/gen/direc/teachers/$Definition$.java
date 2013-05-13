@@ -28,10 +28,12 @@ public class $Definition$ extends CollectionDefinition implements HasBehaviour, 
     org.monet.metamodel.CollectionDefinition.SetViewProperty.AnalyzeProperty analyzeProperty11 = new org.monet.metamodel.CollectionDefinition.SetViewProperty.AnalyzeProperty();
     org.monet.metamodel.CollectionDefinition.SetViewProperty.AnalyzeProperty.DimensionProperty dimensionProperty11 = new org.monet.metamodel.CollectionDefinition.SetViewProperty.AnalyzeProperty.DimensionProperty();
     dimensionProperty11.getAttribute().add(new org.monet.metamodel.internal.Ref("Surname","direc.Teachers.Indice","direc.Teachers.Indice.Surname"));
+    dimensionProperty11.getAttribute().add(new org.monet.metamodel.internal.Ref("Identifier","direc.Teachers.Indice","direc.Teachers.Indice.Identifier"));
     analyzeProperty11.setDimension(dimensionProperty11);
-    org.monet.metamodel.CollectionDefinition.SetViewProperty.AnalyzeProperty.SortingProperty sortingProperty13 = new org.monet.metamodel.CollectionDefinition.SetViewProperty.AnalyzeProperty.SortingProperty();
-    sortingProperty13.getAttribute().add(new org.monet.metamodel.internal.Ref("Surname","direc.Teachers.Indice","direc.Teachers.Indice.Surname"));
-    analyzeProperty11.setSorting(sortingProperty13);
+    org.monet.metamodel.CollectionDefinition.SetViewProperty.AnalyzeProperty.SortingProperty sortingProperty14 = new org.monet.metamodel.CollectionDefinition.SetViewProperty.AnalyzeProperty.SortingProperty();
+    sortingProperty14.getAttribute().add(new org.monet.metamodel.internal.Ref("Surname","direc.Teachers.Indice","direc.Teachers.Indice.Surname"));
+    sortingProperty14.getAttribute().add(new org.monet.metamodel.internal.Ref("Identifier","direc.Teachers.Indice","direc.Teachers.Indice.Identifier"));
+    analyzeProperty11.setSorting(sortingProperty14);
     setViewProperty6.setAnalyze(analyzeProperty11);
     this.addView(setViewProperty6);
     

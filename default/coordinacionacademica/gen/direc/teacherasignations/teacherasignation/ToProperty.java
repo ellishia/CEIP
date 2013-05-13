@@ -8,6 +8,7 @@ public class ToProperty extends DateFieldProperty {
     super();this._code = "mhzbcfg";
     this._name = "To";
     this._label = "Hasta";
+    this._precision = org.monet.metamodel.DateFieldPropertyBase.PrecisionEnumeration.DAYS;
     
   }
   

@@ -18,7 +18,7 @@ package solicitud {
 				Siblings Boolean;
 				ParentsInSchool Boolean;
 				AnualIncome Boolean;
-				Handcaped Boolean;
+				Handicaped Boolean;
 				MonoParentalorNumberusFamily Boolean;
 			}
 			Observations String;
@@ -43,6 +43,8 @@ package solicitud {
 				i.criteria.workingPersonalLife = criteria.workingPersonalLife;
 				i.criteria.siblings = criteria.siblings;
 				i.criteria.parentsInSchool = criteria.parentsInSchool;
+				i.criteria.handicaped = criteria.handicaped;
+				i.criteria.monoParentalorNumberusFamily = criteria.monoParentalorNumberusFamily;
 				i.observations = ficha.observations;
 				
 			}

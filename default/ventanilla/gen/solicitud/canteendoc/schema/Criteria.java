@@ -50,15 +50,15 @@ public class Criteria {
     this.AnualIncome = AnualIncome;
   }
   
-  @Element(name = "Handcaped", required = false)
-  private Boolean Handcaped;
+  @Element(name = "Handicaped", required = false)
+  private Boolean Handicaped;
   
-  public Boolean getHandcaped() {
-    return this.Handcaped;
+  public Boolean getHandicaped() {
+    return this.Handicaped;
   }
   
-  public void setHandcaped(final Boolean Handcaped) {
-    this.Handcaped = Handcaped;
+  public void setHandicaped(final Boolean Handicaped) {
+    this.Handicaped = Handicaped;
   }
   
   @Element(name = "MonoParentalorNumberusFamily", required = false)

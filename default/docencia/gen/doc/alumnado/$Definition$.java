@@ -11,10 +11,10 @@ public class $Definition$ extends CollectionDefinition implements HasBehaviour, 
     this._name = "doc.Alumnado";
     this._isAbstract = null;this._label = "Alumnado";
     this._index = new org.monet.metamodel.internal.Ref("doc.Alumnado.Indice");
-    org.monet.metamodel.CollectionDefinition.AddProperty addProperty2 = new org.monet.metamodel.CollectionDefinition.AddProperty();
-    addProperty2.getNode().add(new org.monet.metamodel.internal.Ref("doc.Alumnado.Student"));
-    this.setAdd(addProperty2);
     this.setIsSingleton(true);
+    org.monet.metamodel.CollectionDefinition.AddProperty addProperty3 = new org.monet.metamodel.CollectionDefinition.AddProperty();
+    addProperty3.getNode().add(new org.monet.metamodel.internal.Ref("doc.Alumnado.Student"));
+    this.setAdd(addProperty3);
     org.monet.metamodel.CollectionDefinition.SetViewProperty setViewProperty7 = new org.monet.metamodel.CollectionDefinition.SetViewProperty();
     setViewProperty7.setLabel("Todos");
     setViewProperty7.setCode("asda");

@@ -20,17 +20,21 @@ public class $Definition$ extends CollectionDefinition implements HasBehaviour, 
     setViewProperty6.setCode("mkri5ug");
     org.monet.metamodel.CollectionDefinition.SetViewProperty.ShowProperty showProperty7 = new org.monet.metamodel.CollectionDefinition.SetViewProperty.ShowProperty();
     org.monet.metamodel.CollectionDefinition.SetViewProperty.ShowProperty.IndexProperty indexProperty7 = new org.monet.metamodel.CollectionDefinition.SetViewProperty.ShowProperty.IndexProperty();
-    indexProperty7.setSortBy(new org.monet.metamodel.internal.Ref("Nombre","direc.Slots.Indice","direc.Slots.Indice.Nombre"));
+    indexProperty7.setSortBy(new org.monet.metamodel.internal.Ref("Weekday","direc.Slots.Indice","direc.Slots.Indice.Weekday"));
     indexProperty7.setWithView(new org.monet.metamodel.internal.Ref("Normal","direc.Slots.Indice","direc.Slots.Indice.Normal"));
     showProperty7.setIndex(indexProperty7);
     setViewProperty6.setShow(showProperty7);
     org.monet.metamodel.CollectionDefinition.SetViewProperty.AnalyzeProperty analyzeProperty11 = new org.monet.metamodel.CollectionDefinition.SetViewProperty.AnalyzeProperty();
     org.monet.metamodel.CollectionDefinition.SetViewProperty.AnalyzeProperty.DimensionProperty dimensionProperty11 = new org.monet.metamodel.CollectionDefinition.SetViewProperty.AnalyzeProperty.DimensionProperty();
-    dimensionProperty11.getAttribute().add(new org.monet.metamodel.internal.Ref("Nombre","direc.Slots.Indice","direc.Slots.Indice.Nombre"));
+    dimensionProperty11.getAttribute().add(new org.monet.metamodel.internal.Ref("Group","direc.Slots.Indice","direc.Slots.Indice.Group"));
+    dimensionProperty11.getAttribute().add(new org.monet.metamodel.internal.Ref("Weekday","direc.Slots.Indice","direc.Slots.Indice.Weekday"));
+    dimensionProperty11.getAttribute().add(new org.monet.metamodel.internal.Ref("DayHour","direc.Slots.Indice","direc.Slots.Indice.DayHour"));
     analyzeProperty11.setDimension(dimensionProperty11);
-    org.monet.metamodel.CollectionDefinition.SetViewProperty.AnalyzeProperty.SortingProperty sortingProperty13 = new org.monet.metamodel.CollectionDefinition.SetViewProperty.AnalyzeProperty.SortingProperty();
-    sortingProperty13.getAttribute().add(new org.monet.metamodel.internal.Ref("Nombre","direc.Slots.Indice","direc.Slots.Indice.Nombre"));
-    analyzeProperty11.setSorting(sortingProperty13);
+    org.monet.metamodel.CollectionDefinition.SetViewProperty.AnalyzeProperty.SortingProperty sortingProperty15 = new org.monet.metamodel.CollectionDefinition.SetViewProperty.AnalyzeProperty.SortingProperty();
+    sortingProperty15.getAttribute().add(new org.monet.metamodel.internal.Ref("Group","direc.Slots.Indice","direc.Slots.Indice.Group"));
+    sortingProperty15.getAttribute().add(new org.monet.metamodel.internal.Ref("Weekday","direc.Slots.Indice","direc.Slots.Indice.Weekday"));
+    sortingProperty15.getAttribute().add(new org.monet.metamodel.internal.Ref("DayHour","direc.Slots.Indice","direc.Slots.Indice.DayHour"));
+    analyzeProperty11.setSorting(sortingProperty15);
     setViewProperty6.setAnalyze(analyzeProperty11);
     this.addView(setViewProperty6);
     

@@ -10,6 +10,7 @@ public class Mapping__0 extends MappingImpl {
     super.calculateMapping();
     direc.teacherasignations.TeacherAsignation node = (direc.teacherasignations.TeacherAsignation) this.genericGetNode();
     direc.teacherasignations.Indice reference = (direc.teacherasignations.Indice) this.genericGetReference();
+    reference.setTeacher(node.getTeacher());
     
   }
   

@@ -4,11 +4,12 @@ package doc {
 	definition Alumnado is collection {
 		label = "Alumnado";
 		index = ref Indice;
+		is-singleton;
 		add {
 			node = ref Student;
 		}
 
-		is-singleton;
+		
 
 		["im1knjrg"]
 		definition Indice is index {

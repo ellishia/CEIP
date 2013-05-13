@@ -8,9 +8,11 @@ public class GroupProperty extends LinkFieldProperty {
     super();this._code = "mbzctla";
     this._name = "Group";
     this._label = "Grupo";
-    org.monet.metamodel.LinkFieldProperty.SourceProperty sourceProperty1 = new org.monet.metamodel.LinkFieldProperty.SourceProperty();
-    sourceProperty1.setIndex(new org.monet.metamodel.internal.Ref("direc.Groups.Indice"));
-    this.setSource(sourceProperty1);
+    this.setAllowAdd(true);
+    org.monet.metamodel.LinkFieldProperty.SourceProperty sourceProperty2 = new org.monet.metamodel.LinkFieldProperty.SourceProperty();
+    sourceProperty2.setIndex(new org.monet.metamodel.internal.Ref("direc.Groups.Indice"));
+    sourceProperty2.setCollection(new org.monet.metamodel.internal.Ref("direc.Groups"));
+    this.setSource(sourceProperty2);
     
   }
   

@@ -8,6 +8,7 @@ public class FromProperty extends DateFieldProperty {
     super();this._code = "mz4m8ka";
     this._name = "From";
     this._label = "Desde";
+    this._precision = org.monet.metamodel.DateFieldPropertyBase.PrecisionEnumeration.DAYS;
     
   }
   

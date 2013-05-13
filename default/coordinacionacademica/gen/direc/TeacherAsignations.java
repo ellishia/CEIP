@@ -2,12 +2,15 @@ package direc;
 
 import direc.teacherasignations.Indice;
 import org.monet.bpi.Expression;
-import org.monet.bpi.Node;
 import org.monet.bpi.OrderExpression;
 import org.monet.bpi.java.NodeCollectionImpl;
 
 @SuppressWarnings("all")
 public class TeacherAsignations extends NodeCollectionImpl {
+  public static TeacherAsignations getInstance() {
+    return (direc.TeacherAsignations)org.monet.bpi.NodeService.locate("direc.TeacherAsignations");
+  }
+  
   public Iterable<Indice> getAll() {
     return (Iterable<direc.teacherasignations.Indice>)genericGetAll();
   }
@@ -30,9 +33,5 @@ public class TeacherAsignations extends NodeCollectionImpl {
   
   public void executeCommand(final String operation) {
     super.executeCommand(operation);
-  }
-  
-  public static TeacherAsignations createNew(final Node parent) {
-    return (direc.TeacherAsignations)org.monet.bpi.NodeService.create(direc.TeacherAsignations.class, parent);
   }
 }

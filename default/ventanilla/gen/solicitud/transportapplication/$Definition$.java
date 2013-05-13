@@ -35,6 +35,19 @@ public class $Definition$ extends solicitud.serviceapplications.serviceapplicati
     showProperty8.getField().add(new org.monet.metamodel.internal.Ref("LeaveAt","solicitud.TransportApplication","solicitud.TransportApplication.LeaveAt"));
     formViewProperty7.setShow(showProperty8);
     this.addView(formViewProperty7);
+    org.monet.metamodel.FormDefinition.FormViewProperty formViewProperty15 = new org.monet.metamodel.FormDefinition.FormViewProperty();
+    formViewProperty15.setLabel("Datos de Transporte");
+    formViewProperty15.setCode("mcrttmq");
+    formViewProperty15.setName("VistaWidget");
+    formViewProperty15.setIsWidget(true);
+    org.monet.metamodel.FormDefinition.FormViewProperty.ShowProperty showProperty17 = new org.monet.metamodel.FormDefinition.FormViewProperty.ShowProperty();
+    showProperty17.getField().add(new org.monet.metamodel.internal.Ref("Address","solicitud.TransportApplication","solicitud.TransportApplication.Address"));
+    showProperty17.getField().add(new org.monet.metamodel.internal.Ref("Distance","solicitud.TransportApplication","solicitud.TransportApplication.Distance"));
+    showProperty17.getField().add(new org.monet.metamodel.internal.Ref("Trip","solicitud.TransportApplication","solicitud.TransportApplication.Trip"));
+    showProperty17.getField().add(new org.monet.metamodel.internal.Ref("Stop","solicitud.TransportApplication","solicitud.TransportApplication.Stop"));
+    showProperty17.getField().add(new org.monet.metamodel.internal.Ref("LeaveAt","solicitud.TransportApplication","solicitud.TransportApplication.LeaveAt"));
+    formViewProperty15.setShow(showProperty17);
+    this.addView(formViewProperty15);
     
   }
   static {

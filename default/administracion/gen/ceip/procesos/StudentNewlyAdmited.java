@@ -31,6 +31,7 @@ public class StudentNewlyAdmited extends ActivityImpl {
     ExporterScope _doExportOf = Exportador.doExportOf(_instance);
     AdmitedDoc _newDocument = _doExportOf.toNewDocument();
     this.setTarget(_newDocument);
+    this.save();
   }
   
   public void doUnlock(final Lock lock) {
@@ -47,6 +48,10 @@ public class StudentNewlyAdmited extends ActivityImpl {
   
   public static StudentNewlyAdmited createNew() {
     return (ceip.procesos.StudentNewlyAdmited)org.monet.bpi.TaskService.create(ceip.procesos.StudentNewlyAdmited.class);
+  }
+  
+  private void onSetup0(final DelegationSetup ds) {
+    ds.cancel();
   }
   
   public void onArrivePlace(final String placeCode) {
@@ -96,7 +101,10 @@ public class StudentNewlyAdmited extends ActivityImpl {
   
   public void onSetupDelegation(final String placeCode, final String actionCode, final DelegationSetup p0) {
     int hash = (actionCode + placeCode).hashCode();
-    switch(hash) {}
+    switch(hash) {case 2071156568 :
+      onSetup0((org.monet.bpi.DelegationSetup) p0);
+    break;
+    }
   }
   
   public void onSetupDelegationComplete(final String placeCode, final String actionCode, final String p0, final Date p1, final Date p2, final String p3, final boolean p4) {

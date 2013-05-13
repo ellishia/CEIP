@@ -44,6 +44,12 @@ public class Exportador extends ExporterImpl {
     solicitud.canteendoc.schema.Criteria _criteria_3 = i.getCriteria();
     boolean _parentsInSchool = criteria.getParentsInSchool();
     _criteria_3.setParentsInSchool(Boolean.valueOf(_parentsInSchool));
+    solicitud.canteendoc.schema.Criteria _criteria_4 = i.getCriteria();
+    boolean _handicaped = criteria.getHandicaped();
+    _criteria_4.setHandicaped(Boolean.valueOf(_handicaped));
+    solicitud.canteendoc.schema.Criteria _criteria_5 = i.getCriteria();
+    boolean _monoParentalorNumberusFamily = criteria.getMonoParentalorNumberusFamily();
+    _criteria_5.setMonoParentalorNumberusFamily(Boolean.valueOf(_monoParentalorNumberusFamily));
     String _observations = ficha.getObservations();
     i.setObservations(_observations);
   }

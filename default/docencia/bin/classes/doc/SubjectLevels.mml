@@ -8,6 +8,17 @@ package doc {
 		add {
 			node = ref SubjectLevel;
 		}
+		
+		["mc5fyfg"]
+		operation AddSubjects {
+			label = "Añadir Asignaturas";
+			execute() {
+				var tarea = doc::procesos::AnadirAsignaturas::createNew();
+				tarea.save();
+				tarea.resume;
+				ClientService:: redirectUserTo(MonetLink:: forTask(tarea.id));
+			}
+		}
 
 		["imohdvqa"]
 		definition Indice is index {

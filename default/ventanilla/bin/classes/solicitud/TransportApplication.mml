@@ -48,6 +48,18 @@ package solicitud {
 				field = ref LeaveAt;
 			}
 		}
+		["mcrttmq"]
+		view VistaWidget{
+			label = "Datos de Transporte";
+			is-widget;
+			show {
+				field = ref Address;
+				field = ref Distance;
+				field = ref Trip;
+				field = ref Stop;
+				field = ref LeaveAt;
+			}
+		}
 
 	}
 }

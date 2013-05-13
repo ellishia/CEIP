@@ -35,15 +35,15 @@ public class Slot extends NodeFormImpl {
     this.getDayHourField().set(value);
   }
   
-  public FieldText getSubjectField() {
-    return ((org.monet.bpi.FieldText)this.getField("Slot", "Subject"));
+  public FieldSelect getSubjectField() {
+    return ((org.monet.bpi.FieldSelect)this.getField("Slot", "Subject"));
   }
   
-  public String getSubject() {
-    return ((org.monet.bpi.FieldText)this.getField("Slot", "Subject")).get();
+  public Term getSubject() {
+    return ((org.monet.bpi.FieldSelect)this.getField("Slot", "Subject")).get();
   }
   
-  public void setSubject(final String value) {
+  public void setSubject(final Term value) {
     this.getSubjectField().set(value);
   }
   

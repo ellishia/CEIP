@@ -8,7 +8,7 @@ public class TeacherProperty extends AttributeProperty {
     super();this._code = "im69logq";
     this._name = "Teacher";
     this._label = "Docente";
-    this._type = org.monet.metamodel.AttributeProperty.TypeEnumeration.TERM;
+    this._type = org.monet.metamodel.AttributeProperty.TypeEnumeration.LINK;
     
   }
   

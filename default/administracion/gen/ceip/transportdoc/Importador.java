@@ -2,11 +2,14 @@ package ceip.transportdoc;
 
 import ceip.ServiceApplications;
 import ceip.TransportApplication;
+import ceip.serviceapplications.Indice;
 import ceip.transportdoc.Schema;
 import org.monet.bpi.ContestantRequest;
 import org.monet.bpi.CustomerRequest;
 import org.monet.bpi.ImporterScope;
+import org.monet.bpi.Node;
 import org.monet.bpi.NodeDocument;
+import org.monet.bpi.OperationExpression;
 import org.monet.bpi.ProviderResponse;
 import org.monet.bpi.java.ImporterImpl;
 import org.monet.bpi.types.File;
@@ -20,11 +23,29 @@ public class Importador extends ImporterImpl {
   
   private void onImportItem(final Schema i) {
     ServiceApplications servicios = ServiceApplications.getInstance();
-    TransportApplication ficha = TransportApplication.createNew(servicios);
+    TransportApplication ficha = null;
+    String _identifier = i.getIdentifier();
+    OperationExpression _Eq = Indice.Identifier.Eq(_identifier);
+    long _count = servicios.getCount(_Eq);
+    boolean _notEquals = (_count != 0);
+    if (_notEquals) {
+      String _identifier_1 = i.getIdentifier();
+      OperationExpression _Eq_1 = Indice.Identifier.Eq(_identifier_1);
+      Indice serv = servicios.getFirst(_Eq_1);
+      Node transport = serv.getIndexedNode();
+      ficha = ((TransportApplication) transport);
+    } else {
+      TransportApplication _createNew = TransportApplication.createNew(servicios);
+      ficha = _createNew;
+    }
     String _studentName = i.getStudentName();
     ficha.setStudentName(_studentName);
     String _studentSurname = i.getStudentSurname();
     ficha.setStudentSurname(_studentSurname);
+    String _cial = i.getCial();
+    ficha.setCial(_cial);
+    String _identifier_2 = i.getIdentifier();
+    ficha.setIdentifier(_identifier_2);
     Term _academicYear = i.getAcademicYear();
     ficha.setAcademicYear(_academicYear);
     String _address = i.getAddress();

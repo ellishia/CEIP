@@ -3,7 +3,7 @@ package solicitud.canteenapplication;
 import org.monet.metamodel.SectionFieldProperty;
 import org.monet.metamodel.interfaces.HasBehaviour;
 import solicitud.canteenapplication.criteria.AnualIncomeProperty;
-import solicitud.canteenapplication.criteria.HandcapedProperty;
+import solicitud.canteenapplication.criteria.HandicapedProperty;
 import solicitud.canteenapplication.criteria.MonoParentalorNumberusFamilyProperty;
 import solicitud.canteenapplication.criteria.ParentsInSchoolProperty;
 import solicitud.canteenapplication.criteria.SiblingsProperty;
@@ -19,7 +19,7 @@ public class CriteriaProperty extends SectionFieldProperty implements HasBehavio
     this.addBooleanFieldProperty(Siblings);
     this.addBooleanFieldProperty(ParentsInSchool);
     this.addBooleanFieldProperty(AnualIncome);
-    this.addBooleanFieldProperty(Handcaped);
+    this.addBooleanFieldProperty(Handicaped);
     this.addBooleanFieldProperty(MonoParentalorNumberusFamily);
     
   }
@@ -40,7 +40,7 @@ public class CriteriaProperty extends SectionFieldProperty implements HasBehavio
   
   private final AnualIncomeProperty AnualIncome = new solicitud.canteenapplication.criteria.AnualIncomeProperty();
   
-  private final HandcapedProperty Handcaped = new solicitud.canteenapplication.criteria.HandcapedProperty();
+  private final HandicapedProperty Handicaped = new solicitud.canteenapplication.criteria.HandicapedProperty();
   
   private final MonoParentalorNumberusFamilyProperty MonoParentalorNumberusFamily = new solicitud.canteenapplication.criteria.MonoParentalorNumberusFamilyProperty();
 }

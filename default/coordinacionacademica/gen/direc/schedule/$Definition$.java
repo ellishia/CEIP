@@ -17,7 +17,7 @@ public class $Definition$ extends CollectionDefinition implements HasBehaviour, 
     this.setAdd(addProperty3);
     org.monet.metamodel.CollectionDefinition.SetViewProperty setViewProperty6 = new org.monet.metamodel.CollectionDefinition.SetViewProperty();
     setViewProperty6.setLabel("Todos");
-    setViewProperty6.setCode("pppp");
+    setViewProperty6.setCode("mzbdz6a");
     setViewProperty6.setName("View");
     org.monet.metamodel.CollectionDefinition.SetViewProperty.ShowProperty showProperty7 = new org.monet.metamodel.CollectionDefinition.SetViewProperty.ShowProperty();
     org.monet.metamodel.CollectionDefinition.SetViewProperty.ShowProperty.IndexProperty indexProperty7 = new org.monet.metamodel.CollectionDefinition.SetViewProperty.ShowProperty.IndexProperty();
@@ -34,11 +34,7 @@ public class $Definition$ extends CollectionDefinition implements HasBehaviour, 
     dimensionProperty11.getAttribute().add(new org.monet.metamodel.internal.Ref("Subject","direc.Schedule.Indice","direc.Schedule.Indice.Subject"));
     analyzeProperty11.setDimension(dimensionProperty11);
     org.monet.metamodel.CollectionDefinition.SetViewProperty.AnalyzeProperty.SortingProperty sortingProperty17 = new org.monet.metamodel.CollectionDefinition.SetViewProperty.AnalyzeProperty.SortingProperty();
-    sortingProperty17.getAttribute().add(new org.monet.metamodel.internal.Ref("Weekday","direc.Schedule.Indice","direc.Schedule.Indice.Weekday"));
-    sortingProperty17.getAttribute().add(new org.monet.metamodel.internal.Ref("DayHour","direc.Schedule.Indice","direc.Schedule.Indice.DayHour"));
     sortingProperty17.getAttribute().add(new org.monet.metamodel.internal.Ref("Teacher","direc.Schedule.Indice","direc.Schedule.Indice.Teacher"));
-    sortingProperty17.getAttribute().add(new org.monet.metamodel.internal.Ref("Group","direc.Schedule.Indice","direc.Schedule.Indice.Group"));
-    sortingProperty17.getAttribute().add(new org.monet.metamodel.internal.Ref("Subject","direc.Schedule.Indice","direc.Schedule.Indice.Subject"));
     analyzeProperty11.setSorting(sortingProperty17);
     setViewProperty6.setAnalyze(analyzeProperty11);
     this.addView(setViewProperty6);

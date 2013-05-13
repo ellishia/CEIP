@@ -39,6 +39,21 @@ public class $Definition$ extends solicitud.serviceapplications.serviceapplicati
     showProperty9.getField().add(new org.monet.metamodel.internal.Ref("Identifier","solicitud.CanteenApplication","solicitud.CanteenApplication.Identifier"));
     formViewProperty8.setShow(showProperty9);
     this.addView(formViewProperty8);
+    org.monet.metamodel.FormDefinition.FormViewProperty formViewProperty18 = new org.monet.metamodel.FormDefinition.FormViewProperty();
+    formViewProperty18.setLabel("Datos de comedor");
+    formViewProperty18.setCode("mhhlcyg");
+    formViewProperty18.setName("VistaForm");
+    formViewProperty18.setIsWidget(true);
+    org.monet.metamodel.FormDefinition.FormViewProperty.ShowProperty showProperty20 = new org.monet.metamodel.FormDefinition.FormViewProperty.ShowProperty();
+    showProperty20.getField().add(new org.monet.metamodel.internal.Ref("Schedule","solicitud.CanteenApplication","solicitud.CanteenApplication.Schedule"));
+    showProperty20.getField().add(new org.monet.metamodel.internal.Ref("ActualPosition","solicitud.CanteenApplication","solicitud.CanteenApplication.ActualPosition"));
+    showProperty20.getField().add(new org.monet.metamodel.internal.Ref("Subsidized","solicitud.CanteenApplication","solicitud.CanteenApplication.Subsidized"));
+    showProperty20.getField().add(new org.monet.metamodel.internal.Ref("Criteria","solicitud.CanteenApplication","solicitud.CanteenApplication.Criteria"));
+    showProperty20.getField().add(new org.monet.metamodel.internal.Ref("Observations","solicitud.CanteenApplication","solicitud.CanteenApplication.Observations"));
+    showProperty20.getField().add(new org.monet.metamodel.internal.Ref("Documents","solicitud.CanteenApplication","solicitud.CanteenApplication.Documents"));
+    showProperty20.getField().add(new org.monet.metamodel.internal.Ref("Identifier","solicitud.CanteenApplication","solicitud.CanteenApplication.Identifier"));
+    formViewProperty18.setShow(showProperty20);
+    this.addView(formViewProperty18);
     
   }
   static {

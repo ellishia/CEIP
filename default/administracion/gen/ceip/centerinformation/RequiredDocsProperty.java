@@ -8,7 +8,7 @@ public class RequiredDocsProperty extends FileFieldProperty {
     super();this._code = "mfig1_w";
     this._name = "RequiredDocs";
     this.setIsMultiple(true);
-    this._label = "Docuemntos requiridos";
+    this._label = "Documentos requiridos";
     
   }
   

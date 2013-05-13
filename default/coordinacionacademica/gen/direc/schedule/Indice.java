@@ -7,6 +7,16 @@ import org.monet.bpi.types.Term;
 
 @SuppressWarnings("all")
 public class Indice extends IndexEntryImpl {
+  public final static Param Slot = new org.monet.bpi.Param("m7fdgmq");
+  
+  public Link getSlot() {
+    return (org.monet.bpi.types.Link)this.getAttribute("m7fdgmq");
+  }
+  
+  public void setSlot(final Link Slot) {
+    this.setAttribute("m7fdgmq", Slot);
+  }
+  
   public final static Param Group = new org.monet.bpi.Param("mqnqraw");
   
   public Link getGroup() {
@@ -39,11 +49,11 @@ public class Indice extends IndexEntryImpl {
   
   public final static Param Subject = new org.monet.bpi.Param("mno6_qg");
   
-  public String getSubject() {
-    return (java.lang.String)this.getAttribute("mno6_qg");
+  public Term getSubject() {
+    return (org.monet.bpi.types.Term)this.getAttribute("mno6_qg");
   }
   
-  public void setSubject(final String Subject) {
+  public void setSubject(final Term Subject) {
     this.setAttribute("mno6_qg", Subject);
   }
   

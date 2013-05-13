@@ -14,6 +14,27 @@ package ceip {
 			label = "Nombre del centro";
 		}
 
+		["msoxnng"]
+		field-select OpeningHour {
+			label = "Abierto desde";
+			use {
+				source = ref ceip.shared.Hours;
+			}
+		}
+
+		["mkp9cma"]
+		field-select ClosingHour {
+			label = "Hasta";
+			use {
+				source = ref ceip.shared.Hours;
+			}
+		}
+
+		["mibdbvg"]
+		field-text AcademicHours {
+			label = "Horas Lectivas";
+		}
+
 		["mtwrdpw"]
 		field-section Contact {
 			label = "Contacto";
@@ -85,7 +106,7 @@ package ceip {
 		["mfig1_w"]
 		field-file RequiredDocs {
 			is-multiple;
-			label = "Docuemntos requiridos";
+			label = "Documentos requiridos";
 		}
 
 		["mucf1zg"]
@@ -95,6 +116,48 @@ package ceip {
 				source = ref ceip.shared.AcademicYears;
 			}
 		}
+		onSaved() {
+			GenerateHours(this);
+		}
+
+		function GenerateHours(Node centerInfo) {
+			var centerI = centerInfo as ceip.CenterInformation;
+			var horaslec = Integer:: getInteger(centerI.academicHours);
+			var coleccion = ceip::Hours:: instance;
+			if(this.getNote("Horas") == null) {
+				this.addNote("Horas", centerI.academicHours);
+				this.saveNotes;
+				while(horaslec > 0) {
+					var hora = ceip::hours::Hour:: createNew(coleccion);
+					hora.^name = horaslec.toString() + "ª";
+					hora.orden = horaslec;
+					horaslec = horaslec - 1;
+				}
+			}
+			else {
+				var horas = this.getNote("Horas") as String;
+				if(horas != centerI.academicHours) {
+					var actual = Integer:: getInteger(centerI.academicHours);
+					var antig = Integer:: getInteger(horas);
+					//tengo mas horas lectivas ahora
+					while(antig < actual) {
+						var hora = ceip::hours::Hour:: createNew(coleccion);
+						hora.^name = actual.toString() + "ª";
+						hora.orden = actual;
+						actual = actual - 1;
+					}
+					actual = Integer:: getInteger(centerI.academicHours);
+					var nodos = coleccion.all;
+					while(antig > actual) {
+						var nodo = nodos.get(antig - 1);
+						// quitar nodo
+						antig = antig - 1;
+					}
+					this.addNote("Horas", centerI.academicHours);
+					this.saveNotes;
+				}
+			}
+		}
 
 		["mlfxc3q"]
 		view {
@@ -102,6 +165,7 @@ package ceip {
 			show {
 				field = ref CenterCode;
 				field = ref CenterName;
+				field = ref AcademicHours;
 				field = ref Contact;
 			}
 		}
@@ -128,11 +192,10 @@ package ceip {
 				field = ref AcademicYear;
 				field = ref CenterCode;
 				field = ref CenterName;
+				field = ref AcademicHours;
 				field = ref Contact;
 			}
 		}
-
-		
 
 	}
 }

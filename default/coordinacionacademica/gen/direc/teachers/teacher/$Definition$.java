@@ -33,6 +33,7 @@ public class $Definition$ extends FormDefinition implements HasBehaviour, HasCli
     formViewProperty11.setLabel("Ficha");
     formViewProperty11.setCode("kald");
     org.monet.metamodel.FormDefinition.FormViewProperty.ShowProperty showProperty12 = new org.monet.metamodel.FormDefinition.FormViewProperty.ShowProperty();
+    showProperty12.getField().add(new org.monet.metamodel.internal.Ref("Identifier","direc.Teachers.Teacher","direc.Teachers.Teacher.Identifier"));
     showProperty12.getField().add(new org.monet.metamodel.internal.Ref("Name","direc.Teachers.Teacher","direc.Teachers.Teacher.Name"));
     showProperty12.getField().add(new org.monet.metamodel.internal.Ref("Surname","direc.Teachers.Teacher","direc.Teachers.Teacher.Surname"));
     showProperty12.getField().add(new org.monet.metamodel.internal.Ref("Specialty","direc.Teachers.Teacher","direc.Teachers.Teacher.Specialty"));

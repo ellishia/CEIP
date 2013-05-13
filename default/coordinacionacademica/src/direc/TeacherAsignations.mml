@@ -2,7 +2,8 @@ package direc {
 
 	["mbdn_ew"]
 	definition TeacherAsignations is collection {
-		label = "Asignaciones de Slots";
+		label = "Asignaciones de Horas";
+		is-singleton;
 		index = ref Indice;
 		add {
 			node = ref TeacherAsignation;
@@ -16,7 +17,7 @@ package direc {
 				["im69logq"]
 				attribute Teacher {
 					label = "Docente";
-					type = TERM;
+					type = LINK;
 				}
 			}
 
@@ -55,11 +56,13 @@ package direc {
 			["mz4m8ka"]
 			field-date From {
 				label = "Desde";
+				precision = DAYS;
 			}
 
 			["mhzbcfg"]
 			field-date To {
 				label = "Hasta";
+				precision = DAYS;
 			}
 
 			["mmf1h9w"]
@@ -67,10 +70,12 @@ package direc {
 				label = "Docente";
 				source {
 					index = ref Teachers.Indice;
+					collection = ref Teachers;
 				}
 			}
 			mapping {
 				index = ref Indice;
+				//calculate() {		}
 			}
 
 			["mc24t5q"]

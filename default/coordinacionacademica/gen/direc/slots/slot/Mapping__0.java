@@ -10,6 +10,9 @@ public class Mapping__0 extends MappingImpl {
     super.calculateMapping();
     direc.slots.Slot node = (direc.slots.Slot) this.genericGetNode();
     direc.slots.Indice reference = (direc.slots.Indice) this.genericGetReference();
+    reference.setWeekday(node.getWeekday());
+    reference.setDayHour(node.getDayHour());
+    reference.setGroup(node.getGroup());
     
   }
   

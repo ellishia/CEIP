@@ -23,7 +23,10 @@ package ceip.procesos {
 					var info = centroInfo.getCenterInformation();
 					info.centerCode = f.centerCode;
 					info.centerName = f.centerName;
+					info.academicHours = f.academicHours;
 					info.academicYear = f.academicYear;
+					info.openingHour = f.openingHour;
+					info.closingHour = f.closingHour;
 					var contacto = info.contactField as ceip.centerinformation.Contact;
 					var fcontacto = f.contactField as ceip.centerinformation.Contact;
 					contacto.address = fcontacto.address;
@@ -40,6 +43,9 @@ package ceip.procesos {
 					}
 					if(f.centerName.isEmpty()) {
 						vr.addError("CenterName", "está vacio");
+					}
+					if (f.academicHours.nullOrEmpty){
+						vr.addError("AcademicHours", "está vacio");
 					}
 					var fcontact = f.contactField as ceip.centerinformation.Contact;
 					if(fcontact.address.isEmpty()) {

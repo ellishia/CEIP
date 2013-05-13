@@ -7,8 +7,8 @@ public class TeachingSinceProperty extends DateFieldProperty {
   public TeachingSinceProperty() {
     super();this._code = "m_ybwew";
     this._name = "TeachingSince";
-    this._precision = org.monet.metamodel.DateFieldPropertyBase.PrecisionEnumeration.MONTHS;
     this._label = "En la docencia desde";
+    this._precision = org.monet.metamodel.DateFieldPropertyBase.PrecisionEnumeration.MONTHS;
     
   }
   

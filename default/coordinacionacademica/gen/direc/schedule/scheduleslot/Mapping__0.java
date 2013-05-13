@@ -16,6 +16,7 @@ public class Mapping__0 extends MappingImpl {
     super.calculateMapping();
     direc.schedule.ScheduleSlot node = (direc.schedule.ScheduleSlot) this.genericGetNode();
     direc.schedule.Indice reference = (direc.schedule.Indice) this.genericGetReference();
+    reference.setSlot(node.getSlot());
     reference.setTeacher(node.getTeacher());
     this.calculate();
   }
@@ -34,6 +35,8 @@ public class Mapping__0 extends MappingImpl {
     boolean _notEquals = (!Objects.equal(nodo, null));
     if (_notEquals) {
       FieldLink slotField = nodo.getSlotField();
+      Link _slot = nodo.getSlot();
+      referencia.setSlot(_slot);
       Link _teacher = nodo.getTeacher();
       referencia.setTeacher(_teacher);
       boolean _notEquals_1 = (!Objects.equal(slotField, null));
@@ -48,7 +51,7 @@ public class Mapping__0 extends MappingImpl {
           referencia.setDayHour(_dayHour);
           Term _weekday = slot.getWeekday();
           referencia.setWeekday(_weekday);
-          String _subject = slot.getSubject();
+          Term _subject = slot.getSubject();
           referencia.setSubject(_subject);
         }
       }

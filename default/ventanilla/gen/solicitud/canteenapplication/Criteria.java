@@ -54,16 +54,16 @@ public class Criteria extends FieldSectionImpl implements FieldSection {
     this.getAnualIncomeField().set(value);
   }
   
-  public FieldBoolean getHandcapedField() {
-    return ((org.monet.bpi.FieldBoolean)this.getField("CanteenApplication", "Handcaped"));
+  public FieldBoolean getHandicapedField() {
+    return ((org.monet.bpi.FieldBoolean)this.getField("CanteenApplication", "Handicaped"));
   }
   
-  public boolean getHandcaped() {
-    return ((org.monet.bpi.FieldBoolean)this.getField("CanteenApplication", "Handcaped")).get();
+  public boolean getHandicaped() {
+    return ((org.monet.bpi.FieldBoolean)this.getField("CanteenApplication", "Handicaped")).get();
   }
   
-  public void setHandcaped(final boolean value) {
-    this.getHandcapedField().set(value);
+  public void setHandicaped(final boolean value) {
+    this.getHandicapedField().set(value);
   }
   
   public FieldBoolean getMonoParentalorNumberusFamilyField() {

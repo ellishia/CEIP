@@ -26,6 +26,15 @@ public class Importador extends ImporterImpl {
   
   private void onImportItem(final Schema item) {
     Applications applications = Applications.getInstance();
+    Iterable<Indice> _all = applications.getAll();
+    for (final Indice app : _all) {
+      {
+        Node _indexedNode = app.getIndexedNode();
+        Application appForm = ((Application) _indexedNode);
+        ApplicationInfo _applicationInfo = appForm.getApplicationInfo();
+        _applicationInfo.setMatriculable(false);
+      }
+    }
     ArrayList<Entry> _entry = item.getEntry();
     for (final Entry entry : _entry) {
       {

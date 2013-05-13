@@ -18,7 +18,7 @@ package ceip {
 				Siblings Boolean;
 				ParentsInSchool Boolean;
 				AnualIncome Boolean;
-				Handcaped Boolean;
+				Handicaped Boolean;
 				MonoParentalorNumberusFamily Boolean;
 			}
 			Observations String;
@@ -30,22 +30,35 @@ package ceip {
 			target = ref CanteenDoc;
 			onImportItem(ceip.canteendoc.Schema i) {
 				var servicios = ceip::ServiceApplications:: instance;
-				var ficha = ceip::CanteenApplication:: createNew(servicios);
+				var ceip.CanteenApplication ficha;
+				if(servicios.getCount(ceip::serviceapplications::Indice:: Identifier.Eq(i.identifier)) != 0) {
+					var serv = servicios.getFirst(ceip::serviceapplications::Indice:: Identifier.Eq(i.identifier));
+					var comedor = serv.indexedNode;
+					ficha = comedor as ceip.CanteenApplication;
+				}
+				else {
+					ficha = ceip::CanteenApplication:: createNew(servicios);
+				}
 				ficha.academicYear = i.academicYear;
 				ficha.studentName = i.studentName;
 				ficha.studentSurname = i.studentSurname;
-				ficha.cial = i.cial;		
-				//ficha.identifier = i.identifier;
+				ficha.cial = i.cial;
+				ficha.identifier = i.identifier;
 				ficha.schedule = i.schedule;
-				ficha.actualPosition=i.actualPosition  ;
-				ficha.subsidized= i.subsidized  ;
-				var criteria = ficha.criteriaField as ceip.canteenapplication.Criteria;				
-				criteria.anualIncome =i.criteria.anualIncome;
+				ficha.actualPosition = i.actualPosition;
+				ficha.subsidized = i.subsidized;
+				var criteria = ficha.criteriaField as ceip.canteenapplication.Criteria;
+				criteria.anualIncome = i.criteria.anualIncome;
 				criteria.workingPersonalLife = i.criteria.workingPersonalLife;
 				criteria.siblings = i.criteria.siblings;
-				criteria.parentsInSchool= i.criteria.parentsInSchool;
-				criteria.handcaped = i.criteria.handcaped;
-				ficha.observations= i.observations;
+				criteria.parentsInSchool = i.criteria.parentsInSchool;
+				criteria.handicaped = i.criteria.handicaped;
+				try {
+					ficha.observations = i.observations;
+				}
+				catch(Exception ex) {
+					ficha.observations = "";
+				}
 				ficha.save();
 			}
 

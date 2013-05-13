@@ -11,8 +11,14 @@ package direc {
 
 		["mfvxu5w"]
 		definition Indice is index {
-			label = "Horario";
+			label = "Casillas";
 			reference {
+
+				["m7fdgmq"]
+				attribute Slot {
+					label = "Slot";
+					type = LINK;
+				}
 
 				["mqnqraw"]
 				attribute Group {
@@ -35,7 +41,7 @@ package direc {
 				["mno6_qg"]
 				attribute Subject {
 					label = "Asignatura";
-					type = STRING;
+					type = TERM;
 				}
 
 				["makme0a"]
@@ -54,7 +60,7 @@ package direc {
 
 		}
 
-		["pppp"]
+		["mzbdz6a"]
 		view View {
 			label = "Todos";
 			show {
@@ -72,11 +78,11 @@ package direc {
 					attribute = ref Indice.Subject;
 				}
 				sorting {
-					attribute = ref Indice.Weekday;
-					attribute = ref Indice.DayHour;
+				//					attribute = ref Indice.Weekday;
+				//					attribute = ref Indice.DayHour;
 					attribute = ref Indice.Teacher;
-					attribute = ref Indice.Group;
-					attribute = ref Indice.Subject;
+					//					attribute = ref Indice.Group;
+					//					attribute = ref Indice.Subject;
 				}
 			}
 		}
@@ -87,7 +93,7 @@ package direc {
 
 			["mgbvgjg"]
 			field-link Slot {
-				label = "Slot";
+				label = "Hora y Grupo";
 				allow-add;
 				source {
 					index = ref direc.Slots.Indice;
@@ -112,6 +118,7 @@ package direc {
 					var referencia = this.^reference;
 					if(nodo != null) {
 						var slotField = nodo.slotField;
+						referencia.slot = nodo.slot;
 						referencia.teacher = nodo.teacher;
 						if(slotField != null) {
 							var slot = slotField.^node as direc.slots.Slot;
@@ -121,6 +128,31 @@ package direc {
 								referencia.weekday = slot.weekday;
 								referencia.subject = slot.subject;
 							}
+						}
+					}
+				}
+			}
+			properties {
+				calculate() {
+					var nodo = this.^node;
+					if(nodo != null) {
+						var slotField = nodo.slotField;
+						if(slotField != null) {
+							var slot = slotField.^node as direc.slots.Slot;
+							if(slot != null) {
+								var weekday = slot.weekday;
+								var String week;
+								if(weekday != null) {
+									week = weekday.toString();
+								}
+								else {
+									week = "";
+								}
+								getNode().setLabel(week + " " + slot.dayHour + " " + slot.groupAsTerm);
+							}
+						}
+						else {
+							getNode().setLabel("Día, hora y grupo");
 						}
 					}
 				}

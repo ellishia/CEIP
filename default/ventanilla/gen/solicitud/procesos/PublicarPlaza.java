@@ -202,8 +202,8 @@ public class PublicarPlaza extends ActivityImpl {
       Criteria solicriterios = ((Criteria) _criteriaField_1);
       boolean _anualIncome = criterios.getAnualIncome();
       solicriterios.setAnualIncome(_anualIncome);
-      boolean _handcaped = criterios.getHandcaped();
-      solicriterios.setHandcaped(_handcaped);
+      boolean _handicaped = criterios.getHandicaped();
+      solicriterios.setHandicaped(_handicaped);
       boolean _siblings = criterios.getSiblings();
       solicriterios.setSiblings(_siblings);
       boolean _monoParentalorNumberusFamily = criterios.getMonoParentalorNumberusFamily();
@@ -227,14 +227,14 @@ public class PublicarPlaza extends ActivityImpl {
   
   public void onArrivePlace(final String placeCode) {
     int hash = (placeCode).hashCode();
-    switch(hash) {case 1521986536 :
-      onArrive0();
-    break;
-    case -328865944 :
+    switch(hash) {case -328865944 :
       onArrive3();
     break;
     case 1368842438 :
       onArrive2();
+    break;
+    case 1521986536 :
+      onArrive0();
     break;
     case 1315951608 :
       onArrive1();
@@ -254,11 +254,11 @@ public class PublicarPlaza extends ActivityImpl {
   
   public void onSolveAction(final String placeCode, final String actionCode, final Node p0) {
     int hash = (actionCode + placeCode).hashCode();
-    switch(hash) {case 374918415 :
-      onSolve5((solicitud.CanteenApplication) p0);
-    break;
-    case 995305580 :
+    switch(hash) {case 995305580 :
       onSolve4((solicitud.TransportApplication) p0);
+    break;
+    case 374918415 :
+      onSolve5((solicitud.CanteenApplication) p0);
     break;
     }
   }

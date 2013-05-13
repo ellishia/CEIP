@@ -42,28 +42,34 @@ package solicitud {
 			onExportItem(solicitud.solicituddoc.Schema i) {
 				var contenedor = this.getScope() as solicitud.Application;
 				var ficha = contenedor.applicationInfo;
-				i.studentName = ficha.studentName;
-				i.studentSurname = ficha.studentSurname;
-				i.cial = ficha.cial;
-				i.birthDate = ficha.birthdate;
-				i.academicLevel = ficha.level;
-				i.academicYear = ficha.academicYear;
-				i.nationality = ficha.nationality;
-				i.gender = ficha.gender;
-				i.identifier = ficha.identifier;
-				i.siblings = ficha.siblings;
-				i.parents = ficha.parentsInCenter;
-				i.matriculable = ficha.matriculable;
-				var address = ficha.addressField as applicationinfo.Address;
-				i.address.designation = address.designation;
-				i.address.street_name = address.street_name;
-				i.address.number = address.number;
-				i.address.appartment = address.appartament;
-				i.address.neigbourhood = address.neigbourhood;
-				i.address.city = address.city;
-				i.address.zip_code = address.zip_code;
+				try {
+					i.studentName = ficha.studentName;
+					i.studentSurname = ficha.studentSurname;
+					i.cial = ficha.cial;
+					i.birthDate = ficha.birthdate;
+					i.academicLevel = ficha.level;
+					i.academicYear = ficha.academicYear;
+					i.nationality = ficha.nationality;
+					i.gender = ficha.gender;
+					i.identifier = ficha.identifier;
+					i.siblings = ficha.siblings;
+					i.parents = ficha.parentsInCenter;
+					i.matriculable = ficha.matriculable;
+					var address = ficha.addressField as applicationinfo.Address;
+					i.address.designation = address.designation;
+					i.address.street_name = address.street_name;
+					i.address.number = address.number;
+					i.address.appartment = address.appartament;
+					i.address.neigbourhood = address.neigbourhood;
+					i.address.city = address.city;
+					i.address.zip_code = address.zip_code;
+				}
+				catch(Exception ex) {
+				}
 			}
+
 		}
+
 	}
 }
   

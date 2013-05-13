@@ -2,6 +2,7 @@ package direc.schedule.indice;
 
 import direc.schedule.indice.DayHourProperty;
 import direc.schedule.indice.GroupProperty;
+import direc.schedule.indice.SlotProperty;
 import direc.schedule.indice.SubjectProperty;
 import direc.schedule.indice.TeacherProperty;
 import direc.schedule.indice.WeekdayProperty;
@@ -14,21 +15,22 @@ public class $Definition$ extends IndexDefinition implements HasBehaviour, HasCl
   public $Definition$() {
     super();this._code = "mfvxu5w";
     this._name = "direc.Schedule.Indice";
-    this._isAbstract = null;this._label = "Horario";
+    this._isAbstract = null;this._label = "Casillas";
     org.monet.metamodel.IndexDefinition.ReferenceProperty referenceProperty1 = new org.monet.metamodel.IndexDefinition.ReferenceProperty();
+    referenceProperty1.addAttributeProperty(Slot);
     referenceProperty1.addAttributeProperty(Group);
     referenceProperty1.addAttributeProperty(Weekday);
     referenceProperty1.addAttributeProperty(DayHour);
     referenceProperty1.addAttributeProperty(Subject);
     referenceProperty1.addAttributeProperty(Teacher);
     this.setReference(referenceProperty1);
-    org.monet.metamodel.IndexDefinition.IndexViewProperty indexViewProperty7 = new org.monet.metamodel.IndexDefinition.IndexViewProperty();
-    indexViewProperty7.setCode("mydvvxa");
-    indexViewProperty7.setName("Normal");
-    org.monet.metamodel.IndexDefinition.IndexViewProperty.ShowProperty showProperty7 = new org.monet.metamodel.IndexDefinition.IndexViewProperty.ShowProperty();
-    showProperty7.getLine().add(new org.monet.metamodel.internal.Ref("Teacher","direc.Schedule.Indice","direc.Schedule.Indice.Teacher"));
-    indexViewProperty7.setShow(showProperty7);
-    this.addView(indexViewProperty7);
+    org.monet.metamodel.IndexDefinition.IndexViewProperty indexViewProperty8 = new org.monet.metamodel.IndexDefinition.IndexViewProperty();
+    indexViewProperty8.setCode("mydvvxa");
+    indexViewProperty8.setName("Normal");
+    org.monet.metamodel.IndexDefinition.IndexViewProperty.ShowProperty showProperty8 = new org.monet.metamodel.IndexDefinition.IndexViewProperty.ShowProperty();
+    showProperty8.getLine().add(new org.monet.metamodel.internal.Ref("Teacher","direc.Schedule.Indice","direc.Schedule.Indice.Teacher"));
+    indexViewProperty8.setShow(showProperty8);
+    this.addView(indexViewProperty8);
     
   }
   static {
@@ -48,6 +50,8 @@ public class $Definition$ extends IndexDefinition implements HasBehaviour, HasCl
   public String getClientBehaviour() {
     return "var mfvxu5w = new Object();mfvxu5w.refresh = function (node) {if (!node.isEditable()) return;};mfvxu5w.onChangeField = function (node, field) {};";
   }
+  
+  private final SlotProperty Slot = new direc.schedule.indice.SlotProperty();
   
   private final GroupProperty Group = new direc.schedule.indice.GroupProperty();
   

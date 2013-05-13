@@ -55,9 +55,11 @@ package direc {
 			analyze {
 				dimension {
 					attribute = ref Indice.Surname;
+					attribute = ref Indice.Identifier;
 				}
 				sorting {
 					attribute = ref Indice.Surname;
+					attribute = ref Indice.Identifier;
 				}
 			}
 		}
@@ -91,8 +93,8 @@ package direc {
 
 			["m_ybwew"]
 			field-date TeachingSince {
-				precision = MONTHS;
 				label = "En la docencia desde";
+				precision = MONTHS;
 			}
 
 			["mvintow"]
@@ -114,6 +116,7 @@ package direc {
 			view {
 				label = "Ficha";
 				show {
+					field = ref Identifier;
 					field = ref Name;
 					field = ref Surname;
 					field = ref Specialty;

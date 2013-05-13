@@ -70,7 +70,8 @@ public class AnadirEjemplar extends ActivityImpl {
   private void onArrive1() {
     Ejemplares ejemplares = Ejemplares.getInstance();
     MonetLink elink = ejemplares.toMonetLink();
-    ArrayList<MonetLink> links = null;
+    ArrayList<MonetLink> _arrayList = new ArrayList<MonetLink>();
+    ArrayList<MonetLink> links = _arrayList;
     links.add(elink);
     this.addLog("Finalizado", "Se han creado los ejemplares especificados", links);
   }

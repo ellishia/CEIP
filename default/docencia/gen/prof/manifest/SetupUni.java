@@ -6,10 +6,10 @@ import prof.manifest.Manifest;
 public class SetupUni extends Manifest {
   public SetupUni() {
     super();this._name = "docencia";
-    this._title = "Gestion Docente";
-    this._subtitle = "Gestion Docente";
+    this._title = "Gestión Docente";
+    this._subtitle = "Gestión Docente";
     org.monet.metamodel.Setup.SpaceProperty spaceProperty2 = new org.monet.metamodel.Setup.SpaceProperty();
-    spaceProperty2.setDeployUri(java.net.URI.create("http://10.230.140.157:8091/docencia"));
+    spaceProperty2.setDeployUri(java.net.URI.create("http://10.230.140.157:8090/docencia"));
     spaceProperty2.setName("docencia");
     this.setSpace(spaceProperty2);
     org.monet.metamodel.Setup.FederationProperty federationProperty4 = new org.monet.metamodel.Setup.FederationProperty();
@@ -28,7 +28,7 @@ public class SetupUni extends Manifest {
     publishProperty13.getService().add(new org.monet.metamodel.internal.Ref("doc.procesos.StudentTransfer"));
     publishProperty13.getSource().add(new org.monet.metamodel.internal.Ref("doc.shared.Areas"));
     org.monet.metamodel.Setup.PublishProperty.FederationProperty federationProperty13 = new org.monet.metamodel.Setup.PublishProperty.FederationProperty();
-    federationProperty13.setSetupUri(java.net.URI.create("http://10.230.140.157:8091/federation"));
+    federationProperty13.setSetupUri(java.net.URI.create("http://10.230.140.157:8090/federation"));
     publishProperty13.setFederation(federationProperty13);
     this.getPublishList().add(publishProperty13);
     

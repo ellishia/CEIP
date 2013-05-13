@@ -1,7 +1,6 @@
 import java.util.*
 import solicitud.Applications.*
 //import ceip.CentroInfo
-
 package solicitud {
 
 	["msnjbva"]
@@ -25,6 +24,10 @@ package solicitud {
 
 			onImportItem(solicitud.admiteddoc.Schema item) {
 				var applications = solicitud::Applications:: instance;
+				for (app : applications.all){
+					var appForm = app.indexedNode as Application;
+					appForm.applicationInfo.matriculable = false;
+				}
 				for(entry : item.entry) {
 					var appl = applications.getFirst(applications::Indice:: Cial.Eq(entry.cial));
 					if(appl != null) {

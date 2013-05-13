@@ -5,6 +5,7 @@ import ceip.CentroInfo;
 import ceip.centerinformation.Contact;
 import ceip.procesos.cargainicial.Lock;
 import ceip.procesos.cargainicial.Place;
+import org.eclipse.xtext.xbase.lib.StringExtensions;
 import org.monet.bpi.DelegationSetup;
 import org.monet.bpi.FieldSection;
 import org.monet.bpi.JobRequest;
@@ -42,8 +43,14 @@ public class CargaInicial extends ActivityImpl {
     info.setCenterCode(_centerCode);
     String _centerName = f.getCenterName();
     info.setCenterName(_centerName);
+    String _academicHours = f.getAcademicHours();
+    info.setAcademicHours(_academicHours);
     Term _academicYear = f.getAcademicYear();
     info.setAcademicYear(_academicYear);
+    Term _openingHour = f.getOpeningHour();
+    info.setOpeningHour(_openingHour);
+    Term _closingHour = f.getClosingHour();
+    info.setClosingHour(_closingHour);
     FieldSection _contactField = info.getContactField();
     Contact contacto = ((Contact) _contactField);
     FieldSection _contactField_1 = f.getContactField();
@@ -69,6 +76,11 @@ public class CargaInicial extends ActivityImpl {
     boolean _isEmpty_1 = _centerName.isEmpty();
     if (_isEmpty_1) {
       vr.addError("CenterName", "est\u00E1 vacio");
+    }
+    String _academicHours = f.getAcademicHours();
+    boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(_academicHours);
+    if (_isNullOrEmpty) {
+      vr.addError("AcademicHours", "est\u00E1 vacio");
     }
     FieldSection _contactField = f.getContactField();
     Contact fcontact = ((Contact) _contactField);

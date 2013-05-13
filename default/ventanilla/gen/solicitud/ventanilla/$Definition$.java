@@ -12,7 +12,7 @@ public class $Definition$ extends DesktopDefinition implements HasBehaviour, Has
     this._isAbstract = null;this._label = "Ventanilla";
     this.setIsSingleton(true);
     org.monet.metamodel.DesktopDefinition.ForProperty forProperty2 = new org.monet.metamodel.DesktopDefinition.ForProperty();
-    forProperty2.setRole(new org.monet.metamodel.internal.Ref("solicitud.shared.Padre"));
+    forProperty2.getRole().add(new org.monet.metamodel.internal.Ref("solicitud.shared.Padre"));
     this.setFor(forProperty2);
     org.monet.metamodel.DesktopDefinition.ViewProperty viewProperty4 = new org.monet.metamodel.DesktopDefinition.ViewProperty();
     viewProperty4.setLabel("Solicitudes de Plaza");

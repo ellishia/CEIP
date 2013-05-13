@@ -1,4 +1,5 @@
 import direc.IntanceEjemplares.*
+
 package direc.procesos {
 
 	["mftuvmg"]
@@ -21,15 +22,15 @@ package direc.procesos {
 				// crea el codigo 
 				onSolve(direc.IntanceEjemplar f) {
 					for(item : f.ejemplaresSeccionField.allFields) {
-						var ejemplares = direc::Ejemplares::instance;
+						var ejemplares = direc::Ejemplares:: instance;
 						var ejem = item as direc.intanceejemplar.EjemplaresSeccion;
 						var i = ejem.number.intValue;
-						while(i>0){
-							var ejemplar = direc::ejemplares::Ejemplar::createNew(ejemplares);
+						while(i > 0) {
+							var ejemplar = direc::ejemplares::Ejemplar:: createNew(ejemplares);
 							ejemplar.libro = ejem.libro;
-							ejemplar.estado ="nuevo";
+							ejemplar.estado = "nuevo";
 							ejemplar.save();
-							i = i-1;
+							i = i - 1;
 						}
 					}
 				}
@@ -39,11 +40,11 @@ package direc.procesos {
 		["mnqwjiq"]
 		place Final {
 			onArrive() {
-				var ejemplares = direc::Ejemplares::instance;
+				var ejemplares = direc::Ejemplares:: instance;
 				var elink = ejemplares.toMonetLink;
-				var ArrayList<MonetLink> links;
-				links.^add(elink) 
-			this.addLog("Finalizado", "Se han creado los ejemplares especificados", links); 
+				var ArrayList <MonetLink> links = new ArrayList <MonetLink>();
+				links.^add(elink);
+				this.addLog("Finalizado", "Se han creado los ejemplares especificados", links);
 			}
 			is-final;
 		}

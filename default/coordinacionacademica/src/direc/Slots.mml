@@ -15,8 +15,20 @@ package direc {
 			reference {
 
 				["ime33kpa"]
-				attribute Nombre {
+				attribute Group {
 					label = "Nombre";
+					type = LINK;
+				}
+
+				["ml9itya"]
+				attribute Weekday {
+					label = "Día";
+					type = TERM;
+				}
+
+				["makcuza"]
+				attribute DayHour {
+					label = "Hora";
 					type = STRING;
 				}
 			}
@@ -24,10 +36,11 @@ package direc {
 			["mvscjug"]
 			view Normal {
 				show {
-					title = ref Nombre;
+					title = ref Group;
+					line = ref Weekday;
+					line = ref DayHour;
 				}
 			}
-
 		}
 
 		["mkri5ug"]
@@ -35,16 +48,20 @@ package direc {
 			label = "Todos";
 			show {
 				index {
-					sort-by = ref Indice.Nombre;
+					sort-by = ref Indice.Weekday;
 					with-view = ref Indice.Normal;
 				}
 			}
 			analyze {
 				dimension {
-					attribute = ref Indice.Nombre;
+					attribute = ref Indice.Group;
+					attribute = ref Indice.Weekday;
+					attribute = ref Indice.DayHour;
 				}
 				sorting {
-					attribute = ref Indice.Nombre;
+					attribute = ref Indice.Group;
+					attribute = ref Indice.Weekday;
+					attribute = ref Indice.DayHour;
 				}
 			}
 		}
@@ -67,21 +84,40 @@ package direc {
 			}
 
 			["m_bszeq"]
-			field-text Subject {
+			field-select Subject {
 				label = "Asignatura";
+				use {
+					source = ref direc.shared.Subjects;
+				}
 			}
 
 			["mbzctla"]
 			field-link Group {
 				label = "Grupo";
+				allow-add;
 				source {
 					index = ref Groups.Indice;
+					collection = ref Groups;
 				}
 			}
 			mapping {
 				index = ref Indice;
 			}
 
+			properties {
+				calculate() {
+					var nodo = this.^node;
+					var weekday = nodo.weekday;
+					var String week;
+					if(weekday != null) {
+						week = weekday.toString();
+					}
+					else {
+						week = "";
+					}
+					getNode().setLabel(week + " " + nodo.dayHour + " " + nodo.groupField);
+				}
+			}
 			["m1gpaoq"]
 			view {
 				label = "Ficha";

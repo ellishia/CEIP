@@ -44,7 +44,7 @@ package ceip {
 			}
 
 			["mfg2bqw"]
-			field-boolean Handcaped {
+			field-boolean Handicaped {
 				label = "Discapacidad";
 			}
 

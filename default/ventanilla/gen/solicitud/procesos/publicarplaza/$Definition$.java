@@ -102,7 +102,7 @@ public class $Definition$ extends ActivityDefinition implements HasBehaviour, Ha
     editionActionProperty45.setCode("msacpda");
     org.monet.metamodel.EditionActionProperty.UseProperty useProperty48 = new org.monet.metamodel.EditionActionProperty.UseProperty();
     useProperty48.setForm(new org.monet.metamodel.internal.Ref("solicitud.TransportApplication"));
-    useProperty48.setWithView(new org.monet.metamodel.internal.Ref("Vista","solicitud.TransportApplication","solicitud.TransportApplication.Vista"));
+    useProperty48.setWithView(new org.monet.metamodel.internal.Ref("VistaWidget","solicitud.TransportApplication","solicitud.TransportApplication.VistaWidget"));
     editionActionProperty45.setUse(useProperty48);
     activityPlaceProperty45.setEditionActionProperty(editionActionProperty45);
     this.addPlace(activityPlaceProperty45);
@@ -116,7 +116,7 @@ public class $Definition$ extends ActivityDefinition implements HasBehaviour, Ha
     editionActionProperty54.setCode("mta5arw");
     org.monet.metamodel.EditionActionProperty.UseProperty useProperty57 = new org.monet.metamodel.EditionActionProperty.UseProperty();
     useProperty57.setForm(new org.monet.metamodel.internal.Ref("solicitud.CanteenApplication"));
-    useProperty57.setWithView(new org.monet.metamodel.internal.Ref("Vista","solicitud.CanteenApplication","solicitud.CanteenApplication.Vista"));
+    useProperty57.setWithView(new org.monet.metamodel.internal.Ref("VistaForm","solicitud.CanteenApplication","solicitud.CanteenApplication.VistaForm"));
     editionActionProperty54.setUse(useProperty57);
     activityPlaceProperty54.setEditionActionProperty(editionActionProperty54);
     this.addPlace(activityPlaceProperty54);

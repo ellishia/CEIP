@@ -4,14 +4,13 @@ package solicitud {
 	definition CanteenApplication is form extends ServiceApplications.ServiceApplication {
 		label = "Comedor";
 
-//		["ms5haja"]
-//		field-link AsociatedAppli {
-//			label = "Solicitud Asociada";
-//			source {
-//				index = ref solicitud.Applications.Indice;
-//			}
-//		}
-
+		//		["ms5haja"]
+		//		field-link AsociatedAppli {
+		//			label = "Solicitud Asociada";
+		//			source {
+		//				index = ref solicitud.Applications.Indice;
+		//			}
+		//		}
 		["mwhszqq"]
 		field-serial Identifier {
 			label = "Código de Solicitud";
@@ -60,7 +59,7 @@ package solicitud {
 			}
 
 			["mfg2bqw"]
-			field-boolean Handcaped {
+			field-boolean Handicaped {
 				label = "Discapacidad";
 			}
 
@@ -82,8 +81,24 @@ package solicitud {
 		}
 
 		["m2dketw"]
-		view Vista{
+		view Vista {
 			label = "Datos de comedor";
+			//is-widget;
+			show {
+				field = ref Schedule;
+				field = ref ActualPosition;
+				field = ref Subsidized;
+				field = ref Criteria;
+				field = ref Observations;
+				field = ref Documents;
+				field = ref Identifier;
+			}
+		}
+
+		["mhhlcyg"]
+		view VistaForm {
+			label = "Datos de comedor";
+			is-widget;
 			show {
 				field = ref Schedule;
 				field = ref ActualPosition;
